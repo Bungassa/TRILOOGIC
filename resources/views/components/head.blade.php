@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="PixcelsThemes">
     <!-- Favicon Icon -->
-    <link rel="icon" href="assets/img/favicon.png">
+    <!-- <link rel="icon" href="assets/img/favicon.png"> (nambahin logo diatas web)-->
     <!-- Site Title -->
-    <title>Bizmax - Corporate And Consulting Business Template</title>
+    <title>Ekky Refleksi Family - Pusat Layanan Refleksi dan Pijat Kesehatan</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/bootstrap.min.css') }}">

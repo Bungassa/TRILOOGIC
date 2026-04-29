@@ -8,9 +8,6 @@
                 <!-- Left Side - Branding Info -->
                 <div class="col-lg-6 d-none d-lg-block">
                     <div class="cs_register_branding text-white text-center">
-                        <div class="cs_brand_logo cs_mb_40">
-                            <img src="assets/img/logo.svg" alt="Ekky Refleksi Family" class="img-fluid" style="max-width: 200px;">
-                        </div>
                         <h1 class="cs_fs_48 cs_mb_20">Bergabung dengan Kami</h1>
                         <p class="cs_fs_18 cs_mb_30">Daftar sekarang dan nikmati layanan refleksi dan pijat kesehatan premium</p>
                         <div class="cs_brand_features">
@@ -221,7 +218,7 @@
     <style>
     /* Register Page Styles */
     .cs_register_page {
-        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        background: linear-gradient(135deg, #D79F9E 0%, #AB6F6E 100%);
         position: relative;
         overflow: hidden;
     }
@@ -301,9 +298,9 @@
     }
     
     .cs_form_control:focus {
-        border-color: #28a745;
+        border-color: #AB6F6E;
         background-color: #fff;
-        box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.15);
+        box-shadow: 0 0 0 4px rgba(171, 111, 110, 0.15);
         outline: none;
         transform: translateY(-1px);
     }
@@ -330,8 +327,8 @@
     }
     
     .cs_toggle_password:hover, .cs_toggle_password_confirm:hover {
-        background-color: rgba(40, 167, 69, 0.1);
-        color: #28a745;
+        background-color: rgba(171, 111, 110, 0.1);
+        color: #AB6F6E;
         transform: scale(1.05);
     }
     
@@ -371,8 +368,8 @@
     }
     
     .cs_checkbox_input:checked {
-        background-color: #28a745;
-        border-color: #28a745;
+        background-color: #AB6F6E;
+        border-color: #AB6F6E;
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='white' d='M4.5 10.5L8 14l7.5-7.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
         background-size: 12px;
         background-position: center;
@@ -381,7 +378,7 @@
     
     .cs_checkbox_input:focus {
         outline: none;
-        box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
+        box-shadow: 0 0 0 3px rgba(171, 111, 110, 0.25);
     }
     
     .cs_checkbox_label {
@@ -394,7 +391,7 @@
     }
     
     .cs_checkbox_label a {
-        color: #28a745;
+        color: #AB6F6E;
         font-weight: 600;
         text-decoration: none;
         transition: all 0.3s ease;
@@ -402,7 +399,7 @@
     
     .cs_checkbox_label a:hover {
         text-decoration: underline;
-        color: #218838;
+        color: #D79F9E;
     }
     
     /* Submit Button */
@@ -411,7 +408,7 @@
     }
     
     .cs_btn_register {
-        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        background: linear-gradient(135deg, #AB6F6E 0%, #C48989 100%);
         border: none;
         color: white;
         font-weight: 700;
@@ -422,13 +419,13 @@
         position: relative;
         overflow: hidden;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+        box-shadow: 0 4px 15px rgba(171, 111, 110, 0.2);
     }
     
     .cs_btn_register:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(40, 167, 69, 0.4);
-        background: linear-gradient(135deg, #218838 0%, #1ea085 100%);
+        box-shadow: 0 8px 30px rgba(171, 111, 110, 0.4);
+        background: linear-gradient(135deg, #C48989 0%, #D79F9E 100%);
     }
     
     .cs_btn_register:active {
@@ -450,14 +447,14 @@
     }
     
     .cs_register_footer a:hover {
-        color: #28a745;
+        color: #AB6F6E;
         transform: translateX(3px);
     }
     
     /* Responsive */
     @media (max-width: 991px) {
         .cs_register_page {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            background: linear-gradient(135deg, #D79F9E 0%, #AB6F6E 100%);
         }
         
         .cs_register_card {

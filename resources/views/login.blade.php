@@ -8,9 +8,6 @@
                 <!-- Left Side - Branding Info -->
                 <div class="col-lg-6 d-none d-lg-block">
                     <div class="cs_login_branding text-white text-center">
-                        <div class="cs_brand_logo cs_mb_40">
-                            <img src="assets/img/logo.svg" alt="Ekky Refleksi Family" class="img-fluid" style="max-width: 200px;">
-                        </div>
                         <h1 class="cs_fs_48 cs_mb_20">Ekky Refleksi Family</h1>
                         <p class="cs_fs_18 cs_mb_30">Pusat layanan refleksi dan pijat kesehatan profesional untuk keluarga Anda</p>
                         <div class="cs_brand_features">
@@ -163,7 +160,7 @@
     <style>
     /* Login Page Styles */
     .cs_login_page {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #D79F9E 0%, #AB6F6E 100%);
         position: relative;
         overflow: hidden;
     }
@@ -242,9 +239,9 @@
     }
     
     .cs_form_control:focus {
-        border-color: #007bff;
+        border-color: #AB6F6E;
         background-color: #fff;
-        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15);
+        box-shadow: 0 0 0 4px rgba(171, 111, 110, 0.15);
         outline: none;
     }
     
@@ -277,8 +274,8 @@
     }
     
     .cs_toggle_password:hover {
-        background-color: rgba(0, 123, 255, 0.1);
-        color: #007bff;
+        background-color: rgba(171, 111, 110, 0.1);
+        color: #AB6F6E;
     }
     
     .cs_error_message {
@@ -311,13 +308,13 @@
     }
     
     .cs_checkbox_input:checked {
-        background-color: #007bff;
-        border-color: #007bff;
+        background-color: #AB6F6E;
+        border-color: #AB6F6E;
     }
     
     .cs_checkbox_input:focus {
         outline: none;
-        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+        box-shadow: 0 0 0 3px rgba(171, 111, 110, 0.25);
     }
     
     .cs_checkbox_label {
@@ -334,7 +331,7 @@
     }
     
     .cs_btn_login {
-        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        background: linear-gradient(135deg, #AB6F6E 0%, #C48989 100%);
         border: none;
         color: white;
         font-weight: 600;
@@ -348,8 +345,8 @@
     
     .cs_btn_login:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
-        background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+        box-shadow: 0 8px 25px rgba(171, 111, 110, 0.3);
+        background: linear-gradient(135deg, #C48989 0%, #D79F9E 100%);
     }
     
     .cs_btn_login:active {
@@ -367,7 +364,7 @@
     }
     
     .cs_forgot_link:hover {
-        color: #0056b3;
+        color: #D79F9E;
         text-decoration: underline;
     }
     
@@ -381,7 +378,7 @@
     }
     
     .cs_login_footer a:hover {
-        color: #0056b3;
+        color: #AB6F6E;
         transform: translateX(3px);
     }
     
@@ -394,7 +391,7 @@
     /* Responsive */
     @media (max-width: 991px) {
         .cs_login_page {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #D79F9E 0%, #AB6F6E 100%);
         }
         
         .cs_login_card {

@@ -3879,11 +3879,11 @@ hr {
 }
 
 .text-primary {
-  color: #18191d !important;
+  color: #AB6F6E !important;
 }
 
 .bg-primary {
-  background-color: #18191d !important;
+  background-color: #000000 !important;
 }
 
 .text-secondary {
@@ -3904,7 +3904,7 @@ hr {
 }
 
 .text-accent {
-  color: #e9a132 !important;
+  color: #AB6F6E !important;
 }
 
 .bg-white {
@@ -3917,7 +3917,7 @@ hr {
 
 .bg-accent,
 .bg-accent-hover:hover {
-  background-color: #e9a132 !important;
+  background-color: #AB6F6E !important;
 }
 
 .shadow {

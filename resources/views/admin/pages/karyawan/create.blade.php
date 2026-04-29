@@ -29,7 +29,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
                     <input type="text" name="nama" required
-                           class="w-full px-4 py-3 border border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all duration-200"
+                           class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200"
                            placeholder="Masukkan nama lengkap">
                 </div>
 
@@ -37,14 +37,14 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal</label>
                     <input type="date" name="tanggal" required
-                           class="w-full px-4 py-3 border border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all duration-200">
+                           class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200">
                 </div>
 
                 <!-- Terapi yang Dilakukan -->
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Terapi yang Dilakukan</label>
                     <textarea name="terapi_yang_dilakukan" rows="3" required
-                              class="w-full px-4 py-3 border border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all duration-200 resize-none"
+                              class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200 resize-none"
                               placeholder="Masukkan terapi yang dilakukan"></textarea>
                 </div>
 
@@ -52,7 +52,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
                     <select name="status" required
-                            class="w-full px-4 py-3 border border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all duration-200">
+                            class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200">
                         <option value="">Pilih status</option>
                         <option value="proses">Proses</option>
                         <option value="selesai">Selesai</option>
@@ -67,7 +67,7 @@
                     Batal
                 </a>
                 <button type="submit"
-                        class="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-sm font-semibold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 transition-all duration-200">
+                        class="px-6 py-3 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white text-sm font-semibold rounded-xl shadow-lg shadow-[#AB6F6E]/30 hover:shadow-xl hover:shadow-[#AB6F6E]/40 transition-all duration-200">
                     Simpan Karyawan
                 </button>
             </div>

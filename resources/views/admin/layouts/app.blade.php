@@ -21,17 +21,17 @@
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+<body class="bg-gradient-to-br from-[#F0D2D1] via-[#E6B6B5] to-[#D79F9E]">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside class="w-72 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 shadow-2xl hidden lg:block">
+        <aside class="w-72 bg-gradient-to-b from-[#AB6F6E] via-[#C48989] to-[#AB6F6E] shadow-2xl hidden lg:block">
             @include('admin.components.sidebar')
         </aside>
 
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden">
             <!-- Header -->
-            <header class="bg-white/80 backdrop-blur-xl shadow-lg border-b border-gray-100">
+            <header class="bg-[#F0D2D1]/80 backdrop-blur-xl shadow-lg border-b border-[#E6B6B5]">
                 @include('admin.components.app-header')
             </header>
 

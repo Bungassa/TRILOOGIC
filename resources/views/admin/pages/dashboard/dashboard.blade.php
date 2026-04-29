@@ -7,10 +7,10 @@
         <div class="flex items-center justify-between">
             <div>
                 <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Dashboard</h1>
-                <p class="text-gray-500 mt-1">Welcome back, Admin! Here's what's happening today.</p>
+                <p class="text-gray-500 mt-1">Selamat datang kembali, Admin! Berikut ringkasan aktivitas layanan refleksi hari ini</p>
             </div>
             <div class="flex items-center space-x-3">
-                <span class="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-sm font-semibold rounded-xl shadow-lg shadow-indigo-500/30">
+                <span class="px-4 py-2 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white text-sm font-semibold rounded-xl shadow-lg shadow-[#AB6F6E]/30">
                     Today: {{ date('F j, Y') }}
                 </span>
             </div>
@@ -32,7 +32,7 @@
                         +15.3% dari bulan lalu
                     </p>
                 </div>
-                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-4 shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform duration-300">
+                <div class="bg-gradient-to-br from-[#AB6F6E] to-[#C48989] rounded-2xl p-4 shadow-lg shadow-[#AB6F6E]/30 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
                     </svg>
@@ -53,7 +53,7 @@
                         Layanan tersedia
                     </p>
                 </div>
-                <div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-4 shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition-transform duration-300">
+                <div class="bg-gradient-to-br from-[#D79F9E] to-[#C48989] rounded-2xl p-4 shadow-lg shadow-[#D79F9E]/30 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                     </svg>
@@ -74,7 +74,7 @@
                         Karyawan terdaftar
                     </p>
                 </div>
-                <div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-4 shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-transform duration-300">
+                <div class="bg-gradient-to-br from-[#C48989] to-[#AB6F6E] rounded-2xl p-4 shadow-lg shadow-[#C48989]/30 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
@@ -95,7 +95,7 @@
                         Aktif sekarang
                     </p>
                 </div>
-                <div class="bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl p-4 shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform duration-300">
+                <div class="bg-gradient-to-br from-[#E6B6B5] to-[#D79F9E] rounded-2xl p-4 shadow-lg shadow-[#E6B6B5]/30 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
@@ -108,12 +108,12 @@
     <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg border border-gray-100">
         <div class="px-6 py-5 border-b border-gray-100 flex items-center justify-between">
             <h3 class="text-xl font-bold text-gray-800">Aktivitas Terbaru</h3>
-            <a href="{{ route('admin.aktivitas') }}" class="px-4 py-2 text-sm font-medium text-indigo-600 hover:bg-indigo-50 rounded-xl transition-colors">Lihat Semua</a>
+            <a href="{{ route('admin.aktivitas') }}" class="px-4 py-2 text-sm font-medium text-[#AB6F6E] hover:bg-[#F0D2D1] rounded-xl transition-colors">Lihat Semua</a>
         </div>
         <div class="p-6">
             <div class="space-y-4">
                 <div class="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
-                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <div class="w-12 h-12 bg-gradient-to-br from-[#AB6F6E] to-[#C48989] rounded-xl flex items-center justify-center shadow-lg shadow-[#AB6F6E]/30">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
                         </svg>
@@ -122,10 +122,10 @@
                         <p class="text-sm font-semibold text-gray-800">Transaksi baru masuk</p>
                         <p class="text-xs text-gray-500">2 menit yang lalu</p>
                     </div>
-                    <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Transaksi</span>
+                    <span class="px-3 py-1 bg-[#F0D2D1] text-[#AB6F6E] text-xs font-semibold rounded-full">Transaksi</span>
                 </div>
                 <div class="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
-                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                    <div class="w-12 h-12 bg-gradient-to-br from-[#D79F9E] to-[#C48989] rounded-xl flex items-center justify-center shadow-lg shadow-[#D79F9E]/30">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                         </svg>
@@ -134,10 +134,10 @@
                         <p class="text-sm font-semibold text-gray-800">Layanan baru ditambahkan</p>
                         <p class="text-xs text-gray-500">5 menit yang lalu</p>
                     </div>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Layanan</span>
+                    <span class="px-3 py-1 bg-[#E6B6B5] text-[#AB6F6E] text-xs font-semibold rounded-full">Layanan</span>
                 </div>
                 <div class="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/30">
+                    <div class="w-12 h-12 bg-gradient-to-br from-[#C48989] to-[#AB6F6E] rounded-xl flex items-center justify-center shadow-lg shadow-[#C48989]/30">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
@@ -146,7 +146,7 @@
                         <p class="text-sm font-semibold text-gray-800">Karyawan baru terdaftar</p>
                         <p class="text-xs text-gray-500">10 menit yang lalu</p>
                     </div>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">Karyawan</span>
+                    <span class="px-3 py-1 bg-[#D79F9E] text-[#AB6F6E] text-xs font-semibold rounded-full">Karyawan</span>
                 </div>
             </div>
         </div>

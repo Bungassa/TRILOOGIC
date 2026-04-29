@@ -15,9 +15,6 @@
         <div class="container">
           <div class="cs_main_header_in">
             <div class="cs_main_header_left">
-              <a class="cs_site_branding" href="{{ url('index') }}">
-                <img src="assets/img/logo.svg" alt="Logo">
-              </a>
               <div class="cs_nav cs_primary_font fw-medium">
                 <ul class="cs_nav_list fw-medium text-uppercase">
                   <li><a href="{{ url('index') }}">Beranda</a></li>

@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
+Route::get('/service', [App\Http\Controllers\HomeController::class, 'service']);
+
+Route::get('/pemesanan', [App\Http\Controllers\HomeController::class, 'pemesanan'])->name('pemesanan');
+
+Route::post('/pemesanan/submit', [App\Http\Controllers\HomeController::class, 'submitpemesanan'])->name('pemesanan.submit');
+
 Route::get('/login', function () {
     return view('login');
 })->name('login');
@@ -26,9 +32,9 @@ Route::prefix('admin')->group(function () {
         return view('admin.pages.dashboard.dashboard', ['title' => 'Admin Dashboard', 'totalLayanan' => $totalLayanan, 'totalKaryawan' => $totalKaryawan]);
     })->name('admin.dashboard');
 
-    Route::get('/transaksi', function () {
-        return view('admin.pages.transaksi.index', ['title' => 'Data Transaksi']);
-    })->name('admin.transaksi');
+    Route::get('/transaksi', [App\Http\Controllers\AdminTransaksiController::class, 'index'])->name('admin.transaksi');
+    Route::post('/transaksi', [App\Http\Controllers\AdminTransaksiController::class, 'store'])->name('admin.transaksi.store');
+    Route::put('/transaksi/{id}', [App\Http\Controllers\AdminTransaksiController::class, 'updateStatus'])->name('admin.transaksi.update');
 
     Route::get('/laporan', function () {
         return view('admin.pages.laporan.index', ['title' => 'Laporan Transaksi']);

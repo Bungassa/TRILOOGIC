@@ -1,9 +1,9 @@
 <!-- Admin Header -->
-<div class="flex-shrink-0 flex h-16 bg-white/50 backdrop-blur-xl shadow-lg border-b border-gray-100">
+<div class="flex-shrink-0 flex h-16 bg-[#F0D2D1]/50 backdrop-blur-xl shadow-lg border-b border-[#E6B6B5]">
     <div class="flex-1 px-6 flex justify-between items-center">
         <div class="flex items-center space-x-4">
             <h1 class="text-xl font-bold text-gray-800 tracking-tight">Dashboard</h1>
-            <span class="px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-semibold rounded-full shadow-md">Admin</span>
+            <span class="px-3 py-1 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white text-xs font-semibold rounded-full shadow-md">Admin</span>
         </div>
 
         <div class="flex items-center space-x-6">
@@ -17,8 +17,8 @@
                     </div>
                     <input id="search" 
                            name="search" 
-                           class="block w-72 pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl leading-5 bg-white/80 backdrop-blur-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 sm:text-sm transition-all duration-200 shadow-sm" 
-                           placeholder="Search anything..." 
+                           class="block w-72 pl-10 pr-4 py-2.5 border border-[#E6B6B5] rounded-xl leading-5 bg-white/80 backdrop-blur-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] sm:text-sm transition-all duration-200 shadow-sm" 
+                           placeholder="Pencarian..." 
                            type="search">
                 </div>
             </div>
@@ -33,7 +33,7 @@
 
             <!-- User Profile -->
             <div class="relative flex items-center space-x-3 pl-4 border-l border-gray-200">
-                <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-[#AB6F6E] to-[#C48989] flex items-center justify-center shadow-lg shadow-[#AB6F6E]/30">
                     <span class="text-white font-semibold text-sm">A</span>
                 </div>
                 <div class="hidden md:block">
