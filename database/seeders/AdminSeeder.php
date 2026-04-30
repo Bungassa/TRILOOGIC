@@ -17,18 +17,20 @@ class AdminSeeder extends Seeder
         User::create([
             'name' => 'Admin Ekky',
             'email' => 'admin@gmail.com',
-            'password' => Hash::make('admin123'), // Password: admin123
+            'password' => Hash::make('admin123'),
+            'role' => 'admin',
         ]);
 
-        // Membuat akun admin alternatif
+        // Membuat akun owner
         User::create([
-            'name' => 'System Administrator',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('admin123'), // Password: admin123
+            'name' => 'Owner Ekky',
+            'email' => 'owner@gmail.com',
+            'password' => Hash::make('owner123'),
+            'role' => 'owner',
         ]);
 
-        $this->command->info('Admin accounts created successfully!');
-        $this->command->info('Email: admin@gmail.com | Password: admin123');
-        $this->command->info('Email: admin@admin.com | Password: admin123');
+        $this->command->info('Admin and Owner accounts created successfully!');
+        $this->command->info('Admin -> Email: admin@gmail.com | Password: admin123');
+        $this->command->info('Owner -> Email: owner@gmail.com | Password: owner123');
     }
 }
