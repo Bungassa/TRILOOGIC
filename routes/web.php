@@ -30,34 +30,13 @@ Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->
 
 // Admin routes - menggunakan view dari folder admin
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
-        $totalLayanan = \App\Models\Layanan::count();
-        $totalKaryawan = \App\Models\Karyawan::count();
-        $totalTransaksi = \App\Models\Transaksi::count();
-        $transaksiHariIni = \App\Models\Transaksi::whereDate('created_at', \Carbon\Carbon::today())->count();
-        
-        $recentTransactions = \App\Models\Transaksi::with('layanan')
-            ->latest()
-            ->take(5)
-            ->get();
-
-        return view('admin.pages.dashboard.dashboard', [
-            'title' => 'Admin Dashboard',
-            'totalLayanan' => $totalLayanan,
-            'totalKaryawan' => $totalKaryawan,
-            'totalTransaksi' => $totalTransaksi,
-            'transaksiHariIni' => $transaksiHariIni,
-            'recentTransactions' => $recentTransactions
-        ]);
-    })->name('admin.dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
 
     Route::get('/transaksi', [App\Http\Controllers\AdminTransaksiController::class, 'index'])->name('admin.transaksi');
     Route::post('/transaksi', [App\Http\Controllers\AdminTransaksiController::class, 'store'])->name('admin.transaksi.store');
     Route::put('/transaksi/{id}', [App\Http\Controllers\AdminTransaksiController::class, 'updateStatus'])->name('admin.transaksi.update');
 
-    Route::get('/laporan', function () {
-        return view('admin.pages.laporan.index', ['title' => 'Laporan Transaksi']);
-    })->name('admin.laporan');
+    Route::get('/laporan', [App\Http\Controllers\AdminController::class, 'laporan'])->name('admin.laporan');
 
     Route::get('/layanan', [App\Http\Controllers\LayananController::class, 'index'])->name('admin.layanan');
     Route::get('/layanan/create', [App\Http\Controllers\LayananController::class, 'create'])->name('admin.layanan.create');
@@ -66,28 +45,14 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::put('/layanan/{id}', [App\Http\Controllers\LayananController::class, 'update'])->name('admin.layanan.update');
     Route::delete('/layanan/{id}', [App\Http\Controllers\LayananController::class, 'destroy'])->name('admin.layanan.destroy');
 
-    Route::get('/aktivitas', function () {
-        return view('admin.pages.aktivitas.index', ['title' => 'Log Aktivitas']);
-    })->name('admin.aktivitas');
+    Route::get('/aktivitas', [App\Http\Controllers\AdminController::class, 'aktivitas'])->name('admin.aktivitas');
 
-    Route::get('/karyawan', function () {
-        $karyawans = \App\Models\Karyawan::all();
-        return view('admin.pages.karyawan.index', ['title' => 'Data Karyawan', 'karyawans' => $karyawans]);
-    })->name('admin.karyawan');
-
-    Route::get('/karyawan/create', function () {
-        return view('admin.pages.karyawan.create', ['title' => 'Tambah Karyawan']);
-    })->name('admin.karyawan.create');
-
-    Route::post('/karyawan/create', function () {
-        \App\Models\Karyawan::create([
-            'nama' => request('nama'),
-            'tanggal' => request('tanggal'),
-            'terapi_yang_dilakukan' => request('terapi_yang_dilakukan'),
-            'status' => request('status'),
-        ]);
-        return redirect()->route('admin.karyawan')->with('success', 'Karyawan berhasil ditambahkan');
-    })->name('admin.karyawan.store');
+    Route::get('/karyawan', [App\Http\Controllers\AdminKaryawanController::class, 'index'])->name('admin.karyawan');
+    Route::get('/karyawan/create', [App\Http\Controllers\AdminKaryawanController::class, 'create'])->name('admin.karyawan.create');
+    Route::post('/karyawan/create', [App\Http\Controllers\AdminKaryawanController::class, 'store'])->name('admin.karyawan.store');
+    Route::get('/karyawan/{id}/edit', [App\Http\Controllers\AdminKaryawanController::class, 'edit'])->name('admin.karyawan.edit');
+    Route::put('/karyawan/{id}', [App\Http\Controllers\AdminKaryawanController::class, 'update'])->name('admin.karyawan.update');
+    Route::delete('/karyawan/{id}', [App\Http\Controllers\AdminKaryawanController::class, 'destroy'])->name('admin.karyawan.destroy');
 
     Route::get('/', function () {
         return redirect()->route('admin.dashboard');

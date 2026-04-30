@@ -27,6 +27,7 @@ class TransaksiSeeder extends Seeder
                 'catatan' => 'Mohon dikerjakan oleh terapis laki-laki',
                 'total_harga' => 80000,
                 'status' => 'pending',
+                'status_pembayaran' => 'belum_bayar',
             ],
             [
                 'nama' => 'Siti Aminah',
@@ -40,6 +41,7 @@ class TransaksiSeeder extends Seeder
                 'catatan' => 'Rumah warna hijau',
                 'total_harga' => 110000,
                 'status' => 'pending',
+                'status_pembayaran' => 'belum_bayar',
             ],
             [
                 'nama' => 'Agus Hermawan',
@@ -53,6 +55,7 @@ class TransaksiSeeder extends Seeder
                 'catatan' => null,
                 'total_harga' => 40000,
                 'status' => 'selesai',
+                'status_pembayaran' => 'lunas',
             ],
             [
                 'nama' => 'Dewi Lestari',
@@ -66,6 +69,7 @@ class TransaksiSeeder extends Seeder
                 'catatan' => 'Ingin terapis yang sudah senior',
                 'total_harga' => 140000,
                 'status' => 'dikerjakan',
+                'status_pembayaran' => 'lunas',
             ],
             [
                 'nama' => 'Rizky Pratama',
@@ -79,6 +83,7 @@ class TransaksiSeeder extends Seeder
                 'catatan' => 'Sedang masuk angin parah',
                 'total_harga' => 20000,
                 'status' => 'pending',
+                'status_pembayaran' => 'belum_bayar',
             ],
         ];
 
