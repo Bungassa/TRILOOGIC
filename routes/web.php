@@ -9,6 +9,10 @@ Route::get('/service', [App\Http\Controllers\HomeController::class, 'service']);
 Route::get('/pemesanan', [App\Http\Controllers\HomeController::class, 'pemesanan'])->name('pemesanan');
 
 Route::post('/pemesanan/submit', [App\Http\Controllers\HomeController::class, 'submitpemesanan'])->name('pemesanan.submit');
+Route::get('/pemesanan/pembayaran/{id}', [App\Http\Controllers\HomeController::class, 'pembayaran'])->name('pemesanan.pembayaran');
+Route::get('/riwayat', [App\Http\Controllers\HomeController::class, 'riwayat'])->name('riwayat');
+Route::post('/pembayaran/{id}/konfirmasi', [App\Http\Controllers\HomeController::class, 'konfirmasiPembayaran'])->name('pembayaran.konfirmasi');
+Route::post('/midtrans/callback', [App\Http\Controllers\MidtransController::class, 'callback']);
 
 Route::get('/login', function () {
     return view('login');
@@ -29,7 +33,22 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         $totalLayanan = \App\Models\Layanan::count();
         $totalKaryawan = \App\Models\Karyawan::count();
-        return view('admin.pages.dashboard.dashboard', ['title' => 'Admin Dashboard', 'totalLayanan' => $totalLayanan, 'totalKaryawan' => $totalKaryawan]);
+        $totalTransaksi = \App\Models\Transaksi::count();
+        $transaksiHariIni = \App\Models\Transaksi::whereDate('created_at', \Carbon\Carbon::today())->count();
+        
+        $recentTransactions = \App\Models\Transaksi::with('layanan')
+            ->latest()
+            ->take(5)
+            ->get();
+
+        return view('admin.pages.dashboard.dashboard', [
+            'title' => 'Admin Dashboard',
+            'totalLayanan' => $totalLayanan,
+            'totalKaryawan' => $totalKaryawan,
+            'totalTransaksi' => $totalTransaksi,
+            'transaksiHariIni' => $transaksiHariIni,
+            'recentTransactions' => $recentTransactions
+        ]);
     })->name('admin.dashboard');
 
     Route::get('/transaksi', [App\Http\Controllers\AdminTransaksiController::class, 'index'])->name('admin.transaksi');
@@ -40,12 +59,12 @@ Route::prefix('admin')->group(function () {
         return view('admin.pages.laporan.index', ['title' => 'Laporan Transaksi']);
     })->name('admin.laporan');
 
-    Route::get('/layanan', [App\Http\Controllers\LayanaController::class, 'index'])->name('admin.layanan');
-    Route::get('/layanan/create', [App\Http\Controllers\LayanaController::class, 'create'])->name('admin.layanan.create');
-    Route::post('/layanan/create', [App\Http\Controllers\LayanaController::class, 'store'])->name('admin.layanan.store');
-    Route::get('/layanan/{id}/edit', [App\Http\Controllers\LayanaController::class, 'edit'])->name('admin.layanan.edit');
-    Route::put('/layanan/{id}', [App\Http\Controllers\LayanaController::class, 'update'])->name('admin.layanan.update');
-    Route::delete('/layanan/{id}', [App\Http\Controllers\LayanaController::class, 'destroy'])->name('admin.layanan.destroy');
+    Route::get('/layanan', [App\Http\Controllers\LayananController::class, 'index'])->name('admin.layanan');
+    Route::get('/layanan/create', [App\Http\Controllers\LayananController::class, 'create'])->name('admin.layanan.create');
+    Route::post('/layanan/create', [App\Http\Controllers\LayananController::class, 'store'])->name('admin.layanan.store');
+    Route::get('/layanan/{id}/edit', [App\Http\Controllers\LayananController::class, 'edit'])->name('admin.layanan.edit');
+    Route::put('/layanan/{id}', [App\Http\Controllers\LayananController::class, 'update'])->name('admin.layanan.update');
+    Route::delete('/layanan/{id}', [App\Http\Controllers\LayananController::class, 'destroy'])->name('admin.layanan.destroy');
 
     Route::get('/aktivitas', function () {
         return view('admin.pages.aktivitas.index', ['title' => 'Log Aktivitas']);

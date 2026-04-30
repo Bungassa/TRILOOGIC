@@ -10,6 +10,7 @@ class Transaksi extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'nama',
         'jenis_kelamin',
         'telepon',
@@ -21,6 +22,8 @@ class Transaksi extends Model
         'catatan',
         'total_harga',
         'status',
+        'status_pembayaran',
+        'snap_token',
     ];
 
     public function layanan()

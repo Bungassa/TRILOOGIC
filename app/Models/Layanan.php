@@ -9,5 +9,11 @@ class Layanan extends Model
 {
     use HasFactory;
 
+    protected $table = 'layanans';
+
     protected $fillable = ['nama', 'deskripsi', 'harga', 'gambar'];
+
+    protected $casts = [
+        'harga' => 'integer',
+    ];
 }

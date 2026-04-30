@@ -29,7 +29,8 @@
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Lokasi</th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Tanggal & Jam</th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Total Harga</th>
-                        <th class="text-left py-4 px-4 font-semibold text-gray-700">Status</th>
+                        <th class="text-left py-4 px-4 font-semibold text-gray-700">Status Pesanan</th>
+                        <th class="text-left py-4 px-4 font-semibold text-gray-700">Pembayaran</th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Aksi</th>
                     </tr>
                 </thead>
@@ -66,19 +67,29 @@
                                     @elseif($transaksi->status === 'dikerjakan') bg-blue-100 text-blue-700
                                     @elseif($transaksi->status === 'selesai') bg-green-100 text-green-700
                                     @endif">
-                                    {{ ucfirst($transaksi->status) }}
+                                    {{ $transaksi->status == 'pending' ? 'Menunggu' : ($transaksi->status == 'dikerjakan' ? 'Proses' : 'Selesai') }}
                                 </span>
                             </td>
                             <td class="py-4 px-4">
-                                <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <select name="status" onchange="this.form.submit()" class="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]">
-                                        <option value="pending" {{ $transaksi->status === 'pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="dikerjakan" {{ $transaksi->status === 'dikerjakan' ? 'selected' : '' }}>Dikerjakan</option>
-                                        <option value="selesai" {{ $transaksi->status === 'selesai' ? 'selected' : '' }}>Selesai</option>
-                                    </select>
-                                </form>
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold
+                                    @if($transaksi->status_pembayaran === 'belum_bayar') bg-red-100 text-red-700
+                                    @elseif($transaksi->status_pembayaran === 'lunas') bg-green-100 text-green-700
+                                    @endif">
+                                    {{ $transaksi->status_pembayaran === 'belum_bayar' ? 'Belum Bayar' : 'Lunas' }}
+                                </span>
+                            </td>
+                            <td class="py-4 px-4">
+                                    <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <select name="status" onchange="this.form.submit()" class="w-full px-2 py-1 border border-gray-200 rounded text-xs focus:outline-none focus:ring-1 focus:ring-[#C48989]">
+                                            <option value="" disabled selected>Update Pesanan</option>
+                                            <option value="pending" {{ $transaksi->status === 'pending' ? 'selected' : '' }}>Menunggu</option>
+                                            <option value="dikerjakan" {{ $transaksi->status === 'dikerjakan' ? 'selected' : '' }}>Proses</option>
+                                            <option value="selesai" {{ $transaksi->status === 'selesai' ? 'selected' : '' }}>Selesai</option>
+                                        </select>
+                                    </form>
+                                 </div>
                             </td>
                         </tr>
                     @empty
@@ -138,12 +149,16 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
-                    <div>
+                    <!-- <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Lokasi</label>
                         <select name="lokasi" id="lokasi_select" required onchange="toggleAlamat()" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
                             <option value="tempat">Di Tempat</option>
                             <option value="rumah">Di Rumah</option>
                         </select>
+                    </div> -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Jam</label>
+                        <input type="time" name="jam" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal</label>
@@ -151,10 +166,6 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Jam</label>
-                        <input type="time" name="jam" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
-                    </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
                         <select name="status" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">

@@ -1,0 +1,135 @@
+.pembayaran-wrapper {
+    background-color: #fcfcfc;
+    padding: 60px 0;
+    min-height: 100vh;
+}
+
+.pembayaran-main-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #18191d;
+    margin-bottom: 8px;
+}
+
+.pembayaran-subtitle {
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.pembayaran-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    height: 100%;
+}
+
+.pembayaran-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #18191d;
+    text-align: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 12px;
+}
+
+.detail-item {
+    display: flex;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.detail-label {
+    width: 130px;
+    color: #666;
+    font-weight: 500;
+}
+
+.detail-value {
+    flex: 1;
+    color: #18191d;
+    font-weight: 600;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.summary-label {
+    color: #666;
+}
+
+.summary-value {
+    color: #18191d;
+    font-weight: 600;
+}
+
+.summary-divider {
+    border-top: 1px solid #f0f0f0;
+    margin: 16px 0;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 700;
+    color: #18191d;
+}
+
+.summary-total .total-value {
+    color: #C48989;
+}
+
+.qris-container {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    max-width: 600px;
+    margin: 40px auto 0;
+    text-align: center;
+}
+
+.qris-img-wrapper {
+    max-width: 300px;
+    margin: 0 auto 24px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.qris-img-wrapper img {
+    width: 100%;
+    height: auto;
+}
+
+.qris-instructions {
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.qris-instructions ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 12px;
+}
+
+.qris-instructions li {
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.pembayaran-footer-info {
+    margin-top: 60px;
+    padding: 30px 0;
+    background: #18191d;
+    color: white;
+}

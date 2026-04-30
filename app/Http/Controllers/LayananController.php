@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Layanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class LayanaController extends Controller
+class LayananController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,6 +30,13 @@ class LayanaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'harga' => 'required|numeric',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
         $gambarPath = null;
         if ($request->hasFile('gambar')) {
             $gambarPath = $request->file('gambar')->store('layanan', 'public');
@@ -59,8 +67,19 @@ class LayanaController extends Controller
     {
         $layanan = Layanan::findOrFail($id);
 
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'harga' => 'required|numeric',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
         $gambarPath = $layanan->gambar;
         if ($request->hasFile('gambar')) {
+            // Delete old image if it exists and it's not a default/placeholder
+            if ($layanan->gambar && Storage::disk('public')->exists($layanan->gambar)) {
+                Storage::disk('public')->delete($layanan->gambar);
+            }
             $gambarPath = $request->file('gambar')->store('layanan', 'public');
         }
 
@@ -79,6 +98,12 @@ class LayanaController extends Controller
     public function destroy($id)
     {
         $layanan = Layanan::findOrFail($id);
+        
+        // Delete image if it exists
+        if ($layanan->gambar && Storage::disk('public')->exists($layanan->gambar)) {
+            Storage::disk('public')->delete($layanan->gambar);
+        }
+
         $layanan->delete();
         return redirect()->route('admin.layanan')->with('success', 'Layanan berhasil dihapus');
     }

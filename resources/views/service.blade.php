@@ -29,9 +29,12 @@
                   </svg>                    
                 </a>
                 @if($layanan->gambar)
-                  <div class="cs_service_thumb-in position-relative-in background-filled h-100" style="background-image: url('{{ asset('storage/' . $layanan->gambar) }}'); background-size: cover; background-position: center;"></div>
+                  @php
+                    $imagePath = str_starts_with($layanan->gambar, 'assets/') ? asset($layanan->gambar) : asset('storage/' . $layanan->gambar);
+                  @endphp
+                  <div class="cs_service_thumb-in position-relative-in background-filled h-100" style="background-image: url('{{ $imagePath }}'); background-size: cover; background-position: center;"></div>
                 @else
-                  <div class="cs_service_thumb-in position-relative-in background-filled h-100" data-src="assets/img/service_default.jpg"></div>
+                  <div class="cs_service_thumb-in position-relative-in background-filled h-100" data-src="{{ asset('assets/img/service_default.jpg') }}"></div>
                 @endif
               </div>
             </div>

@@ -109,6 +109,22 @@
               <form action="{{ route('pemesanan.submit') }}" method="POST">
                 @csrf
 
+                @if($errors->any())
+                  <div class="alert alert-danger mb-4" style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; border: 1px solid #f5c6cb;">
+                    <ul class="mb-0">
+                      @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                      @endforeach
+                    </ul>
+                  </div>
+                @endif
+
+                @if(session('success'))
+                  <div class="alert alert-success mb-4" style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; border: 1px solid #c3e6cb;">
+                    {{ session('success') }}
+                  </div>
+                @endif
+
                 <!-- Nama -->
                 <div class="pemesanan-form-group">
                   <label class="pemesanan-label">Nama Lengkap</label>
@@ -177,14 +193,15 @@
                 <div class="pemesanan-form-group">
                   <label class="pemesanan-label">Tanggal yang Diinginkan</label>
                   <input type="date" name="tanggal" id="tanggal_input" required
-                         class="pemesanan-input" onchange="updateSummary()">
+                         min="{{ date('Y-m-d') }}"
+                         class="pemesanan-input" onchange="updateSummary(); validateTime()">
                 </div>
 
                 <!-- Jam -->
                 <div class="pemesanan-form-group">
                   <label class="pemesanan-label">Jam yang Diinginkan</label>
                   <input type="time" name="jam" id="jam_input" required
-                         class="pemesanan-input" onchange="updateSummary()">
+                         class="pemesanan-input" onchange="updateSummary(); validateTime()">
                 </div>
 
                 <!-- Catatan -->
@@ -324,9 +341,50 @@
         summaryTotal.textContent = 'Rp ' + total.toLocaleString('id-ID');
       }
 
-      // Initialize summary on page load
+      function validateTime() {
+        const tanggalInput = document.getElementById('tanggal_input');
+        const jamInput = document.getElementById('jam_input');
+        
+        // Dapatkan waktu sekarang di perangkat user
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const todayStr = `${year}-${month}-${day}`;
+        const currentTimeStr = now.toTimeString().split(' ')[0].substring(0, 5); // HH:mm
+
+        // Set min tanggal secara dinamis jika belum ada atau berubah hari
+        tanggalInput.setAttribute('min', todayStr);
+
+        if (!tanggalInput.value) return;
+
+        const selectedDate = tanggalInput.value;
+
+        // Jika user memilih hari ini
+        if (selectedDate === todayStr) {
+          jamInput.setAttribute('min', currentTimeStr);
+          
+          // Jika jam yang sudah dipilih sebelumnya ternyata lebih kecil dari jam sekarang
+          if (jamInput.value && jamInput.value < currentTimeStr) {
+            jamInput.value = '';
+          }
+        } else if (selectedDate < todayStr) {
+          // Jika user entah bagaimana memilih tanggal kemarin (misal copy-paste)
+          tanggalInput.value = todayStr;
+          jamInput.setAttribute('min', currentTimeStr);
+        } else {
+          // Jika memilih hari esok atau nanti, hapus batasan jam minimal
+          jamInput.removeAttribute('min');
+        }
+      }
+
+      // Jalankan saat pertama kali load dan setiap kali ada interaksi
       document.addEventListener('DOMContentLoaded', function() {
         updateSummary();
+        validateTime();
+        
+        // Interval pengecekan setiap 1 menit untuk update min-time jika user standby lama di halaman
+        setInterval(validateTime, 60000);
       });
     </script>
 

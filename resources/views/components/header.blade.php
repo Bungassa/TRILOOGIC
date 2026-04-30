@@ -17,15 +17,28 @@
             <div class="cs_main_header_left">
               <div class="cs_nav cs_primary_font fw-medium">
                 <ul class="cs_nav_list fw-medium text-uppercase">
-                  <li><a href="{{ url('index') }}">Beranda</a></li>
+                  <li><a href="{{ url('/') }}">Beranda</a></li>
                   <li><a href="{{ url('about') }}">Tentang</a></li>
                   <li><a href="{{ url('service') }}">Layanan</a></li>
                   <li><a href="{{ url('contact') }}">Kontak</a></li>
+                  <li><a href="{{ route('riwayat') }}">Riwayat</a></li>
                 </ul>
               </div>
             </div>
             <div class="cs_main_header_right">
               <div class="cs_toolbox">
+                @auth
+                  <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="cs_btn cs_style_1 cs_fs_14 cs_rounded_5 cs_pl_20 cs_pr_20 cs_pt_8 cs_pb_8 overflow-hidden border-0">
+                      <span>Keluar</span>
+                    </button>
+                  </form>
+                @else
+                  <a href="{{ url('login') }}" class="cs_btn cs_style_1 cs_fs_14 cs_rounded_5 cs_pl_20 cs_pr_20 cs_pt_8 cs_pb_8 overflow-hidden">
+                    <span>Masuk</span>
+                  </a>
+                @endauth
                 <div class="cs_header_search_wrap position-relative">
                   <span class="cs_header_search_btn d-flex">
                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,16 +81,17 @@
     </header>
     <!-- End Header Section -->
 
+    @if(!Request::is('/') && !Request::is('index'))
     <!-- Start Page Header -->
-    <section class="cs_page_header position-relative background-filled d-flex align-items-center justify-content-between" data-src="assets/img/page_header_1.jpeg">
+    <section class="cs_page_header position-relative background-filled d-flex align-items-center justify-content-between" data-src="{{ asset('assets/img/page_header_1.jpeg') }}">
       <div class="container position-relative z-index-1">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb text-white cs_fs_18 cs_mb_5">
-            <li class="breadcrumb-item"><a href="{{ url('index') }}">Home</a></li>
-            <li class="breadcrumb-item active">{{ $breadcrumbItem }}</li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+            <li class="breadcrumb-item active">{{ $breadcrumbItem ?? '' }}</li>
           </ol>
         </nav>
-        <h1 class="cs_fs_48 cs_fs_lg_36 text-white m-0">{{ $pageTitle }}</h1>
+        <h1 class="cs_fs_48 cs_fs_lg_36 text-white m-0">{{ $pageTitle ?? '' }}</h1>
       </div>
       <div class="position-absolute end-0 bottom-0">
         <svg width="660" height="497" viewBox="0 0 660 497" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,3 +107,4 @@
       </div>
     </section>
     <!-- End Page Header -->
+    @endif

@@ -15,15 +15,21 @@ class AdminTransaksiController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        $request->validate([
-            'status' => 'required|in:pending,dikerjakan,selesai',
-        ]);
-
         $transaksi = Transaksi::find($id);
-        $transaksi->status = $request->status;
+        
+        if ($request->has('status')) {
+            $request->validate(['status' => 'required|in:pending,dikerjakan,selesai']);
+            $transaksi->status = $request->status;
+        }
+
+        if ($request->has('status_pembayaran')) {
+            $request->validate(['status_pembayaran' => 'required|in:belum_bayar,lunas']);
+            $transaksi->status_pembayaran = $request->status_pembayaran;
+        }
+
         $transaksi->save();
 
-        return redirect()->route('admin.transaksi')->with('success', 'Status transaksi berhasil diperbarui');
+        return redirect()->route('admin.transaksi')->with('success', 'Transaksi berhasil diperbarui');
     }
 
     public function store(Request $request)
