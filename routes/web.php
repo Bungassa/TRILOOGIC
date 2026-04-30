@@ -29,7 +29,7 @@ Route::post('/register', [App\Http\Controllers\AuthController::class, 'register'
 Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
 // Admin routes - menggunakan view dari folder admin
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         $totalLayanan = \App\Models\Layanan::count();
         $totalKaryawan = \App\Models\Karyawan::count();
@@ -91,6 +91,19 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/', function () {
         return redirect()->route('admin.dashboard');
+    });
+});
+
+// Owner routes
+Route::middleware(['auth', 'role:owner'])->prefix('owner')->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\OwnerController::class, 'dashboard'])->name('owner.dashboard');
+    Route::get('/transaksi', [App\Http\Controllers\OwnerController::class, 'transaksi'])->name('owner.transaksi');
+    Route::get('/laporan', [App\Http\Controllers\OwnerController::class, 'laporan'])->name('owner.laporan');
+    Route::get('/penggajian', [App\Http\Controllers\OwnerController::class, 'penggajian'])->name('owner.penggajian');
+    Route::post('/penggajian', [App\Http\Controllers\OwnerController::class, 'penggajianStore'])->name('owner.penggajian.store');
+    
+    Route::get('/', function () {
+        return redirect()->route('owner.dashboard');
     });
 });
 

@@ -36,12 +36,58 @@ class OwnerController extends Controller
         ]);
     }
 
-    public function laporan()
+    public function transaksi()
     {
         $transaksis = Transaksi::with('layanan')->latest()->get();
+        return view('owner.pages.transaksi', [
+            'title' => 'Data Transaksi',
+            'transaksis' => $transaksis
+        ]);
+    }
+
+    public function laporan()
+    {
+        $transaksis = Transaksi::with('layanan')->where('status_pembayaran', 'lunas')->latest()->get();
         return view('owner.pages.laporan', [
             'title' => 'Laporan Pendapatan',
             'transaksis' => $transaksis
         ]);
+    }
+
+    public function penggajian()
+    {
+        $penggajians = \App\Models\Penggajian::with('karyawan')->latest()->get();
+        return view('owner.pages.penggajian', [
+            'title' => 'Data Penggajian',
+            'penggajians' => $penggajians
+        ]);
+    }
+
+    public function penggajianStore(Request $request)
+    {
+        $request->validate([
+            'karyawan_id' => 'required|exists:karyawans,id',
+            'bulan' => 'required',
+            'tahun' => 'required',
+            'gaji_pokok' => 'required|numeric',
+            'bonus' => 'required|numeric',
+            'potongan' => 'required|numeric',
+        ]);
+
+        $totalGaji = $request->gaji_pokok + $request->bonus - $request->potongan;
+
+        \App\Models\Penggajian::create([
+            'karyawan_id' => $request->karyawan_id,
+            'bulan' => $request->bulan,
+            'tahun' => $request->tahun,
+            'gaji_pokok' => $request->gaji_pokok,
+            'bonus' => $request->bonus,
+            'potongan' => $request->potongan,
+            'total_gaji' => $totalGaji,
+            'status_pembayaran' => 'dibayar',
+            'tanggal_bayar' => now(),
+        ]);
+
+        return redirect()->route('owner.penggajian')->with('success', 'Data gaji berhasil disimpan');
     }
 }

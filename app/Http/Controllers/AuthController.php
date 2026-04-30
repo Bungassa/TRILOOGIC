@@ -31,13 +31,12 @@ class AuthController extends Controller
 
             $user = Auth::user();
 
-            // Auto-detect role dan redirect ke halaman yang sesuai
-            if (in_array($user->email, ['admin@ekkyrefleksi.com', 'admin@admin.com', 'admin@gmail.com'])) {
-                // Admin login - redirect ke dashboard admin
-                return redirect('/admin/dashboard')->with('success', 'Login berhasil! Selamat datang di Admin Dashboard.');
+            if ($user->role === 'admin') {
+                return redirect('/admin/dashboard')->with('success', 'Login berhasil! Selamat datang Admin.');
+            } elseif ($user->role === 'owner') {
+                return redirect('/owner/dashboard')->with('success', 'Login berhasil! Selamat datang Owner.');
             } else {
-                // User login - redirect ke halaman utama user
-                return redirect('/')->with('success', 'Login berhasil! Selamat datang di Ekky Refleksi Family.');
+                return redirect('/')->with('success', 'Login berhasil!');
             }
         }
 
