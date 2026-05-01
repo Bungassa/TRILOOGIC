@@ -31,9 +31,8 @@
                     <thead>
                         <tr class="border-b border-gray-200">
                             <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">No</th>
-                            <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Nama</th>
-                            <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Tanggal</th>
-                            <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Terapi yang Dilakukan</th>
+                            <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Nama / NIK</th>
+                            <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Gaji Pokok</th>
                             <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Status</th>
                             <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Aksi</th>
                         </tr>
@@ -42,9 +41,11 @@
                         @forelse($karyawans as $index => $karyawan)
                         <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                             <td class="py-4 px-4 text-sm text-gray-800">{{ $index + 1 }}</td>
-                            <td class="py-4 px-4 text-sm text-gray-800 font-medium">{{ $karyawan->nama }}</td>
-                            <td class="py-4 px-4 text-sm text-gray-500">{{ $karyawan->tanggal ? \Carbon\Carbon::parse($karyawan->tanggal)->format('d M Y') : '-' }}</td>
-                            <td class="py-4 px-4 text-sm text-gray-500">{{ $karyawan->terapi_yang_dilakukan }}</td>
+                            <td class="py-4 px-4">
+                                <div class="text-sm font-medium text-gray-800">{{ $karyawan->nama }}</div>
+                                <div class="text-xs text-gray-500">{{ $karyawan->nik }}</div>
+                            </td>
+                            <td class="py-4 px-4 text-sm text-gray-500">Rp {{ number_format($karyawan->gaji_pokok, 0, ',', '.') }}</td>
                             <td class="py-4 px-4">
                                 <span class="px-3 py-1 text-xs font-semibold rounded-full
                                     {{ $karyawan->status === 'proses' ? 'bg-yellow-100 text-yellow-700' : '' }}

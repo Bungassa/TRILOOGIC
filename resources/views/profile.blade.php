@@ -178,12 +178,6 @@
                             <a href="#address" class="profile-nav-link" data-tab="address">
                                 <i class="fa-solid fa-location-dot"></i> Alamat Saya
                             </a>
-                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                                @csrf
-                                <button type="submit" class="profile-nav-link w-100 border-0 bg-transparent text-start">
-                                    <i class="fa-solid fa-sign-out-alt"></i> Logout
-                                </button>
-                            </form>
                         </nav>
                     </div>
                 </div>

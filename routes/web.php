@@ -69,6 +69,16 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::put('/karyawan/{id}', [App\Http\Controllers\AdminKaryawanController::class, 'update'])->name('admin.karyawan.update');
     Route::delete('/karyawan/{id}', [App\Http\Controllers\AdminKaryawanController::class, 'destroy'])->name('admin.karyawan.destroy');
 
+    // Absensi Routes
+    Route::get('/absensi', [App\Http\Controllers\AdminAbsensiController::class, 'index'])->name('admin.absensi');
+    Route::post('/absensi', [App\Http\Controllers\AdminAbsensiController::class, 'store'])->name('admin.absensi.store');
+
+    // Penggajian Routes
+    Route::get('/penggajian', [App\Http\Controllers\AdminPenggajianController::class, 'index'])->name('admin.penggajian');
+    Route::post('/penggajian/generate', [App\Http\Controllers\AdminPenggajianController::class, 'generate'])->name('admin.penggajian.generate');
+    Route::get('/penggajian/{id}/slip', [App\Http\Controllers\AdminPenggajianController::class, 'cetakSlip'])->name('admin.penggajian.slip');
+    Route::get('/laporan-gaji', [App\Http\Controllers\AdminPenggajianController::class, 'laporan'])->name('admin.laporan.gaji');
+
     Route::get('/', function () {
         return redirect()->route('admin.dashboard');
     });
@@ -80,7 +90,12 @@ Route::middleware(['auth', 'role:owner'])->prefix('owner')->group(function () {
     Route::get('/transaksi', [App\Http\Controllers\OwnerController::class, 'transaksi'])->name('owner.transaksi');
     Route::get('/laporan', [App\Http\Controllers\OwnerController::class, 'laporan'])->name('owner.laporan');
     Route::get('/penggajian', [App\Http\Controllers\OwnerController::class, 'penggajian'])->name('owner.penggajian');
-    Route::post('/penggajian', [App\Http\Controllers\OwnerController::class, 'penggajianStore'])->name('owner.penggajian.store');
+    Route::put('/penggajian/{id}/approve', [App\Http\Controllers\OwnerController::class, 'approveGaji'])->name('owner.penggajian.approve');
+
+    // Admin Management
+    Route::get('/admins', [App\Http\Controllers\OwnerController::class, 'adminIndex'])->name('owner.admins');
+    Route::post('/admins', [App\Http\Controllers\OwnerController::class, 'adminStore'])->name('owner.admins.store');
+    Route::delete('/admins/{id}', [App\Http\Controllers\OwnerController::class, 'adminDestroy'])->name('owner.admins.destroy');
     
     Route::get('/', function () {
         return redirect()->route('owner.dashboard');

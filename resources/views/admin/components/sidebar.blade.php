@@ -50,12 +50,36 @@
                 Data Karyawan
             </a>
 
+            <a href="{{ route('admin.absensi') }}" 
+               class="flex items-center px-4 py-3 text-sm font-medium {{ request()->is('admin/absensi*') ? 'text-white bg-gradient-to-r from-[#D79F9E] to-[#C48989] rounded-xl shadow-lg shadow-[#AB6F6E]/30' : 'text-gray-300 rounded-xl hover:bg-white/10 hover:text-white' }} transition-all duration-200 {{ request()->is('admin/absensi*') ? 'hover:shadow-xl hover:shadow-[#AB6F6E]/40' : '' }} group">
+                <svg class="mr-3 h-5 w-5 {{ request()->is('admin/absensi*') ? 'text-white' : 'text-gray-400 group-hover:text-white transition-colors' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                </svg>
+                Input Absensi
+            </a>
+
+            <a href="{{ route('admin.penggajian') }}" 
+               class="flex items-center px-4 py-3 text-sm font-medium {{ request()->is('admin/penggajian*') ? 'text-white bg-gradient-to-r from-[#D79F9E] to-[#C48989] rounded-xl shadow-lg shadow-[#AB6F6E]/30' : 'text-gray-300 rounded-xl hover:bg-white/10 hover:text-white' }} transition-all duration-200 {{ request()->is('admin/penggajian*') ? 'hover:shadow-xl hover:shadow-[#AB6F6E]/40' : '' }} group">
+                <svg class="mr-3 h-5 w-5 {{ request()->is('admin/penggajian*') ? 'text-white' : 'text-gray-400 group-hover:text-white transition-colors' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Data Penggajian
+            </a>
+
             <a href="{{ route('admin.laporan') }}" 
-               class="flex items-center px-4 py-3 text-sm font-medium {{ request()->is('admin/laporan*') ? 'text-white bg-gradient-to-r from-[#D79F9E] to-[#C48989] rounded-xl shadow-lg shadow-[#AB6F6E]/30' : 'text-gray-300 rounded-xl hover:bg-white/10 hover:text-white' }} transition-all duration-200 {{ request()->is('admin/laporan*') ? 'hover:shadow-xl hover:shadow-[#AB6F6E]/40' : '' }} group">
-                <svg class="mr-3 h-5 w-5 {{ request()->is('admin/laporan*') ? 'text-white' : 'text-gray-400 group-hover:text-white transition-colors' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               class="flex items-center px-4 py-3 text-sm font-medium {{ request()->is('admin/laporan') ? 'text-white bg-gradient-to-r from-[#D79F9E] to-[#C48989] rounded-xl shadow-lg shadow-[#AB6F6E]/30' : 'text-gray-300 rounded-xl hover:bg-white/10 hover:text-white' }} transition-all duration-200 {{ request()->is('admin/laporan') ? 'hover:shadow-xl hover:shadow-[#AB6F6E]/40' : '' }} group">
+                <svg class="mr-3 h-5 w-5 {{ request()->is('admin/laporan') ? 'text-white' : 'text-gray-400 group-hover:text-white transition-colors' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
                 Laporan Transaksi
+            </a>
+
+            <a href="{{ route('admin.laporan.gaji') }}" 
+               class="flex items-center px-4 py-3 text-sm font-medium {{ request()->is('admin/laporan-gaji*') ? 'text-white bg-gradient-to-r from-[#D79F9E] to-[#C48989] rounded-xl shadow-lg shadow-[#AB6F6E]/30' : 'text-gray-300 rounded-xl hover:bg-white/10 hover:text-white' }} transition-all duration-200 {{ request()->is('admin/laporan-gaji*') ? 'hover:shadow-xl hover:shadow-[#AB6F6E]/40' : '' }} group">
+                <svg class="mr-3 h-5 w-5 {{ request()->is('admin/laporan-gaji*') ? 'text-white' : 'text-gray-400 group-hover:text-white transition-colors' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+                </svg>
+                Laporan Gaji
             </a>
         </div>
 

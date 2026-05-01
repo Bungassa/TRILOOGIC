@@ -9,5 +9,15 @@ class Karyawan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'tanggal', 'terapi_yang_dilakukan', 'status'];
+    protected $fillable = ['nik', 'nama', 'gaji_pokok', 'tanggal', 'terapi_yang_dilakukan', 'status'];
+
+    public function absensis()
+    {
+        return $this->hasMany(Absensi::class);
+    }
+
+    public function penggajians()
+    {
+        return $this->hasMany(Penggajian::class);
+    }
 }

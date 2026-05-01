@@ -17,8 +17,17 @@ class OwnerController extends Controller
         $totalTransaksi = Transaksi::count();
         $transaksiHariIni = Transaksi::whereDate('created_at', Carbon::today())->count();
         
-        // Owner specific: total revenue
+        // Revenue
         $totalRevenue = Transaksi::where('status_pembayaran', 'lunas')->sum('total_harga');
+
+        // Salary Overview (Bulan Ini)
+        $currentMonth = Carbon::now()->format('m');
+        $currentYear = Carbon::now()->format('Y');
+
+        $salaryOverview = \App\Models\Penggajian::where('bulan', $currentMonth)
+            ->where('tahun', $currentYear)
+            ->selectRaw('SUM(gaji_pokok) as total_pokok, SUM(bonus) as total_bonus, SUM(potongan) as total_potongan, SUM(total_gaji) as total_netto')
+            ->first();
         
         $recentTransactions = Transaksi::with('layanan')
             ->latest()
@@ -32,6 +41,7 @@ class OwnerController extends Controller
             'totalTransaksi' => $totalTransaksi,
             'transaksiHariIni' => $transaksiHariIni,
             'totalRevenue' => $totalRevenue,
+            'salaryOverview' => $salaryOverview,
             'recentTransactions' => $recentTransactions
         ]);
     }
@@ -54,40 +64,67 @@ class OwnerController extends Controller
         ]);
     }
 
-    public function penggajian()
+    public function penggajian(Request $request)
     {
-        $penggajians = \App\Models\Penggajian::with('karyawan')->latest()->get();
+        $bulan = $request->get('bulan', Carbon::now()->format('m'));
+        $tahun = $request->get('tahun', Carbon::now()->format('Y'));
+
+        $penggajians = \App\Models\Penggajian::with('karyawan')
+            ->where('bulan', $bulan)
+            ->where('tahun', $tahun)
+            ->get();
+
         return view('owner.pages.penggajian', [
-            'title' => 'Data Penggajian',
-            'penggajians' => $penggajians
+            'title' => 'Persetujuan Gaji',
+            'penggajians' => $penggajians,
+            'bulan' => $bulan,
+            'tahun' => $tahun
         ]);
     }
 
-    public function penggajianStore(Request $request)
+    public function approveGaji($id)
+    {
+        $penggajian = \App\Models\Penggajian::findOrFail($id);
+        $penggajian->update([
+            'status_pembayaran' => 'dibayar',
+            'tanggal_bayar' => now()
+        ]);
+
+        return redirect()->back()->with('success', 'Gaji untuk ' . $penggajian->karyawan->nama . ' telah disetujui dan ditandai sebagai dibayar');
+    }
+
+    // Admin Management
+    public function adminIndex()
+    {
+        $admins = \App\Models\User::where('role', 'admin')->get();
+        return view('owner.pages.admins.index', [
+            'title' => 'Kelola Admin',
+            'admins' => $admins
+        ]);
+    }
+
+    public function adminStore(Request $request)
     {
         $request->validate([
-            'karyawan_id' => 'required|exists:karyawans,id',
-            'bulan' => 'required',
-            'tahun' => 'required',
-            'gaji_pokok' => 'required|numeric',
-            'bonus' => 'required|numeric',
-            'potongan' => 'required|numeric',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
         ]);
 
-        $totalGaji = $request->gaji_pokok + $request->bonus - $request->potongan;
-
-        \App\Models\Penggajian::create([
-            'karyawan_id' => $request->karyawan_id,
-            'bulan' => $request->bulan,
-            'tahun' => $request->tahun,
-            'gaji_pokok' => $request->gaji_pokok,
-            'bonus' => $request->bonus,
-            'potongan' => $request->potongan,
-            'total_gaji' => $totalGaji,
-            'status_pembayaran' => 'dibayar',
-            'tanggal_bayar' => now(),
+        \App\Models\User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => \Illuminate\Support\Facades\Hash::make($request->password),
+            'role' => 'admin'
         ]);
 
-        return redirect()->route('owner.penggajian')->with('success', 'Data gaji berhasil disimpan');
+        return redirect()->back()->with('success', 'Admin baru berhasil ditambahkan');
+    }
+
+    public function adminDestroy($id)
+    {
+        $user = \App\Models\User::findOrFail($id);
+        $user->delete();
+        return redirect()->back()->with('success', 'Akses Admin telah dicabut');
     }
 }
