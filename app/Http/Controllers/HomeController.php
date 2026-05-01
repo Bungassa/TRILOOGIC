@@ -72,6 +72,7 @@ class HomeController extends Controller
 
         // Simpan transaksi ke database
         $transaksi = \App\Models\Transaksi::create([
+            'user_id' => \Illuminate\Support\Facades\Auth::id(),
             'nama' => $request->nama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'telepon' => $request->telepon,
@@ -127,23 +128,7 @@ class HomeController extends Controller
         return view('pembayaran', ['transaksi' => $transaksi]);
     }
 
-    public function riwayat(Request $request)
-    {
-        $telepon = $request->get('telepon');
-        $transaksis = null;
 
-        if ($telepon) {
-            $transaksis = \App\Models\Transaksi::where('telepon', $telepon)
-                ->with('layanan')
-                ->latest()
-                ->get();
-        }
-
-        return view('riwayat', [
-            'transaksis' => $transaksis,
-            'telepon' => $telepon
-        ]);
-    }
 
     public function konfirmasiPembayaran($id)
     {

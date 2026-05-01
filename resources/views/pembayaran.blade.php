@@ -204,14 +204,14 @@
               }
             }).then(() => {
               setTimeout(() => {
-                window.location.href = "{{ url('/riwayat') }}?telepon={{ $transaksi->telepon }}";
+                window.location.href = "{{ url('/') }}";
               }, 2000);
             });
           },
           onPending: function(result) {
             showNotification('Menunggu', 'Silahkan selesaikan pembayaran Anda.', 'pending');
             setTimeout(() => {
-              window.location.href = "{{ url('/riwayat') }}?telepon={{ $transaksi->telepon }}";
+              window.location.href = "{{ url('/') }}";
             }, 3000);
           },
           onError: function(result) {

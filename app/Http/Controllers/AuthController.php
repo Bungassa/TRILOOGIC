@@ -36,7 +36,7 @@ class AuthController extends Controller
             } elseif ($user->role === 'owner') {
                 return redirect('/owner/dashboard')->with('success', 'Login berhasil! Selamat datang Owner.');
             } else {
-                return redirect('/')->with('success', 'Login berhasil!');
+                return redirect()->intended('/')->with('success', 'Login berhasil!');
             }
         }
 
@@ -44,6 +44,34 @@ class AuthController extends Controller
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ])->withInput($request->only('email'));
+    }
+    // Menampilkan halaman register
+    public function showRegister()
+    {
+        return view('register');
+    }
+
+    // Proses register
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|string|max:20',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Login otomatis setelah register
+        Auth::login($user);
+
+        return redirect('/')->with('success', 'Registrasi berhasil! Selamat bergabung dengan Ekky Refleksi Family.');
     }
 
 

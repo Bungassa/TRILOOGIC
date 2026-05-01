@@ -141,6 +141,15 @@
                                 </div>
                             </form>
                             
+                            <div class="cs_login_footer text-center cs_pt_30 cs_mt_30 border-top">
+                                <p class="cs_fs_14 text-secondary m-0">
+                                    Belum punya akun? 
+                                    <a href="{{ route('register') }}" class="text-accent fw-medium text-decoration-none">
+                                        Daftar sekarang
+                                        <i class="fa-solid fa-arrow-right cs_ml_5"></i>
+                                    </a>
+                                </p>
+                            </div>
 
                     </div>
                 </div>

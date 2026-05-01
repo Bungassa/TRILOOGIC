@@ -21,19 +21,25 @@
                   <li><a href="{{ url('about') }}">Tentang</a></li>
                   <li><a href="{{ url('service') }}">Layanan</a></li>
                   <li><a href="{{ url('contact') }}">Kontak</a></li>
-                  <li><a href="{{ route('riwayat') }}">Riwayat</a></li>
+
                 </ul>
               </div>
             </div>
             <div class="cs_main_header_right">
               <div class="cs_toolbox">
                 @auth
-                  <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                    @csrf
-                    <button type="submit" class="cs_btn cs_style_1 cs_fs_14 cs_rounded_5 cs_pl_20 cs_pr_20 cs_pt_8 cs_pb_8 overflow-hidden border-0">
-                      <span>Keluar</span>
-                    </button>
-                  </form>
+                  <div class="d-flex align-items-center gap-3">
+                    <a href="{{ route('profile') }}" class="text-white d-flex align-items-center gap-2 text-decoration-none">
+                        <i class="fa-solid fa-user-circle fs-5"></i>
+                        <span class="cs_fs_14">Profil</span>
+                    </a>
+                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="cs_btn cs_style_1 cs_fs_14 cs_rounded_5 cs_pl_20 cs_pr_20 cs_pt_8 cs_pb_8 overflow-hidden border-0">
+                        <span>Keluar</span>
+                        </button>
+                    </form>
+                  </div>
                 @else
                   <a href="{{ url('login') }}" class="cs_btn cs_style_1 cs_fs_14 cs_rounded_5 cs_pl_20 cs_pr_20 cs_pt_8 cs_pb_8 overflow-hidden">
                     <span>Masuk</span>

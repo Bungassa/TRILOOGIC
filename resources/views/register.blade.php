@@ -114,20 +114,28 @@
                                         @endif
                                     </div>
                                     
-                                    <!-- Phone Field -->
+                                    <!-- WhatsApp Field -->
                                     <div class="cs_form_group cs_mb_30">
                                         <label for="phone" class="cs_form_label cs_fs_14 fw-medium cs_mb_12">
-                                            Nomor Telepon <span class="text-muted fw-normal"></span>
+                                            Nomor WhatsApp
                                         </label>
                                         <div class="cs_input_wrapper position-relative">
                                             <input type="tel" 
                                                    id="phone" 
                                                    name="phone" 
                                                    class="cs_form_control form-control cs_fs_15 cs_rounded_10 border-0 cs_pt_15 cs_pb_15 cs_pl_15 cs_pr_15 bg-light" 
-                                                   placeholder="Masukkan nomor telepon" 
-                                                   value="{{ old('phone') }}">
+                                                   placeholder="Masukkan Nomor WhatsApp Aktif" 
+                                                   value="{{ old('phone') }}"
+                                                   required>
                                         </div>
+                                        @if($errors->has('phone'))
+                                            <div class="cs_error_message text-danger cs_fs_12 cs_mt_8 d-flex align-items-center">
+                                                <i class="fa-solid fa-exclamation-circle cs_mr_6"></i>
+                                                {{ $errors->first('phone') }}
+                                            </div>
+                                        @endif
                                     </div>
+
                                     
                                     <!-- Password Field -->
                                     <div class="cs_form_group cs_mb_30">

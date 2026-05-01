@@ -6,19 +6,32 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/service', [App\Http\Controllers\HomeController::class, 'service']);
 
-Route::get('/pemesanan', [App\Http\Controllers\HomeController::class, 'pemesanan'])->name('pemesanan');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/pemesanan', [App\Http\Controllers\HomeController::class, 'pemesanan'])->name('pemesanan');
+    Route::post('/pemesanan/submit', [App\Http\Controllers\HomeController::class, 'submitpemesanan'])->name('pemesanan.submit');
+    Route::get('/pemesanan/pembayaran/{id}', [App\Http\Controllers\HomeController::class, 'pembayaran'])->name('pemesanan.pembayaran');
 
-Route::post('/pemesanan/submit', [App\Http\Controllers\HomeController::class, 'submitpemesanan'])->name('pemesanan.submit');
-Route::get('/pemesanan/pembayaran/{id}', [App\Http\Controllers\HomeController::class, 'pembayaran'])->name('pemesanan.pembayaran');
-Route::get('/riwayat', [App\Http\Controllers\HomeController::class, 'riwayat'])->name('riwayat');
-Route::post('/pembayaran/{id}/konfirmasi', [App\Http\Controllers\HomeController::class, 'konfirmasiPembayaran'])->name('pembayaran.konfirmasi');
+    Route::post('/pembayaran/{id}/konfirmasi', [App\Http\Controllers\HomeController::class, 'konfirmasiPembayaran'])->name('pembayaran.konfirmasi');
+
+    // Profile Routes
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+    Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+});
+
+
 Route::post('/midtrans/callback', [App\Http\Controllers\MidtransController::class, 'callback']);
 
 Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::get('/register', function () {
+    return view('register');
+})->name('register');
+
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login.post');
+
+Route::post('/register', [App\Http\Controllers\AuthController::class, 'register'])->name('register.post');
 
 Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
