@@ -18,15 +18,17 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
-
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login.post');
 
-Route::post('/register', [App\Http\Controllers\AuthController::class, 'register'])->name('register.post');
-
 Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+
+
+// Password Reset Routes
+Route::get('/forgot-password', [App\Http\Controllers\AuthController::class, 'showForgotPassword'])->name('password.request');
+Route::post('/forgot-password', [App\Http\Controllers\AuthController::class, 'forgotPassword'])->name('password.email');
+Route::get('/reset-password/{token}', [App\Http\Controllers\AuthController::class, 'showResetPassword'])->name('password.reset');
+Route::post('/reset-password', [App\Http\Controllers\AuthController::class, 'resetPassword'])->name('password.update');
+
 
 // Admin routes - menggunakan view dari folder admin
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {

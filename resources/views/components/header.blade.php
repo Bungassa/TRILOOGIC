@@ -87,7 +87,7 @@
       <div class="container position-relative z-index-1">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb text-white cs_fs_18 cs_mb_5">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Beranda</a></li>
             <li class="breadcrumb-item active">{{ $breadcrumbItem ?? '' }}</li>
           </ol>
         </nav>

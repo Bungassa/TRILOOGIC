@@ -46,32 +46,7 @@ class AuthController extends Controller
         ])->withInput($request->only('email'));
     }
 
-    // Menampilkan halaman register
-    public function showRegister()
-    {
-        return view('register');
-    }
 
-    // Proses register
-    public function register(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        // Login otomatis setelah register
-        Auth::login($user);
-
-        return redirect('/')->with('success', 'Registrasi berhasil! Selamat bergabung dengan Ekky Refleksi Family.');
-    }
 
     // Proses logout
     public function logout(Request $request)
@@ -83,4 +58,57 @@ class AuthController extends Controller
 
         return redirect('/')->with('success', 'Anda telah keluar dari sistem.');
     }
+
+    // Menampilkan halaman lupa password
+    public function showForgotPassword()
+    {
+        return view('forgot-password');
+    }
+
+    // Proses kirim link reset password (langsung redirect sesuai permintaan user)
+    public function forgotPassword(Request $request)
+    {
+        $request->validate(['email' => 'required|email']);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return back()->withErrors(['email' => 'Email tidak terdaftar dalam sistem kami.']);
+        }
+
+        // Simpan email ke session agar bisa diambil di halaman reset
+        session(['reset_email' => $request->email]);
+
+        // Langsung redirect ke halaman buat password baru dengan token dummy
+        return redirect()->route('password.reset', ['token' => 'direct-access']);
+    }
+
+    // Menampilkan halaman reset password
+    public function showResetPassword($token)
+    {
+        return view('reset-password', ['token' => $token]);
+    }
+
+    // Proses reset password
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return back()->withErrors(['email' => 'Email tidak ditemukan.']);
+        }
+
+        $user->update([
+            'password' => Hash::make($request->password)
+        ]);
+
+        return redirect('/login')->with('success', 'Password Anda telah berhasil diperbarui. Silakan login kembali.');
+    }
 }
+
