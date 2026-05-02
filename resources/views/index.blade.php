@@ -6,6 +6,22 @@
 
 <x-header />
 
+@if(isset($pendingTestimoniCount) && $pendingTestimoniCount > 0)
+    <div class="testimoni-reminder-sticky" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; max-width: 320px;">
+        <div class="alert alert-warning border-0 shadow-lg d-flex align-items-center mb-0" style="border-radius: 15px; background: white; border-left: 5px solid #C48989 !important;">
+            <div class="me-3 fs-3 text-warning">
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <div>
+                <h6 class="fw-bold mb-1" style="color: #333;">Testimoni Wajib!</h6>
+                <p class="small mb-2 text-muted">Anda memiliki <strong>{{ $pendingTestimoniCount }}</strong> pesanan yang butuh penilaian.</p>
+                <a href="{{ route('profile') }}#orders" class="btn btn-sm text-white fw-bold w-100" style="border-radius: 8px; background-color: #C48989;">Berikan Sekarang</a>
+            </div>
+            <button type="button" class="btn-close ms-2 small" onclick="this.parentElement.parentElement.remove()" style="font-size: 10px;"></button>
+        </div>
+    </div>
+@endif
+
 <!-- Start Hero Section -->
 
 <!-- End Header Section -->
@@ -708,9 +724,9 @@
 
               <h3 class="cs_fs_20 cs_fs_lg_18 text-accent fw-normal cs_lh_base cs_mb_10 wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.2s">Testimonial</h3>
 
-              <h2 class="cs_fs_48 cs_fs_lg_36 cs_mb_20">What They’re Saying?</h2>
+              <h2 class="cs_fs_48 cs_fs_lg_36 cs_mb_20">Apa Kata Mereka?</h2>
 
-              <p class="m-0">Providing legal advice, contract drafting, compliance assistance, intellectual property protection, and other legal support for businesses.</p>
+              <p class="m-0">Berikut adalah ulasan dari para pelanggan kami yang telah merasakan manfaat dari layanan refleksi dan pijat kesehatan kami.</p>
 
             </div>
 
@@ -750,213 +766,47 @@
 
           <div class="cs_slider_activate">
 
-            <div class="cs_slide">
-
-              <div class="cs_testimonial cs_style_1 cs_pt_20">
-
-                <div class="cs_testimonial_in bg-white shadow-sm cs_pl_30 cs_pr_30 cs_pb_27 cs_pt_1 cs_rounded_10">
-
-                  <div class="cs_testimonial_img cs_mb_15"><img src="{{ asset('assets/img/avatar_1.png') }}" alt="Avatar" class="cs_height_75 cs_width_75 rounded-circle"></div>
-
-                  <div class="cs_rating text-accent cs_mb_15" data-rating="4.5">
-
-                    <div class="cs_rating_percentage"></div>
-
+            @if(isset($testimonis) && $testimonis->count() > 0)
+              @foreach($testimonis as $t)
+              <div class="cs_slide">
+                <div class="cs_testimonial cs_style_1 cs_pt_20">
+                  <div class="cs_testimonial_in bg-white shadow-sm cs_pl_30 cs_pr_30 cs_pb_27 cs_pt_1 cs_rounded_10">
+                    <div class="cs_testimonial_img cs_mb_15">
+                      <div class="cs_height_75 cs_width_75 rounded-circle bg-light d-flex align-items-center justify-content-center fs-2 text-muted mx-auto">
+                        <i class="fa-solid fa-user"></i>
+                      </div>
+                    </div>
+                    <div class="cs_rating text-accent cs_mb_15 text-center">
+                      @for($i = 1; $i <= 5; $i++)
+                        <i class="fa-solid fa-star {{ $i <= $t->rating ? 'text-warning' : 'text-muted' }}"></i>
+                      @endfor
+                    </div>
+                    <p class="cs_mb_14 text-center">"{{ $t->pesan }}"</p>
+                    <h3 class="cs_fs_18 cs_mb_2 cs_lh_base text-center">{{ $t->user->name }}</h3>
+                    <p class="m-0 cs_fs_14 cs_lh_base text-center">{{ $t->transaksi->layanan->nama }}</p>
                   </div>
-
-                  <p class="cs_mb_14">I've been using [business name] for the past year and I'm so glad I did. Their products and services are top-notch and their customer service is amazing. I would highly recommend them to anyone</p>
-
-                  <h3 class="cs_fs_18 cs_mb_2 cs_lh_base">Darlene Robertson</h3>
-
-                  <p class="m-0 cs_fs_14 cs_lh_base">Web design</p>
-
                 </div>
-
               </div>
-
-            </div>
-
-            <div class="cs_slide">
-
-              <div class="cs_testimonial cs_style_1 cs_pt_20">
-
-                <div class="cs_testimonial_in bg-white shadow-sm cs_pl_30 cs_pr_30 cs_pb_27 cs_pt_1 cs_rounded_10">
-
-                  <div class="cs_testimonial_img cs_mb_15"><img src="{{ asset('assets/img/avatar_2.png') }}" alt="Avatar" class="cs_height_75 cs_width_75 rounded-circle"></div>
-
-                  <div class="cs_rating text-accent cs_mb_15" data-rating="5">
-
-                    <div class="cs_rating_percentage"></div>
-
+              @endforeach
+            @else
+              <div class="cs_slide">
+                <div class="cs_testimonial cs_style_1 cs_pt_20">
+                  <div class="cs_testimonial_in bg-white shadow-sm cs_pl_30 cs_pr_30 cs_pb_27 cs_pt_1 cs_rounded_10">
+                    <div class="cs_testimonial_img cs_mb_15"><img src="{{ asset('assets/img/avatar_1.png') }}" alt="Avatar" class="cs_height_75 cs_width_75 rounded-circle mx-auto d-block"></div>
+                    <div class="cs_rating text-accent cs_mb_15 text-center">
+                      <i class="fa-solid fa-star text-warning"></i>
+                      <i class="fa-solid fa-star text-warning"></i>
+                      <i class="fa-solid fa-star text-warning"></i>
+                      <i class="fa-solid fa-star text-warning"></i>
+                      <i class="fa-solid fa-star text-warning"></i>
+                    </div>
+                    <p class="cs_mb_14 text-center">Layanan yang luar biasa! Sangat membantu merilekskan tubuh setelah seharian bekerja.</p>
+                    <h3 class="cs_fs_18 cs_mb_2 cs_lh_base text-center">Pelanggan Setia</h3>
+                    <p class="m-0 cs_fs_14 cs_lh_base text-center">Family Refleksi</p>
                   </div>
-
-                  <p class="cs_mb_14">I've been using [business name] for the past year and I'm so glad I did. Their products and services are top-notch and their customer service is amazing. I would highly recommend them to anyone</p>
-
-                  <h3 class="cs_fs_18 cs_mb_2 cs_lh_base">Carol McCarthy</h3>
-
-                  <p class="m-0 cs_fs_14 cs_lh_base">Product manager</p>
-
                 </div>
-
               </div>
-
-            </div>
-
-            <div class="cs_slide">
-
-              <div class="cs_testimonial cs_style_1 cs_pt_20">
-
-                <div class="cs_testimonial_in bg-white shadow-sm cs_pl_30 cs_pr_30 cs_pb_27 cs_pt_1 cs_rounded_10">
-
-                  <div class="cs_testimonial_img cs_mb_15"><img src="{{ asset('assets/img/avatar_3.png') }}" alt="Avatar" class="cs_height_75 cs_width_75 rounded-circle"></div>
-
-                  <div class="cs_rating text-accent cs_mb_15" data-rating="4">
-
-                    <div class="cs_rating_percentage"></div>
-
-                  </div>
-
-                  <p class="cs_mb_14">I've been using [business name] for the past year and I'm so glad I did. Their products and services are top-notch and their customer service is amazing. I would highly recommend them to anyone</p>
-
-                  <h3 class="cs_fs_18 cs_mb_2 cs_lh_base">Peter Johnson</h3>
-
-                  <p class="m-0 cs_fs_14 cs_lh_base">Web developer</p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="cs_slide">
-
-              <div class="cs_testimonial cs_style_1 cs_pt_20">
-
-                <div class="cs_testimonial_in bg-white shadow-sm cs_pl_30 cs_pr_30 cs_pb_27 cs_pt_1 cs_rounded_10">
-
-                  <div class="cs_testimonial_img cs_mb_15"><img src="{{ asset('assets/img/avatar_4.png') }}" alt="Avatar" class="cs_height_75 cs_width_75 rounded-circle"></div>
-
-                  <div class="cs_rating text-accent cs_mb_15" data-rating="5">
-
-                    <div class="cs_rating_percentage"></div>
-
-                  </div>
-
-                  <p class="cs_mb_14">I've been using [business name] for the past year and I'm so glad I did. Their products and services are top-notch and their customer service is amazing. I would highly recommend them to anyone</p>
-
-                  <h3 class="cs_fs_18 cs_mb_2 cs_lh_base">Max Lawrence</h3>
-
-                  <p class="m-0 cs_fs_14 cs_lh_base">Digital marketing</p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="cs_slide">
-
-              <div class="cs_testimonial cs_style_1 cs_pt_20">
-
-                <div class="cs_testimonial_in bg-white shadow-sm cs_pl_30 cs_pr_30 cs_pb_27 cs_pt_1 cs_rounded_10">
-
-                  <div class="cs_testimonial_img cs_mb_15"><img src="{{ asset('assets/img/avatar_1.png') }}" alt="Avatar" class="cs_height_75 cs_width_75 rounded-circle"></div>
-
-                  <div class="cs_rating text-accent cs_mb_15" data-rating="4.5">
-
-                    <div class="cs_rating_percentage"></div>
-
-                  </div>
-
-                  <p class="cs_mb_14">I've been using [business name] for the past year and I'm so glad I did. Their products and services are top-notch and their customer service is amazing. I would highly recommend them to anyone</p>
-
-                  <h3 class="cs_fs_18 cs_mb_2 cs_lh_base">Darlene Robertson</h3>
-
-                  <p class="m-0 cs_fs_14 cs_lh_base">Web design</p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="cs_slide">
-
-              <div class="cs_testimonial cs_style_1 cs_pt_20">
-
-                <div class="cs_testimonial_in bg-white shadow-sm cs_pl_30 cs_pr_30 cs_pb_27 cs_pt_1 cs_rounded_10">
-
-                  <div class="cs_testimonial_img cs_mb_15"><img src="{{ asset('assets/img/avatar_2.png') }}" alt="Avatar" class="cs_height_75 cs_width_75 rounded-circle"></div>
-
-                  <div class="cs_rating text-accent cs_mb_15" data-rating="5">
-
-                    <div class="cs_rating_percentage"></div>
-
-                  </div>
-
-                  <p class="cs_mb_14">I've been using [business name] for the past year and I'm so glad I did. Their products and services are top-notch and their customer service is amazing. I would highly recommend them to anyone</p>
-
-                  <h3 class="cs_fs_18 cs_mb_2 cs_lh_base">Carol McCarthy</h3>
-
-                  <p class="m-0 cs_fs_14 cs_lh_base">Product manager</p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="cs_slide">
-
-              <div class="cs_testimonial cs_style_1 cs_pt_20">
-
-                <div class="cs_testimonial_in bg-white shadow-sm cs_pl_30 cs_pr_30 cs_pb_27 cs_pt_1 cs_rounded_10">
-
-                  <div class="cs_testimonial_img cs_mb_15"><img src="{{ asset('assets/img/avatar_3.png') }}" alt="Avatar" class="cs_height_75 cs_width_75 rounded-circle"></div>
-
-                  <div class="cs_rating text-accent cs_mb_15" data-rating="4">
-
-                    <div class="cs_rating_percentage"></div>
-
-                  </div>
-
-                  <p class="cs_mb_14">I've been using [business name] for the past year and I'm so glad I did. Their products and services are top-notch and their customer service is amazing. I would highly recommend them to anyone</p>
-
-                  <h3 class="cs_fs_18 cs_mb_2 cs_lh_base">Peter Johnson</h3>
-
-                  <p class="m-0 cs_fs_14 cs_lh_base">Web developer</p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="cs_slide">
-
-              <div class="cs_testimonial cs_style_1 cs_pt_20">
-
-                <div class="cs_testimonial_in bg-white shadow-sm cs_pl_30 cs_pr_30 cs_pb_27 cs_pt_1 cs_rounded_10">
-
-                  <div class="cs_testimonial_img cs_mb_15"><img src="{{ asset('assets/img/avatar_4.png') }}" alt="Avatar" class="cs_height_75 cs_width_75 rounded-circle"></div>
-
-                  <div class="cs_rating text-accent cs_mb_15" data-rating="5">
-
-                    <div class="cs_rating_percentage"></div>
-
-                  </div>
-
-                  <p class="cs_mb_14">I've been using [business name] for the past year and I'm so glad I did. Their products and services are top-notch and their customer service is amazing. I would highly recommend them to anyone</p>
-
-                  <h3 class="cs_fs_18 cs_mb_2 cs_lh_base">Max Lawrence</h3>
-
-                  <p class="m-0 cs_fs_14 cs_lh_base">Digital marketing</p>
-
-                </div>
-
-              </div>
-
-            </div>
+            @endif
 
           </div>
 

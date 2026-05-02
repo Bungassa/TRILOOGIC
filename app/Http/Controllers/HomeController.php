@@ -9,7 +9,21 @@ class HomeController extends Controller
     public function index()
     {
         $layanans = \App\Models\Layanan::take(4)->get();
-        return view('index', ['layanans' => $layanans]);
+        $testimonis = \App\Models\Testimoni::with('user', 'transaksi.layanan')->latest()->take(6)->get();
+        
+        $pendingTestimoniCount = 0;
+        if (\Illuminate\Support\Facades\Auth::check()) {
+            $pendingTestimoniCount = \App\Models\Transaksi::where('user_id', \Illuminate\Support\Facades\Auth::id())
+                ->where('status', 'selesai')
+                ->whereDoesntHave('testimoni')
+                ->count();
+        }
+
+        return view('index', [
+            'layanans' => $layanans, 
+            'testimonis' => $testimonis,
+            'pendingTestimoniCount' => $pendingTestimoniCount
+        ]);
     }
 
     public function service()
@@ -20,6 +34,16 @@ class HomeController extends Controller
 
     public function pemesanan()
     {
+        // Check for pending testimonials
+        $pendingTestimoni = \App\Models\Transaksi::where('user_id', \Illuminate\Support\Facades\Auth::id())
+            ->where('status', 'selesai')
+            ->whereDoesntHave('testimoni')
+            ->first();
+
+        if ($pendingTestimoni) {
+            return redirect()->route('profile', ['#orders'])->with('error', 'Wajib memberikan testimoni untuk pesanan sebelumnya sebelum membuat pesanan baru.');
+        }
+
         $layanans = \App\Models\Layanan::all();
         return view('pemesanan', ['layanans' => $layanans]);
     }
@@ -27,6 +51,16 @@ class HomeController extends Controller
     public function submitpemesanan(Request $request)
     {
         \Illuminate\Support\Facades\Log::info('Submit pemesanan request received', $request->all());
+
+        // Check for pending testimonials again
+        $pendingTestimoni = \App\Models\Transaksi::where('user_id', \Illuminate\Support\Facades\Auth::id())
+            ->where('status', 'selesai')
+            ->whereDoesntHave('testimoni')
+            ->first();
+
+        if ($pendingTestimoni) {
+            return redirect()->route('profile', ['#orders'])->with('error', 'Wajib memberikan testimoni untuk pesanan sebelumnya sebelum membuat pesanan baru.');
+        }
         
         // Validasi input
         try {

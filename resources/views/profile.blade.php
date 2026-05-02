@@ -191,6 +191,32 @@
                         </div>
                     @endif
 
+                    @if(session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show border-0 shadow-sm mb-4" role="alert" style="border-radius: 10px;">
+                            <i class="fa-solid fa-circle-exclamation me-2"></i> {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    @php
+                        $pendingTestimonis = $transaksis->where('status', 'selesai')->filter(function($t) {
+                            return !$t->testimoni;
+                        });
+                    @endphp
+
+                    @if($pendingTestimonis->count() > 0)
+                        <div class="alert alert-warning border-0 shadow-sm mb-4 d-flex align-items-center" role="alert" style="border-radius: 15px; background-color: #fff3cd; color: #856404;">
+                            <div class="me-3 fs-3">
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Testimoni Wajib!</h6>
+                                <p class="small mb-0">Anda memiliki <strong>{{ $pendingTestimonis->count() }}</strong> pesanan yang telah selesai. Silahkan berikan testimoni Anda untuk membantu kami meningkatkan layanan.</p>
+                                <button class="btn btn-sm btn-warning mt-2 fw-bold" onclick="switchTab('orders')" style="border-radius: 8px;">Berikan Testimoni Sekarang</button>
+                            </div>
+                        </div>
+                    @endif
+
                     <!-- Informasi Profil Section -->
                     <div id="section-info" class="profile-content-card">
                         <h3 class="section-title">Informasi Profil</h3>
@@ -290,10 +316,28 @@
                                                         {{ $t->status == 'pending' ? 'Menunggu' : ($t->status == 'dikerjakan' ? 'Diproses' : 'Selesai') }}
                                                     </span>
                                                 </td>
-                                                <td>
+                                                 <td>
                                                     <a href="{{ route('pemesanan.pembayaran', $t->id) }}" class="btn btn-sm btn-outline-secondary" style="border-radius: 20px; font-size: 11px;">
                                                         Lihat Detail
                                                     </a>
+                                                    @if($t->status == 'selesai')
+                                                        @if(!$t->testimoni)
+                                                            <button type="button" class="btn btn-sm btn-primary ms-1 btn-testimoni" 
+                                                                    data-bs-toggle="modal" 
+                                                                    data-bs-target="#modalTestimoni" 
+                                                                    data-toggle="modal" 
+                                                                    data-target="#modalTestimoni" 
+                                                                    data-id="{{ $t->id }}"
+                                                                    data-layanan="{{ $t->layanan->nama }}"
+                                                                    style="border-radius: 20px; font-size: 11px; background-color: #C48989; border-color: #C48989;">
+                                                                Berikan Testimoni
+                                                            </button>
+                                                        @else
+                                                            <span class="badge bg-light text-dark ms-1" style="border-radius: 20px; font-size: 10px; border: 1px solid #ddd;">
+                                                                <i class="fa-solid fa-star text-warning me-1"></i> Sudah Dinilai
+                                                            </span>
+                                                        @endif
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -336,14 +380,59 @@
         </div>
     </div>
 
+    <!-- Modal Testimoni -->
+    <div class="modal fade" id="modalTestimoni" tabindex="-1" aria-labelledby="modalTestimoniLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px; border: none; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <div class="modal-header border-0 pb-0 pt-4 px-4">
+                    <h5 class="modal-title fw-bold" id="modalTestimoniLabel">Berikan Testimoni</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('testimoni.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="transaksi_id" id="modal_transaksi_id">
+                    <div class="modal-body p-4">
+                        <div class="mb-4 text-center">
+                            <p class="text-muted mb-2">Bagaimana pengalaman Anda dengan layanan</p>
+                            <h6 id="modal_layanan_nama" class="fw-bold text-dark mb-3">Layanan Name</h6>
+                            <div class="rating-stars mb-2">
+                                <input type="hidden" name="rating" id="input_rating" value="5">
+                                <div class="d-flex justify-content-center gap-2">
+                                    @for($i = 1; $i <= 5; $i++)
+                                        <i class="fa-solid fa-star star-icon fs-2 text-warning cursor-pointer" data-value="{{ $i }}" style="cursor: pointer;"></i>
+                                    @endfor
+                                </div>
+                            </div>
+                            <span id="rating_text" class="small fw-bold text-muted">Sangat Puas</span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Ceritakan pengalaman Anda</label>
+                            <textarea name="pesan" class="form-control" rows="4" placeholder="Tulis pesan testimoni Anda di sini..." required style="border-radius: 12px; resize: none;"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 p-4 pt-0">
+                        <button type="button" class="btn btn-light px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px; font-weight: 600;">Batal</button>
+                        <button type="submit" class="btn btn-primary px-4 py-2" style="border-radius: 10px; font-weight: 600; background-color: #C48989; border-color: #C48989;">Kirim Testimoni</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
         function switchTab(tab) {
+            console.log('Switching to tab:', tab);
             // Hide all sections
-            document.querySelectorAll('.profile-content-card').forEach(card => {
+            const cards = document.querySelectorAll('.profile-content-card');
+            cards.forEach(card => {
                 card.style.display = 'none';
             });
+            
             // Show selected section
-            document.getElementById('section-' + tab).style.display = 'block';
+            const targetSection = document.getElementById('section-' + tab);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
             
             // Update active link
             document.querySelectorAll('.profile-nav-link').forEach(link => {
@@ -354,20 +443,91 @@
             });
         }
 
-        document.querySelectorAll('.profile-nav-link[data-tab]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const tab = this.getAttribute('data-tab');
-                switchTab(tab);
-                window.location.hash = tab;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sidebar tab links
+            document.querySelectorAll('.profile-nav-link[data-tab]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tab = this.getAttribute('data-tab');
+                    switchTab(tab);
+                    window.location.hash = tab;
+                });
             });
-        });
 
-        // Handle hash in URL
-        window.addEventListener('load', () => {
+            // Handle hash in URL
             const hash = window.location.hash.substring(1);
             if(hash && ['info', 'edit', 'orders', 'address'].includes(hash)) {
                 switchTab(hash);
+            }
+
+            // Handle star rating
+            const stars = document.querySelectorAll('.star-icon');
+            const inputRating = document.getElementById('input_rating');
+            const ratingText = document.getElementById('rating_text');
+            const ratingLabels = {
+                1: 'Kecewa',
+                2: 'Kurang Puas',
+                3: 'Cukup',
+                4: 'Puas',
+                5: 'Sangat Puas'
+            };
+
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    inputRating.value = value;
+                    ratingText.innerText = ratingLabels[value];
+                    
+                    // Reset all stars
+                    stars.forEach(s => {
+                        s.classList.remove('text-warning');
+                        s.classList.add('text-muted');
+                    });
+                    
+                    // Highlight stars up to selected value
+                    for(let i = 0; i < value; i++) {
+                        stars[i].classList.remove('text-muted');
+                        stars[i].classList.add('text-warning');
+                    }
+                });
+            });
+
+            // Handle modal data (supporting both BS4 and BS5)
+            const modalTestimoni = document.getElementById('modalTestimoni');
+            if (modalTestimoni) {
+                // For Bootstrap 5
+                modalTestimoni.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+                    populateModal(button);
+                });
+                
+                // For Bootstrap 4 (jQuery)
+                if (typeof jQuery !== 'undefined') {
+                    jQuery('#modalTestimoni').on('show.bs.modal', function (event) {
+                        const button = event.relatedTarget;
+                        populateModal(button);
+                    });
+                }
+            }
+
+            function populateModal(button) {
+                if (!button) return;
+                const id = button.getAttribute('data-id');
+                const layanan = button.getAttribute('data-layanan');
+                
+                const idInput = document.getElementById('modal_transaksi_id');
+                const nameDisplay = document.getElementById('modal_layanan_nama');
+                
+                if (idInput) idInput.value = id;
+                if (nameDisplay) nameDisplay.innerText = layanan;
+                
+                // Reset to 5 stars on open
+                if (inputRating) inputRating.value = 5;
+                if (ratingText) ratingText.innerText = ratingLabels[5];
+                stars.forEach(s => {
+                    s.classList.remove('text-muted');
+                    s.classList.add('text-warning');
+                });
             }
         });
     </script>

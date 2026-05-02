@@ -30,4 +30,9 @@ class Transaksi extends Model
     {
         return $this->belongsTo(Layanan::class);
     }
+
+    public function testimoni()
+    {
+        return $this->hasOne(Testimoni::class);
+    }
 }

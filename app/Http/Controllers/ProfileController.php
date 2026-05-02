@@ -26,7 +26,7 @@ class ProfileController extends Controller
                         $query->whereRaw('1=0'); // Jangan cari jika phone null
                     }
                 })
-                ->with('layanan')
+                ->with(['layanan', 'testimoni'])
                 ->latest()
                 ->get();
         }
