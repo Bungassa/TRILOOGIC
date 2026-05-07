@@ -31,8 +31,9 @@
                     <thead>
                         <tr class="border-b border-gray-200">
                             <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">No</th>
-                            <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Nama / NIK</th>
-                            <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Gaji Pokok</th>
+                            <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Nama</th>
+                            <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Umur</th>
+                            <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Jenis Kelamin</th>
                             <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Status</th>
                             <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Aksi</th>
                         </tr>
@@ -41,18 +42,14 @@
                         @forelse($karyawans as $index => $karyawan)
                         <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                             <td class="py-4 px-4 text-sm text-gray-800">{{ $index + 1 }}</td>
-                            <td class="py-4 px-4">
-                                <div class="text-sm font-medium text-gray-800">{{ $karyawan->nama }}</div>
-                                <div class="text-xs text-gray-500">{{ $karyawan->nik }}</div>
-                            </td>
-                            <td class="py-4 px-4 text-sm text-gray-500">Rp {{ number_format($karyawan->gaji_pokok, 0, ',', '.') }}</td>
+                            <td class="py-4 px-4 text-sm font-medium text-gray-800">{{ $karyawan->nama }}</td>
+                            <td class="py-4 px-4 text-sm text-gray-600">{{ $karyawan->umur }} tahun</td>
+                            <td class="py-4 px-4 text-sm text-gray-600">{{ $karyawan->jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
                             <td class="py-4 px-4">
                                 <span class="px-3 py-1 text-xs font-semibold rounded-full
-                                    {{ $karyawan->status === 'proses' ? 'bg-yellow-100 text-yellow-700' : '' }}
-                                    {{ $karyawan->status === 'selesai' ? 'bg-green-100 text-green-700' : '' }}
                                     {{ $karyawan->status === 'aktif' ? 'bg-blue-100 text-blue-700' : '' }}
                                     {{ $karyawan->status === 'non-aktif' ? 'bg-red-100 text-red-700' : '' }}">
-                                    {{ ucfirst($karyawan->status) }}
+                                    {{ $karyawan->status === 'aktif' ? 'Aktif' : 'Non-Aktif' }}
                                 </span>
                             </td>
                             <td class="py-4 px-4">

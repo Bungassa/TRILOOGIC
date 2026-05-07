@@ -16,19 +16,10 @@ class OwnerController extends Controller
         $totalKaryawan = Karyawan::count();
         $totalTransaksi = Transaksi::count();
         $transaksiHariIni = Transaksi::whereDate('created_at', Carbon::today())->count();
-        
+
         // Revenue
         $totalRevenue = Transaksi::where('status_pembayaran', 'lunas')->sum('total_harga');
 
-        // Salary Overview (Bulan Ini)
-        $currentMonth = Carbon::now()->format('m');
-        $currentYear = Carbon::now()->format('Y');
-
-        $salaryOverview = \App\Models\Penggajian::where('bulan', $currentMonth)
-            ->where('tahun', $currentYear)
-            ->selectRaw('SUM(gaji_pokok) as total_pokok, SUM(bonus) as total_bonus, SUM(potongan) as total_potongan, SUM(total_gaji) as total_netto')
-            ->first();
-        
         $recentTransactions = Transaksi::with('layanan')
             ->latest()
             ->take(10)
@@ -41,7 +32,6 @@ class OwnerController extends Controller
             'totalTransaksi' => $totalTransaksi,
             'transaksiHariIni' => $transaksiHariIni,
             'totalRevenue' => $totalRevenue,
-            'salaryOverview' => $salaryOverview,
             'recentTransactions' => $recentTransactions
         ]);
     }
@@ -62,35 +52,6 @@ class OwnerController extends Controller
             'title' => 'Laporan Pendapatan',
             'transaksis' => $transaksis
         ]);
-    }
-
-    public function penggajian(Request $request)
-    {
-        $bulan = $request->get('bulan', Carbon::now()->format('m'));
-        $tahun = $request->get('tahun', Carbon::now()->format('Y'));
-
-        $penggajians = \App\Models\Penggajian::with('karyawan')
-            ->where('bulan', $bulan)
-            ->where('tahun', $tahun)
-            ->get();
-
-        return view('owner.pages.penggajian', [
-            'title' => 'Persetujuan Gaji',
-            'penggajians' => $penggajians,
-            'bulan' => $bulan,
-            'tahun' => $tahun
-        ]);
-    }
-
-    public function approveGaji($id)
-    {
-        $penggajian = \App\Models\Penggajian::findOrFail($id);
-        $penggajian->update([
-            'status_pembayaran' => 'dibayar',
-            'tanggal_bayar' => now()
-        ]);
-
-        return redirect()->back()->with('success', 'Gaji untuk ' . $penggajian->karyawan->nama . ' telah disetujui dan ditandai sebagai dibayar');
     }
 
     // Admin Management

@@ -4,7 +4,6 @@
     <div class="flex items-center justify-center h-20 px-6 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] border-b border-white/10">
         <div class="text-center">
             <h1 class="text-2xl font-bold text-white tracking-tight">Ekky Family Refleksi</h1>
-            <p class="text-[10px] text-white/70 uppercase tracking-widest">Owner Panel</p>
         </div>
     </div>
 
@@ -35,13 +34,7 @@
                 Laporan
             </a>
 
-            <a href="{{ route('owner.penggajian') }}" 
-               class="flex items-center px-4 py-3 text-sm font-medium {{ request()->is('owner/penggajian*') ? 'text-white bg-gradient-to-r from-[#D79F9E] to-[#C48989] rounded-xl shadow-lg shadow-[#AB6F6E]/30' : 'text-gray-300 rounded-xl hover:bg-white/10 hover:text-white' }} transition-all duration-200">
-                <svg class="mr-3 h-5 w-5 {{ request()->is('owner/penggajian*') ? 'text-white' : 'text-gray-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                Persetujuan Gaji
-            </a>
+            
 
             <a href="{{ route('owner.admins') }}" 
                class="flex items-center px-4 py-3 text-sm font-medium {{ request()->is('owner/admins*') ? 'text-white bg-gradient-to-r from-[#D79F9E] to-[#C48989] rounded-xl shadow-lg shadow-[#AB6F6E]/30' : 'text-gray-300 rounded-xl hover:bg-white/10 hover:text-white' }} transition-all duration-200">

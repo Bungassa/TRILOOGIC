@@ -21,15 +21,13 @@ class AdminKaryawanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nik' => 'required|string|max:20|unique:karyawans',
             'nama' => 'required|string|max:255',
-            'gaji_pokok' => 'required|numeric|min:0',
-            'tanggal' => 'required|date',
-            'terapi_yang_dilakukan' => 'required|string',
+            'umur' => 'required|integer|min:1',
+            'jenis_kelamin' => 'required|in:L,P',
             'status' => 'required|string',
         ]);
 
-        Karyawan::create($request->except('jabatan'));
+        Karyawan::create($request->all());
         return redirect()->route('admin.karyawan')->with('success', 'Karyawan berhasil ditambahkan');
     }
 
@@ -45,21 +43,17 @@ class AdminKaryawanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nik' => 'required|unique:karyawans,nik,' . $id,
             'nama' => 'required',
-            'gaji_pokok' => 'required|numeric',
-            'tanggal' => 'required|date',
-            'terapi_yang_dilakukan' => 'nullable',
+            'umur' => 'required|integer|min:1',
+            'jenis_kelamin' => 'required|in:L,P',
             'status' => 'required'
         ]);
 
         $karyawan = Karyawan::findOrFail($id);
         $karyawan->update([
-            'nik' => $request->nik,
             'nama' => $request->nama,
-            'gaji_pokok' => $request->gaji_pokok,
-            'tanggal' => $request->tanggal,
-            'terapi_yang_dilakukan' => $request->terapi_yang_dilakukan,
+            'umur' => $request->umur,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'status' => $request->status
         ]);
         

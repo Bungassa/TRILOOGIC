@@ -13,23 +13,34 @@ class AdminTransaksiController extends Controller
         return view('admin.pages.transaksi.index', ['transaksis' => $transaksis]);
     }
 
-    public function updateStatus(Request $request, $id)
+   public function updateStatus(Request $request, $id)
     {
         $transaksi = Transaksi::find($id);
-        
+
         if ($request->has('status')) {
-            $request->validate(['status' => 'required|in:pending,dikerjakan,selesai']);
+            $request->validate([
+                'status' => 'required|in:pending,dikerjakan,selesai'
+            ]);
+
             $transaksi->status = $request->status;
         }
 
         if ($request->has('status_pembayaran')) {
-            $request->validate(['status_pembayaran' => 'required|in:belum_bayar,lunas']);
+            $request->validate([
+                'status_pembayaran' => 'required|in:belum_bayar,lunas'
+            ]);
+
             $transaksi->status_pembayaran = $request->status_pembayaran;
+        }
+
+        if ($request->has('karyawan_id')) {
+            $transaksi->karyawan_id = $request->karyawan_id;
         }
 
         $transaksi->save();
 
-        return redirect()->route('admin.transaksi')->with('success', 'Transaksi berhasil diperbarui');
+        return redirect()->route('admin.transaksi')
+            ->with('success', 'Transaksi berhasil diperbarui');
     }
 
     public function store(Request $request)
@@ -42,6 +53,7 @@ class AdminTransaksiController extends Controller
             'jam' => 'required',
             'status' => 'required|in:pending,dikerjakan,selesai',
             'catatan' => 'nullable|string',
+            'karyawan_id' => 'required',
         ]);
 
         // Get layanan to calculate total
@@ -66,6 +78,7 @@ class AdminTransaksiController extends Controller
             'catatan' => $request->catatan,
             'total_harga' => $totalHarga,
             'status' => $request->status,
+            'karyawan_id' => $request->karyawan_id,
         ]);
 
         return redirect()->route('admin.transaksi')->with('success', 'Transaksi berhasil ditambahkan');

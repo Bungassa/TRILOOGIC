@@ -39,8 +39,27 @@ class AdminController extends Controller
         return view('admin.pages.aktivitas.index', ['title' => 'Log Aktivitas']);
     }
 
-    public function laporan()
+    public function laporan(Request $request)
     {
-        return view('admin.pages.laporan.index', ['title' => 'Laporan Transaksi']);
+        $bulan = $request->get('bulan', date('m'));
+        $tahun = $request->get('tahun', date('Y'));
+
+        $transaksis = Transaksi::with('layanan')
+            ->whereYear('created_at', $tahun)
+            ->whereMonth('created_at', $bulan)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $totalRevenue = $transaksis->where('status_pembayaran', 'lunas')->sum('total_harga');
+        $totalTransaksi = $transaksis->count();
+
+        return view('admin.pages.laporan.index', [
+            'title' => 'Laporan Transaksi',
+            'transaksis' => $transaksis,
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+            'totalRevenue' => $totalRevenue,
+            'totalTransaksi' => $totalTransaksi
+        ]);
     }
 }

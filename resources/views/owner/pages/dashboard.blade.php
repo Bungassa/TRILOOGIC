@@ -18,7 +18,7 @@
     </div>
 
     <!-- Metrics Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Total Pendapatan -->
         <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 group">
             <div class="flex items-center justify-between">
@@ -50,24 +50,6 @@
                 <div class="bg-gradient-to-br from-[#AB6F6E] to-[#C48989] rounded-2xl p-4 shadow-lg shadow-[#AB6F6E]/30 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pengeluaran Gaji Bulan Ini -->
-        <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 group">
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="text-sm font-medium text-gray-500 mb-1">Gaji Bulan Ini</p>
-                    <p class="text-2xl font-bold text-red-600">Rp {{ number_format($salaryOverview->total_netto ?? 0, 0, ',', '.') }}</p>
-                    <p class="text-sm text-gray-400 mt-2 flex items-center">
-                        Total pengeluaran gaji
-                    </p>
-                </div>
-                <div class="bg-gradient-to-br from-[#AB6F6E] to-[#C48989] rounded-2xl p-4 shadow-lg shadow-[#AB6F6E]/30 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                 </div>
             </div>

@@ -72,13 +72,11 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
     // Absensi Routes
     Route::get('/absensi', [App\Http\Controllers\AdminAbsensiController::class, 'index'])->name('admin.absensi');
+    Route::get('/absensi/create', [App\Http\Controllers\AdminAbsensiController::class, 'create'])->name('admin.absensi.create');
     Route::post('/absensi', [App\Http\Controllers\AdminAbsensiController::class, 'store'])->name('admin.absensi.store');
-
-    // Penggajian Routes
-    Route::get('/penggajian', [App\Http\Controllers\AdminPenggajianController::class, 'index'])->name('admin.penggajian');
-    Route::post('/penggajian/generate', [App\Http\Controllers\AdminPenggajianController::class, 'generate'])->name('admin.penggajian.generate');
-    Route::get('/penggajian/{id}/slip', [App\Http\Controllers\AdminPenggajianController::class, 'cetakSlip'])->name('admin.penggajian.slip');
-    Route::get('/laporan-gaji', [App\Http\Controllers\AdminPenggajianController::class, 'laporan'])->name('admin.laporan.gaji');
+    Route::get('/absensi/{id}/edit', [App\Http\Controllers\AdminAbsensiController::class, 'edit'])->name('admin.absensi.edit');
+    Route::put('/absensi/{id}', [App\Http\Controllers\AdminAbsensiController::class, 'update'])->name('admin.absensi.update');
+    Route::delete('/absensi/{id}', [App\Http\Controllers\AdminAbsensiController::class, 'destroy'])->name('admin.absensi.destroy');
 
     Route::get('/', function () {
         return redirect()->route('admin.dashboard');
@@ -90,8 +88,6 @@ Route::middleware(['auth', 'role:owner'])->prefix('owner')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\OwnerController::class, 'dashboard'])->name('owner.dashboard');
     Route::get('/transaksi', [App\Http\Controllers\OwnerController::class, 'transaksi'])->name('owner.transaksi');
     Route::get('/laporan', [App\Http\Controllers\OwnerController::class, 'laporan'])->name('owner.laporan');
-    Route::get('/penggajian', [App\Http\Controllers\OwnerController::class, 'penggajian'])->name('owner.penggajian');
-    Route::put('/penggajian/{id}/approve', [App\Http\Controllers\OwnerController::class, 'approveGaji'])->name('owner.penggajian.approve');
 
     // Admin Management
     Route::get('/admins', [App\Http\Controllers\OwnerController::class, 'adminIndex'])->name('owner.admins');

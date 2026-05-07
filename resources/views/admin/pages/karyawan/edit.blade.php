@@ -26,14 +26,6 @@
             @method('PUT')
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- NIK -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">NIK</label>
-                    <input type="text" name="nik" value="{{ old('nik', $karyawan->nik) }}" required
-                           class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200"
-                           placeholder="Masukkan NIK">
-                </div>
-
                 <!-- Nama Lengkap -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
@@ -42,19 +34,23 @@
                            placeholder="Masukkan nama lengkap">
                 </div>
 
-                <!-- Gaji Pokok -->
+                <!-- Umur -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Gaji Pokok</label>
-                    <input type="number" name="gaji_pokok" value="{{ old('gaji_pokok', $karyawan->gaji_pokok) }}" required
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Umur</label>
+                    <input type="number" name="umur" value="{{ old('umur', $karyawan->umur) }}" required min="1"
                            class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200"
-                           placeholder="Masukkan gaji pokok">
+                           placeholder="Masukkan umur">
                 </div>
 
-                <!-- Tanggal Bergabung -->
+                <!-- Jenis Kelamin -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Bergabung</label>
-                    <input type="date" name="tanggal" value="{{ old('tanggal', $karyawan->tanggal) }}" required
-                           class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kelamin</label>
+                    <select name="jenis_kelamin" required
+                            class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200">
+                        <option value="">Pilih jenis kelamin</option>
+                        <option value="L" {{ (old('jenis_kelamin') ?? $karyawan->jenis_kelamin) === 'L' ? 'selected' : '' }}>Laki-laki</option>
+                        <option value="P" {{ (old('jenis_kelamin') ?? $karyawan->jenis_kelamin) === 'P' ? 'selected' : '' }}>Perempuan</option>
+                    </select>
                 </div>
 
                 <!-- Status -->
@@ -63,18 +59,8 @@
                     <select name="status" required
                             class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200">
                         <option value="aktif" {{ (old('status') ?? $karyawan->status) === 'aktif' ? 'selected' : '' }}>Aktif</option>
-                        <option value="proses" {{ (old('status') ?? $karyawan->status) === 'proses' ? 'selected' : '' }}>Proses</option>
-                        <option value="selesai" {{ (old('status') ?? $karyawan->status) === 'selesai' ? 'selected' : '' }}>Selesai</option>
                         <option value="non-aktif" {{ (old('status') ?? $karyawan->status) === 'non-aktif' ? 'selected' : '' }}>Non-Aktif</option>
                     </select>
-                </div>
-
-                <!-- Terapi yang Dilakukan -->
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Terapi yang Dilakukan (Opsional)</label>
-                    <textarea name="terapi_yang_dilakukan" rows="3" required
-                              class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200 resize-none"
-                              placeholder="Masukkan terapi yang dilakukan">{{ old('terapi_yang_dilakukan', $karyawan->terapi_yang_dilakukan) }}</textarea>
                 </div>
             </div>
 

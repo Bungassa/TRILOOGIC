@@ -722,7 +722,7 @@
 
             <div class="cs_section_heading_in">
 
-              <h3 class="cs_fs_20 cs_fs_lg_18 text-accent fw-normal cs_lh_base cs_mb_10 wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.2s">Testimonial</h3>
+              <h3 class="cs_fs_20 cs_fs_lg_18 text-accent fw-normal cs_lh_base cs_mb_10 wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.2s">Testimoni</h3>
 
               <h2 class="cs_fs_48 cs_fs_lg_36 cs_mb_20">Apa Kata Mereka?</h2>
 

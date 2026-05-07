@@ -11,13 +11,16 @@ class Absensi extends Model
 
     protected $fillable = [
         'karyawan_id',
-        'tanggal',
-        'status',
-        'lembur_jam'
+        'tanggal'
     ];
 
     public function karyawan()
     {
         return $this->belongsTo(Karyawan::class);
+    }
+
+    public function transaksis()
+    {
+        return $this->hasMany(Transaksi::class, 'karyawan_id', 'karyawan_id')->whereDate('tanggal', $this->tanggal);
     }
 }

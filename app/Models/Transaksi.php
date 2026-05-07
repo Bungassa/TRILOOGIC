@@ -35,4 +35,9 @@ class Transaksi extends Model
     {
         return $this->hasOne(Testimoni::class);
     }
+
+    public function karyawan()
+{
+    return $this->belongsTo(Karyawan::class);
+}
 }
