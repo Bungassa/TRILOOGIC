@@ -38,7 +38,7 @@ class OwnerController extends Controller
 
     public function transaksi()
     {
-        $transaksis = Transaksi::with('layanan')->latest()->get();
+        $transaksis = Transaksi::with('layanan')->orderBy('tanggal', 'desc')->orderBy('jam', 'desc')->paginate(25);
         return view('owner.pages.transaksi', [
             'title' => 'Data Transaksi',
             'transaksis' => $transaksis
@@ -82,7 +82,7 @@ class OwnerController extends Controller
         return redirect()->back()->with('success', 'Admin baru berhasil ditambahkan');
     }
 
-    public function adminDestroy($id)
+    public function adminDestroy(string $id)
     {
         $user = \App\Models\User::findOrFail($id);
         $user->delete();

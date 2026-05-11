@@ -18,7 +18,6 @@
             <table class="w-full">
                 <thead>
                     <tr class="border-b border-gray-200">
-                        <th class="text-left py-4 px-4 font-semibold text-gray-700">ID</th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Nama</th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Layanan</th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Lokasi</th>
@@ -31,7 +30,6 @@
                 <tbody>
                     @forelse($transaksis as $transaksi)
                         <tr class="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
-                            <td class="py-4 px-4 text-gray-600">#{{ $transaksi->id }}</td>
                             <td class="py-4 px-4">
                                 <div class="font-medium text-gray-800">{{ $transaksi->nama }}</div>
                                 <div class="text-sm text-gray-500">{{ $transaksi->telepon }}</div>
@@ -71,7 +69,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="8" class="py-12 text-center text-gray-500">
+                            <td colspan="7" class="py-12 text-center text-gray-500">
                                 Belum ada data transaksi
                             </td>
                         </tr>
