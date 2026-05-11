@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
-    <x-header pageTitle="Profil Saya" breadcrumbItem="Profil" />
+    <x-header pageTitle="Profil Saya" breadcrumbItem="{{ $user->name }}" />
 
     <style>
         .profile-wrapper {
@@ -147,7 +147,54 @@
             border-color: #C48989;
             background-color: rgba(196, 137, 137, 0.02);
         }
+        /* Leaflet custom search results */
+        #search-results {
+            position: absolute;
+            z-index: 1000;
+            width: 100%;
+            background: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .search-result-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 13px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .search-result-item:hover {
+            background-color: #f8f9fa;
+        }
+        /* Fixed Center Marker */
+        .map-picker-container {
+            position: relative;
+        }
+        .center-marker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            z-index: 1000;
+            pointer-events: none; /* Let clicks pass through to the map */
+        }
+        .center-marker i {
+            font-size: 40px;
+            color: #C48989;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        /* Bounce animation when map moves */
+        .center-marker.moving {
+            transform: translate(-50%, -120%);
+            transition: transform 0.2s ease-out;
+        }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <div class="profile-wrapper">
         <div class="container">
@@ -264,7 +311,14 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Alamat</label>
-                                    <input type="text" name="address" class="form-control" value="{{ old('address', $user->address) }}" placeholder="Subang">
+                                    <div class="input-group">
+                                        <input type="text" name="address" id="main_profile_address" class="form-control" value="{{ old('address', $user->address) }}" placeholder="Subang">
+                                        <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalMap" style="border-color: #ddd; color: #C48989;">
+                                            <i class="fa-solid fa-map-location-dot"></i>
+                                        </button>
+                                    </div>
+                                    <input type="hidden" name="lat" id="main_profile_lat" value="{{ old('lat', $user->lat) }}">
+                                    <input type="hidden" name="lng" id="main_profile_lng" value="{{ old('lng', $user->lng) }}">
                                 </div>
                                 <div class="col-md-12 mb-4 mt-3">
                                     <div class="p-3 bg-light rounded-3">
@@ -356,24 +410,44 @@
                     <!-- Alamat Saya Section -->
                     <div id="section-address" class="profile-content-card" style="display: none;">
                         <h3 class="section-title">Alamat Saya</h3>
-                        <div class="address-card">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold mb-0">Alamat Utama</h6>
-                                <span class="badge bg-success small">Default</span>
+                        @if($user->address)
+                            <div class="address-card">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="fw-bold mb-0">Alamat Utama</h6>
+                                    <span class="badge bg-success small">Default</span>
+                                </div>
+                                <p class="text-muted small mb-3">
+                                    <i class="fa-solid fa-location-dot me-2"></i>
+                                    {{ $user->address }}
+                                </p>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-primary" style="border-radius: 8px; padding: 8px 20px; font-weight: 600; color: #C48989; border-color: #C48989;" data-bs-toggle="modal" data-bs-target="#modalMap">
+                                        <i class="fa-solid fa-edit me-1"></i> Edit Alamat
+                                    </button>
+                                    <form id="formDeleteAddress" action="{{ route('profile.update') }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="name" value="{{ $user->name }}">
+                                        <input type="hidden" name="email" value="{{ $user->email }}">
+                                        <input type="hidden" name="phone" value="{{ $user->phone }}">
+                                        <input type="hidden" name="address" value="">
+                                        <input type="hidden" name="lat" value="">
+                                        <input type="hidden" name="lng" value="">
+                                        <button type="button" class="btn btn-sm btn-outline-danger" style="border-radius: 8px; padding: 8px 20px; font-weight: 600;" onclick="confirmDeleteAddress()">
+                                            <i class="fa-solid fa-trash me-1"></i> Hapus
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
-                            <p class="text-muted small mb-3">
-                                <i class="fa-solid fa-location-dot me-2"></i>
-                                {{ $user->address ?? 'Alamat belum diatur' }}
-                            </p>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-sm btn-outline-secondary" style="border-radius: 8px;" onclick="switchTab('edit')">
-                                    <i class="fa-solid fa-edit me-1"></i> Edit Alamat
-                                </button>
-                                <button class="btn btn-sm btn-outline-primary" style="border-radius: 8px; color: #C48989; border-color: #C48989;">
-                                    <i class="fa-solid fa-plus me-1"></i> Tambah Alamat
+                        @else
+                            <div class="text-center py-4">
+                                <i class="fa-solid fa-location-dot fs-1 text-muted mb-3 d-block"></i>
+                                <p class="text-muted">Belum ada alamat yang ditambahkan.</p>
+                                <button class="btn btn-save" data-bs-toggle="modal" data-bs-target="#modalMap">
+                                    <i class="fa-solid fa-plus me-2"></i> Tambah Alamat
                                 </button>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -415,6 +489,54 @@
                         <button type="submit" class="btn btn-primary px-4 py-2" style="border-radius: 10px; font-weight: 600; background-color: #C48989; border-color: #C48989;">Kirim Testimoni</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Pilih Alamat Gmaps -->
+    <div class="modal fade" id="modalMap" tabindex="-1" aria-labelledby="modalMapLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px; border: none; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <div class="modal-header border-0 pb-0 pt-4 px-4">
+                    <h5 class="modal-title fw-bold" id="modalMapLabel">Pilih Lokasi Alamat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="mb-3 position-relative">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0" style="border-radius: 12px 0 0 12px;"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                            <input type="text" id="pac-input" class="form-control border-start-0" placeholder="Cari lokasi atau area..." style="border-radius: 0 12px 12px 0; padding-left: 0;" autocomplete="off">
+                        </div>
+                        <div id="search-results"></div>
+                    </div>
+                    
+                    <div class="map-picker-container">
+                        <div id="map-container" style="width: 100%; height: 400px; border-radius: 15px; border: 1px solid #ddd; z-index: 1;"></div>
+                        <div class="center-marker" id="center-pin">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 p-3 bg-light rounded-3">
+                        <label class="form-label small fw-bold text-muted mb-1"><i class="fa-solid fa-location-dot me-1"></i> Alamat Terpilih:</label>
+                        <p id="selected-address-text" class="small fw-medium mb-0">{{ $user->address ?? 'Geser pin untuk memilih lokasi...' }}</p>
+                    </div>
+
+                    <form id="formSaveAddress" action="{{ route('profile.update') }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="name" value="{{ $user->name }}">
+                        <input type="hidden" name="email" value="{{ $user->email }}">
+                        <input type="hidden" name="phone" value="{{ $user->phone }}">
+                        <input type="hidden" name="address" id="hidden_address_input" value="{{ $user->address }}">
+                        <input type="hidden" name="lat" id="hidden_lat_input" value="{{ $user->lat }}">
+                        <input type="hidden" name="lng" id="hidden_lng_input" value="{{ $user->lng }}">
+                    </form>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0">
+                    <button type="button" class="btn btn-light px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px; font-weight: 600;">Batal</button>
+                    <button type="button" id="btnConfirmAddress" class="btn btn-primary px-4 py-2" style="border-radius: 10px; font-weight: 600; background-color: #C48989; border-color: #C48989;">Simpan Alamat Ini</button>
+                </div>
             </div>
         </div>
     </div>
@@ -527,6 +649,195 @@
                 stars.forEach(s => {
                     s.classList.remove('text-muted');
                     s.classList.add('text-warning');
+                });
+            }
+
+            // Leaflet Maps Implementation
+            let map, marker;
+            const defaultLocation = [-6.560198, 107.761402]; // Subang
+
+            function initLeafletMap() {
+                if (map) return; // Already initialized
+
+                map = L.map('map-container', {
+                    zoomControl: true
+                }).setView(defaultLocation, 15);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; OpenStreetMap contributors'
+                }).addTo(map);
+
+                const centerPin = document.getElementById('center-pin');
+
+                // Map move events
+                map.on('movestart', function() {
+                    centerPin.classList.add('moving');
+                });
+
+                map.on('move', function() {
+                    // Marker is fixed by CSS, but we can do things here if needed
+                });
+
+                map.on('moveend', function() {
+                    centerPin.classList.remove('moving');
+                    const center = map.getCenter();
+                    updateAddressInfo(center.lat, center.lng);
+                });
+
+                // Search handling
+                const searchInput = document.getElementById('pac-input');
+                const searchResults = document.getElementById('search-results');
+                let timeout = null;
+
+                searchInput.addEventListener('input', function() {
+                    clearTimeout(timeout);
+                    const query = this.value;
+                    if (query.length < 3) {
+                        searchResults.style.display = 'none';
+                        return;
+                    }
+
+                    timeout = setTimeout(() => {
+                        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=5`)
+                            .then(response => response.json())
+                            .then(data => {
+                                searchResults.innerHTML = '';
+                                if (data.length > 0) {
+                                    data.forEach(item => {
+                                        const div = document.createElement('div');
+                                        div.className = 'search-result-item';
+                                        div.innerText = item.display_name;
+                                        div.onclick = function() {
+                                            const lat = parseFloat(item.lat);
+                                            const lon = parseFloat(item.lon);
+                                            map.setView([lat, lon], 17);
+                                            marker.setLatLng([lat, lon]);
+                                            updateAddressInfo(lat, lon);
+                                            searchResults.style.display = 'none';
+                                            searchInput.value = item.display_name;
+                                        };
+                                        searchResults.appendChild(div);
+                                    });
+                                    searchResults.style.display = 'block';
+                                } else {
+                                    searchResults.style.display = 'none';
+                                }
+                            });
+                    }, 500);
+                });
+
+                // Close search results on click outside
+                document.addEventListener('click', function(e) {
+                    if (e.target !== searchInput) {
+                        searchResults.style.display = 'none';
+                    }
+                });
+            }
+
+            function updateAddressInfo(lat, lng) {
+                // Store coordinates in hidden modal form
+                document.getElementById('hidden_lat_input').value = lat;
+                document.getElementById('hidden_lng_input').value = lng;
+                
+                // Also update the main profile form
+                const mainLatInput = document.getElementById('main_profile_lat');
+                const mainLngInput = document.getElementById('main_profile_lng');
+                if (mainLatInput) mainLatInput.value = lat;
+                if (mainLngInput) mainLngInput.value = lng;
+
+                fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.display_name) {
+                            const address = data.display_name;
+                            document.getElementById('selected-address-text').innerText = address;
+                            document.getElementById('hidden_address_input').value = address;
+                            
+                            // Also update the input in edit profil tab for consistency
+                            const mainAddressInput = document.getElementById('main_profile_address');
+                            if (mainAddressInput) mainAddressInput.value = address;
+                        }
+                    });
+            }
+
+            // Load Leaflet Script
+            const leafletScript = document.createElement('script');
+            leafletScript.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+            leafletScript.onload = function() {
+                // Initial map setup if needed, but we do it on modal show
+            };
+            document.head.appendChild(leafletScript);
+
+            // Load SweetAlert2 Script
+            const swalScript = document.createElement('script');
+            swalScript.src = "https://cdn.jsdelivr.net/npm/sweetalert2@11";
+            document.head.appendChild(swalScript);
+
+            // Confirm Address Button
+            document.getElementById('btnConfirmAddress').addEventListener('click', function() {
+                const address = document.getElementById('hidden_address_input').value;
+                if (address && address !== 'Alamat belum diatur') {
+                    document.getElementById('formSaveAddress').submit();
+                } else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Silahkan pilih lokasi terlebih dahulu di peta!',
+                        confirmButtonColor: '#C48989'
+                    });
+                }
+            });
+
+            window.confirmDeleteAddress = function() {
+                Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    text: "Alamat Anda akan dihapus permanen dari profil.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#aaa',
+                    confirmButtonText: 'Ya, Hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('formDeleteAddress').submit();
+                    }
+                });
+            };
+
+            // Re-center map when modal opens
+            const modalMap = document.getElementById('modalMap');
+            if (modalMap) {
+                modalMap.addEventListener('shown.bs.modal', function () {
+                    initLeafletMap();
+                    if (map) {
+                        map.invalidateSize();
+                        
+                        const savedLat = document.getElementById('hidden_lat_input').value;
+                        const savedLng = document.getElementById('hidden_lng_input').value;
+
+                        if (savedLat && savedLng) {
+                            // Priority 1: Use saved coordinates
+                            map.setView([savedLat, savedLng], 15);
+                        } else {
+                            // Priority 2: Use saved address string
+                            const currentAddress = document.getElementById('hidden_address_input').value;
+                            if (currentAddress && currentAddress !== 'Alamat belum diatur' && currentAddress !== 'Subang') {
+                                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${currentAddress}&limit=1`)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.length > 0) {
+                                            const lat = parseFloat(data[0].lat);
+                                            const lon = parseFloat(data[0].lon);
+                                            map.setView([lat, lon], 15);
+                                        }
+                                    });
+                            } else {
+                                // Priority 3: Use default
+                                map.setView(defaultLocation, 15);
+                            }
+                        }
+                    }
                 });
             }
         });

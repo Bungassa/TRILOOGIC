@@ -54,6 +54,8 @@ class ProfileController extends Controller
             ],
             'phone' => 'required|string|max:20',
             'address' => 'nullable|string|max:500',
+            'lat' => 'nullable|numeric',
+            'lng' => 'nullable|numeric',
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
@@ -62,6 +64,8 @@ class ProfileController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
+            'lat' => $request->lat,
+            'lng' => $request->lng,
         ];
 
         if ($request->filled('password')) {
