@@ -82,28 +82,31 @@
                                         @csrf
                                         @method('PUT')
 
-                                        <select name="karyawan_id" class="w-full px-2 py-1 border border-gray-200 rounded text-xs mb-1">
-                                            <option value="">Pilih Karyawan</option>
 
-                                            @foreach(\App\Models\Karyawan::all() as $karyawan)
-                                                <option value="{{ $karyawan->id }}"
-                                                    {{ $transaksi->karyawan_id == $karyawan->id ? 'selected' : '' }}>
-                                                    {{ $karyawan->nama }}
-                                                </option>
-                                            @endforeach
-                                        </select>
 
-                                        <select name="status" onchange="this.form.submit()" class="w-full px-2 py-1 border border-gray-200 rounded text-xs">
-                                            <option value="pending" {{ $transaksi->status === 'pending' ? 'selected' : '' }}>Menunggu</option>
-                                            <option value="dikerjakan" {{ $transaksi->status === 'dikerjakan' ? 'selected' : '' }}>Proses</option>
-                                            <option value="selesai" {{ $transaksi->status === 'selesai' ? 'selected' : '' }}>Selesai</option>
-                                        </select>
+                                        <select name="status" onchange="this.form.submit()" class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer hover:bg-white">
+                                        <option value="pending" {{ $transaksi->status === 'pending' ? 'selected' : '' }}>Menunggu</option>
+                                        <option value="dikerjakan" {{ $transaksi->status === 'dikerjakan' ? 'selected' : '' }}>Proses</option>
+                                        <option value="selesai" {{ $transaksi->status === 'selesai' ? 'selected' : '' }}>Selesai</option>
+                                    </select>
                                     </form>
-                                 </div>
+
                             </td>
                             <td class="py-4 px-4 text-gray-600">
-    {{ $transaksi->karyawan->nama ?? '-' }}
-</td>
+                                <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <select name="karyawan_id" onchange="this.form.submit()" class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer hover:bg-white">
+                                        <option value="">Pilih Karyawan</option>
+                                        @foreach(\App\Models\Karyawan::all() as $karyawan)
+                                            <option value="{{ $karyawan->id }}"
+                                                {{ $transaksi->karyawan_id == $karyawan->id ? 'selected' : '' }}>
+                                                {{ $karyawan->nama }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </form>
+                            </td>
                         </tr>
                     @empty
                         <tr>
@@ -139,7 +142,7 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kelamin</label>
-                        <select name="jenis_kelamin" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
+                        <select name="jenis_kelamin" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer">
                             <option value="">-- Pilih --</option>
                             <option value="L">Laki-laki</option>
                             <option value="P">Perempuan</option>
@@ -153,7 +156,7 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Layanan</label>
-                        <select name="layanan_id" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
+                        <select name="layanan_id" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer">
                             <option value="">-- Pilih Layanan --</option>
                             @foreach(\App\Models\Layanan::all() as $layanan)
                                 <option value="{{ $layanan->id }}">{{ $layanan->nama }} - Rp {{ number_format($layanan->harga, 0, ',', '.') }}</option>
@@ -162,7 +165,7 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Karyawan</label>
-                        <select name="karyawan_id" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
+                        <select name="karyawan_id" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer">
                             <option value="">-- Pilih Karyawan --</option>
                             @foreach(\App\Models\Karyawan::all() as $karyawan)
                                 <option value="{{ $karyawan->id }}">
@@ -192,7 +195,7 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                        <select name="status" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
+                        <select name="status" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer">
                             <option value="pending">Pending</option>
                             <option value="dikerjakan">Dikerjakan</option>
                             <option value="selesai">Selesai</option>

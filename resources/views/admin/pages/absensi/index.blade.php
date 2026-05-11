@@ -70,16 +70,23 @@
                 <tbody>
                     @forelse($absensis as $absensi)
                     <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                        <td class="py-4 px-4 text-sm text-gray-800">{{ $absensi->id }}</td>
+                        <td class="py-4 px-4 text-sm text-gray-800">
+                            @if(isset($absensi->is_from_transaction))
+                                <span class="px-2 py-1 bg-blue-50 text-blue-600 rounded text-[10px] font-bold uppercase tracking-wider">System</span>
+                            @else
+                                {{ $absensi->id }}
+                            @endif
+                        </td>
                         <td class="py-4 px-4 text-sm font-medium text-gray-800">{{ $absensi->karyawan->nama }}</td>
                         <td class="py-4 px-4 text-sm text-gray-600">{{ date('d F Y', strtotime($absensi->tanggal)) }}</td>
                         <td class="py-4 px-4 text-sm text-gray-600">
-                            @if($absensi->transaksi_data && $absensi->transaksi_data->count() > 0)
+                            @if(isset($absensi->transaksi_data) && $absensi->transaksi_data->count() > 0)
                                 <div class="space-y-1">
                                     @foreach($absensi->transaksi_data as $transaksi)
-                                        <div class="text-xs">
-                                            <span class="font-medium">{{ $transaksi->layanan->nama }}</span>
-                                            <span class="text-gray-400">- {{ date('H:i', strtotime($transaksi->jam)) }}</span>
+                                        <div class="text-xs flex items-center gap-2">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-[#C48989]"></span>
+                                            <span class="font-medium text-gray-700">{{ $transaksi->layanan->nama ?? 'Walk-in' }}</span>
+                                            <span class="text-gray-400 text-[10px]">({{ date('H:i', strtotime($transaksi->jam)) }})</span>
                                         </div>
                                     @endforeach
                                 </div>
@@ -87,8 +94,13 @@
                                 <span class="text-gray-400">Tidak ada treatment</span>
                             @endif
                         </td>
-                        <td class="py-4 px-4 text-sm text-gray-600">{{ $absensi->total_transaksi ?? 0 }} transaksi</td>
+                        <td class="py-4 px-4 text-sm text-gray-600">
+                            <span class="px-3 py-1 bg-gray-100 rounded-full font-semibold text-gray-700">
+                                {{ $absensi->total_transaksi ?? 0 }} Transaksi
+                            </span>
+                        </td>
                         <td class="py-4 px-4">
+                            @if(!isset($absensi->is_from_transaction))
                             <div class="flex items-center space-x-2">
                                 <a href="{{ route('admin.absensi.edit', $absensi->id) }}" class="p-2 text-[#AB6F6E] hover:bg-[#F0D2D1] rounded-lg transition-colors">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,6 +117,9 @@
                                     </button>
                                 </form>
                             </div>
+                            @else
+                                <span class="text-xs text-gray-400 italic">Otomatis dari Transaksi</span>
+                            @endif
                         </td>
                     </tr>
                     @empty

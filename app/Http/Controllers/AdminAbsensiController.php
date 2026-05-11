@@ -14,28 +14,35 @@ class AdminAbsensiController extends Controller
         $tanggal = $request->get('tanggal', date('Y-m-d'));
         $karyawanId = $request->get('karyawan_id');
         
-        $query = Absensi::with(['karyawan', 'transaksis.layanan'])
-            ->where('tanggal', $tanggal);
+        // Get transactions grouped by karyawan
+        $transaksiQuery = Transaksi::with(['karyawan', 'layanan'])
+            ->whereDate('tanggal', $tanggal);
         
         if ($karyawanId) {
-            $query->where('karyawan_id', $karyawanId);
+            $transaksiQuery->where('karyawan_id', $karyawanId);
         }
         
-        $absensis = $query->orderBy('created_at', 'desc')->get();
+        $transaksisByKaryawan = $transaksiQuery->get()->groupBy('karyawan_id');
+        
+        $absensis = collect();
+        foreach ($transaksisByKaryawan as $id => $items) {
+            $karyawan = $items->first()->karyawan;
+            if (!$karyawan) continue;
+
+            $absensis->push((object)[
+                'id' => 'TRX-' . $id,
+                'karyawan' => $karyawan,
+                'tanggal' => $tanggal,
+                'transaksi_data' => $items,
+                'total_transaksi' => $items->count(),
+                'is_from_transaction' => true
+            ]);
+        }
+        
         $karyawans = Karyawan::where('status', 'aktif')->get();
         
-        // Get treatment data for each absensi
-        foreach ($absensis as $absensi) {
-            $transaksis = Transaksi::with('layanan')
-                ->where('karyawan_id', $absensi->karyawan_id)
-                ->whereDate('tanggal', $absensi->tanggal)
-                ->get();
-            $absensi->transaksi_data = $transaksis;
-            $absensi->total_transaksi = $transaksis->count();
-        }
-        
         return view('admin.pages.absensi.index', [
-            'title' => 'Absensi Karyawan',
+            'title' => 'Absensi Karyawan (Berdasarkan Transaksi)',
             'absensis' => $absensis,
             'karyawans' => $karyawans,
             'tanggal' => $tanggal,
