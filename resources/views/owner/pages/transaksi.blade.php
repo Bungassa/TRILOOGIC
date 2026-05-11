@@ -77,6 +77,10 @@
                 </tbody>
             </table>
         </div>
+        <!-- Pagination -->
+        <div class="mt-6">
+            {{ $transaksis->links() }}
+        </div>
     </div>
 </div>
 @endsection
