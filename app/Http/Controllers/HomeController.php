@@ -83,13 +83,18 @@ class HomeController extends Controller
                 'jam' => [
                     'required',
                     function ($attribute, $value, $fail) use ($request) {
+                        $inputTime = $value;
+                        if ($inputTime < '09:00' || $inputTime > '23:00') {
+                            $fail('Jam operasional kami adalah 09:00 - 23:00.');
+                            return;
+                        }
+
                         $inputDate = $request->tanggal;
                         $today = date('Y-m-d');
                         if ($inputDate === $today) {
-                            $inputTime = strtotime($value);
-                            $now = time();
+                            $now = date('H:i');
                             if ($inputTime < $now) {
-                                $fail('Waktu pemesanan tidak boleh sebelum waktu saat ini untuk hari yang sama.');
+                                $fail('Waktu pemesanan tidak boleh sebelum waktu saat ini.');
                             }
                         }
                     },
@@ -134,6 +139,24 @@ class HomeController extends Controller
         \Midtrans\Config::$isSanitized = config('services.midtrans.is_sanitized');
         \Midtrans\Config::$is3ds = config('services.midtrans.is_3ds');
 
+        $itemDetails = [
+            [
+                'id' => 'LYN-' . $layanan->id,
+                'price' => (int)$layanan->harga,
+                'quantity' => 1,
+                'name' => $layanan->nama,
+            ]
+        ];
+
+        if ($request->lokasi === 'rumah') {
+            $itemDetails[] = [
+                'id' => 'FEE-HOME',
+                'price' => 20000,
+                'quantity' => 1,
+                'name' => 'Ongkos Kirim (Home Service)',
+            ];
+        }
+
         $params = [
             'transaction_details' => [
                 'order_id' => 'TRX-' . $transaksi->id . '-' . time(),
@@ -143,14 +166,7 @@ class HomeController extends Controller
                 'first_name' => $request->nama,
                 'phone' => $request->telepon,
             ],
-            'item_details' => [
-                [
-                    'id' => $request->layanan,
-                    'price' => (int)$totalHarga,
-                    'quantity' => 1,
-                    'name' => $layanan->nama . ($request->lokasi === 'rumah' ? ' (Home Service)' : ''),
-                ]
-            ]
+            'item_details' => $itemDetails
         ];
 
         try {

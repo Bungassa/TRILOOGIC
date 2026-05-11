@@ -176,13 +176,6 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
-                    <!-- <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Lokasi</label>
-                        <select name="lokasi" id="lokasi_select" required onchange="toggleAlamat()" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
-                            <option value="tempat">Di Tempat</option>
-                            <option value="rumah">Di Rumah</option>
-                        </select>
-                    </div> -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Jam</label>
                         <input type="time" name="jam" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
@@ -191,20 +184,6 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal</label>
                         <input type="date" name="tanggal" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
                     </div>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                        <select name="status" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer">
-                            <option value="pending">Pending</option>
-                            <option value="dikerjakan">Dikerjakan</option>
-                            <option value="selesai">Selesai</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="alamat_field" class="hidden">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Alamat</label>
-                    <textarea name="alamat" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]" placeholder="Masukkan alamat lengkap"></textarea>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Catatan</label>

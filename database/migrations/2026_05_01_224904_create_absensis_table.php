@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('absensis', function (Blueprint $table) {
@@ -16,14 +13,11 @@ return new class extends Migration
             $table->foreignId('karyawan_id')->constrained('karyawans')->onDelete('cascade');
             $table->date('tanggal');
             $table->enum('status', ['hadir', 'sakit', 'izin', 'alpa'])->default('hadir');
-            $table->integer('lembur_jam')->default(0);
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('absensis');

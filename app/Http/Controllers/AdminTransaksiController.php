@@ -52,7 +52,6 @@ class AdminTransaksiController extends Controller
             'telepon' => 'required|string|max:20',
             'tanggal' => 'required|date',
             'jam' => 'required',
-            'status' => 'required|in:pending,dikerjakan,selesai',
             'catatan' => 'nullable|string',
             'karyawan_id' => 'required',
         ]);
@@ -69,18 +68,62 @@ class AdminTransaksiController extends Controller
         // Simpan transaksi ke database
         $transaksi = Transaksi::create([
             'nama' => $request->nama,
-            'email' => $request->email,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'telepon' => $request->telepon,
             'layanan_id' => $request->layanan_id,
-            'lokasi' => $request->lokasi,
-            'alamat' => $request->alamat,
+            'lokasi' => 'tempat',
+            'alamat' => null,
             'tanggal' => $request->tanggal,
             'jam' => $request->jam,
             'catatan' => $request->catatan,
             'total_harga' => $totalHarga,
-            'status' => $request->status,
+            'status' => 'pending',
             'karyawan_id' => $request->karyawan_id,
         ]);
+
+        // Sync with Midtrans if status is pending
+        if ($transaksi->status === 'pending') {
+            \Midtrans\Config::$serverKey = config('services.midtrans.server_key');
+            \Midtrans\Config::$isProduction = config('services.midtrans.is_production');
+            \Midtrans\Config::$isSanitized = config('services.midtrans.is_sanitized');
+            \Midtrans\Config::$is3ds = config('services.midtrans.is_3ds');
+
+            $params = [
+                'transaction_details' => [
+                    'order_id' => 'TRX-' . $transaksi->id . '-' . time(),
+                    'gross_amount' => (int)$totalHarga,
+                ],
+                'customer_details' => [
+                    'first_name' => $request->nama,
+                    'phone' => $request->telepon,
+                ],
+                'item_details' => [
+                    [
+                        'id' => 'LYN-' . $layanan->id,
+                        'price' => (int)$layanan->harga,
+                        'quantity' => 1,
+                        'name' => $layanan->nama,
+                    ]
+                ]
+            ];
+
+            if ($request->lokasi === 'rumah') {
+                $params['item_details'][] = [
+                    'id' => 'FEE-HOME',
+                    'price' => 20000,
+                    'quantity' => 1,
+                    'name' => 'Ongkos Kirim (Home Service)',
+                ];
+            }
+
+            try {
+                $snapToken = \Midtrans\Snap::getSnapToken($params);
+                $transaksi->snap_token = $snapToken;
+                $transaksi->save();
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error('Midtrans Error in Admin Store: ' . $e->getMessage());
+            }
+        }
 
         \App\Models\ActivityLog::log('Tambah Transaksi', 'Menambah transaksi baru untuk ' . $request->nama);
 

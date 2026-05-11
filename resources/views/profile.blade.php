@@ -698,12 +698,16 @@
                     }
 
                     timeout = setTimeout(() => {
-                        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=5`)
+                        // Restricted to Subang region using viewbox (107.50,-6.84, 107.96,-6.21)
+                        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}&viewbox=107.50,-6.21,107.96,-6.84&bounded=1&limit=5`)
                             .then(response => response.json())
                             .then(data => {
                                 searchResults.innerHTML = '';
                                 if (data.length > 0) {
                                     data.forEach(item => {
+                                        // Extra check to ensure "Subang" is in the display name
+                                        if (!item.display_name.toLowerCase().includes('subang')) return;
+                                        
                                         const div = document.createElement('div');
                                         div.className = 'search-result-item';
                                         div.innerText = item.display_name;
@@ -750,6 +754,14 @@
                     .then(data => {
                         if (data && data.display_name) {
                             const address = data.display_name;
+                            
+                            // Check if the address is within Subang
+                            if (!address.toLowerCase().includes('subang')) {
+                                document.getElementById('selected-address-text').innerHTML = '<span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Maaf, saat ini layanan kami hanya tersedia di wilayah Subang saja.</span>';
+                                document.getElementById('hidden_address_input').value = '';
+                                return;
+                            }
+
                             document.getElementById('selected-address-text').innerText = address;
                             document.getElementById('hidden_address_input').value = address;
                             

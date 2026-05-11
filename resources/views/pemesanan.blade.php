@@ -64,12 +64,22 @@
                       <span>Pemesan adalah pelanggan</span>
                     </label>
                   </div>
+                  
+                  @auth
+                  <div id="user-data-store" class="hidden" 
+                       data-user="{{ json_encode([
+                         'name' => Auth::user()->name,
+                         'jenis_kelamin' => Auth::user()->jenis_kelamin,
+                         'phone' => Auth::user()->phone
+                       ]) }}">
+                  </div>
+                  @endauth
                 </div>
 
                 <!-- Jenis Kelamin -->
                 <div class="pemesanan-form-group">
                   <label class="pemesanan-label">Jenis Kelamin</label>
-                  <select name="jenis_kelamin" required
+                  <select name="jenis_kelamin" id="jenis_kelamin_pelanggan" required
                           class="pemesanan-select">
                     <option value="">-- Pilih Jenis Kelamin --</option>
                     <option value="L">Laki-laki</option>
@@ -80,7 +90,7 @@
                 <!-- No. Telepon -->
                 <div class="pemesanan-form-group">
                   <label class="pemesanan-label">No. Telepon</label>
-                  <input type="tel" name="telepon" required
+                  <input type="tel" name="telepon" id="telepon_pelanggan" required
                          class="pemesanan-input"
                          placeholder="Masukkan nomor telepon">
                 </div>
@@ -117,9 +127,34 @@
                 <!-- Alamat (Dropdown jika pilih di rumah) -->
                 <div id="alamat_section" class="pemesanan-form-group pemesanan-hidden">
                   <label class="pemesanan-label">Alamat Lengkap</label>
-                  <textarea name="alamat" rows="3"
+                  
+                  @auth
+                  <div class="pemesanan-radio-group mb-3">
+                    <label class="pemesanan-radio-option">
+                      <input type="radio" name="pilihan_alamat" value="profil" id="pilih_alamat_profil" checked onchange="toggleTipeAlamat()">
+                      <span>Alamat Saya</span>
+                    </label>
+                    <label class="pemesanan-radio-option">
+                      <input type="radio" name="pilihan_alamat" value="baru" id="pilih_alamat_baru" onchange="toggleTipeAlamat()">
+                      <span>Alamat Lain</span>
+                    </label>
+                  </div>
+
+                  <div id="display_alamat_profil" class="p-3 bg-gray-50 rounded-xl border border-gray-100 mb-2">
+                    <p class="text-sm text-gray-700 italic">
+                      {{ Auth::user()->address ?? 'Anda belum mengatur alamat di profil.' }}
+                    </p>
+                    @if(!Auth::user()->address)
+                      <a href="{{ route('profile') }}#address" class="text-[10px] text-blue-600 underline">Atur alamat sekarang</a>
+                    @endif
+                  </div>
+                  @endauth
+
+                  <textarea name="alamat" id="alamat_textarea" rows="3"
                             class="pemesanan-textarea"
-                            placeholder="Masukkan alamat lengkap untuk home service"></textarea>
+                            placeholder="Masukkan alamat lengkap untuk home service"
+                            {{ Auth::check() ? 'style=display:none' : '' }}>{{ Auth::check() ? Auth::user()->address : '' }}</textarea>
+                  <p class="text-xs mt-1 text-gray-500"><i class="fa-solid fa-circle-info me-1"></i> Saat ini hanya melayani wilayah Subang.</p>
                 </div>
 
                 <!-- Tanggal -->
@@ -170,7 +205,7 @@
                       <span id="summary_jam" style="color: #18191d; font-weight: 600; font-size: 14px;">-</span>
                     </div>
                     <div id="biaya_tambahan_row" style="display: flex; justify-content: space-between; margin-bottom: 10px; display: none;">
-                      <span style="color: #666; font-size: 14px;">Biaya Home Service:</span>
+                      <span style="color: #666; font-size: 14px;">Ongkos Kirim (Home Service):</span>
                       <span style="color: #C48989; font-weight: 600; font-size: 14px;">Rp 20.000</span>
                     </div>
                     <div style="border-top: 2px solid #E6B6B5; margin: 15px 0;"></div>
@@ -198,16 +233,35 @@
       function toggleNamaPelanggan() {
         const isChecked = document.getElementById('pemesan_adalah_pelanggan').checked;
         const inputNama = document.getElementById('nama_pelanggan');
-        const inputNamaPemesan = document.querySelector('input[name="nama_pemesan"]');
+        const inputJK = document.getElementById('jenis_kelamin_pelanggan');
+        const inputTelp = document.getElementById('telepon_pelanggan');
 
         if (isChecked) {
-          inputNama.value = inputNamaPemesan ? inputNamaPemesan.value : '';
-          inputNama.setAttribute('readonly', 'readonly');
-          inputNama.style.backgroundColor = '#f8f9fa';
+          const userDataContainer = document.getElementById('user-data-store');
+          if (userDataContainer) {
+            const userData = JSON.parse(userDataContainer.getAttribute('data-user'));
+            inputNama.value = userData.name;
+            inputJK.value = userData.jenis_kelamin || '';
+            inputTelp.value = userData.phone;
+          }
+          
+          // Nama and Telp are readonly, but JK remains editable if not set
+          [inputNama, inputTelp].forEach(el => {
+            el.setAttribute('readonly', 'readonly');
+            el.style.backgroundColor = '#f8f9fa';
+          });
+          
+          // Keep JK editable as it's often missing from registration
+          inputJK.removeAttribute('readonly');
+          inputJK.style.pointerEvents = 'auto';
+          inputJK.style.backgroundColor = '';
         } else {
-          inputNama.value = '';
-          inputNama.removeAttribute('readonly');
-          inputNama.style.backgroundColor = '';
+          [inputNama, inputJK, inputTelp].forEach(el => {
+            el.value = '';
+            el.removeAttribute('readonly');
+            if(el.tagName === 'SELECT') el.style.pointerEvents = 'auto';
+            el.style.backgroundColor = '';
+          });
         }
       }
 
@@ -221,6 +275,22 @@
         } else {
           alamatSection.classList.remove('pemesanan-visible');
           alamatSection.classList.add('pemesanan-hidden');
+        }
+      }
+
+      function toggleTipeAlamat() {
+        const pilihProfil = document.getElementById('pilih_alamat_profil');
+        const displayProfil = document.getElementById('display_alamat_profil');
+        const textareaAlamat = document.getElementById('alamat_textarea');
+        
+        if (pilihProfil && pilihProfil.checked) {
+          if (displayProfil) displayProfil.style.display = 'block';
+          textareaAlamat.style.display = 'none';
+          textareaAlamat.value = "{{ Auth::check() ? Auth::user()->address : '' }}";
+        } else {
+          if (displayProfil) displayProfil.style.display = 'none';
+          textareaAlamat.style.display = 'block';
+          textareaAlamat.value = '';
         }
       }
 
@@ -302,28 +372,43 @@
         const todayStr = `${year}-${month}-${day}`;
         const currentTimeStr = now.toTimeString().split(' ')[0].substring(0, 5); // HH:mm
 
-        // Set min tanggal secara dinamis jika belum ada atau berubah hari
-        tanggalInput.setAttribute('min', todayStr);
+        // Jam Operasional
+        const opStart = "09:00";
+        const opEnd = "23:00";
 
-        if (!tanggalInput.value) return;
+        // Set batasan input
+        tanggalInput.setAttribute('min', todayStr);
+        jamInput.setAttribute('max', opEnd);
+
+        if (!tanggalInput.value) {
+          jamInput.setAttribute('min', opStart);
+          return;
+        }
 
         const selectedDate = tanggalInput.value;
 
         // Jika user memilih hari ini
         if (selectedDate === todayStr) {
-          jamInput.setAttribute('min', currentTimeStr);
+          // Min jam adalah yang terbesar antara jam buka (09:00) dan jam sekarang
+          const minTime = currentTimeStr > opStart ? currentTimeStr : opStart;
+          jamInput.setAttribute('min', minTime);
           
-          // Jika jam yang sudah dipilih sebelumnya ternyata lebih kecil dari jam sekarang
-          if (jamInput.value && jamInput.value < currentTimeStr) {
+          // Jika jam yang sudah dipilih ternyata di luar jangkauan
+          if (jamInput.value && (jamInput.value < minTime || jamInput.value > opEnd)) {
             jamInput.value = '';
+            updateSummary();
           }
         } else if (selectedDate < todayStr) {
-          // Jika user entah bagaimana memilih tanggal kemarin (misal copy-paste)
           tanggalInput.value = todayStr;
-          jamInput.setAttribute('min', currentTimeStr);
+          validateTime();
         } else {
-          // Jika memilih hari esok atau nanti, hapus batasan jam minimal
-          jamInput.removeAttribute('min');
+          // Jika hari esok/nanti, min jam tetap 09:00
+          jamInput.setAttribute('min', opStart);
+          
+          if (jamInput.value && (jamInput.value < opStart || jamInput.value > opEnd)) {
+            jamInput.value = '';
+            updateSummary();
+          }
         }
       }
 

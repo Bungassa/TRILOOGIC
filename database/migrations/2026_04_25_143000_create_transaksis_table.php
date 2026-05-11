@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('transaksis', function (Blueprint $table) {
@@ -27,13 +24,11 @@ return new class extends Migration
             $table->enum('status', ['pending', 'dikerjakan', 'selesai'])->default('pending');
             $table->enum('status_pembayaran', ['belum_bayar', 'lunas'])->default('belum_bayar');
             $table->string('snap_token')->nullable();
+            $table->foreignId('karyawan_id')->nullable()->constrained('karyawans')->onDelete('set null');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('transaksis');

@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             LayananSeeder::class,
             KaryawanSeeder::class,
             TransaksiSeeder::class,
-            PenggajianSeeder::class,
+            TransaksiTodaySeeder::class,
         ]);
     }
 }

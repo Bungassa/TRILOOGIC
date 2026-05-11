@@ -13,17 +13,17 @@ class AdminAbsensiController extends Controller
     {
         $tanggal = $request->get('tanggal', date('Y-m-d'));
         $karyawanId = $request->get('karyawan_id');
-        
+
         // Get transactions grouped by karyawan
         $transaksiQuery = Transaksi::with(['karyawan', 'layanan'])
             ->whereDate('tanggal', $tanggal);
-        
+
         if ($karyawanId) {
             $transaksiQuery->where('karyawan_id', $karyawanId);
         }
-        
+
         $transaksisByKaryawan = $transaksiQuery->get()->groupBy('karyawan_id');
-        
+
         $absensis = collect();
         foreach ($transaksisByKaryawan as $id => $items) {
             $karyawan = $items->first()->karyawan;
@@ -38,9 +38,9 @@ class AdminAbsensiController extends Controller
                 'is_from_transaction' => true
             ]);
         }
-        
+
         $karyawans = Karyawan::where('status', 'aktif')->get();
-        
+
         return view('admin.pages.absensi.index', [
             'title' => 'Absensi Karyawan (Berdasarkan Transaksi)',
             'absensis' => $absensis,
