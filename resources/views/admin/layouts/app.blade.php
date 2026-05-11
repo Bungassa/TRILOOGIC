@@ -24,9 +24,12 @@
 <body class="bg-gradient-to-br from-[#F0D2D1] via-[#E6B6B5] to-[#D79F9E]">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside class="w-72 bg-gradient-to-b from-[#AB6F6E] via-[#C48989] to-[#AB6F6E] shadow-2xl hidden lg:block">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-gradient-to-b from-[#AB6F6E] via-[#C48989] to-[#AB6F6E] shadow-2xl transform -translate-x-full lg:translate-x-0 lg:static lg:inset-auto transition-transform duration-300 ease-in-out">
             @include('admin.components.sidebar')
         </aside>
+
+        <!-- Overlay for mobile -->
+        <div id="sidebarOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
 
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden">
@@ -44,10 +47,13 @@
 
     <!-- Scripts -->
     <script>
-        // Simple toggle for mobile menu
+        // Toggle sidebar for mobile
         function toggleSidebar() {
-            const sidebar = document.querySelector('aside');
-            sidebar.classList.toggle('hidden');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
         }
     </script>
 </body>

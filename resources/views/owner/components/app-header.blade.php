@@ -2,6 +2,12 @@
 <div class="flex-shrink-0 flex h-16 bg-[#F0D2D1]/50 backdrop-blur-xl shadow-lg border-b border-[#E6B6B5]">
     <div class="flex-1 px-6 flex justify-between items-center">
         <div class="flex items-center space-x-4">
+            <!-- Mobile Toggle Button -->
+            <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-xl text-gray-700 hover:bg-[#E6B6B5]/50 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
             <h1 class="text-xl font-bold text-gray-800 tracking-tight">{{ $title ?? 'Dashboard' }}</h1>
             <span class="px-3 py-1 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white text-xs font-semibold rounded-full shadow-md">Owner</span>
         </div>

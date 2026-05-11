@@ -47,7 +47,7 @@
                     <div class="cs_register_form_wrapper">
                         <div class="cs_register_card bg-white cs_rounded_15 shadow-lg cs_pt_80 cs_pb_50 cs_pl_40 cs_pr_40">
                             <div class="cs_register_header text-center cs_mb_50 cs_mt_20">
-                                <h3 class="cs_fs_20 text-accent fw-normal cs_lh_base cs_mb_10">Buat Akun Baru</h3>
+                                <!-- <h3 class="cs_fs_20 text-accent fw-normal cs_lh_base cs_mb_10">Buat Akun Baru</h3> -->
                                 <h2 class="cs_fs_36 cs_fs_lg_30 m-0">Daftar Sekarang</h2>
                                 <p class="cs_fs_16 text-secondary cs_mt_10">Mulai perjalanan relaksasi Anda bersama Ekky Refleksi Family</p>
                             </div>
