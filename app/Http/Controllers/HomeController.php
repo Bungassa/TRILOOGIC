@@ -19,6 +19,9 @@ class HomeController extends Controller
                 ->count();
         }
 
+        $userName = \Illuminate\Support\Facades\Auth::check() ? \Illuminate\Support\Facades\Auth::user()->name : 'Guest';
+        \App\Models\ActivityLog::log('Kunjungan', "$userName mengunjungi halaman Beranda");
+
         return view('index', [
             'layanans' => $layanans, 
             'testimonis' => $testimonis,
@@ -28,6 +31,9 @@ class HomeController extends Controller
 
     public function service()
     {
+        $userName = \Illuminate\Support\Facades\Auth::check() ? \Illuminate\Support\Facades\Auth::user()->name : 'Guest';
+        \App\Models\ActivityLog::log('Kunjungan', "$userName mengunjungi halaman Layanan");
+
         $layanans = \App\Models\Layanan::all();
         return view('service', ['layanans' => $layanans]);
     }
@@ -43,6 +49,8 @@ class HomeController extends Controller
         if ($pendingTestimoni) {
             return redirect()->route('profile', ['#orders'])->with('error', 'Wajib memberikan testimoni untuk pesanan sebelumnya sebelum membuat pesanan baru.');
         }
+
+        \App\Models\ActivityLog::log('Kunjungan', \Illuminate\Support\Facades\Auth::user()->name . " mengunjungi halaman Pemesanan");
 
         $layanans = \App\Models\Layanan::all();
         return view('pemesanan', ['layanans' => $layanans]);
@@ -156,7 +164,7 @@ class HomeController extends Controller
         return redirect()->route('pemesanan.pembayaran', ['id' => $transaksi->id])->with('success', 'Pemesanan berhasil dibuat! Silahkan lakukan pembayaran.');
     }
 
-    public function pembayaran($id)
+    public function pembayaran(int $id)
     {
         $transaksi = \App\Models\Transaksi::with('layanan')->findOrFail($id);
         return view('pembayaran', ['transaksi' => $transaksi]);
@@ -164,7 +172,7 @@ class HomeController extends Controller
 
 
 
-    public function konfirmasiPembayaran($id)
+    public function konfirmasiPembayaran(int $id)
     {
         $transaksi = \App\Models\Transaksi::findOrFail($id);
         $transaksi->status_pembayaran = 'lunas';

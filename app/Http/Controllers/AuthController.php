@@ -30,6 +30,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             $user = Auth::user();
+            \App\Models\ActivityLog::log('Login', 'User ' . $user->name . ' masuk ke sistem');
 
             if ($user->role === 'admin') {
                 return redirect('/admin/dashboard')->with('success', 'Login berhasil! Selamat datang Admin.');
@@ -41,6 +42,8 @@ class AuthController extends Controller
         }
 
         // Jika login gagal, kembali ke halaman login dengan error
+        \App\Models\ActivityLog::log('Login Gagal', 'Percobaan login gagal dengan email: ' . $request->email);
+        
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ])->withInput($request->only('email'));
@@ -79,6 +82,10 @@ class AuthController extends Controller
     // Proses logout
     public function logout(Request $request)
     {
+        $user = Auth::user();
+        if ($user) {
+            \App\Models\ActivityLog::log('Logout', 'User ' . $user->name . ' keluar dari sistem');
+        }
         Auth::logout();
 
         $request->session()->invalidate();
@@ -112,7 +119,7 @@ class AuthController extends Controller
     }
 
     // Menampilkan halaman reset password
-    public function showResetPassword($token)
+    public function showResetPassword(string $token)
     {
         return view('reset-password', ['token' => $token]);
     }

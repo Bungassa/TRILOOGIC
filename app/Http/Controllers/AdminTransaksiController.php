@@ -13,7 +13,7 @@ class AdminTransaksiController extends Controller
         return view('admin.pages.transaksi.index', ['transaksis' => $transaksis]);
     }
 
-   public function updateStatus(Request $request, $id)
+   public function updateStatus(Request $request, int $id)
     {
         $transaksi = Transaksi::find($id);
 
@@ -38,6 +38,7 @@ class AdminTransaksiController extends Controller
         }
 
         $transaksi->save();
+        \App\Models\ActivityLog::log('Update Transaksi', 'Mengubah transaksi #' . $transaksi->id . ' (Status: ' . $transaksi->status . ')');
 
         return redirect()->route('admin.transaksi')
             ->with('success', 'Transaksi berhasil diperbarui');
@@ -66,7 +67,7 @@ class AdminTransaksiController extends Controller
         }
 
         // Simpan transaksi ke database
-        Transaksi::create([
+        $transaksi = Transaksi::create([
             'nama' => $request->nama,
             'email' => $request->email,
             'telepon' => $request->telepon,
@@ -80,6 +81,8 @@ class AdminTransaksiController extends Controller
             'status' => $request->status,
             'karyawan_id' => $request->karyawan_id,
         ]);
+
+        \App\Models\ActivityLog::log('Tambah Transaksi', 'Menambah transaksi baru untuk ' . $request->nama);
 
         return redirect()->route('admin.transaksi')->with('success', 'Transaksi berhasil ditambahkan');
     }

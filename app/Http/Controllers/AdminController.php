@@ -12,6 +12,7 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
+        \App\Models\ActivityLog::log('Kunjungan', \Illuminate\Support\Facades\Auth::user()->name . ' membuka Dashboard Admin');
         $totalLayanan = Layanan::count();
         $totalKaryawan = Karyawan::count();
         $totalTransaksi = Transaksi::count();
@@ -36,7 +37,12 @@ class AdminController extends Controller
 
     public function aktivitas()
     {
-        return view('admin.pages.aktivitas.index', ['title' => 'Log Aktivitas']);
+        \App\Models\ActivityLog::log('Kunjungan', \Illuminate\Support\Facades\Auth::user()->name . ' membuka Log Aktivitas');
+        $logs = \App\Models\ActivityLog::with('user')->latest()->paginate(25);
+        return view('admin.pages.aktivitas.index', [
+            'title' => 'Log Aktivitas',
+            'logs' => $logs
+        ]);
     }
 
     public function laporan(Request $request)
