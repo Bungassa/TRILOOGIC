@@ -18,6 +18,10 @@
   .cs_parallax_slider .swiper-wrapper {
     background-color: transparent !important;
   }
+  .cs_testimonial_slider .cs_slider_prev,
+  .cs_testimonial_slider .cs_slider_next {
+    display: none !important;
+  }
 </style>
 
 @if(isset($pendingTestimoniCount) && $pendingTestimoniCount > 0)
