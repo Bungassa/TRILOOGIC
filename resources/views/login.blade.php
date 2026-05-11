@@ -119,12 +119,6 @@
                                 
                                 <!-- Form Options -->
                                 <div class="cs_form_options d-flex align-items-center justify-content-between cs_mb_35 cs_pt_5">
-                                    <div class="cs_checkbox_wrapper d-flex align-items-center">
-                                        <input type="checkbox" name="remember" id="remember" class="cs_checkbox_input me-2">
-                                        <label for="remember" class="cs_checkbox_label cs_fs_14 text-secondary mb-0">
-                                            Ingat saya
-                                        </label>
-                                    </div>
                                     <a href="{{ route('password.request') }}" class="cs_forgot_link text-accent cs_fs_14 text-decoration-none fw-medium">
                                         Lupa password?
                                     </a>

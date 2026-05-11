@@ -39,12 +39,31 @@
                   </div>
                 @endif
 
-                <!-- Nama -->
+                <!-- Nama Pemesan -->
                 <div class="pemesanan-form-group">
-                  <label class="pemesanan-label">Nama Lengkap</label>
-                  <input type="text" name="nama" required
-                         class="pemesanan-input"
-                         placeholder="Masukkan nama lengkap">
+                  <label class="pemesanan-label">Nama Pemesan</label>
+                  <input type="text" name="nama_pemesan" readonly
+                         class="pemesanan-input" style="background-color: #f8f9fa;"
+                         value="{{ auth()->check() ? auth()->user()->name : '' }}">
+                </div>
+
+                <!-- Data Pelanggan -->
+                <div class="pemesanan-form-group" style="padding: 20px; border: 1px solid #eee; border-radius: 8px; background-color: #fafafa;">
+                  <label class="pemesanan-label" style="font-size: 18px; margin-bottom: 15px;">Data Pelanggan</label>
+                  
+                  <div id="nama_pelanggan_container" style="margin-bottom: 15px;">
+                    <label class="pemesanan-label" style="font-size: 14px; font-weight: normal; color: #666;">Nama Pelanggan 1</label>
+                    <input type="text" name="nama" id="nama_pelanggan" required
+                           class="pemesanan-input"
+                           placeholder="Masukkan nama pelanggan 1">
+                  </div>
+
+                  <div>
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #555; margin-bottom: 0;">
+                      <input type="checkbox" id="pemesan_adalah_pelanggan" onchange="toggleNamaPelanggan()" style="width: 18px; height: 18px; accent-color: #C48989;">
+                      <span>Pemesan adalah pelanggan</span>
+                    </label>
+                  </div>
                 </div>
 
                 <!-- Jenis Kelamin -->
@@ -176,6 +195,22 @@
     <!-- End Penawaran Section -->
 
     <script>
+      function toggleNamaPelanggan() {
+        const isChecked = document.getElementById('pemesan_adalah_pelanggan').checked;
+        const inputNama = document.getElementById('nama_pelanggan');
+        const inputNamaPemesan = document.querySelector('input[name="nama_pemesan"]');
+
+        if (isChecked) {
+          inputNama.value = inputNamaPemesan ? inputNamaPemesan.value : '';
+          inputNama.setAttribute('readonly', 'readonly');
+          inputNama.style.backgroundColor = '#f8f9fa';
+        } else {
+          inputNama.value = '';
+          inputNama.removeAttribute('readonly');
+          inputNama.style.backgroundColor = '';
+        }
+      }
+
       function toggleAlamat() {
         const lokasiRumah = document.getElementById('lokasi_rumah');
         const alamatSection = document.getElementById('alamat_section');

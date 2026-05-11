@@ -9,7 +9,7 @@
 @if(isset($pendingTestimoniCount) && $pendingTestimoniCount > 0)
     <div class="testimoni-reminder-sticky" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; max-width: 320px;">
         <div class="alert alert-warning border-0 shadow-lg d-flex align-items-center mb-0" style="border-radius: 15px; background: white; border-left: 5px solid #C48989 !important;">
-            <div class="me-3 fs-3 text-warning">
+            <div class="me-3 fs-3" style="color: #C48989;">
                 <i class="fa-solid fa-star-half-stroke"></i>
             </div>
             <div>
@@ -82,93 +82,6 @@
 
         </div>
 
-        <div class="swiper-slide">
-
-          <div class="cs_hero cs_style_1 d-flex align-items-center justify-content-center background-filled position-relative overflow-hidden">
-
-            <figure class="cs_swiper_parallax_bg" data-src="{{ asset('assets/img/hero_slider_2.jpeg') }}">
-
-              <img src="{{ asset('assets/img/hero_slider_2.jpeg') }}" alt="Slider" class="cs_entity_img">
-
-              <div class="bg-primary opacity-75 position-absolute w-100 h-100 start-0 top-0"></div>
-
-            </figure>
-
-            <div class="container">
-
-              <div class="cs_hero_text position-relative cs_zindex_5 d-inline-block">
-
-                <h2 class="text-white cs_mb_5 fw-normal cs_fs_18">This Week Only for World Premier</h2>
-
-                <h1 class="text-white cs_mb_16 cs_fs_60 cs_fs_lg_46">
-
-                  Inventive and interested <br>in innovation
-
-                </h1>
-
-                <p class="text-white cs_mb_20">
-
-                  I have been a loyal customer of this auto parts company for years and I cannot <br>recommend them enough. Their extensive selection of high-quality parts and <br> accessories.
-
-                </p>
-
-                <div class="cs_hero_btn">
-
-                  <a href="{{ route('pemesanan') }}" class="cs_btn cs_style_1 cs_fs_16 cs_rounded_5 cs_pl_30 cs_pr_30 cs_pt_10 cs_pb_10 overflow-hidden"><span>Dapatkan penawaran</span></a>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="swiper-slide">
-
-          <div class="cs_hero cs_style_1 d-flex align-items-center justify-content-center background-filled position-relative overflow-hidden">
-
-            <figure class="cs_swiper_parallax_bg" data-src="{{ asset('assets/img/hero_slider_3.jpeg') }}">
-
-              <img src="{{ asset('assets/img/hero_slider_3.jpeg') }}" alt="Slider" class="cs_entity_img">
-
-              <div class="bg-primary opacity-75 position-absolute w-100 h-100 start-0 top-0"></div>
-
-            </figure>
-
-            <div class="container">
-
-              <div class="cs_hero_text position-relative cs_zindex_5 d-inline-block">
-
-                <h2 class="text-white cs_mb_5 fw-normal cs_fs_18">This Week Only for World Premier</h2>
-
-                <h1 class="text-white cs_mb_16 cs_fs_60 cs_fs_lg_46">
-
-                  Inventive and interested <br>in innovation
-
-                </h1>
-
-                <p class="text-white cs_mb_20">
-
-                  I have been a loyal customer of this auto parts company for years and I cannot <br>recommend them enough. Their extensive selection of high-quality parts and <br> accessories.
-
-                </p>
-
-                <div class="cs_hero_btn">
-
-                  <a href="{{ route('pemesanan') }}" class="cs_btn cs_style_1 cs_fs_16 cs_rounded_5 cs_pl_30 cs_pr_30 cs_pt_10 cs_pb_10 overflow-hidden"><span>Dapatkan penawaran</span></a>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
 
       </div>
 
@@ -192,7 +105,7 @@
 
               <stop offset="0" stop-color="#D9D9D9" stop-opacity="0" />
 
-              <stop offset="1" stop-color="#E9A132" />
+              <stop offset="1" stop-color="#C48989" />
 
             </linearGradient>
 
@@ -214,7 +127,7 @@
 
               <stop offset="0.0457759" stop-color="#18191D" stop-opacity="0" />
 
-              <stop offset="0.514455" stop-color="#FEC63F" stop-opacity="0.35" />
+              <stop offset="0.514455" stop-color="#C48989" stop-opacity="0.35" />
 
             </linearGradient>
 
@@ -248,37 +161,37 @@
 
   <div class="cs_moving_text cs_fs_30 cs_fs_lg_26 d-flex align-items-center text-nowrap">
 
-    <span>* Ekky Family Refleksi</span>
+    <span>Ekky Family Refleksi</span>
 
-    <span>* EkkyFam Smart Service</span>
+    <span>EkkyFam Smart Service</span>
 
-    <span>* Ekky Family Refleksi </span>
+    <span>Ekky Family Refleksi </span>
 
-    <span>* EkkyFam Smart Service</span>
-
-  </div>
-
-  <div class="cs_moving_text cs_fs_30 d-flex align-items-center text-nowrap">
-
-    <span>* Ekky Family Refleksi</span>
-
-    <span>* EkkyFam Smart Service</span>
-
-    <span>* Ekky Family Refleksi </span>
-
-    <span>* EkkyFam Smart Service</span>
+    <span>EkkyFam Smart Service</span>
 
   </div>
 
   <div class="cs_moving_text cs_fs_30 d-flex align-items-center text-nowrap">
 
-    <span>* Ekky Family Refleksi</span>
+    <span>Ekky Family Refleksi</span>
 
-    <span>* EkkyFam Smart Service</span>
+    <span>EkkyFam Smart Service</span>
 
-    <span>* Ekky Family Refleksi </span>
+    <span>Ekky Family Refleksi </span>
 
-    <span>* Ekky Family Refleksi</span>
+    <span>EkkyFam Smart Service</span>
+
+  </div>
+
+  <div class="cs_moving_text cs_fs_30 d-flex align-items-center text-nowrap">
+
+    <span>Ekky Family Refleksi</span>
+
+    <span>EkkyFam Smart Service</span>
+
+    <span>Ekky Family Refleksi </span>
+
+    <span>Ekky Family Refleksi</span>
 
   </div>
 
@@ -322,7 +235,7 @@
 
         <div class="cs_service cs_style_1 cs_pt_25 cs_pl_25 cs_pr_25 cs_pb_15 bg-white cs_transition_4 shadow h-100 d-flex flex-column">
 
-          <h2 class="cs_lh_base cs_fs_20 cs_fs_lg_18 m-0 mb-4"><a href="{{ url('services-details') }}" class="inline-block">{{ $layanan->nama }}</a></h2>
+          <h2 class="cs_lh_base cs_fs_20 cs_fs_lg_18 m-0 mb-4">{{ $layanan->nama }}</h2>
 
           <p class="cs_mb_24 flex-grow-1">{{ $layanan->deskripsi }}</p>
 
@@ -331,16 +244,6 @@
           </div>
 
           <div class="cs_service_thumb position-relative cs_rounded_5 mt-auto">
-
-            <a href="{{ url('services-details') }}" class="cs_service_btn d-flex align-items-center justify-content-center rounded-circle position-absolute text-white">
-
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-                <path d="M20.8491 11.347C20.855 11.3381 20.8602 11.3289 20.8656 11.3198C20.8706 11.3114 20.8759 11.3032 20.8805 11.2946C20.8855 11.2853 20.8897 11.2757 20.8942 11.2663C20.8984 11.2573 20.9029 11.2484 20.9067 11.2392C20.9105 11.23 20.9136 11.2206 20.9169 11.2113C20.9205 11.2014 20.9243 11.1916 20.9274 11.1814C20.9302 11.1721 20.9322 11.1626 20.9346 11.1532C20.9372 11.1429 20.9401 11.1327 20.9422 11.1222C20.9444 11.1113 20.9456 11.1003 20.9472 11.0894C20.9485 11.0801 20.9503 11.0711 20.9512 11.0617C20.9532 11.0415 20.9543 11.0213 20.9543 11.001C20.9543 11.0007 20.9543 11.0004 20.9543 11.0001C20.9543 10.9998 20.9543 10.9994 20.9543 10.9991C20.9542 10.9789 20.9532 10.9586 20.9512 10.9384C20.9503 10.929 20.9485 10.92 20.9472 10.9108C20.9456 10.8998 20.9444 10.8888 20.9422 10.8779C20.9401 10.8674 20.9372 10.8572 20.9346 10.8469C20.9322 10.8375 20.9302 10.828 20.9274 10.8187C20.9243 10.8086 20.9205 10.7988 20.9169 10.7889C20.9136 10.7795 20.9105 10.7701 20.9067 10.7609C20.9029 10.7517 20.8984 10.7428 20.8941 10.7338C20.8897 10.7244 20.8855 10.7148 20.8805 10.7055C20.8759 10.6969 20.8706 10.6887 20.8656 10.6803C20.8602 10.6712 20.855 10.662 20.8491 10.6531C20.8428 10.6438 20.8359 10.635 20.8292 10.6261C20.8237 10.6187 20.8186 10.6112 20.8127 10.604C20.7996 10.588 20.7858 10.5727 20.7713 10.5581L15.026 4.81285C14.7819 4.56877 14.3862 4.56877 14.1421 4.81285C13.898 5.05692 13.898 5.45264 14.1421 5.69672L18.8204 10.375L0.88388 10.375C0.53871 10.375 0.258878 10.6548 0.258878 11C0.258878 11.3452 0.53871 11.625 0.88388 11.625L18.8204 11.625L14.1421 16.3033C13.8981 16.5474 13.8981 16.9431 14.1421 17.1872C14.3862 17.4312 14.7819 17.4313 15.026 17.1872L20.7713 11.442C20.7858 11.4274 20.7996 11.4121 20.8127 11.3962C20.8186 11.389 20.8237 11.3814 20.8292 11.374C20.8359 11.3651 20.8428 11.3563 20.8491 11.347Z" fill="currentColor" />
-
-              </svg>
-
-            </a>
 
             @if($layanan->gambar)
               @php
@@ -440,19 +343,16 @@
           </div>
 
           <div class="d-flex align-items-center cs_row_gap_20 cs_column_gap_30 cs_column_gap_lg_20 flex-wrap">
-
-            <a href="{{ route('pemesanan') }}" class="cs_btn cs_style_1 cs_fs_16 cs_rounded_5 cs_pl_30 cs_pr_30 cs_pt_10 cs_pb_10 overflow-hidden"><span>Pesan Sekarang</span></a>
-
-            <a href="https://www.instagram.com/reel/DXLrXlpEjvp/?igsh=MXF4dGFydTZubHA3MQ" class="cs_video_open cs_player_btn_wrap">
-              <span class="cs_player_btn cs_width_45 cs_height_45 rounded-circle d-flex align-items-center justify-content-center text-white bg-primary position-relative cs_pl_5">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1.71401 16C1.61636 16 1.51868 15.9748 1.43054 15.9246C1.25251 15.8231 1.14258 15.6339 1.14258 15.4285V0.570579C1.14258 0.365193 1.25251 0.176009 1.43054 0.0744495C1.61022 -0.026561 1.82844 -0.0243301 2.00475 0.0783627L14.5762 7.50735C14.7503 7.6106 14.8569 7.79755 14.8569 7.99957C14.8569 8.20159 14.7503 8.38855 14.5762 8.49179L2.00475 15.9207C1.9149 15.9732 1.81443 16 1.71401 16ZM2.28544 1.57172V14.4274L13.1621 7.99957L2.28544 1.57172Z" fill="white" />
-                </svg>
-              </span>
-              <span class="cs_ml_15">Tonton Video</span>
-            </a>
-
-          </div>
+                <a href="{{ url('pemesanan') }}" class="cs_btn cs_style_1 cs_fs_16 cs_rounded_5 cs_pl_30 cs_pr_30 cs_pt_10 cs_pb_10 overflow-hidden"><span>Pesan Sekarang</span></a>
+                <a href="https://www.instagram.com/reel/DSZ-U3FE7_O/?igsh=eWN1eGEydjNvZGVm" target="_blank" rel="noopener noreferrer" class="d-flex align-items-center">
+                  <span class="cs_player_btn cs_width_45 cs_height_45 rounded-circle d-flex align-items-center justify-content-center text-white bg-primary position-relative cs_pl_5">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1.71401 16C1.61636 16 1.51868 15.9748 1.43054 15.9246C1.25251 15.8231 1.14258 15.6339 1.14258 15.4285V0.570579C1.14258 0.365193 1.25251 0.176009 1.43054 0.0744495C1.61022 -0.026561 1.82844 -0.0243301 2.00475 0.0783627L14.5762 7.50735C14.7503 7.6106 14.8569 7.79755 14.8569 7.99957C14.8569 8.20159 14.7503 8.38855 14.5762 8.49179L2.00475 15.9207C1.9149 15.9732 1.81443 16 1.71401 16ZM2.28544 1.57172V14.4274L13.1621 7.99957L2.28544 1.57172Z" fill="white"/>
+                    </svg>   
+                  </span>
+                  <span class="cs_ml_15">Lihat Video</span>               
+                </a>
+           </div>
 
         </div>
 
@@ -498,11 +398,11 @@
 
             <div class="cs_section_heading_in">
 
-              <h3 class="cs_fs_20 cs_fs_lg_18 text-accent fw-normal cs_lh_base cs_mb_10 wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.2s">Keanapa Memilih Kami?</h3>
+              <h3 class="cs_fs_20 cs_fs_lg_18 text-accent fw-normal cs_lh_base cs_mb_10 wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.2s">Kenapa Memilih Kami?</h3>
 
               <h2 class="cs_fs_48 cs_fs_lg_36 cs_mb_20 text-white">Pilihan terbaik <span class="text-accent">untuk <br>relaksasi</span> dan kesehatan <br>tubuh anda</h2>
 
-              <p class="text-white m-0">Kami mengutamakan kenyamanan dan kepuasan pelanggan dengan layanan dari terapis berpengalaman <br> Didukung suasana yang bersih dan tenang untuk <br> content, such as logos, brochures, infographics.</p>
+              <p class="text-white m-0">Kami mengutamakan kenyamanan dan kepuasan pelanggan dengan layanan dari terapis berpengalaman <br> Didukung suasana yang bersih dan tenang untuk memberikan pengalaman relaksasi terbaik</p>
 
             </div>
 
