@@ -657,7 +657,7 @@ label {
   width: 100%;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(24, 25, 29, 0.6);
 }
 @media (max-width: 991px) {
   .cs_page_header {
