@@ -56,7 +56,6 @@
             <table class="w-full">
                 <thead>
                     <tr class="border-b border-gray-200">
-                        <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">ID</th>
                         <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Nama Karyawan</th>
                         <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Tanggal Kehadiran</th>
                         <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Treatment yang Dikerjakan</th>
@@ -66,13 +65,6 @@
                 <tbody>
                     @forelse($absensis as $absensi)
                     <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                        <td class="py-4 px-4 text-sm text-gray-800">
-                            @if(isset($absensi->is_from_transaction))
-                                <span class="px-2 py-1 bg-blue-50 text-blue-600 rounded text-[10px] font-bold uppercase tracking-wider">System</span>
-                            @else
-                                {{ $absensi->id }}
-                            @endif
-                        </td>
                         <td class="py-4 px-4 text-sm font-medium text-gray-800">{{ $absensi->karyawan->nama }}</td>
                         <td class="py-4 px-4 text-sm text-gray-600">{{ date('d F Y', strtotime($absensi->tanggal)) }}</td>
                         <td class="py-4 px-4 text-sm text-gray-600">
@@ -98,7 +90,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5" class="py-12 text-center text-gray-500">
+                        <td colspan="4" class="py-12 text-center text-gray-500">
                             Tidak ada data absensi pada tanggal ini
                         </td>
                     </tr>

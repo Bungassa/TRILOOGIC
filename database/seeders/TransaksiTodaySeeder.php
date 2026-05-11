@@ -19,7 +19,7 @@ class TransaksiTodaySeeder extends Seeder
             return;
         }
 
-        $names = ['Budi', 'Siti', 'Agus', 'Dewi', 'Joko'];
+        $names = ['Diana', 'Diva Inzyra', 'Dezan', 'Bunga'];
         $today = Carbon::today()->toDateString();
 
         foreach ($karyawans as $index => $karyawan) {
