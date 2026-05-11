@@ -27,26 +27,51 @@
            </div>
            <div class="cs_main_header_right">
              <div class="cs_toolbox">
-               @auth
-               <div class="d-flex align-items-center gap-3">
-                 <a href="{{ route('profile') }}" class="text-white d-flex align-items-center gap-2 text-decoration-none">
-                   <i class="fa-solid fa-user-circle fs-5"></i>
-                   <span class="cs_fs_14">Profil</span>
-                 </a>
-                 <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                   @csrf
-                   <button type="submit" class="cs_btn cs_style_1 cs_fs_14 cs_rounded_5 cs_pl_20 cs_pr_20 cs_pt_8 cs_pb_8 overflow-hidden border-0">
-                     <span>Keluar</span>
-                   </button>
-                 </form>
-               </div>
-               @else
-               <a href="{{ url('login') }}" class="cs_btn cs_style_1 cs_fs_14 cs_rounded_5 cs_pl_20 cs_pr_20 cs_pt_8 cs_pb_8 overflow-hidden">
-                 <span>Masuk</span>
-               </a>
-               @endauth
+                @auth
+                <button class="cs_btn cs_style_1 cs_fs_14 cs_rounded_5 cs_pl_15 cs_pr_15 cs_pt_10 cs_pb_10 overflow-hidden border-0 d-flex align-items-center gap-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                  <i class="fa-solid fa-user-gear fs-4"></i>
+                  <span class="d-none d-lg-inline">{{ Auth::user()->name }}</span>
+                </button>
+                @else
+                <a href="{{ url('login') }}" class="cs_btn cs_style_1 cs_fs_14 cs_rounded_5 cs_pl_20 cs_pr_20 cs_pt_8 cs_pb_8 overflow-hidden">
+                  <span>Masuk</span>
+                </a>
+                @endauth
 
-               <div class="cs_header_contact">
+                <!-- Offcanvas Sidebar -->
+                <div class="offcanvas offcanvas-end border-0" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="background: #18191D; width: 300px;">
+                  <div class="offcanvas-header border-bottom border-secondary border-opacity-25 p-4">
+                    <h5 class="offcanvas-title text-white fw-bold d-flex align-items-center gap-2" id="offcanvasNavbarLabel">
+                      <i class="fa-solid fa-circle-user text-accent fs-3" style="color: #C48989;"></i>
+                      <span>{{ Auth::user()->name }}</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body p-0">
+                    @auth
+                    <ul class="list-unstyled mt-3">
+                      <li>
+                        <a href="{{ route('profile') }}" class="sidebar-link d-flex align-items-center gap-3 px-4 py-3 text-white text-decoration-none">
+                          <i class="fa-solid fa-user-gear opacity-75"></i>
+                          <span>Pengaturan Profil</span>
+                        </a>
+                      </li>
+                    </ul>
+
+                    <div class="position-absolute bottom-0 w-100 p-4 border-top border-secondary border-opacity-10">
+                      <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn w-100 py-3 d-flex align-items-center justify-content-center gap-2 fw-bold" style="background: rgba(196, 137, 137, 0.1); color: #C48989; border-radius: 12px; border: 1px solid rgba(196, 137, 137, 0.2);">
+                          <i class="fa-solid fa-right-from-bracket"></i>
+                          <span>Keluar Akun</span>
+                        </button>
+                      </form>
+                    </div>
+                    @endauth
+                  </div>
+                </div>
+
+                <div class="cs_header_contact">
                  <div class="cs_header_contact_icon text-accent">
                    <svg width="35" height="36" viewBox="0 0 35 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <g clip-path="url(#clip0_81_254)">
@@ -72,6 +97,16 @@
      </div>
    </header>
    <!-- End Header Section -->
+
+    <style>
+      .sidebar-link:hover {
+        background-color: rgba(196, 137, 137, 0.1) !important;
+        color: #C48989 !important;
+      }
+      .sidebar-link i {
+        color: #C48989;
+      }
+    </style>
 
    @if(!Request::is('/') && !Request::is('index'))
    <!-- Start Page Header -->
