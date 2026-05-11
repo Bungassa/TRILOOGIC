@@ -6,6 +6,20 @@
 
 <x-header />
 
+<style>
+  /* Fix sub-pixel rendering gap (garis hitam) on Swiper Slider */
+  .swiper-slide {
+    margin-right: -1px !important;
+  }
+  .cs_hero .cs_swiper_parallax_bg {
+    width: calc(100% + 2px) !important;
+    left: -1px !important;
+  }
+  .cs_parallax_slider .swiper-wrapper {
+    background-color: transparent !important;
+  }
+</style>
+
 @if(isset($pendingTestimoniCount) && $pendingTestimoniCount > 0)
     <div class="testimoni-reminder-sticky" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; max-width: 320px;">
         <div class="alert alert-warning border-0 shadow-lg d-flex align-items-center mb-0" style="border-radius: 15px; background: white; border-left: 5px solid #C48989 !important;">
@@ -34,11 +48,11 @@
 
   <div class="cs_swiper_parallax_slider_wrap">
 
-    <div class="cs_parallax_slider loading">
+    <div class="cs_parallax_slider_disabled">
 
       <div class="swiper-wrapper">
 
-        <div class="swiper-slide">
+        <div class="swiper-slide swiper-slide-active" style="width: 100%;">
 
           <div class="cs_hero cs_style_1 d-flex align-items-center justify-content-center background-filled position-relative overflow-hidden">
 
@@ -384,7 +398,7 @@
 
 <!-- Start Why Choose Us -->
 
-<section class="position-relative cs_iconbox_2_wrap cs_pt_135 cs_pt_lg_75 cs_pb_100 cs_pb_lg_40 overflow-hidden">
+<section class="position-relative cs_iconbox_2_wrap cs_pt_135 cs_pt_lg_75 cs_pb_100 cs_pb_lg_40 overflow-hidden" style="background-color: #18191D;">
 
   <div class="container">
 
@@ -582,7 +596,7 @@
 
   </div>
 
-  <div class="cs_iconbox_left-img position-absolute bottom-0 start-0 h-100 background-filled" data-src="{{ asset('assets/img/why_choose_us_left_img.jpeg') }}"></div>
+
 
   <div class="cs_iconbox_right-img position-absolute cs_zindex_1 bottom-0 end-0 background-filled" data-src="{{ asset('assets/img/why_choose_us_right_img.jpeg') }}"></div>
 
