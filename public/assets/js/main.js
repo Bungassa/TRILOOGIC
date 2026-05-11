@@ -257,14 +257,27 @@
       $('.cs_testimonial_slider').each(function () {
         var $slickActive = $(this).find('.cs_slider_activate');
         $slickActive.slick({
-          slidesToShow: 4,
+          slidesToShow: 3,
           infinite: true,
           slidesToScroll: 1,
-          variableWidth: true,
           autoplay: true,
           autoplaySpeed: 3000,
-          prevArrow: $(this).find('.cs_slider_prev'),
-          nextArrow: $(this).find('.cs_slider_next'),
+          speed: 1000,
+          arrows: false,
+          responsive: [
+            {
+              breakpoint: 1199,
+              settings: {
+                slidesToShow: 2,
+              },
+            },
+            {
+              breakpoint: 767,
+              settings: {
+                slidesToShow: 1,
+              },
+            },
+          ],
         });
       });
     }

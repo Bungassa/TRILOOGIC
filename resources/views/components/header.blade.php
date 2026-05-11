@@ -30,7 +30,7 @@
                 @auth
                 <button class="cs_btn cs_style_1 cs_fs_14 cs_rounded_5 cs_pl_15 cs_pr_15 cs_pt_10 cs_pb_10 overflow-hidden border-0 d-flex align-items-center gap-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                   <i class="fa-solid fa-user-gear fs-4"></i>
-                  <span class="d-none d-lg-inline">{{ Auth::user()->name }}</span>
+                  <!-- <span class="d-none d-lg-inline">{{ Auth::user()->name }}</span> -->
                 </button>
                 @else
                 <a href="{{ url('login') }}" class="cs_btn cs_style_1 cs_fs_14 cs_rounded_5 cs_pl_20 cs_pr_20 cs_pt_8 cs_pb_8 overflow-hidden">

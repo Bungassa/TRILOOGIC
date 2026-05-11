@@ -700,20 +700,6 @@
                 </div>
               </div>
               @endforeach
-            @else
-              <div class="cs_slide">
-                <div class="cs_testimonial cs_style_1 cs_pt_20">
-                  <div class="cs_testimonial_in bg-white shadow-sm cs_pl_30 cs_pr_30 cs_pb_27 cs_pt_1 cs_rounded_10">
-                    <div class="cs_testimonial_img cs_mb_15"><img src="{{ asset('assets/img/avatar_1.png') }}" alt="Avatar" class="cs_height_75 cs_width_75 rounded-circle mx-auto d-block"></div>
-                    <div class="cs_rating text-accent cs_mb_15 text-center" data-rating="5">
-                      <div class="cs_rating_percentage mx-auto"></div>
-                    </div>
-                    <p class="cs_mb_14 text-center">Layanan yang luar biasa! Sangat membantu merilekskan tubuh setelah seharian bekerja.</p>
-                    <h3 class="cs_fs_18 cs_mb_2 cs_lh_base text-center">Pelanggan Setia</h3>
-                    <p class="m-0 cs_fs_14 cs_lh_base text-center">Family Refleksi</p>
-                  </div>
-                </div>
-              </div>
             @endif
 
           </div>
