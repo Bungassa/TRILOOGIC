@@ -30,7 +30,7 @@
 
 <!-- Start Hero -->
 
-<section class="cs_hero_1-wrap position-relative cs_hero_slider bg-bl">
+<section class="cs_hero_1-wrap position-relative cs_hero_slider" style="background-color: transparent;">
 
   <div class="cs_swiper_parallax_slider_wrap">
 
