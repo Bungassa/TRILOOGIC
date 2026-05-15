@@ -38,6 +38,21 @@ class AdminTransaksiController extends Controller
         }
 
         $transaksi->save();
+
+        // Automatically create payroll record if transaction is completed and paid
+        if ($transaksi->status === 'selesai' && $transaksi->status_pembayaran === 'lunas' && $transaksi->karyawan_id) {
+            \App\Models\Penggajian::updateOrCreate(
+                ['transaksi_id' => $transaksi->id],
+                [
+                    'karyawan_id' => $transaksi->karyawan_id,
+                    'layanan_id' => $transaksi->layanan_id,
+                    'upah_karyawan' => $transaksi->total_harga / 2,
+                    'pendapatan_owner' => $transaksi->total_harga / 2,
+                    'status_pembayaran' => 'pending'
+                ]
+            );
+        }
+
         \App\Models\ActivityLog::log('Update Transaksi', 'Mengubah transaksi #' . $transaksi->id . ' (Status: ' . $transaksi->status . ')');
 
         return redirect()->route('admin.transaksi')

@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('penggajians');
+        
         Schema::create('penggajians', function (Blueprint $table) {
             $table->id();
             $table->foreignId('karyawan_id')->constrained('karyawans')->onDelete('cascade');
-            $table->string('bulan');
-            $table->string('tahun');
-            $table->decimal('gaji_pokok', 15, 2);
-            $table->decimal('bonus', 15, 2)->default(0);
-            $table->decimal('potongan', 15, 2)->default(0);
-            $table->decimal('total_gaji', 15, 2);
-            $table->string('status_pembayaran')->default('pending'); // pending, dibayar
+            $table->foreignId('layanan_id')->constrained('layanans')->onDelete('cascade');
+            $table->foreignId('transaksi_id')->constrained('transaksis')->onDelete('cascade');
+            $table->decimal('upah_karyawan', 15, 2);
+            $table->decimal('pendapatan_owner', 15, 2);
+            $table->enum('status_pembayaran', ['pending', 'dibayar'])->default('pending');
             $table->date('tanggal_bayar')->nullable();
             $table->timestamps();
         });

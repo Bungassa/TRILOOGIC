@@ -93,6 +93,11 @@ Route::middleware(['auth', 'role:owner'])->prefix('owner')->group(function () {
     Route::get('/admins', [App\Http\Controllers\OwnerController::class, 'adminIndex'])->name('owner.admins');
     Route::post('/admins', [App\Http\Controllers\OwnerController::class, 'adminStore'])->name('owner.admins.store');
     Route::delete('/admins/{id}', [App\Http\Controllers\OwnerController::class, 'adminDestroy'])->name('owner.admins.destroy');
+
+    // Penggajian
+    Route::get('/penggajian', [App\Http\Controllers\OwnerController::class, 'penggajian'])->name('owner.penggajian');
+    Route::get('/penggajian/{id}', [App\Http\Controllers\OwnerController::class, 'penggajianDetail'])->name('owner.penggajian.detail');
+    Route::put('/penggajian/{id}/approve', [App\Http\Controllers\OwnerController::class, 'penggajianApprove'])->name('owner.penggajian.approve');
     
     Route::get('/', function () {
         return redirect()->route('owner.dashboard');

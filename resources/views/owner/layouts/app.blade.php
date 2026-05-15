@@ -19,6 +19,8 @@
             font-family: 'Inter', sans-serif;
         }
     </style>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-gradient-to-br from-[#F0D2D1] via-[#E6B6B5] to-[#D79F9E]">
@@ -56,6 +58,21 @@
             overlay.classList.toggle('hidden');
         }
     </script>
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: "{!! addslashes(session('success')) !!}",
+                confirmButtonColor: '#AB6F6E',
+                background: '#ffffff',
+                customClass: {
+                    popup: 'rounded-3xl border border-gray-100 shadow-2xl',
+                    confirmButton: 'rounded-2xl px-8 py-3 font-bold uppercase text-xs tracking-widest'
+                }
+            });
+        </script>
+    @endif
 </body>
 
 </html>

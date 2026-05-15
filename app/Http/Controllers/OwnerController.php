@@ -88,4 +88,62 @@ class OwnerController extends Controller
         $user->delete();
         return redirect()->back()->with('success', 'Akses Admin telah dicabut');
     }
+
+    public function penggajian(Request $request)
+    {
+        $bulan = (int) $request->get('bulan', date('m'));
+        $tahun = (int) $request->get('tahun', date('Y'));
+
+        // Fetch payroll records and group them by employee
+        $penggajians = \App\Models\Penggajian::with(['karyawan', 'layanan', 'transaksi'])
+            ->whereYear('created_at', $tahun)
+            ->whereMonth('created_at', $bulan)
+            ->get()
+            ->groupBy('karyawan_id');
+
+        return view('owner.pages.penggajian', [
+            'title' => 'Laporan Penggajian',
+            'penggajians' => $penggajians,
+            'bulan' => $bulan,
+            'tahun' => $tahun
+        ]);
+    }
+
+    public function penggajianDetail(Request $request, string $id)
+    {
+        $bulan = (int) $request->get('bulan', date('m'));
+        $tahun = (int) $request->get('tahun', date('Y'));
+        $karyawan = Karyawan::findOrFail($id);
+
+        $records = \App\Models\Penggajian::with(['layanan', 'transaksi'])
+            ->where('karyawan_id', $id)
+            ->whereYear('created_at', $tahun)
+            ->whereMonth('created_at', $bulan)
+            ->get();
+
+        return view('owner.pages.penggajian-detail', [
+            'title' => 'Detail Gaji ' . $karyawan->nama,
+            'karyawan' => $karyawan,
+            'records' => $records,
+            'bulan' => $bulan,
+            'tahun' => $tahun
+        ]);
+    }
+
+    public function penggajianApprove(Request $request, string $id)
+    {
+        $bulan = $request->get('bulan');
+        $tahun = $request->get('tahun');
+
+        \App\Models\Penggajian::where('karyawan_id', $id)
+            ->whereYear('created_at', $tahun)
+            ->whereMonth('created_at', $bulan)
+            ->where('status_pembayaran', 'pending')
+            ->update([
+                'status_pembayaran' => 'dibayar',
+                'tanggal_bayar' => date('Y-m-d')
+            ]);
+
+        return redirect()->back()->with('success', 'Gaji karyawan berhasil dibayar untuk periode tersebut');
+    }
 }
