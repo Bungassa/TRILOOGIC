@@ -175,14 +175,15 @@
                         </select>
                     </div>
                 </div>
+                <input type="hidden" name="lokasi" value="tempat">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Jam</label>
-                        <input type="time" name="jam" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
+                        <input type="time" name="jam" id="jam_input" onchange="validateTime()" required min="09:00" max="23:00" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal</label>
-                        <input type="date" name="tanggal" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
+                        <input type="date" name="tanggal" id="tanggal_input" onchange="validateTime()" required min="{{ date('Y-m-d') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
                     </div>
                 </div>
                 <div>
@@ -208,14 +209,31 @@
             document.getElementById('transaksiModal').classList.remove('flex');
         }
 
-        function toggleAlamat() {
-            const lokasiSelect = document.getElementById('lokasi_select');
-            const alamatField = document.getElementById('alamat_field');
+        function validateTime() {
+            const tanggalInput = document.getElementById('tanggal_input');
+            const jamInput = document.getElementById('jam_input');
+            const today = new Date().toISOString().split('T')[0];
+            const now = new Date();
+            const currentHour = String(now.getHours()).padStart(2, '0');
+            const currentMinute = String(now.getMinutes()).padStart(2, '0');
+            const currentTime = `${currentHour}:${currentMinute}`;
+            
+            if (tanggalInput.value === today) {
+                const minTime = currentTime > '09:00' ? currentTime : '09:00';
+                jamInput.min = minTime;
 
-            if (lokasiSelect.value === 'rumah') {
-                alamatField.classList.remove('hidden');
+                if (jamInput.value && jamInput.value < minTime) {
+                    jamInput.value = '';
+                }
             } else {
-                alamatField.classList.add('hidden');
+                jamInput.min = '09:00';
+                if (jamInput.value && jamInput.value < '09:00') {
+                    jamInput.value = '';
+                }
+            }
+
+            if (jamInput.value && jamInput.value > '23:00') {
+                jamInput.value = '';
             }
         }
     </script>

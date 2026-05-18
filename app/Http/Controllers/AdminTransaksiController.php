@@ -39,20 +39,6 @@ class AdminTransaksiController extends Controller
 
         $transaksi->save();
 
-        // Automatically create payroll record if transaction is completed and paid
-        if ($transaksi->status === 'selesai' && $transaksi->status_pembayaran === 'lunas' && $transaksi->karyawan_id) {
-            \App\Models\Penggajian::updateOrCreate(
-                ['transaksi_id' => $transaksi->id],
-                [
-                    'karyawan_id' => $transaksi->karyawan_id,
-                    'layanan_id' => $transaksi->layanan_id,
-                    'upah_karyawan' => $transaksi->total_harga / 2,
-                    'pendapatan_owner' => $transaksi->total_harga / 2,
-                    'status_pembayaran' => 'pending'
-                ]
-            );
-        }
-
         \App\Models\ActivityLog::log('Update Transaksi', 'Mengubah transaksi #' . $transaksi->id . ' (Status: ' . $transaksi->status . ')');
 
         return redirect()->route('admin.transaksi')
@@ -65,20 +51,35 @@ class AdminTransaksiController extends Controller
             'nama' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:L,P',
             'telepon' => 'required|string|max:20',
-            'tanggal' => 'required|date',
-            'jam' => 'required',
+            'layanan_id' => 'required|exists:layanans,id',
+            'lokasi' => 'required|in:tempat,rumah',
+            'tanggal' => 'required|date|after_or_equal:today',
+            'jam' => [
+                'required',
+                function ($attribute, $value, $fail) use ($request) {
+                    $inputTime = $value;
+                    if ($inputTime < '09:00' || $inputTime > '23:00') {
+                        $fail('Jam operasional adalah 09:00 - 23:00.');
+                        return;
+                    }
+
+                    $inputDate = $request->tanggal;
+                    $today = date('Y-m-d');
+                    if ($inputDate === $today) {
+                        $now = date('H:i');
+                        if ($inputTime < $now) {
+                            $fail('Waktu pengerjaan tidak boleh sebelum waktu saat ini.');
+                        }
+                    }
+                },
+            ],
             'catatan' => 'nullable|string',
-            'karyawan_id' => 'required',
+            'karyawan_id' => 'required|exists:karyawans,id',
         ]);
 
         // Get layanan to calculate total
         $layanan = \App\Models\Layanan::find($request->layanan_id);
         $totalHarga = $layanan->harga;
-
-        // Add home service fee if location is rumah
-        if ($request->lokasi === 'rumah') {
-            $totalHarga += 20000;
-        }
 
         // Simpan transaksi ke database
         $transaksi = Transaksi::create([
@@ -86,8 +87,8 @@ class AdminTransaksiController extends Controller
             'jenis_kelamin' => $request->jenis_kelamin,
             'telepon' => $request->telepon,
             'layanan_id' => $request->layanan_id,
-            'lokasi' => 'tempat',
-            'alamat' => null,
+            'lokasi' => $request->lokasi ?? 'tempat',
+            'alamat' => $request->alamat ?? null,
             'tanggal' => $request->tanggal,
             'jam' => $request->jam,
             'catatan' => $request->catatan,

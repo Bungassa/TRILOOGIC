@@ -17,7 +17,7 @@
         <div class="absolute top-0 right-0 p-8">
             <div class="bg-gray-50 px-6 py-3 rounded-2xl border border-gray-100 text-right shadow-sm">
                 <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Periode Laporan</p>
-                <h4 class="text-lg font-black text-gray-800">{{ Carbon\Carbon::create()->month($bulan)->translatedFormat('F') }} {{ $tahun }}</h4>
+                <h4 class="text-lg font-black text-gray-800">{{ Carbon\Carbon::create($tahun, $bulan, 1)->translatedFormat('F') }} {{ $tahun }}</h4>
             </div>
         </div>
 

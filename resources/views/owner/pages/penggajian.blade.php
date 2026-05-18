@@ -7,7 +7,7 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
                 <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">Laporan Penggajian</h1>
-                <p class="text-gray-500 mt-2 text-lg">Ringkasan upah karyawan periode {{ Carbon\Carbon::create()->month($bulan)->translatedFormat('F') }} {{ $tahun }}</p>
+                <p class="text-gray-500 mt-2 text-lg">Ringkasan upah karyawan periode {{ Carbon\Carbon::create($tahun, $bulan, 1)->translatedFormat('F') }} {{ $tahun }}</p>
             </div>
             <div class="flex items-center">
                 <form action="{{ route('owner.penggajian') }}" method="GET" class="flex flex-wrap items-center gap-3">

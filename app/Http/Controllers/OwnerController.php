@@ -96,8 +96,10 @@ class OwnerController extends Controller
 
         // Fetch payroll records and group them by employee
         $penggajians = \App\Models\Penggajian::with(['karyawan', 'layanan', 'transaksi'])
-            ->whereYear('created_at', $tahun)
-            ->whereMonth('created_at', $bulan)
+            ->whereHas('transaksi', function($query) use ($bulan, $tahun) {
+                $query->whereYear('tanggal', $tahun)
+                      ->whereMonth('tanggal', $bulan);
+            })
             ->get()
             ->groupBy('karyawan_id');
 
@@ -117,8 +119,10 @@ class OwnerController extends Controller
 
         $records = \App\Models\Penggajian::with(['layanan', 'transaksi'])
             ->where('karyawan_id', $id)
-            ->whereYear('created_at', $tahun)
-            ->whereMonth('created_at', $bulan)
+            ->whereHas('transaksi', function($query) use ($bulan, $tahun) {
+                $query->whereYear('tanggal', $tahun)
+                      ->whereMonth('tanggal', $bulan);
+            })
             ->get();
 
         return view('owner.pages.penggajian-detail', [
