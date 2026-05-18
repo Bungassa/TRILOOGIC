@@ -1,130 +1,217 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="space-y-8">
-    <!-- Page Header -->
-    <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-gray-100">
-        <div class="flex items-center justify-between">
+<div class="space-y-8 no-print animate-fade-in pb-10">
+    <!-- Page Header & Filters -->
+    <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-8 border border-white/20">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div>
-                <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Laporan Transaksi</h1>
-                <p class="text-gray-500 mt-1">Rekapitulasi transaksi bulanan</p>
+                <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">Laporan Transaksi</h1>
+                <p class="text-gray-500 mt-2 text-lg">Saring dan cetak rekapitulasi transaksi suku Anda</p>
             </div>
-            <div class="flex items-center space-x-3">
-                <form action="{{ route('admin.laporan') }}" method="GET" class="flex items-center space-x-3">
-                    <select name="bulan" class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none" onchange="this.form.submit()">
+            
+            <div class="flex flex-wrap items-center gap-4">
+                <!-- Filter Form -->
+                <form id="filter-form" action="{{ route('admin.laporan') }}" method="GET" class="flex flex-wrap items-center gap-3">
+                    <!-- Month Selection -->
+                    <select name="bulan" onchange="this.form.submit()" 
+                            class="px-5 py-3 bg-white border border-gray-200 rounded-2xl text-xs font-bold focus:ring-4 focus:ring-[#AB6F6E]/10 focus:border-[#AB6F6E] outline-none transition-all shadow-sm">
                         @foreach(range(1, 12) as $m)
                             <option value="{{ sprintf('%02d', $m) }}" {{ $bulan == sprintf('%02d', $m) ? 'selected' : '' }}>
                                 {{ Carbon\Carbon::create()->month($m)->translatedFormat('F') }}
                             </option>
                         @endforeach
                     </select>
-                    <select name="tahun" class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none" onchange="this.form.submit()">
+
+                    <!-- Year Selection -->
+                    <select name="tahun" onchange="this.form.submit()" 
+                            class="px-5 py-3 bg-white border border-gray-200 rounded-2xl text-xs font-bold focus:ring-4 focus:ring-[#AB6F6E]/10 focus:border-[#AB6F6E] outline-none transition-all shadow-sm">
                         @foreach(range(date('Y')-2, date('Y')+1) as $y)
                             <option value="{{ $y }}" {{ $tahun == $y ? 'selected' : '' }}>{{ $y }}</option>
                         @endforeach
                     </select>
                 </form>
-                <button onclick="window.print()" class="px-4 py-2 bg-gray-800 text-white text-sm font-bold rounded-xl shadow-lg hover:bg-black transition-all">
-                    Print Laporan
+
+                <!-- Print Button -->
+                <button onclick="window.print()" 
+                        class="px-6 py-3 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white text-xs font-black uppercase tracking-wider rounded-2xl shadow-lg shadow-[#AB6F6E]/30 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                    Cetak Laporan
                 </button>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Report Table -->
-    <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-        <div class="p-8">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl font-bold text-gray-800">REKAPITULASI TRANSAKSI</h2>
-                <p class="text-gray-500">Periode: {{ Carbon\Carbon::create()->month((int)$bulan)->translatedFormat('F') }} {{ $tahun }}</p>
-            </div>
+<!-- Printable Area (This is the clean layout for screen and paper print) -->
+<div class="printable-area bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 overflow-hidden">
+    <div class="p-10 md:p-16">
+        <!-- Report Header -->
+        <div class="text-center mb-10 pb-4">
+            <h1 class="text-3xl font-black text-gray-900 tracking-wider uppercase">Ekky Family Refleksi</h1>
+            <p class="text-gray-500 mt-2 text-sm font-black uppercase tracking-[0.2em] text-[#AB6F6E]">Laporan Rekapitulasi Transaksi</p>
+            <p class="text-gray-400 text-xs font-bold mt-1.5 uppercase tracking-widest">
+                Periode: {{ Carbon\Carbon::create()->month((int)$bulan)->translatedFormat('F') }} {{ $tahun }}
+            </p>
+        </div>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm">
-                    <thead>
-                        <tr class="bg-gray-50 border-y border-gray-200">
-                            <th class="py-4 px-4 text-left font-bold">No</th>
-                            <th class="py-4 px-4 text-left font-bold">Tanggal</th>
-                            <th class="py-4 px-4 text-left font-bold">Nama Pelanggan</th>
-                            <th class="py-4 px-4 text-left font-bold">Layanan</th>
-                            <th class="py-4 px-4 text-left font-bold">Lokasi</th>
-                            <th class="py-4 px-4 text-right font-bold">Total Harga</th>
-                            <th class="py-4 px-4 text-left font-bold">Status</th>
-                            <th class="py-4 px-4 text-left font-bold">Pembayaran</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($transaksis as $index => $transaksi)
-                        <tr class="border-b border-gray-100">
-                            <td class="py-4 px-4">{{ $index + 1 }}</td>
-                            <td class="py-4 px-4">{{ \Carbon\Carbon::parse($transaksi->created_at)->format('d/m/Y') }}</td>
-                            <td class="py-4 px-4 font-medium">{{ $transaksi->nama }}</td>
-                            <td class="py-4 px-4">
+        <!-- Laporan Transaksi Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+                <thead>
+                    <tr class="bg-gray-50 border-y border-gray-200">
+                        <th class="py-5 px-6 font-black text-gray-700 uppercase tracking-widest text-[10px]">No</th>
+                        <th class="py-5 px-6 font-black text-gray-700 uppercase tracking-widest text-[10px]">Tanggal</th>
+                        <th class="py-5 px-6 font-black text-gray-700 uppercase tracking-widest text-[10px]">Nama Pelanggan</th>
+                        <th class="py-5 px-6 font-black text-gray-700 uppercase tracking-widest text-[10px]">Layanan</th>
+                        <th class="py-5 px-6 font-black text-gray-700 uppercase tracking-widest text-[10px]">Karyawan</th>
+                        <th class="py-5 px-6 font-black text-gray-700 uppercase tracking-widest text-[10px]">Lokasi</th>
+                        <th class="py-5 px-6 font-black text-gray-700 uppercase tracking-widest text-[10px] text-right">Total Harga</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    @forelse($transaksis as $index => $transaksi)
+                        <tr class="hover:bg-gray-50/50 transition-colors">
+                            <td class="py-5 px-6 text-gray-500 font-bold">{{ $index + 1 }}</td>
+                            <td class="py-5 px-6 text-gray-700 font-medium">
+                                {{ \Carbon\Carbon::parse($transaksi->created_at)->format('d/m/Y') }}
+                            </td>
+                            <td class="py-5 px-6 font-black text-gray-900 text-base">
+                                {{ $transaksi->nama }}
+                            </td>
+                            <td class="py-5 px-6 text-gray-700 font-medium">
                                 @if($transaksi->layanan_id)
                                     {{ $transaksi->layanan->nama }}
                                 @else
                                     Walk-in
                                 @endif
                             </td>
-                            <td class="py-4 px-4">
+                            <td class="py-5 px-6 text-gray-700 font-medium">
+                                {{ $transaksi->karyawan->nama ?? '-' }}
+                            </td>
+                            <td class="py-5 px-6 text-gray-700 font-medium">
                                 @if($transaksi->lokasi === 'tempat')
                                     Di Tempat
                                 @else
                                     Di Rumah
                                 @endif
                             </td>
-                            <td class="py-4 px-4 text-right">Rp {{ number_format($transaksi->total_harga, 0, ',', '.') }}</td>
-                            <td class="py-4 px-4">
-                                <span class="px-2 py-1 rounded-full text-xs font-semibold
-                                    @if($transaksi->status === 'pending') bg-yellow-100 text-yellow-700
-                                    @elseif($transaksi->status === 'dikerjakan') bg-blue-100 text-blue-700
-                                    @elseif($transaksi->status === 'selesai') bg-green-100 text-green-700
-                                    @endif">
-                                    {{ $transaksi->status == 'pending' ? 'Menunggu' : ($transaksi->status == 'dikerjakan' ? 'Proses' : 'Selesai') }}
-                                </span>
-                            </td>
-                            <td class="py-4 px-4">
-                                <span class="px-2 py-1 rounded-full text-xs font-semibold
-                                    @if($transaksi->status_pembayaran === 'belum_bayar') bg-red-100 text-red-700
-                                    @elseif($transaksi->status_pembayaran === 'lunas') bg-green-100 text-green-700
-                                    @endif">
-                                    {{ $transaksi->status_pembayaran === 'belum_bayar' ? 'Belum Bayar' : 'Lunas' }}
-                                </span>
+                            <td class="py-5 px-6 text-right font-black text-gray-900 text-base">
+                                Rp {{ number_format($transaksi->total_harga, 0, ',', '.') }}
                             </td>
                         </tr>
-                        @empty
+                    @empty
                         <tr>
-                            <td colspan="8" class="py-12 text-center text-gray-500">
-                                Tidak ada data transaksi pada periode ini
+                            <td colspan="7" class="py-16 text-center text-gray-400 italic font-medium">
+                                Tidak ada data transaksi pada periode ini.
                             </td>
                         </tr>
-                        @endforelse
-                    </tbody>
-                    <tfoot>
-                        <tr class="bg-gray-50 font-bold">
-                            <td colspan="5" class="py-4 px-4 text-right">TOTAL TRANSAKSI</td>
-                            <td class="py-4 px-4 text-right">{{ $totalTransaksi }}</td>
-                            <td colspan="2"></td>
-                        </tr>
-                        <tr class="bg-gray-100 font-bold">
-                            <td colspan="5" class="py-4 px-4 text-right">TOTAL PENDAPATAN (LUNAS)</td>
-                            <td colspan="3" class="py-4 px-4 text-right">Rp {{ number_format($totalRevenue, 0, ',', '.') }}</td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
+                    @endforelse
+                </tbody>
+                <tfoot>
+                    <tr class="bg-gray-50 font-black border-y border-gray-200">
+                        <td colspan="6" class="py-5 px-6 text-right text-gray-700 uppercase tracking-widest text-xs">TOTAL TRANSAKSI</td>
+                        <td class="py-5 px-6 text-right text-gray-900 text-base font-black">
+                            {{ $totalTransaksi }} Transaksi
+                        </td>
+                    </tr>
+                    <tr class="bg-gray-100 font-black border-y border-gray-200">
+                        <td colspan="6" class="py-5 px-6 text-right text-gray-700 uppercase tracking-widest text-xs">TOTAL PENDAPATAN (LUNAS)</td>
+                        <td class="py-5 px-6 text-right text-[#AB6F6E] text-xl font-black">
+                            Rp {{ number_format($totalRevenue, 0, ',', '.') }}
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
 </div>
 
 <style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+
     @media print {
-        body * { visibility: hidden; }
-        .bg-white\/80 { background: white !important; }
-        .rounded-2xl { border-radius: 0 !important; }
-        .shadow-lg { box-shadow: none !important; }
-        .bg-white\/80:last-child { visibility: visible !important; position: absolute; left: 0; top: 0; width: 100%; }
-        .bg-white\/80:last-child * { visibility: visible !important; }
+        @page {
+            size: A4 portrait;
+            margin: 15mm 10mm 15mm 10mm;
+        }
+        
+        body {
+            background: white !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* General print rules */
+        body * {
+            visibility: hidden;
+        }
+        
+        /* Set printable area visible */
+        .printable-area, .printable-area * {
+            visibility: visible;
+        }
+
+        .printable-area {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            background: white !important;
+        }
+
+        /* Remove the screen container padding during print to maximize width */
+        .printable-area > div {
+            padding: 0 !important;
+        }
+
+        /* Hiding non-print components */
+        .no-print, nav, header, sidebar, button, form {
+            display: none !important;
+            height: 0 !important;
+            width: 0 !important;
+            overflow: hidden !important;
+        }
+
+        /* Perfect spacing for tables on paper */
+        table {
+            page-break-inside: auto;
+            width: 100% !important;
+            table-layout: auto !important;
+        }
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto;
+        }
+        thead {
+            display: table-header-group;
+        }
+        tfoot {
+            display: table-row-group !important;
+        }
+        
+        /* Premium print table styling */
+        th {
+            background-color: #f3f4f6 !important;
+            color: #1f2937 !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        td, th {
+            padding: 8px 10px !important; /* Reduced cell padding for print fit */
+            font-size: 11px !important; /* Slightly smaller text size to prevent cutoff */
+            border-bottom: 1px solid #e5e7eb !important;
+        }
     }
 </style>
 @endsection

@@ -45,12 +45,24 @@ class OwnerController extends Controller
         ]);
     }
 
-    public function laporan()
+    public function laporan(Request $request)
     {
-        $transaksis = Transaksi::with('layanan')->where('status_pembayaran', 'lunas')->latest()->get();
+        $bulan = (int) $request->get('bulan', date('m'));
+        $tahun = (int) $request->get('tahun', date('Y'));
+
+        $penggajians = \App\Models\Penggajian::with(['karyawan', 'layanan', 'transaksi'])
+            ->whereHas('transaksi', function($query) use ($bulan, $tahun) {
+                $query->whereYear('tanggal', $tahun)
+                      ->whereMonth('tanggal', $bulan);
+            })
+            ->get()
+            ->groupBy('karyawan_id');
+
         return view('owner.pages.laporan', [
-            'title' => 'Laporan Pendapatan',
-            'transaksis' => $transaksis
+            'title' => 'Laporan Penggajian',
+            'penggajians' => $penggajians,
+            'bulan' => sprintf('%02d', $bulan),
+            'tahun' => $tahun
         ]);
     }
 
