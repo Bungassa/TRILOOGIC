@@ -23,10 +23,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="bg-gradient-to-br from-[#F0D2D1] via-[#E6B6B5] to-[#D79F9E]">
+<body class="bg-gradient-to-br from-[#e1bdb5] via-[#e1bdb5] to-[#e1bdb5]">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-gradient-to-b from-[#AB6F6E] via-[#C48989] to-[#AB6F6E] shadow-2xl transform -translate-x-full lg:translate-x-0 lg:static lg:inset-auto transition-transform duration-300 ease-in-out">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-gradient-to-b from-[#825449] via-[#825449] to-[#825449] shadow-2xl transform -translate-x-full lg:translate-x-0 lg:static lg:inset-auto transition-transform duration-300 ease-in-out">
             @include('owner.components.sidebar')
         </aside>
 
@@ -36,7 +36,7 @@
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden">
             <!-- Header -->
-            <header class="bg-[#F0D2D1]/80 backdrop-blur-xl shadow-lg border-b border-[#E6B6B5]">
+            <header class="bg-[#e1bdb5]/80 backdrop-blur-xl shadow-lg border-b border-[#e1bdb5]">
                 @include('owner.components.app-header')
             </header>
 
@@ -64,7 +64,7 @@
                 icon: 'success',
                 title: 'Berhasil!',
                 text: "{!! addslashes(session('success')) !!}",
-                confirmButtonColor: '#AB6F6E',
+                confirmButtonColor: '#825449',
                 background: '#ffffff',
                 customClass: {
                     popup: 'rounded-3xl border border-gray-100 shadow-2xl',

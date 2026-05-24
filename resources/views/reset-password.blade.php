@@ -130,7 +130,7 @@
 <style>
     /* Reuse Login Styles */
     .cs_login_page {
-        background: linear-gradient(135deg, #D79F9E 0%, #AB6F6E 100%);
+        background: linear-gradient(135deg, #e1bdb5 0%, #825449 100%);
         position: relative;
         overflow: hidden;
     }
@@ -199,7 +199,7 @@
     }
 
     .cs_form_control:focus {
-        border-color: #AB6F6E;
+        border-color: #825449;
         background-color: #fff;
         box-shadow: 0 0 0 4px rgba(171, 111, 110, 0.15);
         outline: none;
@@ -212,7 +212,7 @@
     }
 
     .cs_btn_login {
-        background: linear-gradient(135deg, #AB6F6E 0%, #C48989 100%);
+        background: linear-gradient(135deg, #825449 0%, #825449 100%);
         border: none;
         color: white;
         font-weight: 600;
@@ -224,7 +224,7 @@
     .cs_btn_login:hover {
         transform: translateY(-2px);
         box-shadow: 0 8px 25px rgba(171, 111, 110, 0.3);
-        background: linear-gradient(135deg, #C48989 0%, #D79F9E 100%);
+        background: linear-gradient(135deg, #825449 0%, #e1bdb5 100%);
     }
 
     @media (max-width: 991px) {

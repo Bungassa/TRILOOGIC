@@ -10,7 +10,7 @@
                     <i class="fa-solid fa-arrow-left"></i> Kembali
                 </a>
                 <div>
-                    <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Detail Transaksi <span class="text-[#C48989]">#{{ $transaksi->id }}</span></h1>
+                    <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Detail Transaksi <span class="text-[#825449]">#{{ $transaksi->id }}</span></h1>
                     <p class="text-gray-500 mt-1">Informasi lengkap transaksi pelanggan</p>
                 </div>
             </div>
@@ -32,7 +32,7 @@
         <div class="lg:col-span-2 space-y-6">
             <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-8 border border-gray-100">
                 <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
-                    <i class="fa-regular fa-user text-[#C48989]"></i> Data Pelanggan & Layanan
+                    <i class="fa-regular fa-user text-[#825449]"></i> Data Pelanggan & Layanan
                 </h3>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-y-6 gap-x-8">
@@ -75,7 +75,7 @@
             <!-- Detail Lokasi -->
             <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-8 border border-gray-100">
                 <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-location-dot text-[#C48989]"></i> Detail Lokasi
+                    <i class="fa-solid fa-location-dot text-[#825449]"></i> Detail Lokasi
                 </h3>
                 
                 <div class="space-y-4">
@@ -112,7 +112,7 @@
             @if($transaksi->catatan)
             <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-8 border border-gray-100">
                 <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <i class="fa-regular fa-note-sticky text-[#C48989]"></i> Catatan
+                    <i class="fa-regular fa-note-sticky text-[#825449]"></i> Catatan
                 </h3>
                 <p class="text-gray-700 bg-yellow-50/50 p-4 rounded-xl border border-yellow-100/50">{{ $transaksi->catatan }}</p>
             </div>
@@ -123,7 +123,7 @@
         <div class="space-y-6">
             <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-8 border border-gray-100 sticky top-8">
                 <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-wallet text-[#C48989]"></i> Ringkasan Pembayaran
+                    <i class="fa-solid fa-wallet text-[#825449]"></i> Ringkasan Pembayaran
                 </h3>
 
                 <div class="space-y-4 mb-6">
@@ -142,7 +142,7 @@
                 <div class="pt-4 border-t border-gray-200">
                     <div class="flex justify-between items-center mb-6">
                         <p class="text-base font-bold text-gray-800">Total</p>
-                        <p class="text-2xl font-black text-[#AB6F6E]">Rp {{ number_format($transaksi->total_harga, 0, ',', '.') }}</p>
+                        <p class="text-2xl font-black text-[#825449]">Rp {{ number_format($transaksi->total_harga, 0, ',', '.') }}</p>
                     </div>
 
                     <div class="space-y-3">

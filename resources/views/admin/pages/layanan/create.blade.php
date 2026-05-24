@@ -29,7 +29,7 @@
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nama Layanan</label>
                     <input type="text" name="nama" required
-                           class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200"
+                           class="w-full px-4 py-3 border border-[#e1bdb5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#825449]/50 focus:border-[#825449] transition-all duration-200"
                            placeholder="Masukkan nama layanan">
                 </div>
 
@@ -37,7 +37,7 @@
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
                     <textarea name="deskripsi" rows="3" required
-                              class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200 resize-none"
+                              class="w-full px-4 py-3 border border-[#e1bdb5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#825449]/50 focus:border-[#825449] transition-all duration-200 resize-none"
                               placeholder="Masukkan deskripsi layanan"></textarea>
                 </div>
 
@@ -45,7 +45,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Harga</label>
                     <input type="number" name="harga" step="0.01" required
-                           class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200"
+                           class="w-full px-4 py-3 border border-[#e1bdb5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#825449]/50 focus:border-[#825449] transition-all duration-200"
                            placeholder="Masukkan harga">
                 </div>
 
@@ -53,7 +53,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Gambar (Opsional)</label>
                     <input type="file" name="gambar" accept="image/*"
-                           class="w-full px-4 py-3 border border-[#E6B6B5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200">
+                           class="w-full px-4 py-3 border border-[#e1bdb5] rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#825449]/50 focus:border-[#825449] transition-all duration-200">
                 </div>
             </div>
 
@@ -64,7 +64,7 @@
                     Batal
                 </a>
                 <button type="submit"
-                        class="px-6 py-3 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white text-sm font-semibold rounded-xl shadow-lg shadow-[#AB6F6E]/30 hover:shadow-xl hover:shadow-[#AB6F6E]/40 transition-all duration-200">
+                        class="px-6 py-3 bg-gradient-to-r from-[#825449] to-[#825449] text-white text-sm font-semibold rounded-xl shadow-lg shadow-[#825449]/30 hover:shadow-xl hover:shadow-[#825449]/40 transition-all duration-200">
                     Simpan Layanan
                 </button>
             </div>

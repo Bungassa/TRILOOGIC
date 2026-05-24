@@ -15,7 +15,7 @@
 /* Form Card */
 .pemesanan-form-card {
     background: rgba(240, 240, 240, 0.95);
-    border: 1px solid #E6B6B5;
+    border: 1px solid #e1bdb5;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(196, 137, 137, 0.15);
     padding: 40px;
@@ -24,7 +24,7 @@
 
 /* Section Heading */
 .pemesanan-section-title {
-    color: #C48989;
+    color: #825449;
     font-size: 20px;
     font-weight: 400;
     margin-bottom: 10px;
@@ -58,7 +58,7 @@
     width: 100%;
     padding: 12px 16px;
     background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #E6B6B5;
+    border: 2px solid #e1bdb5;
     border-radius: 12px;
     font-size: 15px;
     color: #666;
@@ -71,13 +71,13 @@
 }
 
 .pemesanan-input:focus {
-    border-color: #C48989;
+    border-color: #825449;
     box-shadow: 0 0 0 3px rgba(196, 137, 137, 0.2);
     background: rgba(255, 255, 255, 1);
 }
 
 .pemesanan-input:hover {
-    border-color: #C48989;
+    border-color: #825449;
 }
 
 /* Select Dropdown */
@@ -85,7 +85,7 @@
     width: 100%;
     padding: 12px 16px;
     background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #E6B6B5;
+    border: 2px solid #e1bdb5;
     border-radius: 12px;
     font-size: 15px;
     color: #666;
@@ -100,7 +100,7 @@
 }
 
 .pemesanan-select:focus {
-    border-color: #C48989;
+    border-color: #825449;
     box-shadow: 0 0 0 3px rgba(196, 137, 137, 0.2);
 }
 
@@ -114,7 +114,7 @@
     width: 100%;
     padding: 12px 16px;
     background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #E6B6B5;
+    border: 2px solid #e1bdb5;
     border-radius: 12px;
     font-size: 15px;
     color: #666;
@@ -125,7 +125,7 @@
 }
 
 .pemesanan-textarea:focus {
-    border-color: #C48989;
+    border-color: #825449;
     box-shadow: 0 0 0 3px rgba(196, 137, 137, 0.2);
 }
 
@@ -141,7 +141,7 @@
     align-items: center;
     padding: 16px;
     background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #E6B6B5;
+    border: 2px solid #e1bdb5;
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -149,7 +149,7 @@
 
 .pemesanan-radio-option:hover {
     background: rgba(240, 210, 209, 0.4);
-    border-color: #C48989;
+    border-color: #825449;
     transform: translateX(5px);
 }
 
@@ -157,7 +157,7 @@
     width: 20px;
     height: 20px;
     margin-right: 12px;
-    accent-color: #C48989;
+    accent-color: #825449;
     cursor: pointer;
 }
 
@@ -168,12 +168,12 @@
 }
 
 .pemesanan-radio-option input[type="radio"]:checked + span {
-    color: #C48989;
+    color: #825449;
     font-weight: 600;
 }
 
 .pemesanan-radio-option input[type="radio"]:checked ~ .pemesanan-radio-option {
-    border-color: #C48989;
+    border-color: #825449;
     background: rgba(240, 210, 209, 0.4);
 }
 
@@ -181,7 +181,7 @@
 .pemesanan-submit-btn {
     width: 100%;
     padding: 16px 24px;
-    background: linear-gradient(135deg, #AB6F6E 0%, #C48989 100%);
+    background: linear-gradient(135deg, #825449 0%, #825449 100%);
     border: none;
     border-radius: 12px;
     color: #fff;

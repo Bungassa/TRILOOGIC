@@ -228,7 +228,7 @@
 <style>
     /* Register Page Styles */
     .cs_register_page {
-        background: linear-gradient(135deg, #D79F9E 0%, #AB6F6E 100%);
+        background: linear-gradient(135deg, #e1bdb5 0%, #825449 100%);
         position: relative;
         overflow: hidden;
     }
@@ -308,7 +308,7 @@
     }
 
     .cs_form_control:focus {
-        border-color: #AB6F6E;
+        border-color: #825449;
         background-color: #fff;
         box-shadow: 0 0 0 4px rgba(171, 111, 110, 0.15);
         outline: none;
@@ -340,7 +340,7 @@
     .cs_toggle_password:hover,
     .cs_toggle_password_confirm:hover {
         background-color: rgba(171, 111, 110, 0.1);
-        color: #AB6F6E;
+        color: #825449;
         transform: scale(1.05);
     }
 
@@ -380,8 +380,8 @@
     }
 
     .cs_checkbox_input:checked {
-        background-color: #AB6F6E;
-        border-color: #AB6F6E;
+        background-color: #825449;
+        border-color: #825449;
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='white' d='M4.5 10.5L8 14l7.5-7.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
         background-size: 12px;
         background-position: center;
@@ -403,7 +403,7 @@
     }
 
     .cs_checkbox_label a {
-        color: #AB6F6E;
+        color: #825449;
         font-weight: 600;
         text-decoration: none;
         transition: all 0.3s ease;
@@ -411,7 +411,7 @@
 
     .cs_checkbox_label a:hover {
         text-decoration: underline;
-        color: #D79F9E;
+        color: #e1bdb5;
     }
 
     /* Submit Button */
@@ -420,7 +420,7 @@
     }
 
     .cs_btn_register {
-        background: linear-gradient(135deg, #AB6F6E 0%, #C48989 100%);
+        background: linear-gradient(135deg, #825449 0%, #825449 100%);
         border: none;
         color: white;
         font-weight: 700;
@@ -437,7 +437,7 @@
     .cs_btn_register:hover {
         transform: translateY(-3px);
         box-shadow: 0 8px 30px rgba(171, 111, 110, 0.4);
-        background: linear-gradient(135deg, #C48989 0%, #D79F9E 100%);
+        background: linear-gradient(135deg, #825449 0%, #e1bdb5 100%);
     }
 
     .cs_btn_register:active {
@@ -459,14 +459,14 @@
     }
 
     .cs_register_footer a:hover {
-        color: #AB6F6E;
+        color: #825449;
         transform: translateX(3px);
     }
 
     /* Responsive */
     @media (max-width: 991px) {
         .cs_register_page {
-            background: linear-gradient(135deg, #D79F9E 0%, #AB6F6E 100%);
+            background: linear-gradient(135deg, #e1bdb5 0%, #825449 100%);
         }
 
         .cs_register_card {

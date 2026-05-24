@@ -37,7 +37,7 @@
                 <div class="offcanvas offcanvas-end border-0" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="background: #18191D; width: 300px;">
                   <div class="offcanvas-header border-bottom border-secondary border-opacity-25 p-4">
                     <h5 class="offcanvas-title text-white fw-bold d-flex align-items-center gap-2" id="offcanvasNavbarLabel">
-                      <i class="fa-solid fa-circle-user text-accent fs-3" style="color: #C48989;"></i>
+                      <i class="fa-solid fa-circle-user text-accent fs-3" style="color: #825449;"></i>
                       <span>{{ Auth::user()->name }}</span>
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -55,7 +55,7 @@
                     <div class="position-absolute bottom-0 w-100 p-4 border-top border-secondary border-opacity-10">
                       <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn w-100 py-3 d-flex align-items-center justify-content-center gap-2 fw-bold" style="background: rgba(196, 137, 137, 0.1); color: #C48989; border-radius: 12px; border: 1px solid rgba(196, 137, 137, 0.2);">
+                        <button type="submit" class="btn w-100 py-3 d-flex align-items-center justify-content-center gap-2 fw-bold" style="background: rgba(196, 137, 137, 0.1); color: #825449; border-radius: 12px; border: 1px solid rgba(196, 137, 137, 0.2);">
                           <i class="fa-solid fa-right-from-bracket"></i>
                           <span>Keluar Akun</span>
                         </button>
@@ -99,10 +99,10 @@
     <style>
       .sidebar-link:hover {
         background-color: rgba(196, 137, 137, 0.1) !important;
-        color: #C48989 !important;
+        color: #825449 !important;
       }
       .sidebar-link i {
-        color: #C48989;
+        color: #825449;
       }
     </style>
 
@@ -122,8 +122,8 @@
        <svg width="660" height="497" viewBox="0 0 660 497" fill="none" xmlns="http://www.w3.org/2000/svg">
          <defs>
            <linearGradient id="paint0_linear_81_9510" x1="330" y1="0" x2="330" y2="497" gradientUnits="userSpaceOnUse">
-             <stop offset="0" stop-color="#C48989" stop-opacity="0"></stop>
-             <stop offset="0.9999" stop-color="#C48989" stop-opacity="0.35"></stop>
+             <stop offset="0" stop-color="#825449" stop-opacity="0"></stop>
+             <stop offset="0.9999" stop-color="#825449" stop-opacity="0.35"></stop>
              <stop offset="1" stop-color="#18191D" stop-opacity="0"></stop>
            </linearGradient>
          </defs>

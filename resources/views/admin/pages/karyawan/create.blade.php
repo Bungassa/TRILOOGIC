@@ -29,7 +29,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
                     <input type="text" name="nama" value="{{ old('nama') }}" required
-                           class="w-full px-4 py-3 border @error('nama') border-red-500 @else border-[#E6B6B5] @enderror rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200"
+                           class="w-full px-4 py-3 border @error('nama') border-red-500 @else border-[#e1bdb5] @enderror rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#825449]/50 focus:border-[#825449] transition-all duration-200"
                            placeholder="Masukkan nama lengkap">
                     @error('nama')
                         <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
@@ -40,7 +40,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Umur</label>
                     <input type="number" name="umur" value="{{ old('umur') }}" required min="1"
-                           class="w-full px-4 py-3 border @error('umur') border-red-500 @else border-[#E6B6B5] @enderror rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200"
+                           class="w-full px-4 py-3 border @error('umur') border-red-500 @else border-[#e1bdb5] @enderror rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#825449]/50 focus:border-[#825449] transition-all duration-200"
                            placeholder="Masukkan umur">
                     @error('umur')
                         <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
@@ -51,7 +51,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kelamin</label>
                     <select name="jenis_kelamin" required
-                            class="w-full px-4 py-3 border @error('jenis_kelamin') border-red-500 @else border-[#E6B6B5] @enderror rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200">
+                            class="w-full px-4 py-3 border @error('jenis_kelamin') border-red-500 @else border-[#e1bdb5] @enderror rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#825449]/50 focus:border-[#825449] transition-all duration-200">
                         <option value="">Pilih jenis kelamin</option>
                         <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>Laki-laki</option>
                         <option value="P" {{ old('jenis_kelamin') == 'P' ? 'selected' : '' }}>Perempuan</option>
@@ -65,7 +65,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
                     <select name="status" required
-                            class="w-full px-4 py-3 border @error('status') border-red-500 @else border-[#E6B6B5] @enderror rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#C48989]/50 focus:border-[#C48989] transition-all duration-200">
+                            class="w-full px-4 py-3 border @error('status') border-red-500 @else border-[#e1bdb5] @enderror rounded-xl bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#825449]/50 focus:border-[#825449] transition-all duration-200">
                         <option value="">Pilih status</option>
                         <option value="aktif" {{ old('status') == 'aktif' ? 'selected' : '' }}>Aktif</option>
                         <option value="nonaktif" {{ old('status') == 'nonaktif' ? 'selected' : '' }}>Non-Aktif</option>
@@ -83,7 +83,7 @@
                     Batal
                 </a>
                 <button type="submit"
-                        class="px-6 py-3 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white text-sm font-semibold rounded-xl shadow-lg shadow-[#AB6F6E]/30 hover:shadow-xl hover:shadow-[#AB6F6E]/40 transition-all duration-200">
+                        class="px-6 py-3 bg-gradient-to-r from-[#825449] to-[#825449] text-white text-sm font-semibold rounded-xl shadow-lg shadow-[#825449]/30 hover:shadow-xl hover:shadow-[#825449]/40 transition-all duration-200">
                     Simpan Karyawan
                 </button>
             </div>

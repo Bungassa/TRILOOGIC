@@ -44,7 +44,7 @@
         }
         .center-marker i {
             font-size: 40px;
-            color: #C48989;
+            color: #825449;
             text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .center-marker.moving {
@@ -109,7 +109,7 @@
 
                   <div>
                     <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #555; margin-bottom: 0;">
-                      <input type="checkbox" id="pemesan_adalah_pelanggan" onchange="toggleNamaPelanggan()" style="width: 18px; height: 18px; accent-color: #C48989;">
+                      <input type="checkbox" id="pemesan_adalah_pelanggan" onchange="toggleNamaPelanggan()" style="width: 18px; height: 18px; accent-color: #825449;">
                       <span>Pemesan adalah pelanggan</span>
                     </label>
                   </div>
@@ -206,7 +206,7 @@
                     <textarea name="alamat" id="alamat_textarea" rows="3"
                               class="pemesanan-textarea mb-2"
                               placeholder="Masukkan alamat lengkap untuk home service">{{ old('alamat') }}</textarea>
-                    <button type="button" class="btn btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalMap" style="background-color: #fff; border: 1px solid #C48989; color: #C48989; font-weight: 600; border-radius: 8px; padding: 10px; transition: all 0.3s;" onmouseover="this.style.backgroundColor='#C48989'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='#fff'; this.style.color='#C48989';">
+                    <button type="button" class="btn btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalMap" style="background-color: #fff; border: 1px solid #825449; color: #825449; font-weight: 600; border-radius: 8px; padding: 10px; transition: all 0.3s;" onmouseover="this.style.backgroundColor='#825449'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='#fff'; this.style.color='#825449';">
                         <i class="fa-solid fa-map-location-dot me-2"></i>Pilih Lokasi dari Peta
                     </button>
                     <input type="hidden" name="lat" id="hidden_lat_input" value="{{ old('lat') }}">
@@ -241,7 +241,7 @@
                 <!-- Ringkasan Pemesanan -->
                 <div class="pemesanan-form-group">
                   <label class="pemesanan-label">Ringkasan Pemesanan</label>
-                  <div class="pemesanan-summary" style="background: rgba(196, 137, 137, 0.1); padding: 20px; border-radius: 12px; border: 2px solid #E6B6B5;">
+                  <div class="pemesanan-summary" style="background: rgba(196, 137, 137, 0.1); padding: 20px; border-radius: 12px; border: 2px solid #e1bdb5;">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                       <span style="color: #666; font-size: 14px;">Layanan:</span>
                       <span id="summary_layanan" style="color: #18191d; font-weight: 600; font-size: 14px;">-</span>
@@ -264,12 +264,12 @@
                     </div>
                     <div id="biaya_tambahan_row" style="display: flex; justify-content: space-between; margin-bottom: 10px; display: none;">
                       <span style="color: #666; font-size: 14px;">Ongkos Kirim (Home Service):</span>
-                      <span style="color: #C48989; font-weight: 600; font-size: 14px;">Rp 20.000</span>
+                      <span style="color: #825449; font-weight: 600; font-size: 14px;">Rp 20.000</span>
                     </div>
-                    <div style="border-top: 2px solid #E6B6B5; margin: 15px 0;"></div>
+                    <div style="border-top: 2px solid #e1bdb5; margin: 15px 0;"></div>
                     <div style="display: flex; justify-content: space-between;">
                       <span style="color: #18191d; font-weight: 700; font-size: 16px;">Total:</span>
-                      <span id="summary_total" style="color: #C48989; font-weight: 700; font-size: 18px;">Rp 0</span>
+                      <span id="summary_total" style="color: #825449; font-weight: 700; font-size: 18px;">Rp 0</span>
                     </div>
                   </div>
                 </div>
@@ -318,7 +318,7 @@
                 </div>
                 <div class="modal-footer border-0 p-4 pt-0">
                     <button type="button" class="btn btn-light px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px; font-weight: 600;">Batal</button>
-                    <button type="button" id="btnConfirmAddress" class="btn btn-primary px-4 py-2" style="border-radius: 10px; font-weight: 600; background-color: #C48989; border-color: #C48989;" data-bs-dismiss="modal">Gunakan Alamat Ini</button>
+                    <button type="button" id="btnConfirmAddress" class="btn btn-primary px-4 py-2" style="border-radius: 10px; font-weight: 600; background-color: #825449; border-color: #825449;" data-bs-dismiss="modal">Gunakan Alamat Ini</button>
                 </div>
             </div>
         </div>
@@ -659,7 +659,7 @@
                     icon: 'warning',
                     title: 'Oops...',
                     text: 'Silahkan pilih lokasi valid di peta!',
-                    confirmButtonColor: '#C48989'
+                    confirmButtonColor: '#825449'
                 });
             }
         });

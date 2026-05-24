@@ -10,7 +10,7 @@
                 <p class="text-gray-500 mt-1">Kelola data transaksi pemesanan layanan</p>
             </div>
             <div class="flex items-center space-x-3">
-                <button onclick="openModal()" class="px-4 py-2 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white text-sm font-semibold rounded-xl shadow-lg shadow-[#AB6F6E]/30">
+                <button onclick="openModal()" class="px-4 py-2 bg-gradient-to-r from-[#825449] to-[#825449] text-white text-sm font-semibold rounded-xl shadow-lg shadow-[#825449]/30">
                     + Tambah Transaksi
                 </button>
             </div>
@@ -77,7 +77,7 @@
                                 <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <select name="status" onchange="this.form.submit()" {{ $transaksi->status === 'selesai' ? 'disabled' : '' }} class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/50">
+                                    <select name="status" onchange="this.form.submit()" {{ $transaksi->status === 'selesai' ? 'disabled' : '' }} class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/50">
                                         <option value="pending" {{ $transaksi->status === 'pending' ? 'selected' : '' }}>Menunggu</option>
                                         <option value="dikerjakan" {{ $transaksi->status === 'dikerjakan' ? 'selected' : '' }}>Proses</option>
                                         <option value="selesai" {{ $transaksi->status === 'selesai' ? 'selected' : '' }}>Selesai</option>
@@ -91,7 +91,7 @@
                                 <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <select name="karyawan_id" onchange="this.form.submit()" class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer hover:bg-white">
+                                    <select name="karyawan_id" onchange="this.form.submit()" class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white">
                                         <option value="">Pilih Karyawan</option>
                                         @foreach(\App\Models\Karyawan::all() as $karyawan)
                                             <option value="{{ $karyawan->id }}"
@@ -133,11 +133,11 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Nama</label>
-                        <input type="text" name="nama" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
+                        <input type="text" name="nama" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#825449]">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kelamin</label>
-                        <select name="jenis_kelamin" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer">
+                        <select name="jenis_kelamin" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer">
                             <option value="">-- Pilih --</option>
                             <option value="L">Laki-laki</option>
                             <option value="P">Perempuan</option>
@@ -147,11 +147,11 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">No. Telepon</label>
-                        <input type="tel" name="telepon" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
+                        <input type="tel" name="telepon" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#825449]">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Layanan</label>
-                        <select name="layanan_id" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer">
+                        <select name="layanan_id" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer">
                             <option value="">-- Pilih Layanan --</option>
                             @foreach(\App\Models\Layanan::all() as $layanan)
                                 <option value="{{ $layanan->id }}">{{ $layanan->nama }} - Rp {{ number_format($layanan->harga, 0, ',', '.') }}</option>
@@ -160,7 +160,7 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Karyawan</label>
-                        <select name="karyawan_id" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer">
+                        <select name="karyawan_id" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer">
                             <option value="">-- Pilih Karyawan --</option>
                             @foreach(\App\Models\Karyawan::all() as $karyawan)
                                 <option value="{{ $karyawan->id }}">
@@ -174,20 +174,20 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Jam</label>
-                        <input type="time" name="jam" id="jam_input" onchange="validateTime()" required min="09:00" max="23:00" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
+                        <input type="time" name="jam" id="jam_input" onchange="validateTime()" required min="09:00" max="23:00" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#825449]">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal</label>
-                        <input type="date" name="tanggal" id="tanggal_input" onchange="validateTime()" required min="{{ date('Y-m-d') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]">
+                        <input type="date" name="tanggal" id="tanggal_input" onchange="validateTime()" required min="{{ date('Y-m-d') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#825449]">
                     </div>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Catatan</label>
-                    <textarea name="catatan" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C48989]" placeholder="Catatan tambahan (opsional)"></textarea>
+                    <textarea name="catatan" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#825449]" placeholder="Catatan tambahan (opsional)"></textarea>
                 </div>
                 <div class="flex justify-end space-x-3 pt-4">
                     <button type="button" onclick="closeModal()" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">Batal</button>
-                    <button type="submit" class="px-6 py-2 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white rounded-lg hover:shadow-lg">Simpan</button>
+                    <button type="submit" class="px-6 py-2 bg-gradient-to-r from-[#825449] to-[#825449] text-white rounded-lg hover:shadow-lg">Simpan</button>
                 </div>
             </form>
         </div>

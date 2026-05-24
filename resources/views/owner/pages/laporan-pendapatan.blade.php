@@ -15,7 +15,7 @@
                 <form id="filter-form" action="{{ route('owner.laporan-pendapatan') }}" method="GET" class="flex flex-wrap items-center gap-3">
                     <!-- Tanggal Selection -->
                     <select name="tanggal" onchange="this.form.submit()" 
-                            class="px-5 py-3 bg-white border border-gray-200 rounded-2xl text-xs font-bold focus:ring-4 focus:ring-[#AB6F6E]/10 focus:border-[#AB6F6E] outline-none transition-all shadow-sm">
+                            class="px-5 py-3 bg-white border border-gray-200 rounded-2xl text-xs font-bold focus:ring-4 focus:ring-[#825449]/10 focus:border-[#825449] outline-none transition-all shadow-sm">
                         <option value="">Semua Tanggal</option>
                         @foreach(range(1, 31) as $d)
                             <option value="{{ sprintf('%02d', $d) }}" {{ (isset($tanggal) && $tanggal == sprintf('%02d', $d)) ? 'selected' : '' }}>
@@ -26,7 +26,7 @@
 
                     <!-- Month Selection -->
                     <select name="bulan" onchange="this.form.submit()" 
-                            class="px-5 py-3 bg-white border border-gray-200 rounded-2xl text-xs font-bold focus:ring-4 focus:ring-[#AB6F6E]/10 focus:border-[#AB6F6E] outline-none transition-all shadow-sm">
+                            class="px-5 py-3 bg-white border border-gray-200 rounded-2xl text-xs font-bold focus:ring-4 focus:ring-[#825449]/10 focus:border-[#825449] outline-none transition-all shadow-sm">
                         @foreach(range(1, 12) as $m)
                             <option value="{{ sprintf('%02d', $m) }}" {{ $bulan == sprintf('%02d', $m) ? 'selected' : '' }}>
                                 {{ Carbon\Carbon::create()->month($m)->translatedFormat('F') }}
@@ -36,7 +36,7 @@
 
                     <!-- Year Selection -->
                     <select name="tahun" onchange="this.form.submit()" 
-                            class="px-5 py-3 bg-white border border-gray-200 rounded-2xl text-xs font-bold focus:ring-4 focus:ring-[#AB6F6E]/10 focus:border-[#AB6F6E] outline-none transition-all shadow-sm">
+                            class="px-5 py-3 bg-white border border-gray-200 rounded-2xl text-xs font-bold focus:ring-4 focus:ring-[#825449]/10 focus:border-[#825449] outline-none transition-all shadow-sm">
                         @foreach(range(date('Y')-2, date('Y')+1) as $y)
                             <option value="{{ $y }}" {{ $tahun == $y ? 'selected' : '' }}>{{ $y }}</option>
                         @endforeach
@@ -45,7 +45,7 @@
 
                 <!-- Print Button -->
                 <button onclick="window.print()" 
-                        class="px-6 py-3 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white text-xs font-black uppercase tracking-wider rounded-2xl shadow-lg shadow-[#AB6F6E]/30 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                        class="px-6 py-3 bg-gradient-to-r from-[#825449] to-[#825449] text-white text-xs font-black uppercase tracking-wider rounded-2xl shadow-lg shadow-[#825449]/30 hover:shadow-xl hover:-translate-y-0.5 transition-all">
                     Cetak Laporan
                 </button>
             </div>
@@ -59,7 +59,7 @@
         <!-- Report Header -->
         <div class="text-center mb-10 pb-4">
             <h1 class="text-3xl font-black text-gray-900 tracking-wider uppercase">Ekky Family Refleksi</h1>
-            <p class="text-gray-500 mt-2 text-sm font-black uppercase tracking-[0.2em] text-[#AB6F6E]">Laporan Pendapatan Owner</p>
+            <p class="text-gray-500 mt-2 text-sm font-black uppercase tracking-[0.2em] text-[#825449]">Laporan Pendapatan Owner</p>
             <p class="text-gray-400 text-xs font-bold mt-1.5 uppercase tracking-widest">
                 Periode: 
                 @if(!empty($tanggal))
@@ -126,7 +126,7 @@
                         <td class="py-5 px-6 text-right font-bold text-gray-800">
                             Rp {{ number_format($totalOmzet, 0, ',', '.') }}
                         </td>
-                        <td class="py-5 px-6 text-right text-[#AB6F6E] text-xl font-black">
+                        <td class="py-5 px-6 text-right text-[#825449] text-xl font-black">
                             Rp {{ number_format($totalPendapatan, 0, ',', '.') }}
                         </td>
                     </tr>

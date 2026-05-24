@@ -43,7 +43,7 @@
                         </td>
                         <td class="py-4 px-6">
                             <div class="flex items-center space-x-2">
-                                <span class="w-2 h-2 rounded-full bg-[#C48989]"></span>
+                                <span class="w-2 h-2 rounded-full bg-[#825449]"></span>
                                 <span class="text-sm font-medium text-gray-800">{{ $log->user->name ?? 'System' }}</span>
                             </div>
                         </td>

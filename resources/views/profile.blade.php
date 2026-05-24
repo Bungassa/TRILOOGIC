@@ -28,7 +28,7 @@
             font-weight: 500;
         }
         .profile-nav-link:hover, .profile-nav-link.active {
-            background-color: #C48989;
+            background-color: #825449;
             color: white;
         }
         .profile-nav-link i {
@@ -91,11 +91,11 @@
             font-size: 14px;
         }
         .form-control:focus {
-            border-color: #C48989;
+            border-color: #825449;
             box-shadow: 0 0 0 0.2rem rgba(196, 137, 137, 0.25);
         }
         .btn-save {
-            background-color: #C48989;
+            background-color: #825449;
             border: none;
             padding: 12px 30px;
             border-radius: 10px;
@@ -104,7 +104,7 @@
             transition: all 0.3s ease;
         }
         .btn-save:hover {
-            background-color: #AB6F6E;
+            background-color: #825449;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(196, 137, 137, 0.3);
             color: white;
@@ -144,7 +144,7 @@
             transition: all 0.3s ease;
         }
         .address-card:hover {
-            border-color: #C48989;
+            border-color: #825449;
             background-color: rgba(196, 137, 137, 0.02);
         }
         /* Leaflet custom search results */
@@ -184,7 +184,7 @@
         }
         .center-marker i {
             font-size: 40px;
-            color: #C48989;
+            color: #825449;
             text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         /* Bounce animation when map moves */
@@ -313,7 +313,7 @@
                                     <label class="form-label">Alamat</label>
                                     <div class="input-group">
                                         <input type="text" name="address" id="main_profile_address" class="form-control" value="{{ old('address', $user->address) }}" placeholder="Subang">
-                                        <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalMap" style="border-color: #ddd; color: #C48989;">
+                                        <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalMap" style="border-color: #ddd; color: #825449;">
                                             <i class="fa-solid fa-map-location-dot"></i>
                                         </button>
                                     </div>
@@ -383,7 +383,7 @@
                                                                     data-target="#modalTestimoni" 
                                                                     data-id="{{ $t->id }}"
                                                                     data-layanan="{{ $t->layanan->nama }}"
-                                                                    style="border-radius: 20px; font-size: 11px; background-color: #C48989; border-color: #C48989;">
+                                                                    style="border-radius: 20px; font-size: 11px; background-color: #825449; border-color: #825449;">
                                                                 Berikan Testimoni
                                                             </button>
                                                         @else
@@ -421,7 +421,7 @@
                                     {{ $user->address }}
                                 </p>
                                 <div class="d-flex gap-2">
-                                    <button class="btn btn-sm btn-outline-primary" style="border-radius: 8px; padding: 8px 20px; font-weight: 600; color: #C48989; border-color: #C48989;" data-bs-toggle="modal" data-bs-target="#modalMap">
+                                    <button class="btn btn-sm btn-outline-primary" style="border-radius: 8px; padding: 8px 20px; font-weight: 600; color: #825449; border-color: #825449;" data-bs-toggle="modal" data-bs-target="#modalMap">
                                         <i class="fa-solid fa-edit me-1"></i> Edit Alamat
                                     </button>
                                     <form id="formDeleteAddress" action="{{ route('profile.update') }}" method="POST">
@@ -486,7 +486,7 @@
                     </div>
                     <div class="modal-footer border-0 p-4 pt-0">
                         <button type="button" class="btn btn-light px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px; font-weight: 600;">Batal</button>
-                        <button type="submit" class="btn btn-primary px-4 py-2" style="border-radius: 10px; font-weight: 600; background-color: #C48989; border-color: #C48989;">Kirim Testimoni</button>
+                        <button type="submit" class="btn btn-primary px-4 py-2" style="border-radius: 10px; font-weight: 600; background-color: #825449; border-color: #825449;">Kirim Testimoni</button>
                     </div>
                 </form>
             </div>
@@ -535,7 +535,7 @@
                 </div>
                 <div class="modal-footer border-0 p-4 pt-0">
                     <button type="button" class="btn btn-light px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px; font-weight: 600;">Batal</button>
-                    <button type="button" id="btnConfirmAddress" class="btn btn-primary px-4 py-2" style="border-radius: 10px; font-weight: 600; background-color: #C48989; border-color: #C48989;">Simpan Alamat Ini</button>
+                    <button type="button" id="btnConfirmAddress" class="btn btn-primary px-4 py-2" style="border-radius: 10px; font-weight: 600; background-color: #825449; border-color: #825449;">Simpan Alamat Ini</button>
                 </div>
             </div>
         </div>
@@ -795,7 +795,7 @@
                         icon: 'warning',
                         title: 'Oops...',
                         text: 'Silahkan pilih lokasi terlebih dahulu di peta!',
-                        confirmButtonColor: '#C48989'
+                        confirmButtonColor: '#825449'
                     });
                 }
             });

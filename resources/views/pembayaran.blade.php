@@ -99,7 +99,7 @@
     backdrop-filter: blur(10px);
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #C48989;
+    border-left: 5px solid #825449;
     overflow: hidden;
     animation: slideIn 0.5s ease forwards;
   }
@@ -113,7 +113,7 @@
 
   .notification-icon {
     font-size: 28px;
-    color: #C48989;
+    color: #825449;
   }
 
   .notification-text h4 {
@@ -131,7 +131,7 @@
 
   .notification-progress {
     height: 3px;
-    background: #C48989;
+    background: #825449;
     width: 100%;
     animation: progress 3s linear forwards;
   }
