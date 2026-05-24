@@ -3,6 +3,55 @@
 @section('content')
 
     <link rel="stylesheet" href="{{ asset('assets/css/pemesanan.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+    <style>
+        /* Leaflet custom search results */
+        #search-results {
+            position: absolute;
+            z-index: 1000;
+            width: 100%;
+            background: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .search-result-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 13px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .search-result-item:hover {
+            background-color: #f8f9fa;
+        }
+        /* Fixed Center Marker */
+        .map-picker-container {
+            position: relative;
+        }
+        .center-marker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            z-index: 1000;
+            pointer-events: none;
+        }
+        .center-marker i {
+            font-size: 40px;
+            color: #C48989;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .center-marker.moving {
+            transform: translate(-50%, -120%);
+            transition: transform 0.2s ease-out;
+        }
+    </style>
 
     <x-header pageTitle="Pemesanan Layanan" breadcrumbItem="Pemesanan" />
 
@@ -150,11 +199,17 @@
                   </div>
                   @endauth
 
-                  <textarea name="alamat" id="alamat_textarea" rows="3"
-                            class="pemesanan-textarea"
-                            placeholder="Masukkan alamat lengkap untuk home service"
-                            {{ Auth::check() ? 'style=display:none' : '' }}>{{ Auth::check() ? Auth::user()->address : '' }}</textarea>
-                  <p class="text-xs mt-1 text-gray-500"><i class="fa-solid fa-circle-info me-1"></i> Saat ini hanya melayani wilayah Subang.</p>
+                  <div id="alamat_input_container" {!! Auth::check() ? 'style="display:none"' : '' !!}>
+                    <textarea name="alamat" id="alamat_textarea" rows="3"
+                              class="pemesanan-textarea mb-2"
+                              placeholder="Masukkan alamat lengkap untuk home service"></textarea>
+                    <button type="button" class="btn btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalMap" style="background-color: #fff; border: 1px solid #C48989; color: #C48989; font-weight: 600; border-radius: 8px; padding: 10px; transition: all 0.3s;" onmouseover="this.style.backgroundColor='#C48989'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='#fff'; this.style.color='#C48989';">
+                        <i class="fa-solid fa-map-location-dot me-2"></i>Pilih Lokasi dari Peta
+                    </button>
+                    <input type="hidden" name="lat" id="hidden_lat_input">
+                    <input type="hidden" name="lng" id="hidden_lng_input">
+                    <p class="text-xs mt-2 text-gray-500"><i class="fa-solid fa-circle-info me-1"></i> Saat ini hanya melayani wilayah Subang.</p>
+                  </div>
                 </div>
 
                 <!-- Tanggal -->
@@ -229,6 +284,43 @@
     </section>
     <!-- End Penawaran Section -->
 
+    <!-- Modal Pilih Alamat Gmaps -->
+    <div class="modal fade" id="modalMap" tabindex="-1" aria-labelledby="modalMapLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px; border: none; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <div class="modal-header border-0 pb-0 pt-4 px-4">
+                    <h5 class="modal-title fw-bold" id="modalMapLabel">Pilih Lokasi Alamat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="mb-3 position-relative">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0" style="border-radius: 12px 0 0 12px;"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                            <input type="text" id="pac-input" class="form-control border-start-0" placeholder="Cari lokasi atau area..." style="border-radius: 0 12px 12px 0; padding-left: 0;" autocomplete="off">
+                        </div>
+                        <div id="search-results"></div>
+                    </div>
+                    
+                    <div class="map-picker-container">
+                        <div id="map-container" style="width: 100%; height: 400px; border-radius: 15px; border: 1px solid #ddd; z-index: 1;"></div>
+                        <div class="center-marker" id="center-pin">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 p-3 bg-light rounded-3">
+                        <label class="form-label small fw-bold text-muted mb-1"><i class="fa-solid fa-location-dot me-1"></i> Alamat Terpilih:</label>
+                        <p id="selected-address-text" class="small fw-medium mb-0">Geser pin untuk memilih lokasi...</p>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0">
+                    <button type="button" class="btn btn-light px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px; font-weight: 600;">Batal</button>
+                    <button type="button" id="btnConfirmAddress" class="btn btn-primary px-4 py-2" style="border-radius: 10px; font-weight: 600; background-color: #C48989; border-color: #C48989;" data-bs-dismiss="modal">Gunakan Alamat Ini</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
       function toggleNamaPelanggan() {
         const isChecked = document.getElementById('pemesan_adalah_pelanggan').checked;
@@ -281,16 +373,17 @@
       function toggleTipeAlamat() {
         const pilihProfil = document.getElementById('pilih_alamat_profil');
         const displayProfil = document.getElementById('display_alamat_profil');
+        const containerAlamat = document.getElementById('alamat_input_container');
         const textareaAlamat = document.getElementById('alamat_textarea');
         
         if (pilihProfil && pilihProfil.checked) {
           if (displayProfil) displayProfil.style.display = 'block';
-          textareaAlamat.style.display = 'none';
-          textareaAlamat.value = "{{ Auth::check() ? Auth::user()->address : '' }}";
+          if (containerAlamat) containerAlamat.style.display = 'none';
+          if (textareaAlamat) textareaAlamat.value = "{{ Auth::check() ? Auth::user()->address : '' }}";
         } else {
           if (displayProfil) displayProfil.style.display = 'none';
-          textareaAlamat.style.display = 'block';
-          textareaAlamat.value = '';
+          if (containerAlamat) containerAlamat.style.display = 'block';
+          if (textareaAlamat) textareaAlamat.value = '';
         }
       }
 
@@ -419,6 +512,141 @@
         
         // Interval pengecekan setiap 1 menit untuk update min-time jika user standby lama di halaman
         setInterval(validateTime, 60000);
+
+        // Load Scripts
+        const leafletScript = document.createElement('script');
+        leafletScript.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+        document.head.appendChild(leafletScript);
+
+        const swalScript = document.createElement('script');
+        swalScript.src = "https://cdn.jsdelivr.net/npm/sweetalert2@11";
+        document.head.appendChild(swalScript);
+
+        // Leaflet Maps Initialization on modal show
+        let map, marker;
+        const modalMap = document.getElementById('modalMap');
+        
+        if (modalMap) {
+            modalMap.addEventListener('shown.bs.modal', function () {
+                initLeafletMap();
+            });
+        }
+
+        function initLeafletMap() {
+            if (map) {
+                map.invalidateSize();
+                return;
+            }
+
+            const defaultLocation = [-6.560198, 107.761402]; // Subang
+
+            map = L.map('map-container', {
+                zoomControl: true
+            }).setView(defaultLocation, 15);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            const centerPin = document.getElementById('center-pin');
+
+            map.on('movestart', function() {
+                centerPin.classList.add('moving');
+            });
+
+            map.on('moveend', function() {
+                centerPin.classList.remove('moving');
+                const center = map.getCenter();
+                updateAddressInfo(center.lat, center.lng);
+            });
+
+            // Search handling
+            const searchInput = document.getElementById('pac-input');
+            const searchResults = document.getElementById('search-results');
+            let timeout = null;
+
+            searchInput.addEventListener('input', function() {
+                clearTimeout(timeout);
+                const query = this.value;
+                if (query.length < 3) {
+                    searchResults.style.display = 'none';
+                    return;
+                }
+
+                timeout = setTimeout(() => {
+                    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}&viewbox=107.50,-6.21,107.96,-6.84&bounded=1&limit=5`)
+                        .then(response => response.json())
+                        .then(data => {
+                            searchResults.innerHTML = '';
+                            if (data.length > 0) {
+                                data.forEach(item => {
+                                    if (!item.display_name.toLowerCase().includes('subang')) return;
+                                    
+                                    const div = document.createElement('div');
+                                    div.className = 'search-result-item';
+                                    div.innerText = item.display_name;
+                                    div.onclick = function() {
+                                        const lat = parseFloat(item.lat);
+                                        const lon = parseFloat(item.lon);
+                                        map.setView([lat, lon], 17);
+                                        updateAddressInfo(lat, lon);
+                                        searchResults.style.display = 'none';
+                                        searchInput.value = item.display_name;
+                                    };
+                                    searchResults.appendChild(div);
+                                });
+                                searchResults.style.display = 'block';
+                            } else {
+                                searchResults.style.display = 'none';
+                            }
+                        });
+                }, 500);
+            });
+
+            document.addEventListener('click', function(e) {
+                if (e.target !== searchInput) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        }
+
+        let tempSelectedAddress = '';
+
+        function updateAddressInfo(lat, lng) {
+            document.getElementById('hidden_lat_input').value = lat;
+            document.getElementById('hidden_lng_input').value = lng;
+
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.display_name) {
+                        const address = data.display_name;
+                        
+                        if (!address.toLowerCase().includes('subang')) {
+                            document.getElementById('selected-address-text').innerHTML = '<span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Maaf, layanan hanya di Subang.</span>';
+                            tempSelectedAddress = '';
+                            return;
+                        }
+
+                        document.getElementById('selected-address-text').innerText = address;
+                        tempSelectedAddress = address;
+                    }
+                });
+        }
+
+        // Confirm Address Button
+        document.getElementById('btnConfirmAddress').addEventListener('click', function() {
+            if (tempSelectedAddress) {
+                document.getElementById('alamat_textarea').value = tempSelectedAddress;
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Silahkan pilih lokasi valid di peta!',
+                    confirmButtonColor: '#C48989'
+                });
+            }
+        });
       });
     </script>
 

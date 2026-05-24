@@ -690,7 +690,7 @@
                         <i class="fa-solid fa-user"></i>
                       </div>
                     </div>
-                    <div class="cs_rating text-accent cs_mb_15 text-center" data-rating="{{ $t->rating }}">
+                    <div class="cs_rating text-accent cs_mb_15 mx-auto text-center" data-rating="{{ $t->rating }}">
                       <div class="cs_rating_percentage mx-auto"></div>
                     </div>
                     <p class="cs_mb_14 text-center">"{{ $t->pesan }}"</p>

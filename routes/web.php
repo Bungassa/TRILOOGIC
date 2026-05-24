@@ -50,6 +50,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
     Route::get('/transaksi', [App\Http\Controllers\AdminTransaksiController::class, 'index'])->name('admin.transaksi');
     Route::post('/transaksi', [App\Http\Controllers\AdminTransaksiController::class, 'store'])->name('admin.transaksi.store');
+    Route::get('/transaksi/{id}', [App\Http\Controllers\AdminTransaksiController::class, 'show'])->name('admin.transaksi.show');
     Route::put('/transaksi/{id}', [App\Http\Controllers\AdminTransaksiController::class, 'updateStatus'])->name('admin.transaksi.update');
 
     Route::get('/laporan', [App\Http\Controllers\AdminController::class, 'laporan'])->name('admin.laporan');
@@ -88,6 +89,7 @@ Route::middleware(['auth', 'role:owner'])->prefix('owner')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\OwnerController::class, 'dashboard'])->name('owner.dashboard');
     Route::get('/transaksi', [App\Http\Controllers\OwnerController::class, 'transaksi'])->name('owner.transaksi');
     Route::get('/laporan', [App\Http\Controllers\OwnerController::class, 'laporan'])->name('owner.laporan');
+    Route::get('/laporan-pendapatan', [App\Http\Controllers\OwnerController::class, 'laporanPendapatan'])->name('owner.laporan-pendapatan');
 
     // Admin Management
     Route::get('/admins', [App\Http\Controllers\OwnerController::class, 'adminIndex'])->name('owner.admins');

@@ -26,8 +26,7 @@
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Nama</th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Layanan</th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Lokasi</th>
-                        <th class="text-left py-4 px-4 font-semibold text-gray-700">Tanggal & Jam</th>
-                        <th class="text-left py-4 px-4 font-semibold text-gray-700">Total Harga</th>
+                        <th class="text-left py-4 px-4 font-semibold text-gray-700">Tanggal</th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Status Pesanan</th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Pembayaran</th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Aksi</th>
@@ -39,7 +38,6 @@
                         <tr class="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
                             <td class="py-4 px-4">
                                 <div class="font-medium text-gray-800">{{ $transaksi->nama }}</div>
-                                <div class="text-sm text-gray-500">{{ $transaksi->telepon }}</div>
                             </td>
                             <td class="py-4 px-4 text-gray-600">
                                 @if($transaksi->layanan_id)
@@ -50,16 +48,14 @@
                             </td>
                             <td class="py-4 px-4 text-gray-600">
                                 @if($transaksi->lokasi === 'tempat')
-                                    Di Tempat
+                                    <span class="font-medium text-gray-800">Di Tempat</span>
                                 @else
-                                    Di Rumah
+                                    <span class="font-medium text-gray-800">Di Rumah</span>
                                 @endif
                             </td>
                             <td class="py-4 px-4 text-gray-600">
-                                {{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d/m/Y') }}<br>
-                                <span class="text-sm">{{ $transaksi->jam }}</span>
+                                {{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d/m/Y') }}
                             </td>
-                            <td class="py-4 px-4 font-semibold text-gray-800">Rp {{ number_format($transaksi->total_harga, 0, ',', '.') }}</td>
                             <td class="py-4 px-4">
                                 <span class="px-3 py-1 rounded-full text-xs font-semibold
                                     @if($transaksi->status === 'pending') bg-yellow-100 text-yellow-700
@@ -78,19 +74,18 @@
                                 </span>
                             </td>
                             <td class="py-4 px-4">
-                                    <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-
-
-
-                                        <select name="status" onchange="this.form.submit()" class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer hover:bg-white">
+                                <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <select name="status" onchange="this.form.submit()" {{ $transaksi->status === 'selesai' ? 'disabled' : '' }} class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#C48989]/20 focus:border-[#C48989] transition-all cursor-pointer hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/50">
                                         <option value="pending" {{ $transaksi->status === 'pending' ? 'selected' : '' }}>Menunggu</option>
                                         <option value="dikerjakan" {{ $transaksi->status === 'dikerjakan' ? 'selected' : '' }}>Proses</option>
                                         <option value="selesai" {{ $transaksi->status === 'selesai' ? 'selected' : '' }}>Selesai</option>
                                     </select>
-                                    </form>
-
+                                </form>
+                                <a href="{{ route('admin.transaksi.show', $transaksi->id) }}" class="inline-block mt-2 w-full px-3 py-1.5 bg-blue-50 text-blue-600 border border-blue-200 rounded-xl text-xs font-bold hover:bg-blue-100 transition-colors text-center">
+                                    <i class="fa-solid fa-circle-info me-1"></i> Detail
+                                </a>
                             </td>
                             <td class="py-4 px-4 text-gray-600">
                                 <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
@@ -198,6 +193,8 @@
         </div>
     </div>
 
+
+
     <script>
         function openModal() {
             document.getElementById('transaksiModal').classList.remove('hidden');
@@ -208,6 +205,8 @@
             document.getElementById('transaksiModal').classList.add('hidden');
             document.getElementById('transaksiModal').classList.remove('flex');
         }
+
+
 
         function validateTime() {
             const tanggalInput = document.getElementById('tanggal_input');
