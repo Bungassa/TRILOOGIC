@@ -104,7 +104,7 @@
                     <label class="pemesanan-label" style="font-size: 14px; font-weight: normal; color: #666;">Nama Pelanggan 1</label>
                     <input type="text" name="nama" id="nama_pelanggan" required
                            class="pemesanan-input"
-                           placeholder="Masukkan nama pelanggan 1">
+                           placeholder="Masukkan nama pelanggan 1" value="{{ old('nama') }}">
                   </div>
 
                   <div>
@@ -120,7 +120,10 @@
                          'name' => Auth::user()->name,
                          'jenis_kelamin' => Auth::user()->jenis_kelamin,
                          'phone' => Auth::user()->phone
-                       ]) }}">
+                       ]) }}"
+                       data-address="{{ Auth::user()->address }}"
+                       data-lat="{{ Auth::user()->lat }}"
+                       data-lng="{{ Auth::user()->lng }}">
                   </div>
                   @endauth
                 </div>
@@ -131,8 +134,8 @@
                   <select name="jenis_kelamin" id="jenis_kelamin_pelanggan" required
                           class="pemesanan-select">
                     <option value="">-- Pilih Jenis Kelamin --</option>
-                    <option value="L">Laki-laki</option>
-                    <option value="P">Perempuan</option>
+                    <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>Laki-laki</option>
+                    <option value="P" {{ old('jenis_kelamin') == 'P' ? 'selected' : '' }}>Perempuan</option>
                   </select>
                 </div>
 
@@ -141,7 +144,7 @@
                   <label class="pemesanan-label">No. Telepon</label>
                   <input type="tel" name="telepon" id="telepon_pelanggan" required
                          class="pemesanan-input"
-                         placeholder="Masukkan nomor telepon">
+                         placeholder="Masukkan nomor telepon" value="{{ old('telepon') }}">
                 </div>
 
                 <!-- Layanan -->
@@ -152,7 +155,7 @@
                     <option value="">-- Pilih Layanan --</option>
                     @isset($layanans)
                       @foreach($layanans as $layanan)
-                        <option value="{{ $layanan->id }}" data-harga="{{ $layanan->harga }}" data-nama="{{ $layanan->nama }}">{{ $layanan->nama }} - Rp {{ number_format($layanan->harga, 0, ',', '.') }}</option>
+                        <option value="{{ $layanan->id }}" data-harga="{{ $layanan->harga }}" data-nama="{{ $layanan->nama }}" {{ old('layanan') == $layanan->id ? 'selected' : '' }}>{{ $layanan->nama }} - Rp {{ number_format($layanan->harga, 0, ',', '.') }}</option>
                       @endforeach
                     @endisset
                   </select>
@@ -163,11 +166,11 @@
                   <label class="pemesanan-label">Lokasi Layanan</label>
                   <div class="pemesanan-radio-group">
                     <label class="pemesanan-radio-option">
-                      <input type="radio" name="lokasi" value="tempat" id="lokasi_tempat" checked onchange="toggleAlamat(); updateSummary()">
+                      <input type="radio" name="lokasi" value="tempat" id="lokasi_tempat" {{ old('lokasi', 'tempat') == 'tempat' ? 'checked' : '' }} onchange="toggleAlamat(); updateSummary()">
                       <span>Di Tempat (Service Center)</span>
                     </label>
                     <label class="pemesanan-radio-option">
-                      <input type="radio" name="lokasi" value="rumah" id="lokasi_rumah" onchange="toggleAlamat(); updateSummary()">
+                      <input type="radio" name="lokasi" value="rumah" id="lokasi_rumah" {{ old('lokasi') == 'rumah' ? 'checked' : '' }} onchange="toggleAlamat(); updateSummary()">
                       <span>Di Rumah (Home Service)</span>
                     </label>
                   </div>
@@ -180,11 +183,11 @@
                   @auth
                   <div class="pemesanan-radio-group mb-3">
                     <label class="pemesanan-radio-option">
-                      <input type="radio" name="pilihan_alamat" value="profil" id="pilih_alamat_profil" checked onchange="toggleTipeAlamat()">
+                      <input type="radio" name="pilihan_alamat" value="profil" id="pilih_alamat_profil" {{ old('pilihan_alamat', 'profil') == 'profil' ? 'checked' : '' }} onchange="toggleTipeAlamat()">
                       <span>Alamat Saya</span>
                     </label>
                     <label class="pemesanan-radio-option">
-                      <input type="radio" name="pilihan_alamat" value="baru" id="pilih_alamat_baru" onchange="toggleTipeAlamat()">
+                      <input type="radio" name="pilihan_alamat" value="baru" id="pilih_alamat_baru" {{ old('pilihan_alamat') == 'baru' ? 'checked' : '' }} onchange="toggleTipeAlamat()">
                       <span>Alamat Lain</span>
                     </label>
                   </div>
@@ -202,12 +205,12 @@
                   <div id="alamat_input_container" {!! Auth::check() ? 'style="display:none"' : '' !!}>
                     <textarea name="alamat" id="alamat_textarea" rows="3"
                               class="pemesanan-textarea mb-2"
-                              placeholder="Masukkan alamat lengkap untuk home service"></textarea>
+                              placeholder="Masukkan alamat lengkap untuk home service">{{ old('alamat') }}</textarea>
                     <button type="button" class="btn btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalMap" style="background-color: #fff; border: 1px solid #C48989; color: #C48989; font-weight: 600; border-radius: 8px; padding: 10px; transition: all 0.3s;" onmouseover="this.style.backgroundColor='#C48989'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='#fff'; this.style.color='#C48989';">
                         <i class="fa-solid fa-map-location-dot me-2"></i>Pilih Lokasi dari Peta
                     </button>
-                    <input type="hidden" name="lat" id="hidden_lat_input">
-                    <input type="hidden" name="lng" id="hidden_lng_input">
+                    <input type="hidden" name="lat" id="hidden_lat_input" value="{{ old('lat') }}">
+                    <input type="hidden" name="lng" id="hidden_lng_input" value="{{ old('lng') }}">
                     <p class="text-xs mt-2 text-gray-500"><i class="fa-solid fa-circle-info me-1"></i> Saat ini hanya melayani wilayah Subang.</p>
                   </div>
                 </div>
@@ -216,14 +219,14 @@
                 <div class="pemesanan-form-group">
                   <label class="pemesanan-label">Tanggal yang Diinginkan</label>
                   <input type="date" name="tanggal" id="tanggal_input" required
-                         min="{{ date('Y-m-d') }}"
+                         min="{{ date('Y-m-d') }}" value="{{ old('tanggal') }}"
                          class="pemesanan-input" onchange="updateSummary(); validateTime()">
                 </div>
 
                 <!-- Jam -->
                 <div class="pemesanan-form-group">
                   <label class="pemesanan-label">Jam yang Diinginkan</label>
-                  <input type="time" name="jam" id="jam_input" required
+                  <input type="time" name="jam" id="jam_input" required value="{{ old('jam') }}"
                          class="pemesanan-input" onchange="updateSummary(); validateTime()">
                 </div>
 
@@ -232,7 +235,7 @@
                   <label class="pemesanan-label">Catatan Tambahan (Opsional)</label>
                   <textarea name="catatan" rows="3"
                             class="pemesanan-textarea"
-                            placeholder="Masukkan catatan tambahan jika ada"></textarea>
+                            placeholder="Masukkan catatan tambahan jika ada">{{ old('catatan') }}</textarea>
                 </div>
 
                 <!-- Ringkasan Pemesanan -->
@@ -322,37 +325,30 @@
     </div>
 
     <script>
-      function toggleNamaPelanggan() {
-        const isChecked = document.getElementById('pemesan_adalah_pelanggan').checked;
+      function toggleNamaPelanggan(isPageLoad = false) {
+        const checkbox = document.getElementById('pemesan_adalah_pelanggan');
         const inputNama = document.getElementById('nama_pelanggan');
         const inputJK = document.getElementById('jenis_kelamin_pelanggan');
         const inputTelp = document.getElementById('telepon_pelanggan');
+        const userStore = document.getElementById('user-data-store');
 
-        if (isChecked) {
-          const userDataContainer = document.getElementById('user-data-store');
-          if (userDataContainer) {
-            const userData = JSON.parse(userDataContainer.getAttribute('data-user'));
-            inputNama.value = userData.name;
-            inputJK.value = userData.jenis_kelamin || '';
-            inputTelp.value = userData.phone;
+        if (checkbox && checkbox.checked && userStore) {
+          try {
+            const userData = JSON.parse(userStore.getAttribute('data-user'));
+            if(inputNama) { inputNama.value = userData.name; inputNama.setAttribute('readonly', true); inputNama.style.backgroundColor = '#f8f9fa'; }
+            if(inputJK) { inputJK.value = userData.jenis_kelamin; inputJK.style.pointerEvents = 'none'; inputJK.style.backgroundColor = '#f8f9fa'; }
+            if(inputTelp) { inputTelp.value = userData.phone; inputTelp.setAttribute('readonly', true); inputTelp.style.backgroundColor = '#f8f9fa'; }
+          } catch(e) {
+            console.error(e);
           }
-          
-          // Nama and Telp are readonly, but JK remains editable if not set
-          [inputNama, inputTelp].forEach(el => {
-            el.setAttribute('readonly', 'readonly');
-            el.style.backgroundColor = '#f8f9fa';
-          });
-          
-          // Keep JK editable as it's often missing from registration
-          inputJK.removeAttribute('readonly');
-          inputJK.style.pointerEvents = 'auto';
-          inputJK.style.backgroundColor = '';
         } else {
           [inputNama, inputJK, inputTelp].forEach(el => {
-            el.value = '';
-            el.removeAttribute('readonly');
-            if(el.tagName === 'SELECT') el.style.pointerEvents = 'auto';
-            el.style.backgroundColor = '';
+            if (!isPageLoad && el) el.value = '';
+            if (el) {
+                el.removeAttribute('readonly');
+                if(el.tagName === 'SELECT') el.style.pointerEvents = 'auto';
+                el.style.backgroundColor = '';
+            }
           });
         }
       }
@@ -370,20 +366,30 @@
         }
       }
 
-      function toggleTipeAlamat() {
-        const pilihProfil = document.getElementById('pilih_alamat_profil');
+      function toggleTipeAlamat(isPageLoad = false) {
+        const profilRadio = document.getElementById('pilih_alamat_profil');
         const displayProfil = document.getElementById('display_alamat_profil');
         const containerAlamat = document.getElementById('alamat_input_container');
         const textareaAlamat = document.getElementById('alamat_textarea');
-        
-        if (pilihProfil && pilihProfil.checked) {
+        const hiddenLat = document.getElementById('hidden_lat_input');
+        const hiddenLng = document.getElementById('hidden_lng_input');
+
+        const userStore = document.getElementById('user-data-store');
+
+        if (profilRadio && profilRadio.checked) {
           if (displayProfil) displayProfil.style.display = 'block';
           if (containerAlamat) containerAlamat.style.display = 'none';
-          if (textareaAlamat) textareaAlamat.value = "{{ Auth::check() ? Auth::user()->address : '' }}";
+          if (textareaAlamat) textareaAlamat.value = userStore ? userStore.getAttribute('data-address') : '';
+          if (hiddenLat) hiddenLat.value = userStore ? userStore.getAttribute('data-lat') : '';
+          if (hiddenLng) hiddenLng.value = userStore ? userStore.getAttribute('data-lng') : '';
         } else {
           if (displayProfil) displayProfil.style.display = 'none';
           if (containerAlamat) containerAlamat.style.display = 'block';
-          if (textareaAlamat) textareaAlamat.value = '';
+          if (!isPageLoad) {
+            if (textareaAlamat) textareaAlamat.value = '';
+            if (hiddenLat) hiddenLat.value = '';
+            if (hiddenLng) hiddenLng.value = '';
+          }
         }
       }
 
@@ -507,6 +513,9 @@
 
       // Jalankan saat pertama kali load dan setiap kali ada interaksi
       document.addEventListener('DOMContentLoaded', function() {
+        toggleAlamat();
+        toggleTipeAlamat(true);
+        toggleNamaPelanggan();
         updateSummary();
         validateTime();
         

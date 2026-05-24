@@ -17,6 +17,8 @@ class Transaksi extends Model
         'layanan_id',
         'lokasi',
         'alamat',
+        'lat',
+        'lng',
         'tanggal',
         'jam',
         'catatan',

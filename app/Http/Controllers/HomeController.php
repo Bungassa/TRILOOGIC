@@ -79,6 +79,8 @@ class HomeController extends Controller
                 'layanan' => 'required|exists:layanans,id',
                 'lokasi' => 'required|in:tempat,rumah',
                 'alamat' => 'required_if:lokasi,rumah|nullable|string',
+                'lat' => 'nullable|numeric',
+                'lng' => 'nullable|numeric',
                 'tanggal' => 'required|date|after_or_equal:today',
                 'jam' => [
                     'required',
@@ -126,6 +128,8 @@ class HomeController extends Controller
             'layanan_id' => $request->layanan,
             'lokasi' => $request->lokasi,
             'alamat' => $request->alamat,
+            'lat' => $request->lat,
+            'lng' => $request->lng,
             'tanggal' => $request->tanggal,
             'jam' => $request->jam,
             'catatan' => $request->catatan,
