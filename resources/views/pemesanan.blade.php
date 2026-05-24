@@ -459,7 +459,7 @@
         summaryTotal.textContent = 'Rp ' + total.toLocaleString('id-ID');
       }
 
-      function validateTime() {
+      function validateTime(isPageLoad = false) {
         const tanggalInput = document.getElementById('tanggal_input');
         const jamInput = document.getElementById('jam_input');
         
@@ -493,18 +493,20 @@
           jamInput.setAttribute('min', minTime);
           
           // Jika jam yang sudah dipilih ternyata di luar jangkauan
-          if (jamInput.value && (jamInput.value < minTime || jamInput.value > opEnd)) {
+          if (!isPageLoad && jamInput.value && (jamInput.value < minTime || jamInput.value > opEnd)) {
             jamInput.value = '';
             updateSummary();
           }
         } else if (selectedDate < todayStr) {
-          tanggalInput.value = todayStr;
-          validateTime();
+          if (!isPageLoad) {
+            tanggalInput.value = todayStr;
+            validateTime();
+          }
         } else {
           // Jika hari esok/nanti, min jam tetap 09:00
           jamInput.setAttribute('min', opStart);
           
-          if (jamInput.value && (jamInput.value < opStart || jamInput.value > opEnd)) {
+          if (!isPageLoad && jamInput.value && (jamInput.value < opStart || jamInput.value > opEnd)) {
             jamInput.value = '';
             updateSummary();
           }
@@ -515,9 +517,9 @@
       document.addEventListener('DOMContentLoaded', function() {
         toggleAlamat();
         toggleTipeAlamat(true);
-        toggleNamaPelanggan();
+        toggleNamaPelanggan(true);
         updateSummary();
-        validateTime();
+        validateTime(true);
         
         // Interval pengecekan setiap 1 menit untuk update min-time jika user standby lama di halaman
         setInterval(validateTime, 60000);
