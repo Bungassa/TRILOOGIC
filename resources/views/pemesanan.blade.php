@@ -336,7 +336,12 @@
           try {
             const userData = JSON.parse(userStore.getAttribute('data-user'));
             if(inputNama) { inputNama.value = userData.name; inputNama.setAttribute('readonly', true); inputNama.style.backgroundColor = '#f8f9fa'; }
-            if(inputJK) { inputJK.value = userData.jenis_kelamin; inputJK.style.pointerEvents = 'none'; inputJK.style.backgroundColor = '#f8f9fa'; }
+            if(inputJK) { 
+                inputJK.value = userData.jenis_kelamin || ''; 
+                inputJK.removeAttribute('readonly');
+                inputJK.style.pointerEvents = 'auto'; 
+                inputJK.style.backgroundColor = ''; 
+            }
             if(inputTelp) { inputTelp.value = userData.phone; inputTelp.setAttribute('readonly', true); inputTelp.style.backgroundColor = '#f8f9fa'; }
           } catch(e) {
             console.error(e);

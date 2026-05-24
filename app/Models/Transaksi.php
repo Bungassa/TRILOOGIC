@@ -49,13 +49,21 @@ class Transaksi extends Model
         static::saved(function ($transaksi) {
             // Automatically create/update payroll record if transaction is completed and paid
             if ($transaksi->status === 'selesai' && $transaksi->status_pembayaran === 'lunas' && $transaksi->karyawan_id) {
+                // Potong pajak 10.000 untuk layanan Full Body (ID 1 sampai 5)
+                $layananKenaPajak = [1, 2, 3, 4, 5];
+                $hargaBersih = $transaksi->total_harga;
+                
+                if (in_array($transaksi->layanan_id, $layananKenaPajak)) {
+                    $hargaBersih -= 10000;
+                }
+
                 \App\Models\Penggajian::updateOrCreate(
                     ['transaksi_id' => $transaksi->id],
                     [
                         'karyawan_id' => $transaksi->karyawan_id,
                         'layanan_id' => $transaksi->layanan_id,
-                        'upah_karyawan' => $transaksi->total_harga / 2,
-                        'pendapatan_owner' => $transaksi->total_harga / 2,
+                        'upah_karyawan' => $hargaBersih / 2,
+                        'pendapatan_owner' => $hargaBersih / 2,
                         'status_pembayaran' => 'pending'
                     ]
                 );
