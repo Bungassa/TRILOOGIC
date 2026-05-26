@@ -22,14 +22,14 @@
 
 @if(isset($pendingTestimoniCount) && $pendingTestimoniCount > 0)
     <div class="testimoni-reminder-sticky" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; max-width: 320px;">
-        <div class="alert alert-warning border-0 shadow-lg d-flex align-items-center mb-0" style="border-radius: 15px; background: white; border-left: 5px solid #C48989 !important;">
-            <div class="me-3 fs-3" style="color: #C48989;">
+        <div class="alert alert-warning border-0 shadow-lg d-flex align-items-center mb-0" style="border-radius: 15px; background: white; border-left: 5px solid #825449 !important;">
+            <div class="me-3 fs-3" style="color: #825449;">
                 <i class="fa-solid fa-star-half-stroke"></i>
             </div>
             <div>
                 <h6 class="fw-bold mb-1" style="color: #333;">Testimoni Wajib!</h6>
                 <p class="small mb-2 text-muted">Anda memiliki <strong>{{ $pendingTestimoniCount }}</strong> pesanan yang butuh penilaian.</p>
-                <a href="{{ route('profile') }}#orders" class="btn btn-sm text-white fw-bold w-100" style="border-radius: 8px; background-color: #C48989;">Berikan Sekarang</a>
+                <a href="{{ route('profile') }}#orders" class="btn btn-sm text-white fw-bold w-100" style="border-radius: 8px; background-color: #825449;">Berikan Sekarang</a>
             </div>
             <button type="button" class="btn-close ms-2 small" onclick="this.parentElement.parentElement.remove()" style="font-size: 10px;"></button>
         </div>
@@ -119,7 +119,7 @@
 
               <stop offset="0" stop-color="#D9D9D9" stop-opacity="0" />
 
-              <stop offset="1" stop-color="#C48989" />
+              <stop offset="1" stop-color="#825449" />
 
             </linearGradient>
 
@@ -141,7 +141,7 @@
 
               <stop offset="0.0457759" stop-color="#18191D" stop-opacity="0" />
 
-              <stop offset="0.514455" stop-color="#C48989" stop-opacity="0.35" />
+              <stop offset="0.514455" stop-color="#825449" stop-opacity="0.35" />
 
             </linearGradient>
 
@@ -690,7 +690,7 @@
                         <i class="fa-solid fa-user"></i>
                       </div>
                     </div>
-                    <div class="cs_rating text-accent cs_mb_15 text-center" data-rating="{{ $t->rating }}">
+                    <div class="cs_rating text-accent cs_mb_15 mx-auto text-center" data-rating="{{ $t->rating }}">
                       <div class="cs_rating_percentage mx-auto"></div>
                     </div>
                     <p class="cs_mb_14 text-center">"{{ $t->pesan }}"</p>

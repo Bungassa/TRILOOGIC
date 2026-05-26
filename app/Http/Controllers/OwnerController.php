@@ -17,8 +17,8 @@ class OwnerController extends Controller
         $totalTransaksi = Transaksi::count();
         $transaksiHariIni = Transaksi::whereDate('created_at', Carbon::today())->count();
 
-        // Revenue
-        $totalRevenue = Transaksi::where('status_pembayaran', 'lunas')->sum('total_harga');
+        // Revenue (50% pendapatan bersih owner)
+        $totalRevenue = \App\Models\Penggajian::sum('pendapatan_owner');
 
         $recentTransactions = Transaksi::with('layanan')
             ->latest()
@@ -45,14 +45,53 @@ class OwnerController extends Controller
         ]);
     }
 
-    public function laporan()
+    public function laporan(Request $request)
     {
-        $transaksis = Transaksi::with('layanan')->where('status_pembayaran', 'lunas')->latest()->get();
+        $bulan = (int) $request->get('bulan', date('m'));
+        $tahun = (int) $request->get('tahun', date('Y'));
+
+        $penggajians = \App\Models\Penggajian::with(['karyawan', 'layanan', 'transaksi'])
+            ->whereHas('transaksi', function($query) use ($bulan, $tahun) {
+                $query->whereYear('tanggal', $tahun)
+                      ->whereMonth('tanggal', $bulan);
+            })
+            ->get()
+            ->groupBy('karyawan_id');
+
         return view('owner.pages.laporan', [
-            'title' => 'Laporan Pendapatan',
-            'transaksis' => $transaksis
+            'title' => 'Laporan Penggajian',
+            'penggajians' => $penggajians,
+            'bulan' => sprintf('%02d', $bulan),
+            'tahun' => $tahun
         ]);
     }
+
+    public function laporanPendapatan(Request $request)
+    {
+        $bulan = (int) $request->get('bulan', date('m'));
+        $tahun = (int) $request->get('tahun', date('Y'));
+        $tanggal = $request->get('tanggal');
+
+        $penggajians = \App\Models\Penggajian::with(['karyawan', 'layanan', 'transaksi'])
+            ->whereHas('transaksi', function($query) use ($bulan, $tahun, $tanggal) {
+                $query->whereYear('tanggal', $tahun)
+                      ->whereMonth('tanggal', $bulan);
+                
+                if (!empty($tanggal)) {
+                    $query->whereDay('tanggal', $tanggal);
+                }
+            })
+            ->get();
+
+        return view('owner.pages.laporan-pendapatan', [
+            'title' => 'Laporan Pendapatan',
+            'penggajians' => $penggajians,
+            'bulan' => sprintf('%02d', $bulan),
+            'tahun' => $tahun,
+            'tanggal' => $tanggal
+        ]);
+    }
+
 
     // Admin Management
     public function adminIndex()

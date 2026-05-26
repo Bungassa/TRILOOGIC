@@ -128,7 +128,7 @@ button {
 
 a:hover {
   text-decoration: none;
-  color: #AB6F6E;
+  color: #825449;
 }
 
 table {
@@ -210,7 +210,7 @@ textarea {
   border-width: 3px;
   border-style: solid;
   border-color: transparent;
-  border-top-color: #AB6F6E;
+  border-top-color: #825449;
   border-radius: 50%;
   position: absolute;
   width: calc(100% + 6px);
@@ -300,9 +300,9 @@ textarea {
   background-color: transparent;
 }
 .cs_btn.cs_style_2:hover {
-  background-color: #AB6F6E;
+  background-color: #825449;
   color: #fff;
-  border-color: #AB6F6E;
+  border-color: #825449;
 }
 
 /* End Button Design */
@@ -320,8 +320,8 @@ textarea {
   border: 1px solid #454a53;
 }
 .cs_social_btns a:hover {
-  border-color: #AB6F6E;
-  background-color: #AB6F6E;
+  border-color: #825449;
+  background-color: #825449;
 }
 
 .form-control {
@@ -344,7 +344,7 @@ textarea {
   height: 56px;
 }
 .form-control-2:focus {
-  border-color: #AB6F6E;
+  border-color: #825449;
 }
 
 label {
@@ -395,7 +395,7 @@ label {
 }
 
 .cs_moving_wrap {
-  background-color: #AB6F6E;
+  background-color: #825449;
   height: 200px;
 }
 .cs_moving_wrap:hover .cs_moving_text {
@@ -472,7 +472,7 @@ label {
   cursor: pointer;
 }
 .cs_accordian_head:hover .cs_accordian_title {
-  color: #AB6F6E;
+  color: #825449;
 }
 
 .cs_accordian {
@@ -519,7 +519,7 @@ label {
   background: transparent !important;
 }
 .cs_accordian.active .cs_accordian_title {
-  color: #AB6F6E;
+  color: #825449;
 }
 
 /* End Accordion */
@@ -578,7 +578,7 @@ label {
   content: "";
   height: 18px;
   width: 18px;
-  background-color: #AB6F6E;
+  background-color: #825449;
   border-radius: 50%;
   position: absolute;
   right: 0;
@@ -667,11 +667,11 @@ label {
 
 .breadcrumb-item + .breadcrumb-item::before {
   content: ">";
-  color: #AB6F6E;
+  color: #825449;
 }
 
 .breadcrumb-item.active {
-  color: #AB6F6E;
+  color: #825449;
 }
 
 .cs_social_btns.cs_color_1 a {
@@ -679,8 +679,8 @@ label {
   background-color: #666;
 }
 .cs_social_btns.cs_color_1 a:hover {
-  background-color: #AB6F6E;
-  border-color: #AB6F6E;
+  background-color: #825449;
+  border-color: #825449;
 }
 
 .cs_social_btns.cs_color_2 a {
@@ -688,8 +688,8 @@ label {
   color: #666;
 }
 .cs_social_btns.cs_color_2 a:hover {
-  background-color: #AB6F6E;
-  border-color: #AB6F6E;
+  background-color: #825449;
+  border-color: #825449;
   color: #fff;
 }
 
@@ -762,7 +762,7 @@ label {
 }
 .cs_project_details-info .cs_social_btns a:hover {
   color: #fff;
-  background-color: #AB6F6E;
+  background-color: #825449;
 }
 
 .cs_list.cs_style_1 {
@@ -780,7 +780,7 @@ label {
   position: absolute;
   left: 0;
   top: 0;
-  color: #AB6F6E;
+  color: #825449;
 }
 .cs_list.cs_style_1 li:not(:last-child) {
   margin-bottom: 10px;
@@ -828,7 +828,7 @@ label {
 }
 .cs_service_list a {
   background-color: #f5f3ee;
-  color: #AB6F6E;
+  color: #825449;
   display: block;
   position: relative;
   border-radius: 5px;
@@ -839,7 +839,7 @@ label {
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
-  color: #AB6F6E;
+  color: #825449;
 }
 .cs_service_list a.active, .cs_service_list a:hover {
   background-color: #18191d;
@@ -862,7 +862,7 @@ label {
 }
 
 .cs_blockquote {
-  border-left: 5px solid #AB6F6E;
+  border-left: 5px solid #825449;
 }
 
 /* Post Details */
@@ -927,7 +927,7 @@ label {
   border-radius: 5px;
 }
 .tag-cloud-link:hover {
-  background-color: #AB6F6E;
+  background-color: #825449;
   color: #fff;
 }
 
@@ -959,7 +959,7 @@ label {
   transition: all 0.4s ease;
 }
 .cs_sidebar_search .cs_sidebar_search_btn:hover {
-  color: #AB6F6E;
+  color: #825449;
 }
 
 .cs_recent_posts {
@@ -1004,7 +1004,7 @@ label {
 }
 .cs_recent_post-date i {
   margin-right: 3px;
-  color: #AB6F6E;
+  color: #825449;
 }
 
 .cs_sidebar_project {
@@ -1024,7 +1024,7 @@ label {
   transition: all 0.4s ease;
 }
 .cs_sidebar_project:hover {
-  color: #AB6F6E;
+  color: #825449;
 }
 .cs_sidebar_project:hover img {
   transform: scale(1.1);
@@ -1621,8 +1621,8 @@ label {
 .cs-pagination.cs_style_1 li {
   height: 16px;
   width: 16px;
-  background-color: #AB6F6E;
-  border: 1px solid #AB6F6E;
+  background-color: #825449;
+  border: 1px solid #825449;
   border-radius: 50%;
   margin: 0 8px;
   cursor: pointer;
@@ -1638,7 +1638,7 @@ label {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: #AB6F6E;
+  background-color: #825449;
 }
 .cs-pagination.cs_style_1 button {
   display: none;
@@ -1680,7 +1680,7 @@ label {
 .slick-dots li {
   height: 10px;
   width: 10px;
-  background-color: #AB6F6E;
+  background-color: #825449;
   opacity: 1;
   border-radius: 1.6em;
   position: relative;
@@ -1981,7 +1981,7 @@ label {
   border-radius: 5px;
 }
 .cs_header_search_form .cs_header_search_sumbit_btn:hover {
-  color: #AB6F6E;
+  color: #825449;
 }
 
 .cs_header_search_wrap.active .cs_header_search_form {
@@ -2057,7 +2057,7 @@ label {
   cursor: pointer;
 }
 .cs_header_search_btn:hover {
-  color: #AB6F6E;
+  color: #825449;
 }
 
 .cs_site_header.cs_style_1.cs_color_1 {
@@ -2070,7 +2070,7 @@ label {
   color: #18191d;
 }
 .cs_site_header.cs_style_1.cs_color_1 .cs_nav_list > li > a:hover {
-  color: #AB6F6E;
+  color: #825449;
 }
 
 @media screen and (min-width: 1200px) {
@@ -2409,7 +2409,7 @@ label {
   color: #8a8a8a;
 }
 .cs_copyright a {
-  color: #AB6F6E;
+  color: #825449;
 }
 .cs_copyright a:hover {
   text-decoration: underline;
@@ -2602,7 +2602,7 @@ label {
   }
 }
 .cs_isotop_filter.cs_style_1 .active a {
-  color: #AB6F6E;
+  color: #825449;
 }
 
 @media screen and (max-width: 1199px) {
@@ -2788,7 +2788,7 @@ label {
 10. Service
 ----------------------------------------------------------------*/
 .cs_service.cs_style_1 {
-  border-top: 3px solid #AB6F6E;
+  border-top: 3px solid #825449;
 }
 .cs_service.cs_style_1 .cs_service_thumb {
   height: 242px;
@@ -2807,7 +2807,7 @@ label {
   height: 40px;
   width: 40px;
   transition: all 0.4s ease;
-  background-color: #AB6F6E;
+  background-color: #825449;
 }
 .cs_service.cs_style_1 .cs_service_icon {
   height: 70px;
@@ -2818,7 +2818,7 @@ label {
   border-color: #18191d;
 }
 .cs_service.cs_style_1:hover .cs_service_icon {
-  background-color: #AB6F6E;
+  background-color: #825449;
 }
 .cs_service.cs_style_1:hover .cs_service_btn {
   background-color: #18191d;
@@ -3288,7 +3288,7 @@ label {
   border-color: rgba(255, 255, 255, 0.4);
 }
 .cs_hero.cs_style_4 .cs_social_btns a:hover {
-  border-color: #AB6F6E;
+  border-color: #825449;
 }
 
 /*--------------------------------------------------------------
@@ -3344,10 +3344,10 @@ label {
   background-color: #18191d;
 }
 .cs_iconbox.cs_style_3 .cs_iconbox_icon {
-  color: #AB6F6E;
+  color: #825449;
 }
 .cs_iconbox.cs_style_3:hover {
-  background-color: #AB6F6E;
+  background-color: #825449;
 }
 .cs_iconbox.cs_style_3:hover .cs_iconbox_icon {
   color: #fff;
@@ -3390,7 +3390,7 @@ label {
   margin-right: 40px;
 }
 .cs_post.cs_style_1 .cs_post_meta i {
-  color: #AB6F6E;
+  color: #825449;
   margin-right: 5px;
 }
 .cs_post.cs_style_1 .cs_post_btn {
@@ -3398,14 +3398,14 @@ label {
   color: #18191d;
 }
 .cs_post.cs_style_1 .cs_post_btn:hover {
-  background-color: #AB6F6E;
+  background-color: #825449;
   color: #fff;
 }
 .cs_post.cs_style_1 .cs_post_btn:hover .cs_post_btn-icon {
   color: #fff;
 }
 .cs_post.cs_style_1 .cs_post_btn-icon {
-  color: #AB6F6E;
+  color: #825449;
 }
 @media (min-width: 451px) {
   .cs_post.cs_style_1.cs_type_1 {
@@ -3456,10 +3456,10 @@ label {
   background-color: #666;
 }
 .cs_team.cs_style_1 .cs_social_btns a:hover {
-  background-color: #AB6F6E;
+  background-color: #825449;
 }
 .cs_team.cs_style_1:hover .cs_team_info {
-  background-color: #AB6F6E;
+  background-color: #825449;
 }
 .cs_team.cs_style_1:hover .cs_social_btns {
   transform: translateX(-50%) scale(1);
@@ -3595,7 +3595,7 @@ label {
   height: 280px;
 }
 .cs_portfolio.cs_style_1 .cs_portfolio_overlay {
-  background: linear-gradient(180deg, rgba(254, 198, 63, 0) 31.74%, #AB6F6E 87.15%);
+  background: linear-gradient(180deg, rgba(254, 198, 63, 0) 31.74%, #825449 87.15%);
   opacity: 0;
 }
 .cs_portfolio.cs_style_1 .cs_portfolio_title {
@@ -3707,7 +3707,7 @@ label {
   padding: 16px 20px;
 }
 .cs_pricing_table.cs_style_1 .cs_pricing_footer-btn:hover {
-  background-color: #AB6F6E;
+  background-color: #825449;
   color: #fff;
 }
 .cs_pricing_table.cs_style_1 .cs_btn.cs_style_1 {
@@ -3726,7 +3726,7 @@ label {
   display: none;
 }
 .cs_pricing_table.cs_style_1:not(.cs_popular) .cs_btn.cs_style_1:hover {
-  background-color: #AB6F6E;
+  background-color: #825449;
   color: #fff;
 }
 .cs_pricing_table.cs_style_1 .cs_popular_label {
@@ -3757,7 +3757,7 @@ label {
   color: #fff;
 }
 .cs_pricing_table.cs_style_1.cs_popular .cs_pricing_footer-btn:hover {
-  background-color: #AB6F6E;
+  background-color: #825449;
   color: #fff;
 }
 
@@ -3785,7 +3785,7 @@ label {
   height: 300px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px dashed #AB6F6E;
+  border: 1px dashed #825449;
 }
 @media (max-width: 1199px) {
   .cs_steps.cs_style_1 .cs_step_thumb {
@@ -3829,7 +3829,7 @@ label {
 }
 .cs_video_block.cs_style_1 .cs_player_btn:before,
 .cs_video_block.cs_style_1 .cs_player_btn:after {
-  background-color: #AB6F6E;
+  background-color: #825449;
 }
 .cs_video_block.cs_style_1 h2::after {
   content: "";
@@ -3875,7 +3875,7 @@ label {
 }
 
 .cs_cta.cs_style_1 {
-  background-color: #AB6F6E;
+  background-color: #825449;
   margin-top: 120px;
 }
 .cs_cta.cs_style_1 .cs_cta_text {
@@ -3956,8 +3956,8 @@ label {
 }
 .cs_shop_sidebar_tag_list a:hover {
   color: #fff;
-  background-color: #AB6F6E;
-  border-color: #AB6F6E;
+  background-color: #825449;
+  border-color: #825449;
 }
 
 .cs_shop_search {
@@ -4040,7 +4040,7 @@ label {
   align-items: center;
   justify-content: center;
   margin: 6px;
-  background-color: #AB6F6E;
+  background-color: #825449;
   color: #fff;
   border-radius: 50%;
   transform: scale(0);
@@ -4049,7 +4049,7 @@ label {
 }
 .cs_product_card.cs_style_1 .cs_card_btns a:hover {
   background-color: #fff;
-  color: #AB6F6E;
+  color: #825449;
 }
 .cs_product_card.cs_style_1 .cs_product_title {
   font-size: 18px;
@@ -4085,7 +4085,7 @@ label {
   margin-top: 20px;
 }
 .cs_single_product_nav .slick-current img {
-  border-color: #AB6F6E;
+  border-color: #825449;
 }
 .cs_single_product_nav .slick-slide:not(.slick-current) {
   cursor: pointer;
@@ -4140,7 +4140,7 @@ label {
   bottom: 7px;
 }
 .cs_quantity_button:hover {
-  color: #AB6F6E;
+  color: #825449;
 }
 
 .cs_quantity_buttons {
@@ -4168,7 +4168,7 @@ label {
   display: inline-flex;
   justify-content: center;
   padding: 12px 45px;
-  background-color: #AB6F6E;
+  background-color: #825449;
   color: #fff;
   border-radius: 5px;
   outline: none;
@@ -4183,7 +4183,7 @@ label {
   background-color: #000;
 }
 .cs_product_btn.cs_color1:hover {
-  background-color: #AB6F6E;
+  background-color: #825449;
 }
 @media (max-width: 380px) {
   .cs_product_btn {
@@ -4258,7 +4258,7 @@ label {
   height: 1px;
   width: 0;
   transition: all 0.3s ease;
-  background-color: #AB6F6E;
+  background-color: #825449;
   bottom: 0;
 }
 .cs_product_tab li.active a::before {
@@ -4406,7 +4406,7 @@ label {
 }
 .cs_cart-offer .cs_shop-input {
   min-width: 160px;
-  border-color: #AB6F6E;
+  border-color: #825449;
 }
 .cs_cart-offer .cs_cart-offer-col {
   display: flex;
@@ -4430,7 +4430,7 @@ label {
 .cs_coupon-doce-form input {
   background-color: transparent;
   padding: 9px 15px;
-  border: 1px solid #AB6F6E;
+  border: 1px solid #825449;
   border-radius: 5px;
   height: 50px;
   width: 186px;
@@ -4447,7 +4447,7 @@ label {
   color: #666;
 }
 .cs_coupon-doce-form input:focus {
-  border-color: #AB6F6E;
+  border-color: #825449;
 }
 @media (max-width: 450px) {
   .cs_coupon-doce-form {
@@ -4486,7 +4486,7 @@ label {
 }
 
 .cs_checkout-alert a {
-  color: #AB6F6E;
+  color: #825449;
 }
 .cs_checkout-alert a:hover {
   text-decoration: underline;
@@ -4520,7 +4520,7 @@ label {
   min-height: 50px;
 }
 .cs_shop-input:focus {
-  border-color: #AB6F6E;
+  border-color: #825449;
 }
 
 .cs_shop-label {
@@ -4534,7 +4534,7 @@ label {
   line-height: 1.6em;
 }
 .cs_payment_text a {
-  color: #AB6F6E;
+  color: #825449;
 }
 
 .cs_order-summery {
@@ -4586,12 +4586,12 @@ label {
   position: relative;
 }
 .cs_header_cart:hover {
-  color: #AB6F6E;
+  color: #825449;
 }
 
 .cs_header_cart_label {
   position: absolute;
-  background-color: #AB6F6E;
+  background-color: #825449;
   font-weight: 600;
   font-size: 12px;
   line-height: 17px;
@@ -4631,8 +4631,8 @@ label {
   line-height: 1.5em;
 }
 .st-amount-wrap .st-filter-btn:hover {
-  background-color: #AB6F6E;
-  border-color: #AB6F6E;
+  background-color: #825449;
+  border-color: #825449;
   color: #fff;
 }
 
@@ -4644,7 +4644,7 @@ label {
 }
 
 .ui-widget-header {
-  background: #AB6F6E;
+  background: #825449;
 }
 
 .ui-state-default,
@@ -4653,15 +4653,15 @@ label {
 .ui-button,
 html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
-  border: 1px solid #AB6F6E;
-  background: #AB6F6E;
+  border: 1px solid #825449;
+  background: #825449;
 }
 
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-  border: 1px solid #AB6F6E;
-  background: #AB6F6E;
+  border: 1px solid #825449;
+  background: #825449;
   outline: none;
 }
 
@@ -4705,7 +4705,7 @@ html .ui-button.ui-state-disabled:active {
   background-color: #f2f3f7;
 }
 .cs_pagination_item.active {
-  background-color: #AB6F6E;
+  background-color: #825449;
   color: #fff;
   pointer-events: none;
 }

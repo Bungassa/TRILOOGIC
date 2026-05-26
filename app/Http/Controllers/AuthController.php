@@ -60,8 +60,10 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'required|string|max:20',
+            'phone' => 'required|numeric',
             'password' => 'required|string|min:8|confirmed',
+        ], [
+            'phone.numeric' => 'Nomor WhatsApp harus berupa angka.',
         ]);
 
         $user = User::create([

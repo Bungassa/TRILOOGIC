@@ -21,12 +21,12 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal</label>
                 <input type="date" name="tanggal" value="{{ $tanggal }}" 
-                       class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#AB6F6E]/50"
+                       class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#825449]/50"
                        onchange="this.form.submit()">
             </div>
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Karyawan</label>
-                <select name="karyawan_id" class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#AB6F6E]/50"
+                <select name="karyawan_id" class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#825449]/50"
                         onchange="this.form.submit()">
                     <option value="">Semua Karyawan</option>
                     @foreach($karyawans as $karyawan)
@@ -72,7 +72,7 @@
                                 <div class="space-y-1">
                                     @foreach($absensi->transaksi_data as $transaksi)
                                         <div class="text-xs flex items-center gap-2">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-[#C48989]"></span>
+                                            <span class="w-1.5 h-1.5 rounded-full bg-[#825449]"></span>
                                             <span class="font-medium text-gray-700">{{ $transaksi->layanan->nama ?? 'Walk-in' }}</span>
                                             <span class="text-gray-400 text-[10px]">({{ date('H:i', strtotime($transaksi->jam)) }})</span>
                                         </div>

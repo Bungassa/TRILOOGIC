@@ -13,6 +13,12 @@ class AdminTransaksiController extends Controller
         return view('admin.pages.transaksi.index', ['transaksis' => $transaksis]);
     }
 
+    public function show(int $id)
+    {
+        $transaksi = Transaksi::with(['layanan', 'karyawan'])->findOrFail($id);
+        return view('admin.pages.transaksi.show', compact('transaksi'));
+    }
+
    public function updateStatus(Request $request, int $id)
     {
         $transaksi = Transaksi::find($id);

@@ -50,13 +50,15 @@ class AdminController extends Controller
         $bulan = $request->get('bulan', date('m'));
         $tahun = $request->get('tahun', date('Y'));
 
-        $transaksis = Transaksi::with('layanan')
+        $transaksis = Transaksi::with(['layanan', 'karyawan'])
+            ->where('status', 'selesai')
+            ->where('status_pembayaran', 'lunas')
             ->whereYear('created_at', $tahun)
             ->whereMonth('created_at', $bulan)
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $totalRevenue = $transaksis->where('status_pembayaran', 'lunas')->sum('total_harga');
+        $totalRevenue = $transaksis->sum('total_harga');
         $totalTransaksi = $transaksis->count();
 
         return view('admin.pages.laporan.index', [

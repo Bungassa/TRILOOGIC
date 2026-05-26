@@ -10,7 +10,7 @@
                 <p class="text-gray-500 mt-1">Kelola data karyawan</p>
             </div>
             <div class="flex items-center space-x-3">
-                <a href="{{ route('admin.karyawan.create') }}" class="px-4 py-2 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white text-sm font-semibold rounded-xl shadow-lg shadow-[#AB6F6E]/30">
+                <a href="{{ route('admin.karyawan.create') }}" class="px-4 py-2 bg-gradient-to-r from-[#825449] to-[#825449] text-white text-sm font-semibold rounded-xl shadow-lg shadow-[#825449]/30">
                     + Tambah Karyawan
                 </a>
             </div>
@@ -54,7 +54,7 @@
                             </td>
                             <td class="py-4 px-4">
                                 <div class="flex items-center space-x-2">
-                                    <a href="{{ route('admin.karyawan.edit', $karyawan->id) }}" class="p-2 text-[#AB6F6E] hover:bg-[#F0D2D1] rounded-lg transition-colors">
+                                    <a href="{{ route('admin.karyawan.edit', $karyawan->id) }}" class="p-2 text-[#825449] hover:bg-[#e1bdb5] rounded-lg transition-colors">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                         </svg>
@@ -74,7 +74,7 @@
                         @empty
                         <tr>
                             <td colspan="6" class="py-12 text-center">
-                                <div class="w-16 h-16 bg-gradient-to-br from-[#AB6F6E] to-[#C48989] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#AB6F6E]/30">
+                                <div class="w-16 h-16 bg-gradient-to-br from-[#825449] to-[#825449] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#825449]/30">
                                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                                     </svg>

@@ -9,7 +9,7 @@
                 <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Kelola Admin</h1>
                 <p class="text-gray-500 mt-1">Kelola hak akses dan akun Admin Payroll/HR</p>
             </div>
-            <button onclick="openModal()" class="px-4 py-2 bg-[#AB6F6E] text-white text-sm font-semibold rounded-xl shadow-lg">
+            <button onclick="openModal()" class="px-4 py-2 bg-[#825449] text-white text-sm font-semibold rounded-xl shadow-lg">
                 + Tambah Admin
             </button>
         </div>
@@ -25,7 +25,7 @@
                 timer: 3000,
                 timerProgressBar: true,
                 background: '#ffffff',
-                iconColor: '#AB6F6E',
+                iconColor: '#825449',
                 customClass: {
                     popup: 'rounded-2xl shadow-xl border border-gray-100',
                     title: 'text-gray-800 font-bold',
@@ -93,21 +93,21 @@
                     <label class="block text-sm font-semibold text-gray-700">Nama Lengkap</label>
                     <div class="relative">
                         <input type="text" name="name" required placeholder="Masukkan nama lengkap" 
-                               class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#AB6F6E]/10 focus:border-[#AB6F6E] transition-all outline-none">
+                               class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#825449]/10 focus:border-[#825449] transition-all outline-none">
                     </div>
                 </div>
                 <div class="space-y-2">
                     <label class="block text-sm font-semibold text-gray-700">Email Address</label>
                     <div class="relative">
                         <input type="email" name="email" required placeholder="admin@ekkyfamily.com" 
-                               class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#AB6F6E]/10 focus:border-[#AB6F6E] transition-all outline-none">
+                               class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#825449]/10 focus:border-[#825449] transition-all outline-none">
                     </div>
                 </div>
                 <div class="space-y-2">
                     <label class="block text-sm font-semibold text-gray-700">Password</label>
                     <div class="relative">
                         <input type="password" name="password" required placeholder="••••••••" 
-                               class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#AB6F6E]/10 focus:border-[#AB6F6E] transition-all outline-none">
+                               class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-[#825449]/10 focus:border-[#825449] transition-all outline-none">
                     </div>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-3 pt-4">
@@ -116,7 +116,7 @@
                         Batal
                     </button>
                     <button type="submit" 
-                            class="flex-1 px-6 py-3.5 bg-gradient-to-r from-[#AB6F6E] to-[#C48989] text-white font-bold rounded-2xl shadow-lg shadow-[#AB6F6E]/30 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                            class="flex-1 px-6 py-3.5 bg-gradient-to-r from-[#825449] to-[#825449] text-white font-bold rounded-2xl shadow-lg shadow-[#825449]/30 hover:shadow-xl hover:-translate-y-0.5 transition-all">
                         Simpan Admin
                     </button>
                 </div>
@@ -152,7 +152,7 @@
                 text: `Apakah Anda yakin ingin menghapus hak akses admin untuk "${name}"?`,
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#AB6F6E',
+                confirmButtonColor: '#825449',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Ya, Cabut!',
                 cancelButtonText: 'Batal',
