@@ -376,9 +376,114 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="col-12">
                                 <button type="submit" class="btn btn-save">
                                     <i class="fa-solid fa-save me-2"></i> Simpan Perubahan
+=======
+                        </form>
+                    </div>
+
+                    <!-- Riwayat Pesanan Section -->
+                    <div id="section-orders" class="profile-content-card" style="display: none;">
+                        <h3 class="section-title">Riwayat Pesanan</h3>
+                        @if($transaksis && $transaksis->count() > 0)
+                            <div class="table-responsive">
+                                <table class="order-history-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Layanan</th>
+                                            <th>Tanggal</th>
+                                            <th>Status</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($transaksis as $t)
+                                            <tr>
+                                                <td><span class="fw-bold">{{ $t->layanan->nama }}</span></td>
+                                                <td>{{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d M Y') }}</td>
+                                                <td>
+                                                    <span class="status-badge status-{{ $t->status }}">
+                                                        {{ $t->status == 'pending' ? 'Menunggu' : ($t->status == 'dikerjakan' ? 'Diproses' : 'Selesai') }}
+                                                    </span>
+                                                </td>
+                                                 <td>
+                                                    <a href="{{ route('pemesanan.pembayaran', $t->id) }}" class="btn btn-sm btn-outline-secondary" style="border-radius: 20px; font-size: 11px;">
+                                                        Lihat Detail
+                                                    </a>
+                                                    @if($t->status == 'selesai')
+                                                        @if(!$t->testimoni)
+                                                            <button type="button" class="btn btn-sm btn-primary ms-1 btn-testimoni" 
+                                                                    data-bs-toggle="modal" 
+                                                                    data-bs-target="#modalTestimoni" 
+                                                                    data-toggle="modal" 
+                                                                    data-target="#modalTestimoni" 
+                                                                    data-id="{{ $t->id }}"
+                                                                    data-layanan="{{ $t->layanan->nama }}"
+                                                                    style="border-radius: 20px; font-size: 11px; background-color: #825449; border-color: #825449;">
+                                                                Berikan Testimoni
+                                                            </button>
+                                                        @else
+                                                            <span class="badge bg-light text-dark ms-1" style="border-radius: 20px; font-size: 10px; border: 1px solid #ddd;">
+                                                                <i class="fa-solid fa-star text-warning me-1"></i> Sudah Dinilai
+                                                            </span>
+                                                        @endif
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
+                            <div class="text-center py-4">
+                                <i class="fa-solid fa-receipt fs-1 text-muted mb-3 d-block"></i>
+                                <p class="text-muted">Belum ada riwayat pesanan.</p>
+                                <a href="{{ route('pemesanan') }}" class="btn btn-save btn-sm">Pesan Sekarang</a>
+                            </div>
+                        @endif
+                    </div>
+
+                    <!-- Alamat Saya Section -->
+                    <div id="section-address" class="profile-content-card" style="display: none;">
+                        <h3 class="section-title">Alamat Saya</h3>
+                        @if($user->address)
+                            <div class="address-card">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h6 class="fw-bold mb-0">Alamat Utama</h6>
+                                    <span class="badge bg-success small">Default</span>
+                                </div>
+                                <p class="text-muted small mb-3">
+                                    <i class="fa-solid fa-location-dot me-2"></i>
+                                    {{ $user->address }}
+                                </p>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-primary" style="border-radius: 8px; padding: 8px 20px; font-weight: 600; color: #825449; border-color: #825449;" data-bs-toggle="modal" data-bs-target="#modalMap">
+                                        <i class="fa-solid fa-edit me-1"></i> Edit Alamat
+                                    </button>
+                                    <form id="formDeleteAddress" action="{{ route('profile.update') }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="name" value="{{ $user->name }}">
+                                        <input type="hidden" name="email" value="{{ $user->email }}">
+                                        <input type="hidden" name="phone" value="{{ $user->phone }}">
+                                        <input type="hidden" name="address" value="">
+                                        <input type="hidden" name="lat" value="">
+                                        <input type="hidden" name="lng" value="">
+                                        <button type="button" class="btn btn-sm btn-outline-danger" style="border-radius: 8px; padding: 8px 20px; font-weight: 600;" onclick="confirmDeleteAddress()">
+                                            <i class="fa-solid fa-trash me-1"></i> Hapus
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        @else
+                            <div class="text-center py-4">
+                                <i class="fa-solid fa-location-dot fs-1 text-muted mb-3 d-block"></i>
+                                <p class="text-muted">Belum ada alamat yang ditambahkan.</p>
+                                <button class="btn btn-save" data-bs-toggle="modal" data-bs-target="#modalMap">
+                                    <i class="fa-solid fa-plus me-2"></i> Tambah Alamat
+>>>>>>> bara/main
                                 </button>
                             </div>
                         </div>
