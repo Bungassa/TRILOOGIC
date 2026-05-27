@@ -352,7 +352,6 @@
                                 <table class="order-history-table">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Layanan</th>
                                             <th>Tanggal</th>
                                             <th>Status</th>
@@ -362,7 +361,6 @@
                                     <tbody>
                                         @foreach($transaksis as $t)
                                             <tr>
-                                                <td><span class="text-muted small">#{{ str_pad($t->id, 3, '0', STR_PAD_LEFT) }}</span></td>
                                                 <td><span class="fw-bold">{{ $t->layanan->nama }}</span></td>
                                                 <td>{{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d M Y') }}</td>
                                                 <td>
