@@ -150,7 +150,7 @@
                         <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
                             @csrf
                             @method('PUT')
-                            <select name="status_pembayaran" onchange="this.form.submit()" {{ $transaksi->status_pembayaran === 'lunas' ? 'disabled' : '' }} class="w-full text-center px-4 py-3 rounded-xl font-bold border focus:outline-none focus:ring-2 focus:ring-[#825449]/20 transition-all cursor-pointer hover:bg-white disabled:opacity-75 disabled:cursor-not-allowed
+                            <select name="status_pembayaran" onchange="this.form.submit()" {{ $transaksi->status_pembayaran === 'lunas' ? 'disabled' : '' }} class="w-full text-center px-4 py-3 rounded-xl font-bold border focus:outline-none focus:ring-2 focus:ring-[#825449]/20 transition-all cursor-pointer hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/50
                                 @if($transaksi->status_pembayaran === 'belum_bayar') bg-red-50 text-red-600 border-red-100 @else bg-green-50 text-green-600 border-green-100 @endif">
                                 <option value="belum_bayar" {{ $transaksi->status_pembayaran === 'belum_bayar' ? 'selected' : '' }}>Belum Bayar</option>
                                 <option value="lunas" {{ $transaksi->status_pembayaran === 'lunas' ? 'selected' : '' }}>&#xf058; Lunas</option>
