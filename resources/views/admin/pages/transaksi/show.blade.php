@@ -147,15 +147,15 @@
 
                     <div class="space-y-3">
                         <p class="text-sm font-semibold text-gray-500 mb-2">Status Pembayaran:</p>
-                        @if($transaksi->status_pembayaran === 'belum_bayar')
-                            <div class="w-full text-center px-4 py-3 bg-red-50 text-red-600 rounded-xl font-bold border border-red-100">
-                                Belum Bayar
-                            </div>
-                        @else
-                            <div class="w-full text-center px-4 py-3 bg-green-50 text-green-600 rounded-xl font-bold border border-green-100">
-                                <i class="fa-solid fa-circle-check me-2"></i> Lunas
-                            </div>
-                        @endif
+                        <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <select name="status_pembayaran" onchange="this.form.submit()" class="w-full text-center px-4 py-3 rounded-xl font-bold border focus:outline-none focus:ring-2 focus:ring-[#825449]/20 transition-all cursor-pointer hover:bg-white
+                                @if($transaksi->status_pembayaran === 'belum_bayar') bg-red-50 text-red-600 border-red-100 @else bg-green-50 text-green-600 border-green-100 @endif">
+                                <option value="belum_bayar" {{ $transaksi->status_pembayaran === 'belum_bayar' ? 'selected' : '' }}>Belum Bayar</option>
+                                <option value="lunas" {{ $transaksi->status_pembayaran === 'lunas' ? 'selected' : '' }}>&#xf058; Lunas</option>
+                            </select>
+                        </form>
                     </div>
                 </div>
             </div>
