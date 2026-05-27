@@ -66,7 +66,13 @@
             <span class="total-value">Rp {{ number_format($transaksi->total_harga, 0, ',', '.') }}</span>
           </div>
           <div class="cs_mt_30">
-            <button id="checkPaymentBtn" class="cs_btn cs_style_1 cs_fs_16 cs_rounded_10 w-100">Bayar Sekarang</button>
+            @if($transaksi->status_pembayaran === 'lunas')
+              <div class="text-center p-3" style="background-color: #d4edda; color: #155724; border-radius: 10px; font-weight: bold;">
+                <i class="fas fa-check-circle me-2"></i>Pesanan Sudah Lunas
+              </div>
+            @else
+              <button id="checkPaymentBtn" class="cs_btn cs_style_1 cs_fs_16 cs_rounded_10 w-100">Bayar Sekarang</button>
+            @endif
           </div>
         </div>
       </div>
