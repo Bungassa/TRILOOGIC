@@ -10,13 +10,19 @@ class AdminTransaksiController extends Controller
     public function index()
     {
         $transaksis = Transaksi::with('layanan')->orderBy('created_at', 'desc')->get();
-        return view('admin.pages.transaksi.index', ['transaksis' => $transaksis]);
+        return view('admin.pages.transaksi.index', [
+            'title' => 'Data Transaksi',
+            'transaksis' => $transaksis
+        ]);
     }
 
     public function show(int $id)
     {
         $transaksi = Transaksi::with(['layanan', 'karyawan'])->findOrFail($id);
-        return view('admin.pages.transaksi.show', compact('transaksi'));
+        return view('admin.pages.transaksi.show', [
+            'title' => 'Detail Transaksi',
+            'transaksi' => $transaksi
+        ]);
     }
 
    public function updateStatus(Request $request, int $id)
