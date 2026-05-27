@@ -66,18 +66,21 @@
                                 </span>
                             </td>
                             <td class="py-4 px-4">
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold
-                                    @if($transaksi->status_pembayaran === 'belum_bayar') bg-red-100 text-red-700
-                                    @elseif($transaksi->status_pembayaran === 'lunas') bg-green-100 text-green-700
-                                    @endif">
-                                    {{ $transaksi->status_pembayaran === 'belum_bayar' ? 'Belum Bayar' : 'Lunas' }}
-                                </span>
+                                <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <select name="status_pembayaran" onchange="this.form.submit()" class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white
+                                        @if($transaksi->status_pembayaran === 'belum_bayar') text-red-700 font-bold @else text-green-700 font-bold @endif">
+                                        <option value="belum_bayar" {{ $transaksi->status_pembayaran === 'belum_bayar' ? 'selected' : '' }}>Belum Bayar</option>
+                                        <option value="lunas" {{ $transaksi->status_pembayaran === 'lunas' ? 'selected' : '' }}>Lunas</option>
+                                    </select>
+                                </form>
                             </td>
                             <td class="py-4 px-4">
                                 <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <select name="status" onchange="this.form.submit()" {{ $transaksi->status === 'selesai' ? 'disabled' : '' }} class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/50">
+                                    <select name="status" onchange="this.form.submit()" {{ $transaksi->status === 'selesai' || $transaksi->status_pembayaran === 'belum_bayar' ? 'disabled' : '' }} class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/50" title="{{ $transaksi->status_pembayaran === 'belum_bayar' ? 'Pembayaran harus dilunasi terlebih dahulu' : '' }}">
                                         <option value="pending" {{ $transaksi->status === 'pending' ? 'selected' : '' }}>Menunggu</option>
                                         <option value="dikerjakan" {{ $transaksi->status === 'dikerjakan' ? 'selected' : '' }}>Proses</option>
                                         <option value="selesai" {{ $transaksi->status === 'selesai' ? 'selected' : '' }}>Selesai</option>
@@ -130,15 +133,17 @@
             </div>
             <form action="{{ route('admin.transaksi.store') }}" method="POST" class="p-6 space-y-4">
                 @csrf
+                <input type="hidden" name="user_id" id="user_id_input">
                 <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama</label>
-                        <input type="text" name="nama" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#825449]">
+                    <div class="relative">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Pelanggan</label>
+                        <input type="text" name="nama" id="nama_input" autocomplete="off" onkeyup="searchUser(this.value)" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#825449]" placeholder="Ketik nama...">
+                        <ul id="user_suggestions" class="absolute z-10 w-full bg-white border border-gray-200 rounded-lg shadow-lg mt-1 hidden max-h-48 overflow-y-auto"></ul>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kelamin</label>
                         <select name="jenis_kelamin" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer">
-                            <option value="">-- Pilih --</option>
+                            <option value="">Pilih</option>
                             <option value="L">Laki-laki</option>
                             <option value="P">Perempuan</option>
                         </select>
@@ -152,7 +157,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Layanan</label>
                         <select name="layanan_id" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer">
-                            <option value="">-- Pilih Layanan --</option>
+                            <option value="">Pilih Layanan</option>
                             @foreach(\App\Models\Layanan::all() as $layanan)
                                 <option value="{{ $layanan->id }}">{{ $layanan->nama }} - Rp {{ number_format($layanan->harga, 0, ',', '.') }}</option>
                             @endforeach
@@ -205,6 +210,62 @@
             document.getElementById('transaksiModal').classList.add('hidden');
             document.getElementById('transaksiModal').classList.remove('flex');
         }
+
+        const registeredUsers = {!! \App\Models\User::whereIn('role', ['pelanggan', 'user'])->get()->map(function($user) {
+            return [
+                'id' => (string) $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'jk' => $user->jenis_kelamin ?? '',
+                'telp' => $user->phone ?? ''
+            ];
+        })->toJson() !!};
+
+        function searchUser(query) {
+            const suggestionsBox = document.getElementById('user_suggestions');
+            const userIdInput = document.getElementById('user_id_input');
+            
+            userIdInput.value = '';
+
+            if (query.length < 3) {
+                suggestionsBox.classList.add('hidden');
+                return;
+            }
+
+            const matches = registeredUsers.filter(u => u.name.toLowerCase().includes(query.toLowerCase()));
+            
+            if (matches.length > 0) {
+                suggestionsBox.innerHTML = matches.map(u => `
+                    <li onclick="selectUser('${u.id}')" class="px-4 py-2 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0">
+                        <div class="font-semibold text-gray-800">${u.name}</div>
+                        <div class="text-xs text-gray-500">${u.email}</div>
+                    </li>
+                `).join('');
+                suggestionsBox.classList.remove('hidden');
+            } else {
+                suggestionsBox.classList.add('hidden');
+            }
+        }
+
+        function selectUser(id) {
+            const user = registeredUsers.find(u => u.id === id);
+            if (user) {
+                document.getElementById('user_id_input').value = user.id;
+                document.getElementById('nama_input').value = user.name;
+                document.querySelector('input[name="telepon"]').value = user.telp;
+                if(user.jk) {
+                    document.querySelector('select[name="jenis_kelamin"]').value = user.jk;
+                }
+                document.getElementById('user_suggestions').classList.add('hidden');
+            }
+        }
+
+        document.addEventListener('click', function(e) {
+            const box = document.getElementById('user_suggestions');
+            if (box && !e.target.closest('.relative')) {
+                box.classList.add('hidden');
+            }
+        });
 
 
 

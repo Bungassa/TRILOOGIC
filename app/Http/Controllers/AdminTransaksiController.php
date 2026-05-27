@@ -60,6 +60,7 @@ class AdminTransaksiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'user_id' => 'nullable|exists:users,id',
             'nama' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:L,P',
             'telepon' => 'required|string|max:20',
@@ -95,6 +96,7 @@ class AdminTransaksiController extends Controller
 
         // Simpan transaksi ke database
         $transaksi = Transaksi::create([
+            'user_id' => $request->user_id,
             'nama' => $request->nama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'telepon' => $request->telepon,

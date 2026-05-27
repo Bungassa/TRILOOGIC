@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/linkstorage', function () {
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+    return 'Storage linked';
+});
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/service', [App\Http\Controllers\HomeController::class, 'service']);
@@ -18,7 +23,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::post('/testimoni', [App\Http\Controllers\TestimoniController::class, 'store'])->name('testimoni.store');
 });
-
 
 Route::post('/midtrans/callback', [App\Http\Controllers\MidtransController::class, 'callback']);
 
