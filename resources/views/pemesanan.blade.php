@@ -101,16 +101,16 @@
                   <label class="pemesanan-label" style="font-size: 18px; margin-bottom: 15px;">Data Pelanggan</label>
                   
                   <div id="nama_pelanggan_container" style="margin-bottom: 15px;">
-                    <label class="pemesanan-label" style="font-size: 14px; font-weight: normal; color: #666;">Nama Pelanggan 1</label>
+                    <label class="pemesanan-label" style="font-size: 14px; font-weight: normal; color: #666;">Nama Pelanggan</label>
                     <input type="text" name="nama" id="nama_pelanggan" required
                            class="pemesanan-input"
-                           placeholder="Masukkan nama pelanggan 1" value="{{ old('nama') }}">
+                           placeholder="Masukkan nama pelanggan" value="{{ old('nama') }}">
                   </div>
 
                   <div>
                     <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #555; margin-bottom: 0;">
                       <input type="checkbox" id="pemesan_adalah_pelanggan" onchange="toggleNamaPelanggan()" style="width: 18px; height: 18px; accent-color: #825449;">
-                      <span>Pemesan adalah pelanggan</span>
+                      <span>Pengguna yang melakukan pesanan</span>
                     </label>
                   </div>
                   
@@ -133,7 +133,7 @@
                   <label class="pemesanan-label">Jenis Kelamin</label>
                   <select name="jenis_kelamin" id="jenis_kelamin_pelanggan" required
                           class="pemesanan-select">
-                    <option value="">-- Pilih Jenis Kelamin --</option>
+                    <option value="">Pilih Jenis Kelamin</option>
                     <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>Laki-laki</option>
                     <option value="P" {{ old('jenis_kelamin') == 'P' ? 'selected' : '' }}>Perempuan</option>
                   </select>

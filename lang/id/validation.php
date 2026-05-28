@@ -152,6 +152,12 @@ return [
     'uppercase'              => ':Attribute harus berupa huruf kapital.',
     'url'                    => 'Format :attribute tidak valid.',
     'uuid'                   => ':Attribute harus merupakan UUID yang valid.',
+    'custom'                 => [
+        'email' => [
+            'unique' => 'Email yang digunakan sudah terdaftar',
+        ],
+    ],
+
     'attributes'             => [
         'address'                  => 'alamat',
         'affiliate_url'            => 'URL afiliasi',
