@@ -31,8 +31,12 @@ class AdminTransaksiController extends Controller
 
         if ($request->has('status')) {
             $request->validate([
-                'status' => 'required|in:pending,dikerjakan,selesai'
+                'status' => 'required|in:pending,dikerjakan,selesai,dibatalkan'
             ]);
+
+            if (empty($transaksi->karyawan_id)) {
+                return redirect()->back()->with('error', 'Karyawan harus dipilih sebelum mengubah status pesanan.');
+            }
 
             $transaksi->status = $request->status;
         }

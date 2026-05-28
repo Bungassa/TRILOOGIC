@@ -61,8 +61,9 @@
                                     @if($transaksi->status === 'pending') bg-yellow-100 text-yellow-700
                                     @elseif($transaksi->status === 'dikerjakan') bg-blue-100 text-blue-700
                                     @elseif($transaksi->status === 'selesai') bg-green-100 text-green-700
+                                    @elseif($transaksi->status === 'dibatalkan') bg-red-100 text-red-700
                                     @endif">
-                                    {{ $transaksi->status == 'pending' ? 'Menunggu' : ($transaksi->status == 'dikerjakan' ? 'Proses' : 'Selesai') }}
+                                    {{ $transaksi->status == 'pending' ? 'Menunggu' : ($transaksi->status == 'dikerjakan' ? 'Proses' : ($transaksi->status == 'selesai' ? 'Selesai' : 'Dibatalkan')) }}
                                 </span>
                             </td>
                             <td class="py-4 px-4">
@@ -80,10 +81,11 @@
                                 <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <select name="status" onchange="this.form.submit()" {{ $transaksi->status === 'selesai' || $transaksi->status_pembayaran === 'belum_bayar' ? 'disabled' : '' }} class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/50" title="{{ $transaksi->status_pembayaran === 'belum_bayar' ? 'Pembayaran harus dilunasi terlebih dahulu' : '' }}">
+                                    <select name="status" onchange="this.form.submit()" {{ $transaksi->status === 'selesai' || $transaksi->status_pembayaran === 'belum_bayar' || empty($transaksi->karyawan_id) ? 'disabled' : '' }} class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/50" title="{{ empty($transaksi->karyawan_id) ? 'Pilih karyawan terlebih dahulu' : ($transaksi->status_pembayaran === 'belum_bayar' ? 'Pembayaran harus dilunasi terlebih dahulu' : '') }}">
                                         <option value="pending" {{ $transaksi->status === 'pending' ? 'selected' : '' }}>Menunggu</option>
                                         <option value="dikerjakan" {{ $transaksi->status === 'dikerjakan' ? 'selected' : '' }}>Proses</option>
                                         <option value="selesai" {{ $transaksi->status === 'selesai' ? 'selected' : '' }}>Selesai</option>
+                                        <option value="dibatalkan" {{ $transaksi->status === 'dibatalkan' ? 'selected' : '' }}>Dibatalkan</option>
                                     </select>
                                 </form>
                                 <a href="{{ route('admin.transaksi.show', $transaksi->id) }}" class="inline-block mt-2 w-full px-3 py-1.5 bg-blue-50 text-blue-600 border border-blue-200 rounded-xl text-xs font-bold hover:bg-blue-100 transition-colors text-center">
