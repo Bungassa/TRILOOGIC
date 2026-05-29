@@ -16,6 +16,20 @@ class AdminTransaksiController extends Controller
         ]);
     }
 
+    public function pesananAktif()
+    {
+        $transaksis = Transaksi::with(['layanan', 'karyawan'])
+            ->whereIn('status', ['pending', 'dikerjakan'])
+            ->orderBy('tanggal', 'asc')
+            ->orderBy('jam', 'asc')
+            ->get();
+            
+        return view('admin.pages.transaksi.aktif', [
+            'title' => 'Pesanan Aktif',
+            'transaksis' => $transaksis
+        ]);
+    }
+
     public function show(int $id)
     {
         $transaksi = Transaksi::with(['layanan', 'karyawan'])->findOrFail($id);
@@ -161,6 +175,6 @@ class AdminTransaksiController extends Controller
 
         \App\Models\ActivityLog::log('Tambah Transaksi', 'Menambah transaksi baru untuk ' . $request->nama);
 
-        return redirect()->route('admin.transaksi')->with('success', 'Transaksi berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Transaksi berhasil ditambahkan');
     }
 }

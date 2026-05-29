@@ -11,41 +11,51 @@ class AdminAbsensiController extends Controller
 {
     public function index(Request $request)
     {
-        $tanggal = $request->get('tanggal', date('Y-m-d'));
+        $bulan = $request->get('bulan', date('Y-m'));
         $karyawanId = $request->get('karyawan_id');
 
-        // Get transactions grouped by karyawan
-        $transaksiQuery = Transaksi::with(['karyawan', 'layanan'])
-            ->whereDate('tanggal', $tanggal);
+        $year = date('Y', strtotime($bulan));
+        $month = date('m', strtotime($bulan));
+        $daysInMonth = \Carbon\Carbon::parse($bulan . '-01')->daysInMonth;
+
+        // Query transactions for the selected month
+        $transaksiQuery = Transaksi::with(['karyawan'])
+            ->whereYear('tanggal', $year)
+            ->whereMonth('tanggal', $month);
 
         if ($karyawanId) {
             $transaksiQuery->where('karyawan_id', $karyawanId);
         }
 
-        $transaksisByKaryawan = $transaksiQuery->get()->groupBy('karyawan_id');
+        $transaksis = $transaksiQuery->get();
 
         $absensis = collect();
-        foreach ($transaksisByKaryawan as $id => $items) {
-            $karyawan = $items->first()->karyawan;
-            if (!$karyawan) continue;
+        
+        $karyawans = Karyawan::where('status', 'aktif')->get();
+        $targetKaryawans = $karyawanId ? $karyawans->where('id', $karyawanId) : $karyawans;
+
+        foreach ($targetKaryawans as $karyawan) {
+            $karyawanTransaksis = $transaksis->where('karyawan_id', $karyawan->id);
+            
+            // Get unique dates where employee had transactions
+            $uniqueDates = $karyawanTransaksis->pluck('tanggal')->unique()->count();
+            $totalTransaksi = $karyawanTransaksis->count();
 
             $absensis->push((object)[
-                'id' => 'TRX-' . $id,
+                'id' => 'KRY-' . $karyawan->id,
                 'karyawan' => $karyawan,
-                'tanggal' => $tanggal,
-                'transaksi_data' => $items,
-                'total_transaksi' => $items->count(),
-                'is_from_transaction' => true
+                'bulan' => $bulan,
+                'masuk' => $uniqueDates,
+                'tidak_masuk' => $daysInMonth - $uniqueDates,
+                'total_transaksi' => $totalTransaksi,
             ]);
         }
 
-        $karyawans = Karyawan::where('status', 'aktif')->get();
-
         return view('admin.pages.absensi.index', [
-            'title' => 'Absensi Karyawan (Berdasarkan Transaksi)',
+            'title' => 'Absensi Karyawan (Bulanan)',
             'absensis' => $absensis,
             'karyawans' => $karyawans,
-            'tanggal' => $tanggal,
+            'bulan' => $bulan,
             'karyawanId' => $karyawanId
         ]);
     }

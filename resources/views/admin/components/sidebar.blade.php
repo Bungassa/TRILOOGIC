@@ -18,6 +18,14 @@
                 Dashboard
             </a>
 
+            <a href="{{ route('admin.pesanan') }}" 
+               class="flex items-center px-4 py-3 text-sm font-medium {{ request()->is('admin/pesanan*') ? 'text-white bg-gradient-to-r from-[#e1bdb5] to-[#825449] rounded-xl shadow-lg shadow-[#825449]/30' : 'text-gray-300 rounded-xl hover:bg-white/10 hover:text-white' }} transition-all duration-200 {{ request()->is('admin/pesanan*') ? 'hover:shadow-xl hover:shadow-[#825449]/40' : '' }} group">
+                <svg class="mr-3 h-5 w-5 {{ request()->is('admin/pesanan*') ? 'text-white' : 'text-gray-400 group-hover:text-white transition-colors' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                </svg>
+                Daftar Pesanan
+            </a>
+
             <a href="{{ route('admin.transaksi') }}" 
                class="flex items-center px-4 py-3 text-sm font-medium {{ request()->is('admin/transaksi*') ? 'text-white bg-gradient-to-r from-[#e1bdb5] to-[#825449] rounded-xl shadow-lg shadow-[#825449]/30' : 'text-gray-300 rounded-xl hover:bg-white/10 hover:text-white' }} transition-all duration-200 {{ request()->is('admin/transaksi*') ? 'hover:shadow-xl hover:shadow-[#825449]/40' : '' }} group">
                 <svg class="mr-3 h-5 w-5 {{ request()->is('admin/transaksi*') ? 'text-white' : 'text-gray-400 group-hover:text-white transition-colors' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -32,14 +40,6 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                 </svg>
                 Data Layanan
-            </a>
-
-            <a href="{{ route('admin.aktivitas') }}" 
-               class="flex items-center px-4 py-3 text-sm font-medium {{ request()->is('admin/aktivitas*') ? 'text-white bg-gradient-to-r from-[#e1bdb5] to-[#825449] rounded-xl shadow-lg shadow-[#825449]/30' : 'text-gray-300 rounded-xl hover:bg-white/10 hover:text-white' }} transition-all duration-200 {{ request()->is('admin/aktivitas*') ? 'hover:shadow-xl hover:shadow-[#825449]/40' : '' }} group">
-                <svg class="mr-3 h-5 w-5 {{ request()->is('admin/aktivitas*') ? 'text-white' : 'text-gray-400 group-hover:text-white transition-colors' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                Log Aktivitas
             </a>
 
             <a href="{{ route('admin.karyawan') }}" 
@@ -66,6 +66,14 @@
                 Laporan Transaksi
             </a>
 
+            <a href="{{ route('admin.aktivitas') }}" 
+               class="flex items-center px-4 py-3 text-sm font-medium {{ request()->is('admin/aktivitas*') ? 'text-white bg-gradient-to-r from-[#e1bdb5] to-[#825449] rounded-xl shadow-lg shadow-[#825449]/30' : 'text-gray-300 rounded-xl hover:bg-white/10 hover:text-white' }} transition-all duration-200 {{ request()->is('admin/aktivitas*') ? 'hover:shadow-xl hover:shadow-[#825449]/40' : '' }} group">
+                <svg class="mr-3 h-5 w-5 {{ request()->is('admin/aktivitas*') ? 'text-white' : 'text-gray-400 group-hover:text-white transition-colors' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Log Aktivitas
+            </a>
+            
         </div>
 
         <!-- Logout -->

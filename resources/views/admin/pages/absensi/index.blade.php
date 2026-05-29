@@ -19,8 +19,8 @@
     <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-gray-100">
         <form action="{{ route('admin.absensi') }}" method="GET" class="flex items-center space-x-4">
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal</label>
-                <input type="date" name="tanggal" value="{{ $tanggal }}" 
+                <label class="block text-sm font-medium text-gray-700 mb-2">Bulan</label>
+                <input type="month" name="bulan" value="{{ $bulan }}" 
                        class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#825449]/50"
                        onchange="this.form.submit()">
             </div>
@@ -57,32 +57,24 @@
                 <thead>
                     <tr class="border-b border-gray-200">
                         <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Nama Karyawan</th>
-                        <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Tanggal Kehadiran</th>
-                        <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Treatment yang Dikerjakan</th>
-                        <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Total Transaksi</th>
+                        <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Bulan Kehadiran</th>
+                        <th class="text-center py-4 px-4 text-sm font-semibold text-gray-700">Masuk (Hari)</th>
+                        <th class="text-center py-4 px-4 text-sm font-semibold text-gray-700">Tidak Masuk (Hari)</th>
+                        <th class="text-center py-4 px-4 text-sm font-semibold text-gray-700">Total Transaksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($absensis as $absensi)
                     <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                         <td class="py-4 px-4 text-sm font-medium text-gray-800">{{ $absensi->karyawan->nama }}</td>
-                        <td class="py-4 px-4 text-sm text-gray-600">{{ date('d F Y', strtotime($absensi->tanggal)) }}</td>
-                        <td class="py-4 px-4 text-sm text-gray-600">
-                            @if(isset($absensi->transaksi_data) && $absensi->transaksi_data->count() > 0)
-                                <div class="space-y-1">
-                                    @foreach($absensi->transaksi_data as $transaksi)
-                                        <div class="text-xs flex items-center gap-2">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-[#825449]"></span>
-                                            <span class="font-medium text-gray-700">{{ $transaksi->layanan->nama ?? 'Walk-in' }}</span>
-                                            <span class="text-gray-400 text-[10px]">({{ date('H:i', strtotime($transaksi->jam)) }})</span>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @else
-                                <span class="text-gray-400">Tidak ada treatment</span>
-                            @endif
+                        <td class="py-4 px-4 text-sm text-gray-600">{{ date('F Y', strtotime($absensi->bulan)) }}</td>
+                        <td class="py-4 px-4 text-sm text-gray-600 text-center font-medium text-green-600">
+                            {{ $absensi->masuk }}
                         </td>
-                        <td class="py-4 px-4 text-sm text-gray-600">
+                        <td class="py-4 px-4 text-sm text-gray-600 text-center font-medium text-red-600">
+                            {{ $absensi->tidak_masuk }}
+                        </td>
+                        <td class="py-4 px-4 text-sm text-gray-600 text-center">
                             <span class="px-3 py-1 bg-gray-100 rounded-full font-semibold text-gray-700">
                                 {{ $absensi->total_transaksi ?? 0 }} Transaksi
                             </span>

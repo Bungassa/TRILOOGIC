@@ -110,6 +110,17 @@ class HomeController extends Controller
 
         \Illuminate\Support\Facades\Log::info('Validation passed');
 
+        // Cek kapasitas bed (Maksimal 4 per jenis kelamin per jam)
+        $countBed = \App\Models\Transaksi::where('tanggal', $request->tanggal)
+            ->where('jam', $request->jam)
+            ->where('jenis_kelamin', $request->jenis_kelamin)
+            ->whereNotIn('status', ['dibatalkan', 'selesai'])
+            ->count();
+
+        if ($countBed >= 4) {
+            return back()->withInput()->with('error', 'Layanan sedang penuh untuk jadwal tersebut. Masih ada bed kosong di waktu lain.');
+        }
+
         // Get layanan to calculate total
         $layanan = \App\Models\Layanan::find($request->layanan);
         $totalHarga = $layanan->harga;
