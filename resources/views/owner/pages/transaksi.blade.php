@@ -15,16 +15,24 @@
     <!-- Transaksi Table -->
     <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-gray-100">
         <div class="overflow-x-auto">
-            <table class="w-full">
+            <table id="ownerTransaksiTable" class="w-full">
                 <thead>
                     <tr class="border-b border-gray-200">
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Nama</th>
-                        <th class="text-left py-4 px-4 font-semibold text-gray-700">Layanan</th>
+                        <th class="text-left py-4 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 transition-colors" onclick="sortTable('ownerTransaksiTable', 1)">
+                            <div class="flex items-center">Layanan <svg class="w-4 h-4 ml-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg></div>
+                        </th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Lokasi</th>
-                        <th class="text-left py-4 px-4 font-semibold text-gray-700">Tanggal & Jam</th>
+                        <th class="text-left py-4 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 transition-colors" onclick="sortTable('ownerTransaksiTable', 3)">
+                            <div class="flex items-center">Tanggal & Jam <svg class="w-4 h-4 ml-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg></div>
+                        </th>
                         <th class="text-left py-4 px-4 font-semibold text-gray-700">Total Harga</th>
-                        <th class="text-left py-4 px-4 font-semibold text-gray-700">Status Pesanan</th>
-                        <th class="text-left py-4 px-4 font-semibold text-gray-700">Pembayaran</th>
+                        <th class="text-left py-4 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 transition-colors" onclick="sortTable('ownerTransaksiTable', 5)">
+                            <div class="flex items-center">Status Pesanan <svg class="w-4 h-4 ml-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg></div>
+                        </th>
+                        <th class="text-left py-4 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 transition-colors" onclick="sortTable('ownerTransaksiTable', 6)">
+                            <div class="flex items-center">Pembayaran <svg class="w-4 h-4 ml-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg></div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,9 +52,9 @@
                             <td class="py-4 px-4 text-gray-600 capitalize">
                                 {{ $transaksi->lokasi }}
                             </td>
-                            <td class="py-4 px-4 text-gray-600">
+                            <td class="py-4 px-4 text-gray-600" data-sort="{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('Y-m-d') }} {{ \Carbon\Carbon::parse($transaksi->jam)->format('H:i') }}">
                                 {{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d/m/Y') }}<br>
-                                <span class="text-sm">{{ $transaksi->jam }}</span>
+                                <span class="text-sm">{{ \Carbon\Carbon::parse($transaksi->jam)->format('H:i') }}</span>
                             </td>
                             <td class="py-4 px-4 font-semibold text-gray-800">Rp {{ number_format($transaksi->total_harga, 0, ',', '.') }}</td>
                             <td class="py-4 px-4">
@@ -81,6 +89,51 @@
         <div class="mt-6">
             {{ $transaksis->links() }}
         </div>
+        </div>
     </div>
 </div>
+
+<script>
+function sortTable(tableId, n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById(tableId);
+    switching = true;
+    dir = "asc";
+    while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            if (!x || !y) continue;
+            
+            let valX = (x.getAttribute('data-sort') || x.innerText).toLowerCase().trim();
+            let valY = (y.getAttribute('data-sort') || y.innerText).toLowerCase().trim();
+            
+            if (dir == "asc") {
+                if (valX > valY) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir == "desc") {
+                if (valX < valY) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;
+        } else {
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
+}
+</script>
 @endsection

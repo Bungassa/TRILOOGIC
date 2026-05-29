@@ -4,13 +4,14 @@ Sistem Informasi Manajemen dan Pemesanan Layanan untuk Ekky Family Refleksi. Apl
 
 ## Fitur Utama
 
-- **Pemesanan Layanan**: Pelanggan dapat memesan layanan secara online.
+- **Pemesanan Layanan**: Pelanggan dapat memesan layanan secara online dengan validasi jadwal real-time.
+- **Manajemen Bed (Admin)**: Sistem alokasi pelanggan pada 8 bed yang terbagi berdasarkan jenis kelamin (Ruang Laki-laki & Perempuan) dengan pencegahan overbooking otomatis.
 - **Home Service & Map Picker**: Mendukung layanan panggilan ke rumah dengan fitur pemilihan lokasi (Map Picker) menggunakan integrasi Google Maps/Leaflet.
-- **Manajemen Transaksi (Admin)**: Pengelolaan pesanan, status pengerjaan, dan status pembayaran.
-- **Laporan Pendapatan (Owner)**: Laporan pendapatan harian, bulanan, dan tahunan yang dapat dicetak.
-- **Manajemen Karyawan & Absensi**: Pengelolaan data terapis dan absensi karyawan.
-- **Penggajian**: Sistem perhitungan gaji karyawan (terapis) berdasarkan layanan yang diselesaikan.
-- **Integrasi Payment Gateway**: Mendukung pembayaran online secara aman.
+- **Manajemen Transaksi (Admin & Owner)**: Pengelolaan pesanan, status pengerjaan, dan status pembayaran dengan fitur *sorting* datatable tingkat lanjut.
+- **Dashboard Analitik & Laporan (Owner)**: Visualisasi grafik tren pendapatan bulanan dan fitur cetak laporan operasional secara spesifik.
+- **Manajemen Karyawan & Absensi**: Pengelolaan data terapis aktif/nonaktif serta absensi karyawan.
+- **Penggajian**: Sistem perhitungan gaji karyawan (terapis) berdasarkan sistem bagi hasil layanan yang diselesaikan.
+- **Sistem Notifikasi**: Peringatan otomatis (*alert*) jika slot waktu atau kapasitas bed sudah penuh.
 
 ## Kebutuhan Sistem
 

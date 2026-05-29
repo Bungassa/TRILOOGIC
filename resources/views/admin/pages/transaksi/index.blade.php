@@ -44,7 +44,7 @@
                                 @endif
                             </td>
                             <td class="py-4 px-4 text-gray-600">
-                                {{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d/m/Y') }}
+                                <time datetime="{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d/m/Y') }}</time>
                             </td>
                             <td class="py-4 px-4">
                                 <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
@@ -124,7 +124,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">Karyawan</label>
                         <select name="karyawan_id" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer">
                             <option value="">-- Pilih Karyawan --</option>
-                            @foreach(\App\Models\Karyawan::all() as $karyawan)
+                            @foreach(\App\Models\Karyawan::where('status', 'aktif')->get() as $karyawan)
                                 <option value="{{ $karyawan->id }}">
                                     {{ $karyawan->nama }}
                                 </option>
@@ -268,12 +268,17 @@
         document.addEventListener("DOMContentLoaded", function() {
             if (document.getElementById("transaksiTable")) {
                 new simpleDatatables.DataTable("#transaksiTable", {
-                    searchable: true,
+                    searchable: false,
                     fixedHeight: true,
                     perPage: 10,
+                    perPageSelect: false,
+                    columns: [
+                        { select: 0, sortable: false },
+                        { select: 1, sortable: false },
+                        { select: 2, type: "date", format: "DD/MM/YYYY" },
+                        { select: 4, sortable: false }
+                    ],
                     labels: {
-                        placeholder: "Cari...",
-                        perPage: "data per halaman",
                         noRows: "Data tidak ditemukan",
                         info: "Menampilkan {start} sampai {end} dari {rows} data",
                     }

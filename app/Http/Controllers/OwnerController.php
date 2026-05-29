@@ -25,6 +25,21 @@ class OwnerController extends Controller
             ->take(10)
             ->get();
 
+        // Chart Data: Pendapatan 6 bulan terakhir
+        $chartLabels = [];
+        $chartData = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = Carbon::now()->startOfMonth()->subMonths($i);
+            $chartLabels[] = $date->translatedFormat('M Y');
+            
+            $revenue = \App\Models\Penggajian::whereHas('transaksi', function($q) use ($date) {
+                $q->whereYear('tanggal', $date->year)
+                  ->whereMonth('tanggal', $date->month);
+            })->sum('pendapatan_owner');
+
+            $chartData[] = $revenue;
+        }
+
         return view('owner.pages.dashboard', [
             'title' => 'Owner Dashboard',
             'totalLayanan' => $totalLayanan,
@@ -32,7 +47,9 @@ class OwnerController extends Controller
             'totalTransaksi' => $totalTransaksi,
             'transaksiHariIni' => $transaksiHariIni,
             'totalRevenue' => $totalRevenue,
-            'recentTransactions' => $recentTransactions
+            'recentTransactions' => $recentTransactions,
+            'chartLabels' => $chartLabels,
+            'chartData' => $chartData
         ]);
     }
 

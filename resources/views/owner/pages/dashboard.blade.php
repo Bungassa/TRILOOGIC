@@ -74,6 +74,16 @@
         </div>
     </div>
 
+    <!-- Chart Section -->
+    <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-gray-100">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold text-gray-800">Trend Pendapatan (6 Bulan Terakhir)</h3>
+        </div>
+        <div class="relative h-[300px] w-full" id="chart-container" data-labels="{{ json_encode($chartLabels) }}" data-values="{{ json_encode($chartData) }}">
+            <canvas id="revenueChart"></canvas>
+        </div>
+    </div>
+
     <!-- Recent Transactions -->
     <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg border border-gray-100">
         <div class="px-6 py-5 border-b border-gray-100 flex items-center justify-between">
@@ -112,4 +122,97 @@
         </div>
     </div>
 </div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        const container = document.getElementById('chart-container');
+        
+        // Data dari HTML attributes
+        const labels = JSON.parse(container.getAttribute('data-labels'));
+        const data = JSON.parse(container.getAttribute('data-values'));
+
+        // Gradient untuk chart area
+        let gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(130, 84, 73, 0.5)'); // Warna primary
+        gradient.addColorStop(1, 'rgba(130, 84, 73, 0.0)');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Pendapatan Bersih (Rp)',
+                    data: data,
+                    borderColor: '#825449',
+                    backgroundColor: gradient,
+                    borderWidth: 3,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#825449',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#333',
+                        titleFont: { size: 13 },
+                        bodyFont: { size: 14, weight: 'bold' },
+                        padding: 10,
+                        cornerRadius: 8,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                let value = context.raw || 0;
+                                return 'Rp ' + value.toLocaleString('id-ID');
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#f0f0f0',
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            color: '#888',
+                            font: { size: 12 },
+                            callback: function(value) {
+                                if (value >= 1000000) {
+                                    return 'Rp ' + (value / 1000000).toFixed(1) + 'Jt';
+                                } else if (value >= 1000) {
+                                    return 'Rp ' + (value / 1000).toFixed(0) + 'Rb';
+                                }
+                                return 'Rp ' + value;
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false,
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            color: '#888',
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
 @endsection

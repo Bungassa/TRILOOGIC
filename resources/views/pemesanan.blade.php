@@ -87,6 +87,13 @@
                     {{ session('success') }}
                   </div>
                 @endif
+                
+                @if(session('error'))
+                  <div class="alert alert-danger mb-4" style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; border: 1px solid #f5c6cb;">
+                    <i class="fa-solid fa-circle-exclamation me-2"></i> {{ session('error') }}
+                  </div>
+                  <div id="session-error-data" data-error="{{ session('error') }}" style="display: none;"></div>
+                @endif
 
                 <!-- Nama Pemesan -->
                 <div class="pemesanan-form-group">
@@ -663,6 +670,18 @@
                 });
             }
         });
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+          const errorData = document.getElementById('session-error-data');
+          if (errorData) {
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Mohon Maaf',
+                  text: errorData.getAttribute('data-error'),
+                  confirmButtonColor: '#825449'
+              });
+          }
       });
     </script>
 
