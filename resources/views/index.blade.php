@@ -6,19 +6,7 @@
 
 <x-header />
 
-<style>
-  /* Fix sub-pixel rendering gap (garis hitam) on Swiper Slider */
-  .swiper-slide {
-    margin-right: -1px !important;
-  }
-  .cs_hero .cs_swiper_parallax_bg {
-    width: calc(100% + 2px) !important;
-    left: -1px !important;
-  }
-  .cs_parallax_slider .swiper-wrapper {
-    background-color: transparent !important;
-  }
-</style>
+<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 
 @if(isset($pendingTestimoniCount) && $pendingTestimoniCount > 0)
     <div class="testimoni-reminder-sticky" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; max-width: 320px;">

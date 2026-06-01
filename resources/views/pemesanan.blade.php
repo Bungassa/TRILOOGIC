@@ -6,52 +6,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     
-    <style>
-        /* Leaflet custom search results */
-        #search-results {
-            position: absolute;
-            z-index: 1000;
-            width: 100%;
-            background: white;
-            border: 1px solid #ddd;
-            border-top: none;
-            border-radius: 0 0 12px 12px;
-            max-height: 200px;
-            overflow-y: auto;
-            display: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .search-result-item {
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 13px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .search-result-item:hover {
-            background-color: #f8f9fa;
-        }
-        /* Fixed Center Marker */
-        .map-picker-container {
-            position: relative;
-        }
-        .center-marker {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -100%);
-            z-index: 1000;
-            pointer-events: none;
-        }
-        .center-marker i {
-            font-size: 40px;
-            color: #825449;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .center-marker.moving {
-            transform: translate(-50%, -120%);
-            transition: transform 0.2s ease-out;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 
     <x-header pageTitle="Pemesanan Layanan" breadcrumbItem="Pemesanan" />
 
