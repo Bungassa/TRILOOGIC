@@ -48,13 +48,22 @@
                                 <p><span class="font-semibold">Layanan:</span> {{ $occupied->layanan ? $occupied->layanan->nama : 'Walk-in' }}</p>
                                 <p><span class="font-semibold">Karyawan:</span> {{ $occupied->karyawan ? $occupied->karyawan->nama : '-' }}</p>
                             </div>
-                            <form action="{{ route('admin.bed.release', $occupied->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin mengosongkan bed ini?');">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit" class="w-full px-3 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-semibold hover:bg-red-200 transition-colors">
-                                    Kosongkan Bed
-                                </button>
-                            </form>
+                            <div class="flex space-x-2 mt-4">
+                                <form action="{{ route('admin.bed.complete', $occupied->id) }}" method="POST" class="flex-1" onsubmit="confirmAction(event, 'Konfirmasi treatment selesai?');">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="w-full px-3 py-2 bg-blue-100 text-blue-700 rounded-lg text-sm font-semibold hover:bg-blue-200 transition-colors">
+                                        Selesai
+                                    </button>
+                                </form>
+                                <form action="{{ route('admin.bed.release', $occupied->id) }}" method="POST" class="flex-1" onsubmit="confirmAction(event, 'Apakah Anda yakin ingin mengosongkan bed ini?');">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="w-full px-3 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-semibold hover:bg-red-200 transition-colors">
+                                        Kosongkan
+                                    </button>
+                                </form>
+                            </div>
                         @else
                             <button onclick="openAssignModal('{{ $i }}', 'L')" class="w-full px-3 py-2 mt-4 bg-green-100 text-green-700 rounded-lg text-sm font-semibold hover:bg-green-200 transition-colors">
                                 Isi Bed
@@ -88,13 +97,22 @@
                                 <p><span class="font-semibold">Layanan:</span> {{ $occupied->layanan ? $occupied->layanan->nama : 'Walk-in' }}</p>
                                 <p><span class="font-semibold">Karyawan:</span> {{ $occupied->karyawan ? $occupied->karyawan->nama : '-' }}</p>
                             </div>
-                            <form action="{{ route('admin.bed.release', $occupied->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin mengosongkan bed ini?');">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit" class="w-full px-3 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-semibold hover:bg-red-200 transition-colors">
-                                    Kosongkan Bed
-                                </button>
-                            </form>
+                            <div class="flex space-x-2 mt-4">
+                                <form action="{{ route('admin.bed.complete', $occupied->id) }}" method="POST" class="flex-1" onsubmit="confirmAction(event, 'Konfirmasi treatment selesai?');">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="w-full px-3 py-2 bg-blue-100 text-blue-700 rounded-lg text-sm font-semibold hover:bg-blue-200 transition-colors">
+                                        Selesai
+                                    </button>
+                                </form>
+                                <form action="{{ route('admin.bed.release', $occupied->id) }}" method="POST" class="flex-1" onsubmit="confirmAction(event, 'Apakah Anda yakin ingin mengosongkan bed ini?');">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="w-full px-3 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-semibold hover:bg-red-200 transition-colors">
+                                        Kosongkan
+                                    </button>
+                                </form>
+                            </div>
                         @else
                             <button onclick="openAssignModal('{{ $i }}', 'P')" class="w-full px-3 py-2 mt-4 bg-green-100 text-green-700 rounded-lg text-sm font-semibold hover:bg-green-200 transition-colors">
                                 Isi Bed
@@ -183,5 +201,26 @@
         document.getElementById('assignModal').classList.add('hidden');
         document.getElementById('assignModal').classList.remove('flex');
     }
+
+    function confirmAction(event, message) {
+        event.preventDefault();
+        const form = event.target;
+        
+        Swal.fire({
+            title: 'Konfirmasi',
+            text: message,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#825449',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Lanjutkan!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection

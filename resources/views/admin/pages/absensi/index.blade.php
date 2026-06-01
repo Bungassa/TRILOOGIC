@@ -57,7 +57,7 @@
                 <thead>
                     <tr class="border-b border-gray-200">
                         <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Nama Karyawan</th>
-                        <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Bulan Kehadiran</th>
+                        <!-- <th class="text-left py-4 px-4 text-sm font-semibold text-gray-700">Bulan Kehadiran</th> -->
                         <th class="text-center py-4 px-4 text-sm font-semibold text-gray-700">Masuk (Hari)</th>
                         <th class="text-center py-4 px-4 text-sm font-semibold text-gray-700">Tidak Masuk (Hari)</th>
                         <th class="text-center py-4 px-4 text-sm font-semibold text-gray-700">Total Transaksi</th>
@@ -67,7 +67,7 @@
                     @forelse($absensis as $absensi)
                     <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                         <td class="py-4 px-4 text-sm font-medium text-gray-800">{{ $absensi->karyawan->nama }}</td>
-                        <td class="py-4 px-4 text-sm text-gray-600">{{ date('F Y', strtotime($absensi->bulan)) }}</td>
+                        <!-- <td class="py-4 px-4 text-sm text-gray-600">{{ date('F Y', strtotime($absensi->bulan)) }}</td> -->
                         <td class="py-4 px-4 text-sm text-gray-600 text-center font-medium text-green-600">
                             {{ $absensi->masuk }}
                         </td>

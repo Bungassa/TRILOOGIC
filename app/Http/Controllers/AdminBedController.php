@@ -21,6 +21,7 @@ class AdminBedController extends Controller
         // We only consider transactions that are pending or dikerjakan, and are not yet assigned a bed
         $availableTransactions = Transaksi::with(['layanan', 'karyawan'])
             ->whereNull('bed_id')
+            ->whereNotNull('karyawan_id')
             ->whereIn('status', ['pending', 'dikerjakan'])
             ->whereDate('tanggal', Carbon::today())
             ->orderBy('jam', 'asc')
@@ -78,5 +79,15 @@ class AdminBedController extends Controller
         $transaksi->save();
 
         return back()->with('success', 'Bed berhasil dikosongkan.');
+    }
+
+    public function complete(string $transaksi_id)
+    {
+        $transaksi = Transaksi::findOrFail($transaksi_id);
+        $transaksi->bed_id = null;
+        $transaksi->status = 'selesai';
+        $transaksi->save();
+
+        return back()->with('success', 'Treatment selesai. Bed berhasil dikosongkan.');
     }
 }

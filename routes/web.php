@@ -62,6 +62,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/bed', [App\Http\Controllers\AdminBedController::class, 'index'])->name('admin.bed');
     Route::put('/bed/{transaksi_id}/assign', [App\Http\Controllers\AdminBedController::class, 'assign'])->name('admin.bed.assign');
     Route::put('/bed/{transaksi_id}/release', [App\Http\Controllers\AdminBedController::class, 'release'])->name('admin.bed.release');
+    Route::put('/bed/{transaksi_id}/complete', [App\Http\Controllers\AdminBedController::class, 'complete'])->name('admin.bed.complete');
 
     Route::get('/laporan', [App\Http\Controllers\AdminController::class, 'laporan'])->name('admin.laporan');
 

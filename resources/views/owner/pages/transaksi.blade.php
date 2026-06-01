@@ -3,12 +3,29 @@
 @section('content')
 <div class="space-y-8">
     <!-- Page Header -->
-    <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-gray-100">
-        <div class="flex items-center justify-between">
+    <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-gray-100 mb-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
                 <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Data Transaksi</h1>
                 <p class="text-gray-500 mt-1">Pantau seluruh data transaksi pemesanan</p>
             </div>
+            
+            <form action="{{ route('owner.transaksi') }}" method="GET" class="flex flex-wrap items-end gap-3">
+                <div>
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Filter Tanggal</label>
+                    <input type="date" name="tanggal" value="{{ $tanggal ?? '' }}" class="px-3 py-2 border border-gray-200 rounded-xl focus:ring-[#825449] focus:border-[#825449] text-sm" onchange="this.form.submit()">
+                </div>
+                <!-- <div class="pb-2">
+                    <span class="text-xs font-medium text-gray-400">Atau</span>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Filter Bulan</label>
+                    <input type="month" name="bulan_tahun" value="{{ $bulan_tahun ?? '' }}" class="px-3 py-2 border border-gray-200 rounded-xl focus:ring-[#825449] focus:border-[#825449] text-sm" onchange="this.form.submit()">
+                </div> -->
+                <a href="{{ route('owner.transaksi') }}" class="px-4 py-2 bg-gray-100 text-gray-600 text-sm font-semibold rounded-xl hover:bg-gray-200 transition-colors">
+                    Reset
+                </a>
+            </form>
         </div>
     </div>
 

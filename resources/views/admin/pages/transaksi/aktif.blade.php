@@ -10,6 +10,9 @@
                 <p class="text-gray-500 mt-1">Kelola data transaksi pemesanan layanan</p>
             </div>
             <div class="flex items-center space-x-3">
+                <form action="{{ route('admin.pesanan') }}" method="GET" class="flex items-center">
+                    <input type="date" name="date" value="{{ $selectedDate ?? \Carbon\Carbon::today()->toDateString() }}" class="px-4 py-2 border border-gray-200 rounded-xl focus:ring-[#825449] focus:border-[#825449] text-sm" onchange="this.form.submit()">
+                </form>
                 <button onclick="openModal()" class="px-4 py-2 bg-gradient-to-r from-[#825449] to-[#825449] text-white text-sm font-semibold rounded-xl shadow-lg shadow-[#825449]/30">
                     + Tambah Transaksi
                 </button>
@@ -53,20 +56,11 @@
                                     {{ $transaksi->status == 'pending' ? 'Menunggu' : ($transaksi->status == 'dikerjakan' ? 'Proses' : ($transaksi->status == 'selesai' ? 'Selesai' : 'Dibatalkan')) }}
                                 </span>
                             </td>
-                            <td class="py-4 px-4">
-                                <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                </form>
-                                <a href="{{ route('admin.transaksi.show', $transaksi->id) }}" class="inline-block mt-2 w-full px-3 py-1.5 bg-blue-50 text-blue-600 border border-blue-200 rounded-xl text-xs font-bold hover:bg-blue-100 transition-colors text-center">
-                                    <i class="fa-solid fa-circle-info me-1"></i> Detail
-                                </a>
-                            </td>
                             <td class="py-4 px-4 text-gray-600">
                                 <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <select name="karyawan_id" onchange="this.form.submit()" class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white">
+                                    <select name="karyawan_id" onchange="this.form.submit()" class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white" {{ in_array($transaksi->status, ['dikerjakan', 'selesai']) ? 'disabled' : '' }}>
                                         <option value="">Pilih Karyawan</option>
                                         @foreach(\App\Models\Karyawan::where('jenis_kelamin', $transaksi->jenis_kelamin)->whereDoesntHave('transaksis', function($q) use ($transaksi) { $q->where('status', 'dikerjakan')->where('id', '!=', $transaksi->id); })->get() as $karyawan)
                                             <option value="{{ $karyawan->id }}"
@@ -76,6 +70,11 @@
                                         @endforeach
                                     </select>
                                 </form>
+                            </td>
+                            <td class="py-4 px-4 text-center">
+                                <a href="{{ route('admin.transaksi.show', $transaksi->id) }}" class="inline-block w-full px-3 py-1.5 bg-blue-50 text-blue-600 border border-blue-200 rounded-xl text-xs font-bold hover:bg-blue-100 transition-colors text-center">
+                                    <i class="fa-solid fa-circle-info me-1"></i> Detail
+                                </a>
                             </td>
                         </tr>
                     @empty
@@ -210,8 +209,12 @@
             if (opt.value === '') continue; // skip placeholder
             if (opt.getAttribute('data-gender') === gender) {
                 opt.style.display = '';
+                opt.hidden = false;
+                opt.disabled = false;
             } else {
                 opt.style.display = 'none';
+                opt.hidden = true;
+                opt.disabled = true;
             }
         }
     }
@@ -250,6 +253,7 @@
                 document.querySelector('input[name="telepon"]').value = user.telp;
                 if(user.jk) {
                     document.querySelector('select[name="jenis_kelamin"]').value = user.jk;
+                    filterKaryawan();
                 }
                 document.getElementById('user_suggestions').classList.add('hidden');
             }
@@ -299,9 +303,10 @@
         document.addEventListener("DOMContentLoaded", function() {
             if (document.getElementById("transaksiAktifTable")) {
                 new simpleDatatables.DataTable("#transaksiAktifTable", {
-                    searchable: true,
+                    searchable: false,
                     fixedHeight: true,
                     perPage: 10,
+                    perPageSelect: false,
                     labels: {
                         placeholder: "Cari...",
                         perPage: "data per halaman",

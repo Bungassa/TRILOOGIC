@@ -290,7 +290,13 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Ceritakan pengalaman Anda</label>
-                            <textarea name="pesan" class="form-control" rows="4" placeholder="Tulis pesan testimoni Anda di sini..." required style="border-radius: 12px; resize: none;"></textarea>
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                <span class="badge bg-light text-dark border" style="cursor: pointer;" onclick="addTemplate('Pelayanan sangat memuaskan, terapis profesional.')">Pelayanan memuaskan</span>
+                                <span class="badge bg-light text-dark border" style="cursor: pointer;" onclick="addTemplate('Terapis ramah dan sangat ahli di bidangnya.')">Terapis ramah & ahli</span>
+                                <span class="badge bg-light text-dark border" style="cursor: pointer;" onclick="addTemplate('Tempat bersih, nyaman, dan sangat rileks.')">Tempat nyaman & bersih</span>
+                                <span class="badge bg-light text-dark border" style="cursor: pointer;" onclick="addTemplate('Badan jadi segar kembali, sangat direkomendasikan!')">Badan segar kembali</span>
+                            </div>
+                            <textarea name="pesan" id="pesan_testimoni" class="form-control" rows="4" placeholder="Tulis pesan testimoni Anda di sini..." required style="border-radius: 12px; resize: none;"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer border-0 p-4 pt-0">
@@ -662,5 +668,14 @@
                 });
             }
         });
+
+        function addTemplate(text) {
+            const textarea = document.getElementById('pesan_testimoni');
+            if (textarea.value.length > 0) {
+                textarea.value += ' ' + text;
+            } else {
+                textarea.value = text;
+            }
+        }
     </script>
 @endsection

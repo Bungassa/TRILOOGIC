@@ -99,7 +99,7 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kelamin</label>
-                        <select name="jenis_kelamin" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer">
+                        <select name="jenis_kelamin" id="tambah_jenis_kelamin" onchange="filterKaryawan()" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer">
                             <option value="">Pilih</option>
                             <option value="L">Laki-laki</option>
                             <option value="P">Perempuan</option>
@@ -122,10 +122,10 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Karyawan</label>
-                        <select name="karyawan_id" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer">
+                        <select name="karyawan_id" id="tambah_karyawan_id" required class="w-full px-4 py-2 bg-gray-50/50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer">
                             <option value="">-- Pilih Karyawan --</option>
                             @foreach(\App\Models\Karyawan::where('status', 'aktif')->get() as $karyawan)
-                                <option value="{{ $karyawan->id }}">
+                                <option value="{{ $karyawan->id }}" data-gender="{{ $karyawan->jenis_kelamin }}">
                                     {{ $karyawan->nama }}
                                 </option>
                             @endforeach
@@ -185,6 +185,27 @@
     <script>
         const registeredUsers = JSON.parse(document.getElementById('users-data').textContent);
 
+    function filterKaryawan() {
+        const gender = document.getElementById('tambah_jenis_kelamin').value;
+        const selectKaryawan = document.getElementById('tambah_karyawan_id');
+        const options = selectKaryawan.options;
+        selectKaryawan.value = '';
+
+        for (let i = 0; i < options.length; i++) {
+            const opt = options[i];
+            if (opt.value === '') continue; // skip placeholder
+            if (opt.getAttribute('data-gender') === gender) {
+                opt.style.display = '';
+                opt.hidden = false;
+                opt.disabled = false;
+            } else {
+                opt.style.display = 'none';
+                opt.hidden = true;
+                opt.disabled = true;
+            }
+        }
+    }
+
         function searchUser(query) {
             const suggestionsBox = document.getElementById('user_suggestions');
             const userIdInput = document.getElementById('user_id_input');
@@ -219,6 +240,7 @@
                 document.querySelector('input[name="telepon"]').value = user.telp;
                 if(user.jk) {
                     document.querySelector('select[name="jenis_kelamin"]').value = user.jk;
+                    filterKaryawan();
                 }
                 document.getElementById('user_suggestions').classList.add('hidden');
             }

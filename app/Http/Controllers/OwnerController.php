@@ -53,12 +53,29 @@ class OwnerController extends Controller
         ]);
     }
 
-    public function transaksi()
+    public function transaksi(Request $request)
     {
-        $transaksis = Transaksi::with('layanan')->orderBy('tanggal', 'desc')->orderBy('jam', 'desc')->paginate(25);
+        $tanggal = $request->get('tanggal');
+        $bulanTahun = $request->get('bulan_tahun');
+
+        $query = Transaksi::with('layanan')->orderBy('tanggal', 'desc')->orderBy('jam', 'desc');
+
+        if ($tanggal) {
+            $query->whereDate('tanggal', $tanggal);
+        } elseif ($bulanTahun) {
+            $parts = explode('-', $bulanTahun);
+            if(count($parts) == 2) {
+                $query->whereYear('tanggal', $parts[0])->whereMonth('tanggal', $parts[1]);
+            }
+        }
+
+        $transaksis = $query->paginate(25)->appends($request->all());
+
         return view('owner.pages.transaksi', [
             'title' => 'Data Transaksi',
-            'transaksis' => $transaksis
+            'transaksis' => $transaksis,
+            'tanggal' => $tanggal,
+            'bulan_tahun' => $bulanTahun
         ]);
     }
 

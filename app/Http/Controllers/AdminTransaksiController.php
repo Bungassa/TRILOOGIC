@@ -16,17 +16,20 @@ class AdminTransaksiController extends Controller
         ]);
     }
 
-    public function pesananAktif()
+    public function pesananAktif(Request $request)
     {
+        $date = $request->query('date', \Carbon\Carbon::today()->toDateString());
+
         $transaksis = Transaksi::with(['layanan', 'karyawan'])
-            ->whereIn('status', ['pending', 'dikerjakan'])
-            ->orderBy('tanggal', 'asc')
+            ->whereIn('status', ['pending', 'dikerjakan', 'selesai'])
+            ->whereDate('tanggal', $date)
             ->orderBy('jam', 'asc')
             ->get();
             
         return view('admin.pages.transaksi.aktif', [
             'title' => 'Pesanan Aktif',
-            'transaksis' => $transaksis
+            'transaksis' => $transaksis,
+            'selectedDate' => $date
         ]);
     }
 
@@ -127,10 +130,11 @@ class AdminTransaksiController extends Controller
             'total_harga' => $totalHarga,
             'status' => 'pending',
             'karyawan_id' => $request->karyawan_id,
+            'status_pembayaran' => 'lunas',
         ]);
 
-        // Sync with Midtrans if status is pending
-        if ($transaksi->status === 'pending') {
+        // Sync with Midtrans if status is pending and not lunas
+        if ($transaksi->status === 'pending' && $transaksi->status_pembayaran !== 'lunas') {
             \Midtrans\Config::$serverKey = config('services.midtrans.server_key');
             \Midtrans\Config::$isProduction = config('services.midtrans.is_production');
             \Midtrans\Config::$isSanitized = config('services.midtrans.is_sanitized');
