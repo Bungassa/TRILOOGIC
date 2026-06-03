@@ -10,22 +10,47 @@
                 <p class="text-gray-500 mt-1">Pantau seluruh data transaksi pemesanan</p>
             </div>
             
-            <form action="{{ route('owner.transaksi') }}" method="GET" class="flex flex-wrap items-end gap-3">
-                <div>
-                    <label class="block text-xs font-medium text-gray-500 mb-1">Filter Tanggal</label>
-                    <input type="date" name="tanggal" value="{{ $tanggal ?? '' }}" class="px-3 py-2 border border-gray-200 rounded-xl focus:ring-[#825449] focus:border-[#825449] text-sm" onchange="this.form.submit()">
+            <form action="{{ route('owner.transaksi') }}" method="GET" class="flex items-center gap-3">
+                <div class="flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-[#825449] focus-within:border-transparent transition-all">
+                    <select id="filter_mode" class="px-3 py-2 bg-gray-50 border-r border-gray-200 text-sm font-medium text-gray-700 outline-none cursor-pointer hover:bg-gray-100 transition-colors" onchange="toggleFilterMode(this.value)">
+                        <option value="tanggal" {{ $tanggal || !$bulan_tahun ? 'selected' : '' }}>Tanggal</option>
+                        <option value="bulan" {{ $bulan_tahun ? 'selected' : '' }}>Bulan</option>
+                    </select>
+                    
+                    <!-- Input Tanggal -->
+                    <input type="date" name="tanggal" id="input_tanggal" value="{{ $tanggal ?? '' }}" class="px-3 py-2 text-sm outline-none w-40 {{ $bulan_tahun ? 'hidden' : '' }}" onchange="this.form.submit()">
+                    
+                    <!-- Input Bulan -->
+                    <input type="month" name="bulan_tahun" id="input_bulan" value="{{ $bulan_tahun ?? '' }}" class="px-3 py-2 text-sm outline-none w-40 {{ $bulan_tahun ? '' : 'hidden' }}" onchange="this.form.submit()" {{ $bulan_tahun ? '' : 'disabled' }}>
                 </div>
-                <!-- <div class="pb-2">
-                    <span class="text-xs font-medium text-gray-400">Atau</span>
-                </div>
-                <div>
-                    <label class="block text-xs font-medium text-gray-500 mb-1">Filter Bulan</label>
-                    <input type="month" name="bulan_tahun" value="{{ $bulan_tahun ?? '' }}" class="px-3 py-2 border border-gray-200 rounded-xl focus:ring-[#825449] focus:border-[#825449] text-sm" onchange="this.form.submit()">
-                </div> -->
-                <a href="{{ route('owner.transaksi') }}" class="px-4 py-2 bg-gray-100 text-gray-600 text-sm font-semibold rounded-xl hover:bg-gray-200 transition-colors">
+                
+                <a href="{{ route('owner.transaksi') }}" class="px-4 py-2 bg-gray-100 text-gray-600 text-sm font-semibold rounded-xl hover:bg-gray-200 transition-colors whitespace-nowrap">
                     Reset
                 </a>
             </form>
+
+            <script>
+                function toggleFilterMode(mode) {
+                    const inputTanggal = document.getElementById('input_tanggal');
+                    const inputBulan = document.getElementById('input_bulan');
+                    
+                    if (mode === 'tanggal') {
+                        inputTanggal.classList.remove('hidden');
+                        inputTanggal.disabled = false;
+                        
+                        inputBulan.classList.add('hidden');
+                        inputBulan.disabled = true;
+                        inputBulan.value = ''; // Clear bulan value
+                    } else {
+                        inputBulan.classList.remove('hidden');
+                        inputBulan.disabled = false;
+                        
+                        inputTanggal.classList.add('hidden');
+                        inputTanggal.disabled = true;
+                        inputTanggal.value = ''; // Clear tanggal value
+                    }
+                }
+            </script>
         </div>
     </div>
 
