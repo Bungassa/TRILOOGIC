@@ -14,12 +14,12 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        
+
         // Ambil riwayat pesanan berdasarkan user_id atau nomor telepon user
         $transaksis = collect();
         if ($user) {
             $transaksis = Transaksi::where('user_id', $user->id)
-                ->orWhere(function($query) use ($user) {
+                ->orWhere(function ($query) use ($user) {
                     if ($user->phone) {
                         $query->where('telepon', $user->phone);
                     } else {
@@ -59,6 +59,7 @@ class ProfileController extends Controller
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
+
         $data = [
             'name' => $request->name,
             'email' => $request->email,
@@ -78,4 +79,3 @@ class ProfileController extends Controller
         return back()->with('success', 'Profil berhasil diperbarui.');
     }
 }
-
