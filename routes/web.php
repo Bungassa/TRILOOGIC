@@ -54,7 +54,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
     Route::get('/transaksi', [App\Http\Controllers\AdminTransaksiController::class, 'index'])->name('admin.transaksi');
     Route::get('/pesanan', [App\Http\Controllers\AdminTransaksiController::class, 'pesananAktif'])->name('admin.pesanan');
-
+    Route::post('/transaksi', [App\Http\Controllers\AdminTransaksiController::class, 'store'])->name('admin.transaksi.store');
     Route::get('/transaksi/{id}', [App\Http\Controllers\AdminTransaksiController::class, 'show'])->name('admin.transaksi.show');
     Route::put('/transaksi/{id}', [App\Http\Controllers\AdminTransaksiController::class, 'updateStatus'])->name('admin.transaksi.update');
 
