@@ -11,9 +11,12 @@ class AdminTransaksiController extends Controller
     {
         $transaksis = Transaksi::with('layanan')->orderBy('created_at', 'desc')->get();
         $layanans = \App\Models\Layanan::all();
-        $karyawans = \App\Models\Karyawan::all();
+        $karyawans = \App\Models\Karyawan::whereDoesntHave('transaksis', function ($query) {
+            $query->whereIn('status', ['pending', 'dikerjakan'])
+                ->where('status_pembayaran', 'lunas');
+        })->get();
         $users = \App\Models\User::where('role', 'user')->get();
-        
+
         return view('admin.pages.transaksi.index', [
             'title' => 'Data Transaksi',
             'transaksis' => $transaksis,
@@ -30,13 +33,14 @@ class AdminTransaksiController extends Controller
 
         $transaksis = Transaksi::with(['layanan', 'karyawan'])
             ->whereIn('status', ['pending', 'dikerjakan', 'selesai'])
+            ->where('status_pembayaran', 'lunas')
             ->whereDate('tanggal', $date)
             ->orderBy('jam', 'asc')
             ->get();
         $layanans = \App\Models\Layanan::all();
         $karyawans = \App\Models\Karyawan::all();
 
-        return view('admin.pages.transaksi.aktif', [
+        return view('admin.pages.pesanan.aktif', [
             'title' => 'Pesanan Aktif',
             'transaksis' => $transaksis,
             'selectedDate' => $date,
@@ -54,7 +58,7 @@ class AdminTransaksiController extends Controller
         ]);
     }
 
-   public function updateStatus(Request $request, int $id)
+    public function updateStatus(Request $request, int $id)
     {
         $transaksi = Transaksi::find($id);
 

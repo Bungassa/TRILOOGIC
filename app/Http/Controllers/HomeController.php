@@ -10,7 +10,7 @@ class HomeController extends Controller
     {
         $layanans = \App\Models\Layanan::take(4)->get();
         $testimonis = \App\Models\Testimoni::with('user', 'transaksi.layanan')->latest()->take(6)->get();
-        
+
         $pendingTestimoniCount = 0;
         if (\Illuminate\Support\Facades\Auth::check()) {
             $pendingTestimoniCount = \App\Models\Transaksi::where('user_id', \Illuminate\Support\Facades\Auth::id())
@@ -23,7 +23,7 @@ class HomeController extends Controller
         \App\Models\ActivityLog::log('Kunjungan', "$userName mengunjungi halaman Beranda");
 
         return view('index', [
-            'layanans' => $layanans, 
+            'layanans' => $layanans,
             'testimonis' => $testimonis,
             'pendingTestimoniCount' => $pendingTestimoniCount
         ]);
@@ -69,7 +69,7 @@ class HomeController extends Controller
         if ($pendingTestimoni) {
             return redirect()->route('profile', ['#orders'])->with('error', 'Wajib memberikan testimoni untuk pesanan sebelumnya sebelum membuat pesanan baru.');
         }
-        
+
         // Validasi input
         try {
             $validated = $request->validate([
@@ -114,7 +114,6 @@ class HomeController extends Controller
         $countBed = \App\Models\Transaksi::where('tanggal', $request->tanggal)
             ->where('jenis_kelamin', $request->jenis_kelamin)
             ->whereNotIn('status', ['dibatalkan', 'selesai'])
-            ->whereNotNull('bed_id')
             ->count();
 
         if ($countBed >= 4) {
