@@ -12,6 +12,7 @@ Sistem Informasi Manajemen dan Pemesanan Layanan untuk Ekky Family Refleksi. Apl
 - **Manajemen Karyawan & Absensi**: Pengelolaan data terapis aktif/nonaktif serta absensi karyawan.
 - **Penggajian**: Sistem perhitungan gaji karyawan (terapis) berdasarkan sistem bagi hasil layanan yang diselesaikan.
 - **Sistem Notifikasi**: Peringatan otomatis (*alert*) jika slot waktu atau kapasitas bed sudah penuh.
+- **Autentikasi Lanjutan**: Mendukung login instan menggunakan akun Google (OAuth) serta pemulihan password via kode OTP yang dikirimkan ke email.
 
 ## Kebutuhan Sistem
 
@@ -33,9 +34,26 @@ Sistem Informasi Manajemen dan Pemesanan Layanan untuk Ekky Family Refleksi. Apl
    npm run build
    ```
 4. **Konfigurasi Environment**:
-   Salin file `.env.example` menjadi `.env` lalu sesuaikan konfigurasi database Anda.
+   Salin file `.env.example` menjadi `.env` lalu sesuaikan konfigurasi database Anda. Pastikan untuk mengisi konfigurasi SMTP dan Google Client ID untuk mengaktifkan fitur autentikasi.
    ```bash
    cp .env.example .env
+   ```
+   **Tambahan untuk `.env`:**
+   ```env
+   # Setup Email (untuk OTP)
+   MAIL_MAILER=smtp
+   MAIL_HOST=smtp.gmail.com
+   MAIL_PORT=465
+   MAIL_USERNAME=email_anda@gmail.com
+   MAIL_PASSWORD=password_aplikasi_gmail
+   MAIL_ENCRYPTION=ssl
+   MAIL_FROM_ADDRESS=email_anda@gmail.com
+   MAIL_FROM_NAME="${APP_NAME}"
+
+   # Setup Google Login
+   GOOGLE_CLIENT_ID=client_id_dari_gcp
+   GOOGLE_CLIENT_SECRET=client_secret_dari_gcp
+   GOOGLE_REDIRECT_URI=http://localhost:8000/auth/google/callback
    ```
 5. **Generate Application Key**:
    ```bash
