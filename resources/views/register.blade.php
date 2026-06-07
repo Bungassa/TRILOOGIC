@@ -207,6 +207,21 @@
                                     </span>
                                 </button>
                             </div>
+
+                            <!-- Divider -->
+                            <div class="d-flex align-items-center justify-content-center cs_mt_20 cs_mb_20">
+                                <hr class="flex-grow-1" style="border-top: 1px solid #dee2e6;">
+                                <span class="mx-3 text-secondary cs_fs_14">atau</span>
+                                <hr class="flex-grow-1" style="border-top: 1px solid #dee2e6;">
+                            </div>
+
+                            <!-- Google Login Button -->
+                            <div class="cs_form_submit">
+                                <a href="{{ route('auth.google') }}" class="btn btn-white w-100 cs_fs_16 cs_rounded_10 cs_pt_12 cs_pb_12 border d-flex align-items-center justify-content-center" style="background: white; transition: all 0.3s ease;">
+                                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" width="22" class="me-2">
+                                    <span class="text-dark fw-medium">Daftar dengan Google</span>
+                                </a>
+                            </div>
                         </form>
 
                         <div class="cs_register_footer text-center cs_pt_30 cs_mt_30 border-top">

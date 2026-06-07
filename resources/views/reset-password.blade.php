@@ -43,7 +43,6 @@
 
                         <form action="{{ route('password.update') }}" method="POST" class="cs_login_form">
                             @csrf
-                            <input type="hidden" name="token" value="{{ $token }}">
 
                             <div class="cs_form_fields">
                                 <!-- Email Field (Required for security) -->
