@@ -11,10 +11,10 @@ class AdminTransaksiController extends Controller
     {
         $transaksis = Transaksi::with('layanan')->orderBy('created_at', 'desc')->get();
         $layanans = \App\Models\Layanan::all();
-        $karyawans = \App\Models\Karyawan::whereDoesntHave('transaksis', function ($query) {
+        $karyawans = \App\Models\Karyawan::with(['transaksis' => function ($query) {
             $query->whereIn('status', ['pending', 'dikerjakan'])
                 ->where('status_pembayaran', 'lunas');
-        })->get();
+        }])->get();
         $users = \App\Models\User::where('role', 'user')->get();
 
         return view('admin.pages.transaksi.index', [

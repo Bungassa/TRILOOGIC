@@ -169,7 +169,11 @@
                     <select name="karyawan_id" id="input_karyawan" required class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#825449] focus:border-transparent transition-all">
                         <option value="">Pilih Karyawan</option>
                         @foreach($karyawans as $k)
-                            <option value="{{ $k->id }}" data-gender="{{ $k->jenis_kelamin }}">{{ $k->nama }}</option>
+                            <option value="{{ $k->id }}" 
+                                data-gender="{{ $k->jenis_kelamin }}"
+                                data-booked-dates="{{ json_encode($k->transaksis->map(function($t) { return \Carbon\Carbon::parse($t->tanggal)->format('Y-m-d'); })->toArray()) }}">
+                                {{ $k->nama }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -235,22 +239,34 @@
     const inputJenisKelamin = document.getElementById('input_jenis_kelamin');
     const inputKaryawan = document.getElementById('input_karyawan');
     
+    const inputTanggal = document.querySelector('input[name="tanggal"]');
+    
     function filterKaryawan() {
         const gender = inputJenisKelamin.value;
+        const selectedDate = inputTanggal ? inputTanggal.value : '';
         const options = inputKaryawan.options;
         for (let i = 1; i < options.length; i++) {
-            if (options[i].getAttribute('data-gender') === gender) {
-                options[i].style.display = '';
-                options[i].disabled = false;
+            const opt = options[i];
+            const bookedDates = JSON.parse(opt.getAttribute('data-booked-dates') || '[]');
+            
+            const isGenderMatch = opt.getAttribute('data-gender') === gender;
+            const isDateAvailable = !bookedDates.includes(selectedDate);
+            
+            if (isGenderMatch && isDateAvailable) {
+                opt.style.display = '';
+                opt.disabled = false;
             } else {
-                options[i].style.display = 'none';
-                options[i].disabled = true;
+                opt.style.display = 'none';
+                opt.disabled = true;
             }
         }
         inputKaryawan.value = '';
     }
 
     inputJenisKelamin.addEventListener('change', filterKaryawan);
+    if (inputTanggal) {
+        inputTanggal.addEventListener('change', filterKaryawan);
+    }
 
     inputNama.addEventListener('input', function() {
         let val = this.value;
