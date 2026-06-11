@@ -6,7 +6,7 @@
     <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-8 border border-white/20">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div>
-                <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">Laporan Penggajian</h1>
+                <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">Penggajian Karyawan</h1>
                 <p class="text-gray-500 mt-2 text-lg">Saring dan cetak laporan upah karyawan suku Anda</p>
             </div>
             
@@ -48,7 +48,7 @@
         <!-- Report Header -->
         <div class="text-center mb-10 pb-4">
             <h1 class="text-3xl font-black text-gray-900 tracking-wider uppercase">Ekky Family Refleksi</h1>
-            <p class="text-gray-500 mt-2 text-sm font-black uppercase tracking-[0.2em] text-[#825449]">Laporan Data Penggajian</p>
+            <p class="text-gray-500 mt-2 text-sm font-black uppercase tracking-[0.2em] text-[#825449]">Data Penggajian Karyawan</p>
             <p class="text-gray-400 text-xs font-bold mt-1.5 uppercase tracking-widest">Periode: {{ Carbon\Carbon::create($tahun, $bulan, 1)->translatedFormat('F Y') }}</p>
         </div>
 
