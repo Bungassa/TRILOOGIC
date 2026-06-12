@@ -36,6 +36,7 @@ class ManageBedCommand extends Command
         $availableFemaleBeds = array_diff([5, 6, 7, 8], $occupiedBeds);
 
         foreach ($pendingTransactions as $transaksi) {
+            /** @var \App\Models\Transaksi $transaksi */
             if ($transaksi->jenis_kelamin === 'L' && count($availableMaleBeds) > 0) {
                 $bed = array_shift($availableMaleBeds);
                 $transaksi->bed_id = $bed;
@@ -56,6 +57,7 @@ class ManageBedCommand extends Command
             ->get();
 
         foreach ($inProgressTransactions as $transaksi) {
+            /** @var \App\Models\Transaksi $transaksi */
             $startDateTime = \Carbon\Carbon::parse($transaksi->tanggal . ' ' . $transaksi->jam);
             $duration = $transaksi->layanan->durasi ?? 60;
             $endDateTime = $startDateTime->copy()->addMinutes($duration);

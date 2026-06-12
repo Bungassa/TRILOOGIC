@@ -71,7 +71,7 @@ class Transaksi extends Model
         });
     }
 
-    public static function isKapasitasPenuh($tanggal, $jam, $durasi, $jenis_kelamin)
+    public static function isKapasitasPenuh(string $tanggal, string $jam, int $durasi, string $jenis_kelamin): bool
     {
         $new_start = \Carbon\Carbon::parse($jam);
         $new_end = $new_start->copy()->addMinutes($durasi);
@@ -106,7 +106,7 @@ class Transaksi extends Model
         return $max_concurrent >= 4;
     }
 
-    public static function isKaryawanBentrok($tanggal, $jam, $durasi, $karyawan_id, $ignore_transaksi_id = null)
+    public static function isKaryawanBentrok(string $tanggal, string $jam, int $durasi, ?int $karyawan_id, ?int $ignore_transaksi_id = null): bool
     {
         if (!$karyawan_id) return false;
         

@@ -16,6 +16,7 @@ Artisan::command('transaksi:cancel-expired', function () {
         ->get();
 
     foreach ($expiredTransaksis as $transaksi) {
+        /** @var \App\Models\Transaksi $transaksi */
         $transaksi->status = 'dibatalkan';
         $transaksi->save();
         \App\Models\ActivityLog::log('Sistem', 'Membatalkan otomatis transaksi #' . $transaksi->id . ' karena tidak ada pembayaran dalam 10 menit.');
