@@ -21,3 +21,5 @@ Artisan::command('transaksi:cancel-expired', function () {
         \App\Models\ActivityLog::log('Sistem', 'Membatalkan otomatis transaksi #' . $transaksi->id . ' karena tidak ada pembayaran dalam 10 menit.');
     }
 })->purpose('Cancel uncompleted transactions after 10 minutes')->everyMinute();
+
+\Illuminate\Support\Facades\Schedule::command('bed:manage')->everyMinute();
