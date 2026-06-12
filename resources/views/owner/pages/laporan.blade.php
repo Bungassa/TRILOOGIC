@@ -6,7 +6,7 @@
     <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-8 border border-white/20">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div>
-                <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">Penggajian Karyawan</h1>
+                <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">Laporan Penggajian Karyawan</h1>
                 <p class="text-gray-500 mt-2 text-lg">Saring dan cetak laporan upah karyawan suku Anda</p>
             </div>
             
