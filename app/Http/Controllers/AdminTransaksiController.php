@@ -90,7 +90,7 @@ class AdminTransaksiController extends Controller
 
         \App\Models\ActivityLog::log('Update Transaksi', 'Mengubah transaksi #' . $transaksi->id . ' (Status: ' . $transaksi->status . ')');
 
-        return redirect()->route('admin.transaksi')
+        return redirect()->back()
             ->with('success', 'Transaksi berhasil diperbarui');
     }
     public function store(Request $request)
