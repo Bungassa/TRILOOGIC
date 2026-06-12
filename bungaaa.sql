@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 01 Jun 2026 pada 15.04
+-- Waktu pembuatan: 12 Jun 2026 pada 15.23
 -- Versi server: 8.0.30
 -- Versi PHP: 8.3.22
 
@@ -550,7 +550,254 @@ INSERT INTO `activity_logs` (`id`, `user_id`, `activity`, `description`, `ip_add
 (484, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-05-29 17:35:25', '2026-05-29 17:35:25'),
 (485, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-05-29 17:36:18', '2026-05-29 17:36:18'),
 (486, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-05-29 17:36:26', '2026-05-29 17:36:26'),
-(487, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-05-29 17:36:26', '2026-05-29 17:36:26');
+(487, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-05-29 17:36:26', '2026-05-29 17:36:26'),
+(488, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 15:27:38', '2026-06-01 15:27:38'),
+(489, NULL, 'Kunjungan', 'Guest mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 15:27:47', '2026-06-01 15:27:47'),
+(490, 9, 'Login', 'User Bunga Sabrinaa masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 15:27:58', '2026-06-01 15:27:58'),
+(491, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 15:27:59', '2026-06-01 15:27:59'),
+(492, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 15:28:02', '2026-06-01 15:28:02'),
+(493, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 15:28:47', '2026-06-01 15:28:47'),
+(494, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:09:51', '2026-06-01 16:09:51'),
+(495, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:10:07', '2026-06-01 16:10:07'),
+(496, 9, 'Logout', 'User Bunga Sabrinaa keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:10:14', '2026-06-01 16:10:14'),
+(497, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:10:14', '2026-06-01 16:10:14'),
+(498, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:10:57', '2026-06-01 16:10:57'),
+(499, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:11:04', '2026-06-01 16:11:04'),
+(500, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:11:05', '2026-06-01 16:11:05'),
+(501, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:13:12', '2026-06-01 16:13:12'),
+(502, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:13:12', '2026-06-01 16:13:12'),
+(503, 9, 'Login', 'User Bunga Sabrinaa masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:13:24', '2026-06-01 16:13:24'),
+(504, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:13:24', '2026-06-01 16:13:24'),
+(505, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:14:33', '2026-06-01 16:14:33'),
+(506, 9, 'Logout', 'User Bunga Sabrinaa keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:14:37', '2026-06-01 16:14:37'),
+(507, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:14:38', '2026-06-01 16:14:38'),
+(508, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:14:45', '2026-06-01 16:14:45'),
+(509, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:14:45', '2026-06-01 16:14:45'),
+(510, 2, 'Update Transaksi', 'Mengubah transaksi #66 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:16:47', '2026-06-01 16:16:47'),
+(511, 2, 'Update Transaksi', 'Mengubah transaksi #66 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:21:24', '2026-06-01 16:21:24'),
+(512, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Diva Inzyra Praba Saraswati', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:22:53', '2026-06-01 16:22:53'),
+(513, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Bunga Sabrinaa', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:34:55', '2026-06-01 16:34:55'),
+(514, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:35:38', '2026-06-01 16:35:38'),
+(515, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:35:38', '2026-06-01 16:35:38'),
+(516, 9, 'Login', 'User Bunga Sabrinaa masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:35:48', '2026-06-01 16:35:48'),
+(517, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:35:48', '2026-06-01 16:35:48'),
+(518, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:35:52', '2026-06-01 16:35:52'),
+(519, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:35:55', '2026-06-01 16:35:55'),
+(520, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:37:03', '2026-06-01 16:37:03'),
+(521, 9, 'Logout', 'User Bunga Sabrinaa keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:37:06', '2026-06-01 16:37:06'),
+(522, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:37:06', '2026-06-01 16:37:06'),
+(523, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:37:14', '2026-06-01 16:37:14'),
+(524, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:37:14', '2026-06-01 16:37:14'),
+(525, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-02 05:39:18', '2026-06-02 05:39:18'),
+(526, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-02 05:39:18', '2026-06-02 05:39:18'),
+(527, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-02 05:39:49', '2026-06-02 05:39:49'),
+(528, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-02 05:39:49', '2026-06-02 05:39:49'),
+(529, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-02 01:45:14', '2026-06-02 01:45:14'),
+(530, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-02 01:45:14', '2026-06-02 01:45:14'),
+(531, 2, 'Update Transaksi', 'Mengubah transaksi #66 (Status: dikerjakan)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-02 01:45:35', '2026-06-02 01:45:35'),
+(532, 2, 'Update Transaksi', 'Mengubah transaksi #66 (Status: dikerjakan)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-02 01:45:40', '2026-06-02 01:45:40'),
+(533, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-02 01:46:29', '2026-06-02 01:46:29'),
+(534, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-02 01:46:30', '2026-06-02 01:46:30'),
+(535, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:46:51', '2026-06-01 16:46:51'),
+(536, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:47:25', '2026-06-01 16:47:25'),
+(537, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:47:25', '2026-06-01 16:47:25'),
+(538, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:48:56', '2026-06-01 16:48:56'),
+(539, 9, 'Login', 'User Bunga Sabrinaa masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:49:12', '2026-06-01 16:49:12'),
+(540, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:49:12', '2026-06-01 16:49:12'),
+(541, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:50:12', '2026-06-01 16:50:12'),
+(542, 9, 'Logout', 'User Bunga Sabrinaa keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:54:42', '2026-06-01 16:54:42'),
+(543, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:54:43', '2026-06-01 16:54:43'),
+(544, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:54:54', '2026-06-01 16:54:54'),
+(545, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 16:54:54', '2026-06-01 16:54:54'),
+(546, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 17:10:13', '2026-06-01 17:10:13'),
+(547, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-01 17:10:13', '2026-06-01 17:10:13'),
+(548, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:09:01', '2026-06-03 15:09:01'),
+(549, 9, 'Login', 'User Bunga Sabrinaa masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:09:13', '2026-06-03 15:09:13'),
+(550, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:09:13', '2026-06-03 15:09:13'),
+(551, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:09:40', '2026-06-03 15:09:40'),
+(552, 9, 'Logout', 'User Bunga Sabrinaa keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:09:43', '2026-06-03 15:09:43'),
+(553, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:09:43', '2026-06-03 15:09:43'),
+(554, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:09:56', '2026-06-03 15:09:56'),
+(555, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:09:56', '2026-06-03 15:09:56'),
+(556, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Bunga Sabrinaa', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:10:56', '2026-06-03 15:10:56'),
+(557, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Diva Inzyra Praba Saraswati', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:13:02', '2026-06-03 15:13:02'),
+(558, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Bunga Sabrina', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:13:24', '2026-06-03 15:13:24'),
+(559, 2, 'Update Transaksi', 'Mengubah transaksi #73 (Status: dikerjakan)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:14:00', '2026-06-03 15:14:00'),
+(560, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:14:38', '2026-06-03 15:14:38'),
+(561, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:14:38', '2026-06-03 15:14:38'),
+(562, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:15:25', '2026-06-03 15:15:25'),
+(563, 26, 'Logout', 'User Bunga Arini keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:15:28', '2026-06-03 15:15:28'),
+(564, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:15:28', '2026-06-03 15:15:28'),
+(565, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:15:34', '2026-06-03 15:15:34'),
+(566, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:15:35', '2026-06-03 15:15:35'),
+(567, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Bunga Arini', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:16:35', '2026-06-03 15:16:35'),
+(568, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:17:07', '2026-06-03 15:17:07'),
+(569, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:17:08', '2026-06-03 15:17:08'),
+(570, 26, 'Login', 'User Bunga Arini masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:17:19', '2026-06-03 15:17:19'),
+(571, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:17:19', '2026-06-03 15:17:19'),
+(572, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:17:22', '2026-06-03 15:17:22'),
+(573, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:17:27', '2026-06-03 15:17:27'),
+(574, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:26:25', '2026-06-03 15:26:25'),
+(575, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:26:48', '2026-06-03 15:26:48'),
+(576, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:27:08', '2026-06-03 15:27:08'),
+(577, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:27:51', '2026-06-03 15:27:51'),
+(578, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:28:05', '2026-06-03 15:28:05'),
+(579, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1', '2026-06-03 15:29:02', '2026-06-03 15:29:02'),
+(580, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1', '2026-06-03 15:29:19', '2026-06-03 15:29:19'),
+(581, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1', '2026-06-03 15:29:42', '2026-06-03 15:29:42'),
+(582, 26, 'Kunjungan', 'Bunga Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:30:48', '2026-06-03 15:30:48'),
+(583, 26, 'Logout', 'User Bunga Arini keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:30:52', '2026-06-03 15:30:52'),
+(584, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:30:52', '2026-06-03 15:30:52'),
+(585, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:30:59', '2026-06-03 15:30:59'),
+(586, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:30:59', '2026-06-03 15:30:59'),
+(587, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Baraja Putra', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:33:08', '2026-06-03 15:33:08'),
+(588, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:33:35', '2026-06-03 15:33:35'),
+(589, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:33:36', '2026-06-03 15:33:36'),
+(590, 9, 'Login', 'User Bunga Sabrinaa masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:33:44', '2026-06-03 15:33:44'),
+(591, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:33:44', '2026-06-03 15:33:44'),
+(592, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:33:57', '2026-06-03 15:33:57'),
+(593, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:33:58', '2026-06-03 15:33:58'),
+(594, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:33:58', '2026-06-03 15:33:58'),
+(595, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:34:14', '2026-06-03 15:34:14'),
+(596, 9, 'Logout', 'User Bunga Sabrinaa keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:34:25', '2026-06-03 15:34:25'),
+(597, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:34:25', '2026-06-03 15:34:25'),
+(598, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:34:34', '2026-06-03 15:34:34'),
+(599, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:34:34', '2026-06-03 15:34:34'),
+(600, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:35:44', '2026-06-03 15:35:44'),
+(601, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:35:44', '2026-06-03 15:35:44'),
+(602, 9, 'Login', 'User Bunga Sabrinaa masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:35:54', '2026-06-03 15:35:54'),
+(603, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:35:54', '2026-06-03 15:35:54'),
+(604, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:37:58', '2026-06-03 15:37:58'),
+(605, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:38:58', '2026-06-03 15:38:58'),
+(606, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:39:11', '2026-06-03 15:39:11'),
+(607, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:40:34', '2026-06-03 15:40:34'),
+(608, 9, 'Logout', 'User Bunga Sabrinaa keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:41:00', '2026-06-03 15:41:00'),
+(609, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-03 15:41:00', '2026-06-03 15:41:00'),
+(610, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 14:29:32', '2026-06-04 14:29:32'),
+(611, 9, 'Login', 'User Bunga Sabrinaa masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 14:29:46', '2026-06-04 14:29:46'),
+(612, 9, 'Kunjungan', 'Bunga Sabrinaa mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 14:29:47', '2026-06-04 14:29:47'),
+(613, 9, 'Kunjungan', 'Bunga Sabrinaa A mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 14:48:49', '2026-06-04 14:48:49'),
+(614, 9, 'Logout', 'User Bunga Sabrinaa A keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 14:48:55', '2026-06-04 14:48:55'),
+(615, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 14:48:56', '2026-06-04 14:48:56'),
+(616, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 14:49:08', '2026-06-04 14:49:08'),
+(617, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 14:49:08', '2026-06-04 14:49:08'),
+(618, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 14:49:24', '2026-06-04 14:49:24'),
+(619, 2, 'Kunjungan', 'Admin Ekky mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 15:07:20', '2026-06-04 15:07:20'),
+(620, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 15:07:27', '2026-06-04 15:07:27'),
+(621, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 15:07:27', '2026-06-04 15:07:27'),
+(622, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 15:07:35', '2026-06-04 15:07:35'),
+(623, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 15:07:35', '2026-06-04 15:07:35'),
+(624, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Baraja Putra', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 15:29:18', '2026-06-04 15:29:18'),
+(625, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 15:30:09', '2026-06-04 15:30:09'),
+(626, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 15:30:10', '2026-06-04 15:30:10'),
+(627, NULL, 'Kunjungan', 'Guest mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', '2026-06-04 15:30:15', '2026-06-04 15:30:15'),
+(628, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-06 14:58:56', '2026-06-06 14:58:56'),
+(629, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-06 14:59:02', '2026-06-06 14:59:02'),
+(630, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-06 14:59:03', '2026-06-06 14:59:03'),
+(631, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Diva Inzyra Praba Saraswati', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-06 15:00:52', '2026-06-06 15:00:52'),
+(632, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Bunga Sabrinaa A', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-06 15:01:33', '2026-06-06 15:01:33'),
+(633, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:38:10', '2026-06-07 06:38:10'),
+(634, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:43:36', '2026-06-07 06:43:36'),
+(635, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:45:33', '2026-06-07 06:45:33'),
+(636, 6, 'Login', 'User Bunga Sabrina masuk menggunakan Google', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:45:53', '2026-06-07 06:45:53'),
+(637, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:45:53', '2026-06-07 06:45:53'),
+(638, 6, 'Logout', 'User Bunga Sabrina keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:46:08', '2026-06-07 06:46:08'),
+(639, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:46:08', '2026-06-07 06:46:08'),
+(640, 27, 'Login', 'User Barajapu masuk menggunakan Google', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:46:49', '2026-06-07 06:46:49'),
+(641, 27, 'Kunjungan', 'Barajapu mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:46:49', '2026-06-07 06:46:49');
+INSERT INTO `activity_logs` (`id`, `user_id`, `activity`, `description`, `ip_address`, `user_agent`, `created_at`, `updated_at`) VALUES
+(642, 6, 'Login', 'User Bunga Sabrina masuk menggunakan Google', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:51:36', '2026-06-07 06:51:36'),
+(643, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:51:36', '2026-06-07 06:51:36'),
+(644, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:57:04', '2026-06-07 06:57:04'),
+(645, 6, 'Logout', 'User Bunga Sabrina keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:57:40', '2026-06-07 06:57:40'),
+(646, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:57:40', '2026-06-07 06:57:40'),
+(647, 6, 'Login', 'User Bunga Sabrina masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:58:58', '2026-06-07 06:58:58'),
+(648, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:58:58', '2026-06-07 06:58:58'),
+(649, 27, 'Logout', 'User Barajapu keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:59:48', '2026-06-07 06:59:48'),
+(650, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 06:59:48', '2026-06-07 06:59:48'),
+(651, 27, 'Login', 'User Barajapu masuk menggunakan Google', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 07:00:04', '2026-06-07 07:00:04'),
+(652, 27, 'Kunjungan', 'Barajapu mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 07:00:05', '2026-06-07 07:00:05'),
+(653, 27, 'Logout', 'User Barajapu keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 07:00:15', '2026-06-07 07:00:15'),
+(654, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-07 07:00:15', '2026-06-07 07:00:15'),
+(655, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:17:20', '2026-06-10 16:17:20'),
+(656, NULL, 'Kunjungan', 'Guest mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:17:35', '2026-06-10 16:17:35'),
+(657, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:17:40', '2026-06-10 16:17:40'),
+(658, NULL, 'Kunjungan', 'Guest mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:18:00', '2026-06-10 16:18:00'),
+(659, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:18:50', '2026-06-10 16:18:50'),
+(660, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:28:18', '2026-06-10 16:28:18'),
+(661, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:28:22', '2026-06-10 16:28:22'),
+(662, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:28:33', '2026-06-10 16:28:33'),
+(663, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:28:34', '2026-06-10 16:28:34'),
+(664, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:28:59', '2026-06-10 16:28:59'),
+(665, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:29:00', '2026-06-10 16:29:00'),
+(666, 6, 'Login', 'User Bunga Sabrina masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:29:13', '2026-06-10 16:29:13'),
+(667, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:29:14', '2026-06-10 16:29:14'),
+(668, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:29:36', '2026-06-10 16:29:36'),
+(669, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:29:39', '2026-06-10 16:29:39'),
+(670, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:30:28', '2026-06-10 16:30:28'),
+(671, 6, 'Logout', 'User Bunga Sabrina keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:30:33', '2026-06-10 16:30:33'),
+(672, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:30:33', '2026-06-10 16:30:33'),
+(673, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:30:41', '2026-06-10 16:30:41'),
+(674, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:30:41', '2026-06-10 16:30:41'),
+(675, 2, 'Update Transaksi', 'Mengubah transaksi #81 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:31:59', '2026-06-10 16:31:59'),
+(676, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:45:13', '2026-06-10 16:45:13'),
+(677, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:45:13', '2026-06-10 16:45:13'),
+(678, 9, 'Login', 'User Bunga Sabrinaa A masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:45:25', '2026-06-10 16:45:25'),
+(679, 9, 'Kunjungan', 'Bunga Sabrinaa A mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:45:25', '2026-06-10 16:45:25'),
+(680, 9, 'Logout', 'User Bunga Sabrinaa A keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:45:36', '2026-06-10 16:45:36'),
+(681, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:45:36', '2026-06-10 16:45:36'),
+(682, 6, 'Login', 'User Bunga Sabrina masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:45:45', '2026-06-10 16:45:45'),
+(683, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:45:45', '2026-06-10 16:45:45'),
+(684, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:45:55', '2026-06-10 16:45:55'),
+(685, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:47:08', '2026-06-10 16:47:08'),
+(686, 6, 'Logout', 'User Bunga Sabrina keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:47:12', '2026-06-10 16:47:12'),
+(687, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:47:12', '2026-06-10 16:47:12'),
+(688, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:47:18', '2026-06-10 16:47:18'),
+(689, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:47:18', '2026-06-10 16:47:18'),
+(690, 2, 'Update Transaksi', 'Mengubah transaksi #82 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:48:24', '2026-06-10 16:48:24'),
+(691, 2, 'Update Transaksi', 'Mengubah transaksi #82 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:48:33', '2026-06-10 16:48:33'),
+(692, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 16:48:40', '2026-06-10 16:48:40'),
+(693, 2, 'Kunjungan', 'Admin Ekky mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 17:23:02', '2026-06-10 17:23:02'),
+(694, 2, 'Kunjungan', 'Admin Ekky mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 17:23:14', '2026-06-10 17:23:14'),
+(695, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 17:23:17', '2026-06-10 17:23:17'),
+(696, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 17:23:17', '2026-06-10 17:23:17'),
+(697, NULL, 'Kunjungan', 'Guest mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 17:23:22', '2026-06-10 17:23:22'),
+(698, NULL, 'Kunjungan', 'Guest mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 17:23:36', '2026-06-10 17:23:36'),
+(699, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-10 17:23:39', '2026-06-10 17:23:39'),
+(700, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-11 12:51:34', '2026-06-11 12:51:34'),
+(701, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 14:57:07', '2026-06-12 14:57:07'),
+(702, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:06:05', '2026-06-12 15:06:05'),
+(703, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:07:28', '2026-06-12 15:07:28'),
+(704, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:07:28', '2026-06-12 15:07:28'),
+(705, 2, 'Update Transaksi', 'Mengubah transaksi #83 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:08:15', '2026-06-12 15:08:15'),
+(706, 2, 'Update Transaksi', 'Mengubah transaksi #84 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:08:17', '2026-06-12 15:08:17'),
+(707, 2, 'Update Transaksi', 'Mengubah transaksi #85 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:08:19', '2026-06-12 15:08:19'),
+(708, 2, 'Update Transaksi', 'Mengubah transaksi #86 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:08:22', '2026-06-12 15:08:22'),
+(709, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:08:40', '2026-06-12 15:08:40'),
+(710, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:08:40', '2026-06-12 15:08:40'),
+(711, 6, 'Login', 'User Bunga Sabrina masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:08:55', '2026-06-12 15:08:55'),
+(712, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:08:55', '2026-06-12 15:08:55'),
+(713, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:09:17', '2026-06-12 15:09:17'),
+(714, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:09:19', '2026-06-12 15:09:19'),
+(715, 6, 'Kunjungan', 'Bunga Sabrina mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:10:08', '2026-06-12 15:10:08'),
+(716, 6, 'Logout', 'User Bunga Sabrina keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:10:12', '2026-06-12 15:10:12'),
+(717, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:10:13', '2026-06-12 15:10:13'),
+(718, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:10:19', '2026-06-12 15:10:19'),
+(719, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:10:19', '2026-06-12 15:10:19'),
+(720, 2, 'Update Transaksi', 'Mengubah transaksi #84 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:10:30', '2026-06-12 15:10:30'),
+(721, 2, 'Update Transaksi', 'Mengubah transaksi #85 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:10:38', '2026-06-12 15:10:38'),
+(722, 2, 'Update Transaksi', 'Mengubah transaksi #86 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:12:17', '2026-06-12 15:12:17'),
+(723, 2, 'Update Transaksi', 'Mengubah transaksi #83 (Status: pending)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:14:40', '2026-06-12 15:14:40'),
+(724, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:14:50', '2026-06-12 15:14:50'),
+(725, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:14:50', '2026-06-12 15:14:50'),
+(726, 9, 'Login', 'User Bunga Sabrinaa A masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:15:04', '2026-06-12 15:15:04'),
+(727, 9, 'Kunjungan', 'Bunga Sabrinaa A mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:15:04', '2026-06-12 15:15:04'),
+(728, 9, 'Kunjungan', 'Bunga Sabrinaa A mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:15:08', '2026-06-12 15:15:08'),
+(729, 9, 'Kunjungan', 'Bunga Sabrinaa A mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:16:14', '2026-06-12 15:16:14'),
+(730, 9, 'Logout', 'User Bunga Sabrinaa A keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:16:35', '2026-06-12 15:16:35'),
+(731, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:16:35', '2026-06-12 15:16:35'),
+(732, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:16:44', '2026-06-12 15:16:44'),
+(733, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-12 15:16:44', '2026-06-12 15:16:44');
 
 -- --------------------------------------------------------
 
@@ -732,7 +979,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (22, '2026_05_01_013453_create_penggajians_table', 14),
 (23, '2026_05_24_221833_add_lat_lng_to_transaksis_table', 15),
 (24, '2026_05_28_225032_add_dibatalkan_to_transaksis_status_enum', 16),
-(25, '2026_05_30_000118_add_bed_id_to_transaksis_table', 17);
+(25, '2026_05_30_000118_add_bed_id_to_transaksis_table', 17),
+(26, '2026_06_07_134217_add_google_id_to_users_table', 18);
 
 -- --------------------------------------------------------
 
@@ -817,7 +1065,10 @@ INSERT INTO `penggajians` (`id`, `karyawan_id`, `layanan_id`, `transaksi_id`, `u
 (38, 12, 10, 48, 15000.00, 15000.00, 'dibayar', '2026-05-16', '2026-05-15 15:53:38', '2026-05-16 05:06:07'),
 (39, 12, 8, 49, 20000.00, 20000.00, 'dibayar', '2026-05-16', '2026-05-15 15:53:38', '2026-05-16 05:06:07'),
 (40, 7, 4, 50, 75000.00, 75000.00, 'pending', NULL, '2026-05-15 15:53:38', '2026-05-15 15:53:58'),
-(41, 9, 3, 63, 50000.00, 50000.00, 'pending', NULL, '2026-05-27 12:24:27', '2026-05-27 12:24:27');
+(41, 9, 3, 63, 50000.00, 50000.00, 'pending', NULL, '2026-05-27 12:24:27', '2026-05-27 12:24:27'),
+(42, 7, 5, 71, 65000.00, 65000.00, 'pending', NULL, '2026-06-03 15:33:33', '2026-06-03 15:33:33'),
+(43, 6, 2, 72, 55000.00, 55000.00, 'pending', NULL, '2026-06-06 15:01:04', '2026-06-06 15:01:04'),
+(44, 8, 5, 74, 65000.00, 65000.00, 'pending', NULL, '2026-06-06 15:01:06', '2026-06-06 15:01:06');
 
 -- --------------------------------------------------------
 
@@ -839,7 +1090,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('4T5tVpmgbjhDep9zADwGpChVJ4m3rLvZD3Z19MNi', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiUHdKZXVBeno5Y25HSWczeGV1UWRldFZ4RW52VGdRbjA1UmtkM3M2WCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMS9hZG1pbi90cmFuc2Frc2kiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1780076336);
+('NHU7tk72kpvcp0euAh7WJ1acPRQOoEIgJB6rcv7Y', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZGRkUVNLUDhSNlA3dXJ5eXZEbjljbkdYM2RkOEVKd3NwWW5VTlNoSSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMS9vd25lci9sYXBvcmFuIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mzt9', 1781182622),
+('ts2dapkLd0rAzcKaKYQtt8wdTIDvRDilBB8buHBa', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRkVTNFl6ckJGeGtmd0RCTHZTVHVDQWRqVHZOVHF1ZzFsbzdWVHNjTSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMSI7fX0=', 1781112220),
+('ZBtCmluP4b2LmEZI92T3c5csDSrmOZyJxYQkNsZc', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVVoyTlhab2RNS1ltNG95M0xMWklSZFl1WXBSN2txYXZnR1p3aUhSNCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMS9hZG1pbi9wZXNhbmFuP2RhdGU9MjAyNi0wNi0xMyI7fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMS9wZW1lc2FuYW4iO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1781277431);
 
 -- --------------------------------------------------------
 
@@ -876,7 +1129,19 @@ INSERT INTO `testimonis` (`id`, `user_id`, `transaksi_id`, `rating`, `pesan`, `c
 (12, 9, 56, 5, 'puas sama pelayanannya', '2026-05-27 12:14:49', '2026-05-27 12:14:49'),
 (13, 9, 63, 5, 'puas sama pelayanannya', '2026-05-27 12:27:02', '2026-05-27 12:27:02'),
 (14, 9, 64, 5, 'pelayanannya puas', '2026-05-27 15:02:56', '2026-05-27 15:02:56'),
-(15, 9, 8, 5, 'Pelayanannya puas', '2026-05-28 15:47:49', '2026-05-28 15:47:49');
+(15, 9, 8, 5, 'Pelayanannya puas', '2026-05-28 15:47:49', '2026-05-28 15:47:49'),
+(16, 9, 65, 5, 'goksssssssssssssssssss', '2026-06-01 15:28:14', '2026-06-01 15:28:14'),
+(17, 9, 61, 5, 'mantappp', '2026-06-01 15:28:28', '2026-06-01 15:28:28'),
+(18, 9, 69, 5, 'Pelayanan sangat memuaskan, terapis profesional.', '2026-06-01 16:54:25', '2026-06-01 16:54:25'),
+(19, 9, 70, 5, 'Badan jadi segar kembali, sangat direkomendasikan!', '2026-06-01 16:54:32', '2026-06-01 16:54:32'),
+(20, 9, 67, 5, 'Terapis ramah dan sangat ahli di bidangnya.', '2026-06-03 15:09:29', '2026-06-03 15:09:29'),
+(21, 9, 66, 5, 'Badan jadi segar kembali, sangat direkomendasikan!', '2026-06-03 15:09:35', '2026-06-03 15:09:35'),
+(22, 9, 71, 5, 'Pelayanan sangat memuaskan, terapis profesional.', '2026-06-03 15:33:54', '2026-06-03 15:33:54'),
+(23, 6, 73, 5, 'Badan jadi segar kembali, sangat direkomendasikan!', '2026-06-10 16:29:27', '2026-06-10 16:29:27'),
+(24, 6, 80, 5, 'Terapis ramah dan sangat ahli di bidangnya. Badan jadi segar kembali, sangat direkomendasikan!', '2026-06-10 16:29:33', '2026-06-10 16:29:33'),
+(25, 9, 77, 5, 'Badan jadi segar kembali, sangat direkomendasikan!', '2026-06-10 16:45:33', '2026-06-10 16:45:33'),
+(26, 6, 81, 5, 'Badan jadi segar kembali, sangat direkomendasikan!', '2026-06-12 15:09:05', '2026-06-12 15:09:05'),
+(27, 6, 82, 5, 'Terapis ramah dan sangat ahli di bidangnya.', '2026-06-12 15:09:12', '2026-06-12 15:09:12');
 
 -- --------------------------------------------------------
 
@@ -977,7 +1242,29 @@ INSERT INTO `transaksis` (`id`, `user_id`, `nama`, `jenis_kelamin`, `telepon`, `
 (62, NULL, 'Bunga Sabrinaaa', 'P', '08965535351', 2, 'tempat', NULL, NULL, NULL, '2026-05-27', '19:20:00', NULL, 120000.00, 'selesai', 'lunas', '341a1df9-fc3c-45d7-b10c-caa9249afbf7', '2026-05-27 12:16:25', '2026-05-27 14:41:01', 8, NULL),
 (63, 9, 'Bunga Sabrinaa', 'P', '085861708569', 3, 'tempat', NULL, NULL, NULL, '2026-05-27', '19:25:00', NULL, 110000.00, 'selesai', 'lunas', '1a47353a-533e-4102-8e50-dc9e8aca0c7e', '2026-05-27 12:24:21', '2026-05-27 12:24:27', 9, NULL),
 (64, 9, 'Bunga Sabrinaa', 'P', '085861708569', 2, 'tempat', NULL, NULL, NULL, '2026-05-27', '19:40:00', NULL, 120000.00, 'selesai', 'belum_bayar', '9ce59a8f-ae13-4895-a830-81bc64c6db42', '2026-05-27 12:39:16', '2026-05-27 14:41:01', 7, NULL),
-(65, 9, 'Bunga Sabrinaa', 'P', '089699663056', 3, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-05-29', '16:15:00', NULL, 110000.00, 'selesai', 'lunas', '13956586-ab29-4c97-bd7c-1905d5c246bc', '2026-05-28 15:31:21', '2026-05-29 15:37:08', 7, NULL);
+(65, 9, 'Bunga Sabrinaa', 'P', '089699663056', 3, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-05-29', '16:15:00', NULL, 110000.00, 'selesai', 'lunas', '13956586-ab29-4c97-bd7c-1905d5c246bc', '2026-05-28 15:31:21', '2026-05-29 15:37:08', 7, NULL),
+(66, 9, 'Bunga Sabrinaa', 'P', '089699663056', 6, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-06-02', '12:00:00', NULL, 40000.00, 'selesai', 'belum_bayar', '568f9848-122a-4908-8c4f-9fef2b357a40', '2026-06-01 16:13:58', '2026-06-01 17:02:11', 6, 5),
+(67, 9, 'Bunga Sabrinaa', 'P', '089699663056', 6, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-06-02', '12:00:00', NULL, 40000.00, 'selesai', 'lunas', '4ae364c7-1d8d-4434-be87-022428a42708', '2026-06-01 16:14:06', '2026-06-01 17:02:11', NULL, NULL),
+(69, 9, 'Bunga Sabrinaa', 'P', '089699663056', 5, 'tempat', NULL, NULL, NULL, '2026-06-02', '10:45:00', NULL, 140000.00, 'selesai', 'lunas', NULL, '2026-06-01 16:34:55', '2026-06-02 05:39:10', 6, NULL),
+(70, 9, 'Bunga Sabrinaa', 'P', '089699663056', 3, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-06-02', '11:38:00', NULL, 110000.00, 'selesai', 'lunas', '9797b4d9-e3ac-47e4-9038-8fca41c6d5fa', '2026-06-01 16:36:39', '2026-06-02 05:39:10', NULL, NULL),
+(71, 9, 'Bunga Sabrinaa', 'P', '089699663056', 5, 'tempat', NULL, NULL, NULL, '2026-06-03', '22:10:00', NULL, 140000.00, 'selesai', 'lunas', NULL, '2026-06-03 15:10:56', '2026-06-03 15:33:33', 7, NULL),
+(72, 7, 'Diva Inzyra Praba Saraswati', 'P', '0888888888', 2, 'tempat', NULL, NULL, NULL, '2026-06-03', '22:13:00', NULL, 120000.00, 'selesai', 'lunas', NULL, '2026-06-03 15:13:02', '2026-06-06 15:01:04', 6, NULL),
+(73, 6, 'Bunga Sabrina', 'P', '089699663056', 2, 'tempat', NULL, NULL, NULL, '2026-06-03', '22:14:00', NULL, 120000.00, 'selesai', 'lunas', NULL, '2026-06-03 15:13:24', '2026-06-10 16:17:20', 5, 7),
+(74, 26, 'Bunga Arini', 'P', '085861708659', 5, 'tempat', NULL, NULL, NULL, '2026-06-03', '22:16:00', NULL, 140000.00, 'selesai', 'lunas', NULL, '2026-06-03 15:16:35', '2026-06-06 15:01:06', 8, NULL),
+(75, 26, 'Bunga Arini', 'P', '085861708659', 4, 'tempat', NULL, NULL, NULL, '2026-06-03', '22:20:00', NULL, 130000.00, 'selesai', 'belum_bayar', '6d9417e1-db8d-49a8-8114-91779e52b01e', '2026-06-03 15:17:50', '2026-06-10 16:28:18', NULL, NULL),
+(76, 5, 'Baraja Putra', 'L', '082315957278', 8, 'tempat', NULL, NULL, NULL, '2026-06-03', '22:35:00', NULL, 40000.00, 'selesai', 'lunas', NULL, '2026-06-03 15:33:08', '2026-06-10 16:42:02', 11, NULL),
+(77, 9, 'Bunga Sabrinaa', 'P', '089699663056', 6, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-06-03', '22:40:00', NULL, 40000.00, 'selesai', 'belum_bayar', '2cb7646d-57bd-481b-af5a-68db0d207308', '2026-06-03 15:38:18', '2026-06-10 16:42:02', NULL, NULL),
+(78, 5, 'Baraja Putra', 'L', '082315957278', 4, 'tempat', NULL, NULL, NULL, '2026-06-04', '22:30:00', NULL, 130000.00, 'selesai', 'lunas', NULL, '2026-06-04 15:29:18', '2026-06-10 16:30:05', 10, NULL),
+(79, 7, 'Diva Inzyra Praba Saraswati', 'P', '0888888888', 3, 'tempat', NULL, NULL, NULL, '2026-06-06', '22:00:00', NULL, 110000.00, 'selesai', 'lunas', NULL, '2026-06-06 15:00:52', '2026-06-10 16:17:20', 7, NULL),
+(80, 9, 'Bunga Sabrinaa A', 'P', '089699663056', 3, 'tempat', NULL, NULL, NULL, '2026-06-06', '22:10:00', NULL, 110000.00, 'selesai', 'lunas', NULL, '2026-06-06 15:01:33', '2026-06-10 16:17:20', 6, NULL),
+(81, 6, 'Bunga Sabrina', 'P', '089699663056', 3, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55800071, 107.79481530, '2026-06-11', '15:30:00', NULL, 110000.00, 'selesai', 'lunas', '3dbbfd1f-a906-47c6-b85d-8faf26128da7', '2026-06-10 16:30:06', '2026-06-11 12:51:34', 5, NULL),
+(82, 6, 'Bunga Sabrina', 'P', '089699663056', 3, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55800071, 107.79481530, '2026-06-12', '19:00:00', NULL, 110000.00, 'selesai', 'lunas', 'a2c1e85d-fd47-477b-ad7c-b6cb6c9024e4', '2026-06-10 16:46:15', '2026-06-12 14:57:07', NULL, NULL),
+(83, 1, 'Test Full Booking 1', 'L', '081234567891', 1, 'tempat', NULL, NULL, NULL, '2026-06-13', '16:00:00', NULL, 50000.00, 'pending', 'lunas', NULL, '2026-06-12 15:07:11', '2026-06-12 15:14:40', 13, NULL),
+(84, 1, 'Test Full Booking 2', 'L', '081234567892', 1, 'tempat', NULL, NULL, NULL, '2026-06-13', '16:00:00', NULL, 50000.00, 'pending', 'lunas', NULL, '2026-06-12 15:07:11', '2026-06-12 15:10:30', 9, NULL),
+(85, 1, 'Test Full Booking 3', 'L', '081234567893', 1, 'tempat', NULL, NULL, NULL, '2026-06-13', '16:00:00', NULL, 50000.00, 'pending', 'lunas', NULL, '2026-06-12 15:07:11', '2026-06-12 15:10:38', 11, NULL),
+(86, 1, 'Test Full Booking 4', 'L', '081234567894', 1, 'tempat', NULL, NULL, NULL, '2026-06-13', '16:00:00', NULL, 50000.00, 'pending', 'lunas', NULL, '2026-06-12 15:07:11', '2026-06-12 15:12:17', 12, NULL),
+(87, 6, 'Bunga Sabrina', 'P', '089699663056', 2, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55800071, 107.79481530, '2026-06-13', '15:00:00', NULL, 120000.00, 'pending', 'lunas', 'e24c1cbd-cc17-44ee-b87e-412e015be923', '2026-06-12 15:09:46', '2026-06-12 15:10:06', NULL, NULL),
+(88, 9, 'Bunga Sabrinaa A', 'P', '089699663056', 9, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-06-13', '16:00:00', NULL, 50000.00, 'pending', 'belum_bayar', 'dd5f54a2-b481-45df-9ea6-f9c203431d50', '2026-06-12 15:15:41', '2026-06-12 15:15:41', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -989,9 +1276,11 @@ CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `google_id` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `jenis_kelamin` enum('L','P') DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `role` enum('admin','owner','user') NOT NULL DEFAULT 'user',
@@ -1006,14 +1295,16 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `jenis_kelamin`, `email_verified_at`, `password`, `phone`, `address`, `role`, `remember_token`, `created_at`, `updated_at`, `lat`, `lng`) VALUES
-(1, 'Test User', 'test@example.com', NULL, '2026-04-30 18:41:20', '$2y$12$gW8XhWQ0LSY6fBBglRP3pucI2iJOTXLbmcDCsyPCJHH613ra8tIuG', NULL, NULL, 'user', 'kGg2jILPX3', '2026-04-30 18:41:20', '2026-04-30 18:41:20', NULL, NULL),
-(2, 'Admin Ekky', 'admin@gmail.com', NULL, NULL, '$2y$12$KXFKIlzakcgVBNgIQTH2u.jq7NPAZ9hnTgaKaIiQTaolKiS96GKZG', NULL, NULL, 'admin', NULL, '2026-04-30 18:41:20', '2026-04-30 18:41:20', NULL, NULL),
-(3, 'Owner Ekky', 'owner@gmail.com', NULL, NULL, '$2y$12$89rf9GGo/m.qYaN8XsBmaOFmzHQ/93Zf.ITeAMngJ9O46npaWD1Di', NULL, NULL, 'owner', NULL, '2026-04-30 18:41:20', '2026-05-01 16:05:28', NULL, NULL),
-(5, 'Baraja Putra', 'b@gmail.com', NULL, NULL, '$2y$12$t4pKwP8xJQVJ5AxnK4u90.PXSsFxJVFJ8PkS5y.srg8bckROCxCcC', '082315957278', 'Kelurahan Pasirkareumbi, Subang, Jawa Barat, Jawa, 41231, Indonesia', 'user', NULL, '2026-05-01 15:37:22', '2026-05-11 16:40:44', -6.57347147, 107.75597692),
-(6, 'Bunga Sabrina', 'bungassaa7@gmail.com', NULL, NULL, '$2y$12$N9gfSa1Wo0piGq8vGv2ElOBlX5vP1Nz2CP6oPIyDT/ybRGmAOkz1q', '089699663056', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', 'user', NULL, '2026-05-02 06:10:04', '2026-05-15 08:59:51', -6.55800071, 107.79481530),
-(7, 'Diva Inzyra Praba Saraswati', 'diva@gmail.com', NULL, NULL, '$2y$12$g4iY0FUTRgpPCDWmnJtGr.Abe9jy94bDE979XgPxlN4nzsjFmEUFu', '0888888888', NULL, 'user', NULL, '2026-05-07 06:02:00', '2026-05-07 06:02:00', NULL, NULL),
-(9, 'Bunga Sabrinaa', 'bungasa@gmail.com', NULL, NULL, '$2y$12$zFd6nBiTPJPLor5CkrBPNuaURFHBFRgv0zE3vmE3TmefMcBN8UB0.', '089699663056', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', 'user', NULL, '2026-05-16 04:49:36', '2026-05-28 15:23:26', -6.55794741, 107.79482603);
+INSERT INTO `users` (`id`, `name`, `email`, `google_id`, `avatar`, `jenis_kelamin`, `email_verified_at`, `password`, `phone`, `address`, `role`, `remember_token`, `created_at`, `updated_at`, `lat`, `lng`) VALUES
+(1, 'Test User', 'test@example.com', NULL, NULL, NULL, '2026-04-30 18:41:20', '$2y$12$gW8XhWQ0LSY6fBBglRP3pucI2iJOTXLbmcDCsyPCJHH613ra8tIuG', NULL, NULL, 'user', 'kGg2jILPX3', '2026-04-30 18:41:20', '2026-04-30 18:41:20', NULL, NULL),
+(2, 'Admin Ekky', 'admin@gmail.com', NULL, NULL, NULL, NULL, '$2y$12$KXFKIlzakcgVBNgIQTH2u.jq7NPAZ9hnTgaKaIiQTaolKiS96GKZG', NULL, NULL, 'admin', NULL, '2026-04-30 18:41:20', '2026-04-30 18:41:20', NULL, NULL),
+(3, 'Owner Ekky', 'owner@gmail.com', NULL, NULL, NULL, NULL, '$2y$12$89rf9GGo/m.qYaN8XsBmaOFmzHQ/93Zf.ITeAMngJ9O46npaWD1Di', NULL, NULL, 'owner', NULL, '2026-04-30 18:41:20', '2026-05-01 16:05:28', NULL, NULL),
+(5, 'Baraja Putra', 'b@gmail.com', NULL, NULL, NULL, NULL, '$2y$12$t4pKwP8xJQVJ5AxnK4u90.PXSsFxJVFJ8PkS5y.srg8bckROCxCcC', '082315957278', 'Kelurahan Pasirkareumbi, Subang, Jawa Barat, Jawa, 41231, Indonesia', 'user', NULL, '2026-05-01 15:37:22', '2026-05-11 16:40:44', -6.57347147, 107.75597692),
+(6, 'Bunga Sabrina', 'bungassaa7@gmail.com', '110612366301816089711', 'https://lh3.googleusercontent.com/a/ACg8ocKOR2Dv9dK8h_rTwi_PHhIvUDI7Qr1fjg3MwFwchyCc5Y2iJK4=s96-c', NULL, NULL, '$2y$12$KdbpaVmPGzKrXZvNAL8amumCb9PeC20uX3YkQLHOIMNWjo3gwJ2.y', '089699663056', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', 'user', NULL, '2026-05-02 06:10:04', '2026-06-07 06:59:19', -6.55800071, 107.79481530),
+(7, 'Diva Inzyra Praba Saraswati', 'diva@gmail.com', NULL, NULL, NULL, NULL, '$2y$12$g4iY0FUTRgpPCDWmnJtGr.Abe9jy94bDE979XgPxlN4nzsjFmEUFu', '0888888888', NULL, 'user', NULL, '2026-05-07 06:02:00', '2026-05-07 06:02:00', NULL, NULL),
+(9, 'Bunga Sabrinaa A', 'bungasa@gmail.com', NULL, NULL, NULL, NULL, '$2y$12$zFd6nBiTPJPLor5CkrBPNuaURFHBFRgv0zE3vmE3TmefMcBN8UB0.', '089699663056', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', 'user', NULL, '2026-05-16 04:49:36', '2026-06-04 14:30:14', -6.55794741, 107.79482603),
+(26, 'Bunga Arini', 'arini@gmail.com', NULL, NULL, NULL, NULL, '$2y$12$brloq5YF/FZQZP8HUgQ.Su3xOFGLQgjklq6tsASoOS5QYBkz4QdF.', '085861708659', NULL, 'user', NULL, '2026-06-03 15:15:24', '2026-06-03 15:15:24', NULL, NULL),
+(27, 'Barajapu', 'barajapu23@gmail.com', '103790793128672657948', 'https://lh3.googleusercontent.com/a/ACg8ocL_malUxjw5HIVvkAS9Nu6O1NsoNRrKK7iPpfDO4iuv0vK84qw=s96-c', NULL, NULL, '$2y$12$bUAwQ/O3VYEPFr2qsV0r9O.zeU.yuc6eAnOD64U4ItTLHgGhd.J06', NULL, NULL, 'user', NULL, '2026-06-07 06:46:49', '2026-06-07 07:01:13', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -1145,7 +1436,7 @@ ALTER TABLE `absensis`
 -- AUTO_INCREMENT untuk tabel `activity_logs`
 --
 ALTER TABLE `activity_logs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=488;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=734;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
@@ -1175,31 +1466,31 @@ ALTER TABLE `layanans`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `penggajians`
 --
 ALTER TABLE `penggajians`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT untuk tabel `testimonis`
 --
 ALTER TABLE `testimonis`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksis`
 --
 ALTER TABLE `transaksis`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
