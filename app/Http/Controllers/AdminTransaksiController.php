@@ -83,6 +83,12 @@ class AdminTransaksiController extends Controller
         }
 
         if ($request->has('karyawan_id')) {
+            if ($request->karyawan_id != $transaksi->karyawan_id) {
+                $durasi = $transaksi->layanan->durasi ?? 60;
+                if (\App\Models\Transaksi::isKaryawanBentrok($transaksi->tanggal, $transaksi->jam, $durasi, $request->karyawan_id, $transaksi->id)) {
+                    return redirect()->back()->with('error', 'Karyawan yang dipilih sedang mengerjakan pesanan lain pada waktu tersebut.');
+                }
+            }
             $transaksi->karyawan_id = $request->karyawan_id;
         }
 
@@ -126,9 +132,18 @@ class AdminTransaksiController extends Controller
             'karyawan_id' => 'required|exists:karyawans,id',
         ]);
 
-        // Get layanan to calculate total
+        // Get layanan to calculate total and duration
         $layanan = \App\Models\Layanan::find($request->layanan_id);
         $totalHarga = $layanan->harga;
+        $durasi = $layanan->durasi ?? 60;
+
+        if (\App\Models\Transaksi::isKapasitasPenuh($request->tanggal, $request->jam, $durasi, $request->jenis_kelamin)) {
+            return back()->withInput()->with('error', 'Kapasitas bed penuh pada jam dan durasi tersebut.');
+        }
+
+        if (\App\Models\Transaksi::isKaryawanBentrok($request->tanggal, $request->jam, $durasi, $request->karyawan_id)) {
+            return back()->withInput()->with('error', 'Karyawan yang dipilih sedang mengerjakan pesanan lain pada waktu tersebut.');
+        }
 
         // Simpan transaksi ke database
         $transaksi = Transaksi::create([

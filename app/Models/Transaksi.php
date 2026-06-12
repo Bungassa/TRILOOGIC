@@ -70,4 +70,66 @@ class Transaksi extends Model
             }
         });
     }
+
+    public static function isKapasitasPenuh($tanggal, $jam, $durasi, $jenis_kelamin)
+    {
+        $new_start = \Carbon\Carbon::parse($jam);
+        $new_end = $new_start->copy()->addMinutes($durasi);
+
+        $overlapping = self::with('layanan')->where('tanggal', $tanggal)
+            ->where('jenis_kelamin', $jenis_kelamin)
+            ->whereNotIn('status', ['dibatalkan', 'selesai'])
+            ->get()
+            ->filter(function($trx) use ($new_start, $new_end) {
+                $start = \Carbon\Carbon::parse($trx->jam);
+                $trx_durasi = $trx->layanan->durasi ?? 60;
+                $end = $start->copy()->addMinutes($trx_durasi);
+                
+                return $start < $new_end && $new_start < $end;
+            });
+
+        $max_concurrent = 0;
+        for ($t = $new_start->copy(); $t < $new_end; $t->addMinute()) {
+            $concurrent = 0;
+            foreach ($overlapping as $trx) {
+                $start = \Carbon\Carbon::parse($trx->jam);
+                $end = $start->copy()->addMinutes($trx->layanan->durasi ?? 60);
+                if ($t >= $start && $t < $end) {
+                    $concurrent++;
+                }
+            }
+            if ($concurrent > $max_concurrent) {
+                $max_concurrent = $concurrent;
+            }
+        }
+
+        return $max_concurrent >= 4;
+    }
+
+    public static function isKaryawanBentrok($tanggal, $jam, $durasi, $karyawan_id, $ignore_transaksi_id = null)
+    {
+        if (!$karyawan_id) return false;
+        
+        $new_start = \Carbon\Carbon::parse($jam);
+        $new_end = $new_start->copy()->addMinutes($durasi);
+
+        $query = self::with('layanan')->where('tanggal', $tanggal)
+            ->where('karyawan_id', $karyawan_id)
+            ->whereNotIn('status', ['dibatalkan', 'selesai']);
+            
+        if ($ignore_transaksi_id) {
+            $query->where('id', '!=', $ignore_transaksi_id);
+        }
+
+        $overlapping = $query->get()
+            ->filter(function($trx) use ($new_start, $new_end) {
+                $start = \Carbon\Carbon::parse($trx->jam);
+                $trx_durasi = $trx->layanan->durasi ?? 60;
+                $end = $start->copy()->addMinutes($trx_durasi);
+                
+                return $start < $new_end && $new_start < $end;
+            });
+            
+        return $overlapping->count() > 0;
+    }
 }
