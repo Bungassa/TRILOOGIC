@@ -112,6 +112,7 @@ class HomeController extends Controller
 
         // Cek kapasitas bed (Maksimal 4 per jenis kelamin yang sedang aktif/belum selesai)
         $countBed = \App\Models\Transaksi::where('tanggal', $request->tanggal)
+            ->where('jam', $request->jam)
             ->where('jenis_kelamin', $request->jenis_kelamin)
             ->whereNotIn('status', ['dibatalkan', 'selesai'])
             ->count();
