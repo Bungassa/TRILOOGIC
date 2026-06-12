@@ -59,7 +59,7 @@
                                     @method('PUT')
                                     <select name="karyawan_id" onchange="this.form.submit()" class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white" {{ in_array($transaksi->status, ['dikerjakan', 'selesai']) ? 'disabled' : '' }}>
                                         <option value="">Pilih Karyawan</option>
-                                        @foreach(\App\Models\Karyawan::where('jenis_kelamin', $transaksi->jenis_kelamin)->whereDoesntHave('transaksis', function($q) use ($transaksi) { $q->where('status', 'dikerjakan')->where('id', '!=', $transaksi->id); })->get() as $karyawan)
+                                        @foreach(\App\Models\Karyawan::where('jenis_kelamin', $transaksi->jenis_kelamin)->whereDoesntHave('transaksis', function($q) use ($transaksi) { $q->where('tanggal', $transaksi->tanggal)->where('jam', $transaksi->jam)->whereNotIn('status', ['dibatalkan', 'selesai'])->where('id', '!=', $transaksi->id); })->get() as $karyawan)
                                             <option value="{{ $karyawan->id }}"
                                                 {{ $transaksi->karyawan_id == $karyawan->id ? 'selected' : '' }}>
                                                 {{ $karyawan->nama }}
