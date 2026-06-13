@@ -31,10 +31,10 @@ class OwnerController extends Controller
         for ($i = 5; $i >= 0; $i--) {
             $date = Carbon::now()->startOfMonth()->subMonths($i);
             $chartLabels[] = $date->translatedFormat('M Y');
-            
-            $revenue = \App\Models\Penggajian::whereHas('transaksi', function($q) use ($date) {
+
+            $revenue = \App\Models\Penggajian::whereHas('transaksi', function ($q) use ($date) {
                 $q->whereYear('tanggal', $date->year)
-                  ->whereMonth('tanggal', $date->month);
+                    ->whereMonth('tanggal', $date->month);
             })->sum('pendapatan_owner');
 
             $chartData[] = $revenue;
@@ -64,7 +64,7 @@ class OwnerController extends Controller
             $query->whereDate('tanggal', $tanggal);
         } elseif ($bulanTahun) {
             $parts = explode('-', $bulanTahun);
-            if(count($parts) == 2) {
+            if (count($parts) == 2) {
                 $query->whereYear('tanggal', $parts[0])->whereMonth('tanggal', $parts[1]);
             }
         }
@@ -85,9 +85,9 @@ class OwnerController extends Controller
         $tahun = (int) $request->get('tahun', date('Y'));
 
         $penggajians = \App\Models\Penggajian::with(['karyawan', 'layanan', 'transaksi'])
-            ->whereHas('transaksi', function($query) use ($bulan, $tahun) {
+            ->whereHas('transaksi', function ($query) use ($bulan, $tahun) {
                 $query->whereYear('tanggal', $tahun)
-                      ->whereMonth('tanggal', $bulan);
+                    ->whereMonth('tanggal', $bulan);
             })
             ->get()
             ->groupBy('karyawan_id');
@@ -107,10 +107,10 @@ class OwnerController extends Controller
         $tanggal = $request->get('tanggal');
 
         $penggajians = \App\Models\Penggajian::with(['karyawan', 'layanan', 'transaksi'])
-            ->whereHas('transaksi', function($query) use ($bulan, $tahun, $tanggal) {
+            ->whereHas('transaksi', function ($query) use ($bulan, $tahun, $tanggal) {
                 $query->whereYear('tanggal', $tahun)
-                      ->whereMonth('tanggal', $bulan);
-                
+                    ->whereMonth('tanggal', $bulan);
+
                 if (!empty($tanggal)) {
                     $query->whereDay('tanggal', $tanggal);
                 }
@@ -169,15 +169,15 @@ class OwnerController extends Controller
 
         // Fetch payroll records and group them by employee
         $penggajians = \App\Models\Penggajian::with(['karyawan', 'layanan', 'transaksi'])
-            ->whereHas('transaksi', function($query) use ($bulan, $tahun) {
+            ->whereHas('transaksi', function ($query) use ($bulan, $tahun) {
                 $query->whereYear('tanggal', $tahun)
-                      ->whereMonth('tanggal', $bulan);
+                    ->whereMonth('tanggal', $bulan);
             })
             ->get()
             ->groupBy('karyawan_id');
 
         return view('owner.pages.penggajian', [
-            'title' => 'Laporan Penggajian',
+            'title' => 'Penggajian Karyawan',
             'penggajians' => $penggajians,
             'bulan' => $bulan,
             'tahun' => $tahun
@@ -192,9 +192,9 @@ class OwnerController extends Controller
 
         $records = \App\Models\Penggajian::with(['layanan', 'transaksi'])
             ->where('karyawan_id', $id)
-            ->whereHas('transaksi', function($query) use ($bulan, $tahun) {
+            ->whereHas('transaksi', function ($query) use ($bulan, $tahun) {
                 $query->whereYear('tanggal', $tahun)
-                      ->whereMonth('tanggal', $bulan);
+                    ->whereMonth('tanggal', $bulan);
             })
             ->get();
 

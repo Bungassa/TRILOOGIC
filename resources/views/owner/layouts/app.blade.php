@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? 'Dashboard' }} | Admin Panel</title>
+    <title>{{ $title ?? 'Dashboard' }} | Owner Panel</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -53,25 +53,25 @@
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
-            
+
             sidebar.classList.toggle('-translate-x-full');
             overlay.classList.toggle('hidden');
         }
     </script>
     @if(session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil!',
-                text: "{!! addslashes(session('success')) !!}",
-                confirmButtonColor: '#825449',
-                background: '#ffffff',
-                customClass: {
-                    popup: 'rounded-3xl border border-gray-100 shadow-2xl',
-                    confirmButton: 'rounded-2xl px-8 py-3 font-bold uppercase text-xs tracking-widest'
-                }
-            });
-        </script>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: "{!! addslashes(session('success')) !!}",
+            confirmButtonColor: '#825449',
+            background: '#ffffff',
+            customClass: {
+                popup: 'rounded-3xl border border-gray-100 shadow-2xl',
+                confirmButton: 'rounded-2xl px-8 py-3 font-bold uppercase text-xs tracking-widest'
+            }
+        });
+    </script>
     @endif
 </body>
 

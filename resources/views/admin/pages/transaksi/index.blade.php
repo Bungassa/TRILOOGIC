@@ -10,7 +10,9 @@
                 <p class="text-gray-500 mt-1">Kelola data transaksi pemesanan layanan</p>
             </div>
             <button onclick="openTambahModal()" class="px-4 py-2 bg-[#825449] text-white text-sm font-semibold rounded-xl hover:bg-[#6a443b] transition-colors flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                </svg>
                 Tambah Transaksi
             </button>
         </div>
@@ -31,43 +33,43 @@
                 </thead>
                 <tbody>
                     @forelse($transaksis as $transaksi)
-                        <tr class="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
-                            <td class="py-4 px-4">
-                                <div class="font-medium text-gray-800">{{ $transaksi->nama }}</div>
-                            </td>
-                            <td class="py-4 px-4 text-gray-600">
-                                @if($transaksi->lokasi === 'tempat')
-                                    <span class="font-medium text-gray-800">Di Tempat</span>
-                                @else
-                                    <span class="font-medium text-gray-800">Di Rumah</span>
-                                @endif
-                            </td>
-                            <td class="py-4 px-4 text-gray-600">
-                                <time datetime="{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d/m/Y') }}</time>
-                            </td>
-                            <td class="py-4 px-4">
-                                <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <select name="status_pembayaran" onchange="this.form.submit()" {{ $transaksi->status_pembayaran === 'lunas' ? 'disabled' : '' }} class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/50
+                    <tr class="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
+                        <td class="py-4 px-4">
+                            <div class="font-medium text-gray-800">{{ $transaksi->nama }}</div>
+                        </td>
+                        <td class="py-4 px-4 text-gray-600">
+                            @if($transaksi->lokasi === 'tempat')
+                            <span class="font-medium text-gray-800">Di Tempat</span>
+                            @else
+                            <span class="font-medium text-gray-800">Di Rumah</span>
+                            @endif
+                        </td>
+                        <td class="py-4 px-4 text-gray-600">
+                            <time datetime="{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d/m/Y') }}</time>
+                        </td>
+                        <td class="py-4 px-4">
+                            <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <select name="status_pembayaran" onchange="this.form.submit()" {{ $transaksi->status_pembayaran === 'lunas' ? 'disabled' : '' }} class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/50
                                         @if($transaksi->status_pembayaran === 'belum_bayar') text-red-700 font-bold @else text-green-700 font-bold @endif">
-                                        <option value="belum_bayar" {{ $transaksi->status_pembayaran === 'belum_bayar' ? 'selected' : '' }}>Belum Bayar</option>
-                                        <option value="lunas" {{ $transaksi->status_pembayaran === 'lunas' ? 'selected' : '' }}>Lunas</option>
-                                    </select>
-                                </form>
-                            </td>
-                            <td class="py-4 px-4">
-                                <a href="{{ route('admin.transaksi.show', $transaksi->id) }}" class="inline-block mt-2 w-full px-3 py-1.5 bg-blue-50 text-blue-600 border border-blue-200 rounded-xl text-xs font-bold hover:bg-blue-100 transition-colors text-center">
-                                    <i class="fa-solid fa-circle-info me-1"></i> Detail
-                                </a>
-                            </td>
-                        </tr>
+                                    <option value="belum_bayar" {{ $transaksi->status_pembayaran === 'belum_bayar' ? 'selected' : '' }}>Belum Bayar</option>
+                                    <option value="lunas" {{ $transaksi->status_pembayaran === 'lunas' ? 'selected' : '' }}>Lunas</option>
+                                </select>
+                            </form>
+                        </td>
+                        <td class="py-4 px-4">
+                            <a href="{{ route('admin.transaksi.show', $transaksi->id) }}" class="inline-block mt-2 w-full px-3 py-1.5 bg-blue-50 text-blue-600 border border-blue-200 rounded-xl text-xs font-bold hover:bg-blue-100 transition-colors text-center">
+                                <i class="fa-solid fa-circle-info me-1"></i> Detail
+                            </a>
+                        </td>
+                    </tr>
                     @empty
-                        <tr>
-                            <td colspan="5" class="py-12 text-center text-gray-500">
-                                Belum ada data transaksi
-                            </td>
-                        </tr>
+                    <tr>
+                        <td colspan="5" class="py-12 text-center text-gray-500">
+                            Belum ada data transaksi
+                        </td>
+                    </tr>
                     @endforelse
                 </tbody>
             </table>
@@ -75,7 +77,7 @@
     </div>
 
 
-    
+
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
     <script>
@@ -86,11 +88,23 @@
                     fixedHeight: true,
                     perPage: 10,
                     perPageSelect: false,
-                    columns: [
-                        { select: 0, sortable: false },
-                        { select: 1, sortable: false },
-                        { select: 2, type: "date", format: "DD/MM/YYYY" },
-                        { select: 4, sortable: false }
+                    columns: [{
+                            select: 0,
+                            sortable: false
+                        },
+                        {
+                            select: 1,
+                            sortable: false
+                        },
+                        {
+                            select: 2,
+                            type: "date",
+                            format: "DD/MM/YYYY"
+                        },
+                        {
+                            select: 4,
+                            sortable: false
+                        }
                     ],
                     labels: {
                         noRows: "Data tidak ditemukan",
@@ -104,20 +118,25 @@
         .dataTable-wrapper {
             font-family: 'Inter', sans-serif;
         }
+
         .dataTable-input {
             border-radius: 0.5rem;
             border-color: #e5e7eb;
             padding: 0.5rem 1rem;
         }
+
         .dataTable-selector {
             border-radius: 0.5rem;
             border-color: #e5e7eb;
             padding: 0.5rem 2rem 0.5rem 1rem;
         }
-        .dataTable-table > thead > tr > th {
+
+        .dataTable-table>thead>tr>th {
             border-bottom: 1px solid #e5e7eb;
         }
-        .dataTable-sorter::before, .dataTable-sorter::after {
+
+        .dataTable-sorter::before,
+        .dataTable-sorter::after {
             opacity: 0.4;
         }
     </style>
@@ -129,7 +148,9 @@
         <div class="p-6 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white z-10">
             <h3 class="text-xl font-bold text-gray-800">Tambah Transaksi</h3>
             <button onclick="closeTambahModal()" class="text-gray-400 hover:text-gray-600 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
             </button>
         </div>
         <form action="{{ route('admin.transaksi.store') }}" method="POST" class="p-6 space-y-4">
@@ -139,7 +160,7 @@
                 <div class="relative">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Nama Pelanggan</label>
                     <input type="text" name="nama" id="input_nama" autocomplete="off" required class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#825449] focus:border-transparent transition-all">
-                    
+
                     <!-- Autocomplete dropdown -->
                     <div id="autocomplete_list" class="absolute z-50 w-full bg-white border border-gray-200 rounded-xl shadow-lg mt-1 hidden max-h-60 overflow-y-auto">
                         <!-- Items rendered by JS -->
@@ -160,7 +181,7 @@
                     <label class="block text-sm font-medium text-gray-700 mb-1">Layanan</label>
                     <select name="layanan_id" required class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#825449] focus:border-transparent transition-all">
                         @foreach($layanans as $l)
-                            <option value="{{ $l->id }}">{{ $l->nama }} - Rp {{ number_format($l->harga, 0, ',', '.') }}</option>
+                        <option value="{{ $l->id }}">{{ $l->nama }} - Rp {{ number_format($l->harga, 0, ',', '.') }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -169,11 +190,11 @@
                     <select name="karyawan_id" id="input_karyawan" required class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#825449] focus:border-transparent transition-all">
                         <option value="">Pilih Karyawan</option>
                         @foreach($karyawans as $k)
-                            <option value="{{ $k->id }}" 
-                                data-gender="{{ $k->jenis_kelamin }}"
-                                data-booked-dates="{{ json_encode($k->transaksis->map(function($t) { return \Carbon\Carbon::parse($t->tanggal)->format('Y-m-d'); })->toArray()) }}">
-                                {{ $k->nama }}
-                            </option>
+                        <option value="{{ $k->id }}"
+                            data-gender="{{ $k->jenis_kelamin }}"
+                            data-booked-dates="{{ json_encode($k->transaksis->map(function($t) { return \Carbon\Carbon::parse($t->tanggal)->format('Y-m-d'); })->toArray()) }}">
+                            {{ $k->nama }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -199,12 +220,13 @@
     </div>
 </div>
 
-    <div id="users_data" data-users="{{ json_encode($users) }}" class="hidden"></div>
+<div id="users_data" data-users="{{ json_encode($users) }}" class="hidden"></div>
 <script>
     function openTambahModal() {
         document.getElementById('tambahModal').classList.remove('hidden');
         document.getElementById('tambahModal').classList.add('flex');
     }
+
     function closeTambahModal() {
         document.getElementById('tambahModal').classList.add('hidden');
         document.getElementById('tambahModal').classList.remove('flex');
@@ -238,29 +260,38 @@
     const autocompleteList = document.getElementById('autocomplete_list');
     const inputJenisKelamin = document.getElementById('input_jenis_kelamin');
     const inputKaryawan = document.getElementById('input_karyawan');
-    
+
     const inputTanggal = document.querySelector('input[name="tanggal"]');
-    
+
     function filterKaryawan() {
         const gender = inputJenisKelamin.value;
         const selectedDate = inputTanggal ? inputTanggal.value : '';
         const options = inputKaryawan.options;
+        const currentVal = inputKaryawan.value;
+        let isCurrentValValid = false;
+
         for (let i = 1; i < options.length; i++) {
             const opt = options[i];
             const bookedDates = JSON.parse(opt.getAttribute('data-booked-dates') || '[]');
-            
+
             const isGenderMatch = opt.getAttribute('data-gender') === gender;
             const isDateAvailable = !bookedDates.includes(selectedDate);
-            
+
             if (isGenderMatch && isDateAvailable) {
                 opt.style.display = '';
                 opt.disabled = false;
+                if (opt.value === currentVal) {
+                    isCurrentValValid = true;
+                }
             } else {
                 opt.style.display = 'none';
                 opt.disabled = true;
             }
         }
-        inputKaryawan.value = '';
+
+        if (!isCurrentValValid) {
+            inputKaryawan.value = '';
+        }
     }
 
     inputJenisKelamin.addEventListener('change', filterKaryawan);
@@ -271,25 +302,25 @@
     inputNama.addEventListener('input', function() {
         let val = this.value;
         autocompleteList.innerHTML = '';
-        
+
         // Cek syarat minimal 3 huruf
         if (!val || val.length < 3) {
             autocompleteList.classList.add('hidden');
             document.getElementById('input_user_id').value = '';
             return;
         }
-        
+
         // Filter nama yang cocok
         const matches = usersData.filter(user => user.name.toLowerCase().includes(val.toLowerCase()));
-        
+
         if (matches.length > 0) {
             autocompleteList.classList.remove('hidden');
-            
+
             matches.forEach(user => {
                 let item = document.createElement('div');
                 item.className = 'px-4 py-2 cursor-pointer hover:bg-gray-100 border-b border-gray-100 text-sm';
                 item.innerHTML = `<div class="font-medium text-gray-800">${user.name}</div><div class="text-xs text-gray-500">${user.phone || '-'}</div>`;
-                
+
                 item.addEventListener('click', function() {
                     inputNama.value = user.name;
                     document.getElementById('input_telepon').value = user.phone || '';
@@ -300,7 +331,7 @@
                     document.getElementById('input_user_id').value = user.id;
                     autocompleteList.classList.add('hidden');
                 });
-                
+
                 autocompleteList.appendChild(item);
             });
         } else {
@@ -315,7 +346,7 @@
             autocompleteList.classList.add('hidden');
         }
     });
-    
+
     // Inisialisasi filter awal
     filterKaryawan();
 </script>

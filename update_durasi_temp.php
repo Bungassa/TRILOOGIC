@@ -1,6 +1,24 @@
 <?php
-\App\Models\Layanan::whereBetween('id', [6, 12])->update(['durasi' => 30]);
-\App\Models\Layanan::where('id', 1)->update(['durasi' => 60]);
-\App\Models\Layanan::where('id', 2)->update(['durasi' => 90]);
-\App\Models\Layanan::whereIn('id', [3, 4, 5])->update(['durasi' => 45]);
+require __DIR__ . '/vendor/autoload.php';
+$app = require_once __DIR__ . '/bootstrap/app.php';
+$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+$kernel->bootstrap();
+
+$updates = [
+    1 => 60,
+    2 => 90,
+    3 => 75,
+    4 => 80,
+    5 => 105,
+    6 => 30,
+    7 => 30,
+    8 => 30,
+    9 => 30,
+    10 => 15,
+    11 => 15,
+];
+
+foreach ($updates as $id => $durasi) {
+    \App\Models\Layanan::where('id', $id)->update(['durasi' => $durasi]);
+}
 echo "Durasi updated.\n";

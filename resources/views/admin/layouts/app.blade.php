@@ -22,6 +22,8 @@
             font-family: 'Inter', sans-serif;
         }
     </style>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-gradient-to-br from-[#e1bdb5] via-[#e1bdb5] to-[#e1bdb5]">
@@ -59,6 +61,50 @@
             overlay.classList.toggle('hidden');
         }
     </script>
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: "{!! addslashes(session('success')) !!}",
+                confirmButtonColor: '#825449',
+                background: '#ffffff',
+                customClass: {
+                    popup: 'rounded-3xl border border-gray-100 shadow-2xl',
+                    confirmButton: 'rounded-2xl px-8 py-3 font-bold uppercase text-xs tracking-widest'
+                }
+            });
+        </script>
+    @endif
+    @if(session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: "{!! addslashes(session('error')) !!}",
+                confirmButtonColor: '#825449',
+                background: '#ffffff',
+                customClass: {
+                    popup: 'rounded-3xl border border-gray-100 shadow-2xl',
+                    confirmButton: 'rounded-2xl px-8 py-3 font-bold uppercase text-xs tracking-widest'
+                }
+            });
+        </script>
+    @endif
+    @if($errors->any())
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Validasi Gagal!',
+                text: "{!! addslashes(implode('\n', $errors->all())) !!}",
+                confirmButtonColor: '#825449',
+                background: '#ffffff',
+                customClass: {
+                    popup: 'rounded-3xl border border-gray-100 shadow-2xl',
+                    confirmButton: 'rounded-2xl px-8 py-3 font-bold uppercase text-xs tracking-widest'
+                }
+            });
+        </script>
+    @endif
 </body>
-
 </html>
