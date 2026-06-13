@@ -143,9 +143,9 @@ class AdminTransaksiController extends Controller
             return back()->withInput()->with('error', 'Pesanan melebihi jam operasional. Waktu selesai melebihi 23:00.');
         }
 
-        // if (Transaksi::isKapasitasPenuh($request->tanggal, $request->jam, $durasi, $request->jenis_kelamin)) {
-        //     return back()->withInput()->with('error', 'Kapasitas bed penuh pada jam dan durasi tersebut.');
-        // }
+        if (Transaksi::isKapasitasPenuh($request->tanggal, $request->jam, $durasi, $request->jenis_kelamin)) {
+            return back()->withInput()->with('error', 'Layanan sedang penuh untuk jadwal dan durasi tersebut. Masih ada slot kosong di waktu lain.');
+        }
 
         if (Transaksi::isKaryawanBentrok($request->tanggal, $request->jam, $durasi, $request->karyawan_id)) {
             return back()->withInput()->with('error', 'Karyawan yang dipilih sedang mengerjakan pesanan lain pada waktu tersebut.');
