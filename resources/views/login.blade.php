@@ -26,7 +26,7 @@
                             </div>
                             <div>
                                 <h4 class="cs_fs_18 fw-medium mb-1">Jam Operasional</h4>
-                                <p class="cs_fs_14 m-0">Setiap hari 08:00 - 22:00</p>
+                                <p class="cs_fs_14 m-0">Setiap hari 08:00 - 23:00</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
@@ -337,7 +337,6 @@
     }
 
     /* Submit Button */
-    .cs_form_submit {}
 
     .cs_btn_login {
         background: linear-gradient(135deg, #825449 0%, #825449 100%);

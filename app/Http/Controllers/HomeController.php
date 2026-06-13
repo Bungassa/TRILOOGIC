@@ -114,6 +114,12 @@ class HomeController extends Controller
         $layanan = \App\Models\Layanan::find($request->layanan);
         $durasi = $layanan->durasi ?? 60;
 
+        $endDateTime = \Carbon\Carbon::parse($request->jam)->addMinutes($durasi);
+        // If end time goes into the next day or is past 23:00
+        if ($endDateTime->format('Y-m-d') > \Carbon\Carbon::parse($request->jam)->format('Y-m-d') || $endDateTime->format('H:i') > '23:00') {
+            return back()->withInput()->with('error', 'Pesanan dibatalkan. Durasi layanan melebihi batas jam operasional (23:00).');
+        }
+
         // Cek kapasitas bed (Maksimal 4 per jenis kelamin) memperhitungkan durasi layanan
         if (\App\Models\Transaksi::isKapasitasPenuh($request->tanggal, $request->jam, $durasi, $request->jenis_kelamin)) {
             return back()->withInput()->with('error', 'Layanan sedang penuh untuk jadwal dan durasi tersebut. Masih ada bed kosong di waktu lain.');
@@ -143,7 +149,7 @@ class HomeController extends Controller
             'jam' => $request->jam,
             'catatan' => $request->catatan,
             'total_harga' => $totalHarga,
-            'status' => 'pending',
+            'status' => 'menunggu',
         ]);
 
         // Set konfigurasi Midtrans

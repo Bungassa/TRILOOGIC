@@ -10,7 +10,7 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote')->hourly();
 
 Artisan::command('transaksi:cancel-expired', function () {
-    $expiredTransaksis = Transaksi::where('status', 'pending')
+    $expiredTransaksis = Transaksi::where('status', 'menunggu')
         ->where('status_pembayaran', 'belum_bayar')
         ->where('created_at', '<', Carbon::now()->subMinutes(10))
         ->get();
@@ -23,4 +23,4 @@ Artisan::command('transaksi:cancel-expired', function () {
     }
 })->purpose('Cancel uncompleted transactions after 10 minutes')->everyMinute();
 
-\Illuminate\Support\Facades\Schedule::command('bed:manage')->everyMinute();
+\Illuminate\Support\Facades\Schedule::command('transaksi:manage')->everyMinute();

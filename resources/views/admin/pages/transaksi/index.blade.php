@@ -181,20 +181,7 @@
                     <label class="block text-sm font-medium text-gray-700 mb-1">Layanan</label>
                     <select name="layanan_id" required class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#825449] focus:border-transparent transition-all">
                         @foreach($layanans as $l)
-                        <option value="{{ $l->id }}">{{ $l->nama }} - Rp {{ number_format($l->harga, 0, ',', '.') }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Karyawan (Terapis)</label>
-                    <select name="karyawan_id" id="input_karyawan" required class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#825449] focus:border-transparent transition-all">
-                        <option value="">Pilih Karyawan</option>
-                        @foreach($karyawans as $k)
-                        <option value="{{ $k->id }}"
-                            data-gender="{{ $k->jenis_kelamin }}"
-                            data-booked-dates="{{ json_encode($k->transaksis->map(function($t) { return \Carbon\Carbon::parse($t->tanggal)->format('Y-m-d'); })->toArray()) }}">
-                            {{ $k->nama }}
-                        </option>
+                        <option value="{{ $l->id }}" data-durasi="{{ $l->durasi ?? 60 }}">{{ $l->nama }} - Rp {{ number_format($l->harga, 0, ',', '.') }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -206,6 +193,25 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Jam (09:00 - 23:00)</label>
                     <input type="time" name="jam" required min="09:00" max="23:00" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#825449] focus:border-transparent transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Karyawan (Terapis)</label>
+                    <select name="karyawan_id" id="input_karyawan" required class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#825449] focus:border-transparent transition-all">
+                        <option value="">Pilih Karyawan</option>
+                        @foreach($karyawans as $k)
+                        <option value="{{ $k->id }}"
+                            data-gender="{{ $k->jenis_kelamin }}"
+                            data-booked="{{ json_encode($k->transaksis->map(function($t) { 
+                                return [
+                                    'tanggal' => \Carbon\Carbon::parse($t->tanggal)->format('Y-m-d'),
+                                    'jam' => $t->jam,
+                                    'durasi' => $t->layanan->durasi ?? 60
+                                ];
+                            })->toArray()) }}">
+                            {{ $k->nama }}
+                        </option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Catatan Tambahan (Opsional)</label>
@@ -262,22 +268,52 @@
     const inputKaryawan = document.getElementById('input_karyawan');
 
     const inputTanggal = document.querySelector('input[name="tanggal"]');
+    const inputLayanan = document.querySelector('select[name="layanan_id"]');
 
     function filterKaryawan() {
         const gender = inputJenisKelamin.value;
         const selectedDate = inputTanggal ? inputTanggal.value : '';
+        const selectedTime = inputJam ? inputJam.value : '';
+        let selectedDuration = 60;
+        
+        if (inputLayanan && inputLayanan.options[inputLayanan.selectedIndex]) {
+            selectedDuration = parseInt(inputLayanan.options[inputLayanan.selectedIndex].getAttribute('data-durasi') || '60');
+        }
+
         const options = inputKaryawan.options;
         const currentVal = inputKaryawan.value;
         let isCurrentValValid = false;
 
         for (let i = 1; i < options.length; i++) {
             const opt = options[i];
-            const bookedDates = JSON.parse(opt.getAttribute('data-booked-dates') || '[]');
-
+            const bookedData = JSON.parse(opt.getAttribute('data-booked') || '[]');
             const isGenderMatch = opt.getAttribute('data-gender') === gender;
-            const isDateAvailable = !bookedDates.includes(selectedDate);
+            
+            let isAvailable = true;
 
-            if (isGenderMatch && isDateAvailable) {
+            if (selectedDate && selectedTime) {
+                // Convert input time to minutes from midnight
+                const [h, m] = selectedTime.split(':').map(Number);
+                const inputStart = h * 60 + m;
+                const inputEnd = inputStart + selectedDuration;
+
+                for (let j = 0; j < bookedData.length; j++) {
+                    const b = bookedData[j];
+                    if (b.tanggal === selectedDate) {
+                        const [bh, bm] = b.jam.split(':').map(Number);
+                        const bookedStart = bh * 60 + bm;
+                        const bookedEnd = bookedStart + parseInt(b.durasi);
+
+                        // Overlap condition: startA < endB && startB < endA
+                        if (inputStart < bookedEnd && bookedStart < inputEnd) {
+                            isAvailable = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (isGenderMatch && isAvailable) {
                 opt.style.display = '';
                 opt.disabled = false;
                 if (opt.value === currentVal) {
@@ -295,9 +331,9 @@
     }
 
     inputJenisKelamin.addEventListener('change', filterKaryawan);
-    if (inputTanggal) {
-        inputTanggal.addEventListener('change', filterKaryawan);
-    }
+    if (inputTanggal) inputTanggal.addEventListener('change', filterKaryawan);
+    if (inputJam) inputJam.addEventListener('change', filterKaryawan);
+    if (inputLayanan) inputLayanan.addEventListener('change', filterKaryawan);
 
     inputNama.addEventListener('input', function() {
         let val = this.value;

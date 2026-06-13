@@ -12,8 +12,8 @@ class AdminTransaksiController extends Controller
         $transaksis = Transaksi::with('layanan')->orderBy('created_at', 'desc')->get();
         $layanans = \App\Models\Layanan::all();
         $karyawans = \App\Models\Karyawan::with(['transaksis' => function ($query) {
-            $query->whereIn('status', ['pending', 'dikerjakan'])
-                ->where('status_pembayaran', 'lunas');
+            $query->with('layanan')
+                ->whereNotIn('status', ['dibatalkan', 'selesai']);
         }])->get();
         $users = \App\Models\User::where('role', 'user')->get();
 
@@ -32,7 +32,7 @@ class AdminTransaksiController extends Controller
 
 
         $transaksis = Transaksi::with(['layanan', 'karyawan'])
-            ->whereIn('status', ['pending', 'dikerjakan', 'selesai'])
+            ->whereIn('status', ['menunggu', 'proses', 'selesai'])
             ->where('status_pembayaran', 'lunas')
             ->whereDate('tanggal', $date)
             ->orderBy('jam', 'asc')
@@ -137,9 +137,15 @@ class AdminTransaksiController extends Controller
         $totalHarga = $layanan->harga;
         $durasi = $layanan->durasi ?? 60;
 
-        if (Transaksi::isKapasitasPenuh($request->tanggal, $request->jam, $durasi, $request->jenis_kelamin)) {
-            return back()->withInput()->with('error', 'Kapasitas bed penuh pada jam dan durasi tersebut.');
+        $endDateTime = \Carbon\Carbon::parse($request->jam)->addMinutes($durasi);
+        // If end time goes into the next day or is past 23:00
+        if ($endDateTime->format('Y-m-d') > \Carbon\Carbon::parse($request->jam)->format('Y-m-d') || $endDateTime->format('H:i') > '23:00') {
+            return back()->withInput()->with('error', 'Pesanan melebihi jam operasional. Waktu selesai melebihi 23:00.');
         }
+
+        // if (Transaksi::isKapasitasPenuh($request->tanggal, $request->jam, $durasi, $request->jenis_kelamin)) {
+        //     return back()->withInput()->with('error', 'Kapasitas bed penuh pada jam dan durasi tersebut.');
+        // }
 
         if (Transaksi::isKaryawanBentrok($request->tanggal, $request->jam, $durasi, $request->karyawan_id)) {
             return back()->withInput()->with('error', 'Karyawan yang dipilih sedang mengerjakan pesanan lain pada waktu tersebut.');
@@ -158,13 +164,13 @@ class AdminTransaksiController extends Controller
             'jam' => $request->jam,
             'catatan' => $request->catatan,
             'total_harga' => $totalHarga,
-            'status' => 'pending',
+            'status' => 'menunggu',
             'karyawan_id' => $request->karyawan_id,
             'status_pembayaran' => 'lunas',
         ]);
 
         // Sync with Midtrans if status is pending and not lunas
-        if ($transaksi->status === 'pending' && $transaksi->status_pembayaran !== 'lunas') {
+        if ($transaksi->status === 'menunggu' && $transaksi->status_pembayaran !== 'lunas') {
             \Midtrans\Config::$serverKey = config('services.midtrans.server_key');
             \Midtrans\Config::$isProduction = config('services.midtrans.is_production');
             \Midtrans\Config::$isSanitized = config('services.midtrans.is_sanitized');

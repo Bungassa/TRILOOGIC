@@ -17,25 +17,33 @@ class UpdateTransactionStatus
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Jalankan logika update status hanya pada request tertentu (misal admin atau home)
-        // Atau jalankan setiap menit (bisa gunakan cache untuk throttling)
-        
         $now = Carbon::now();
         $today = $now->format('Y-m-d');
         $currentTime = $now->format('H:i');
-        $oneHourAgo = $now->copy()->subHour()->format('H:i');
 
-        // 1. Update Pending ke Dikerjakan jika sudah waktunya
-        Transaksi::where('status', 'pending')
+        // 1. Update menunggu ke proses jika sudah waktunya dan karyawan sudah dipilih
+        Transaksi::where('status', 'menunggu')
+            ->whereNotNull('karyawan_id')
             ->where('tanggal', '<=', $today)
             ->where('jam', '<=', $currentTime)
-            ->update(['status' => 'dikerjakan']);
+            ->update(['status' => 'proses']);
 
-        // 2. Update Dikerjakan ke Selesai jika sudah lewat 1 jam
-        Transaksi::where('status', 'dikerjakan')
-            ->where('tanggal', '<=', $today)
-            ->where('jam', '<=', $oneHourAgo)
-            ->update(['status' => 'selesai']);
+        // 2. Update proses ke selesai jika sudah lewat durasi
+        $inProgressTransactions = Transaksi::with(['layanan'])
+            ->where('status', 'proses')
+            ->get();
+
+        foreach ($inProgressTransactions as $transaksi) {
+            /** @var \App\Models\Transaksi $transaksi */
+            $startDateTime = Carbon::parse($transaksi->tanggal . ' ' . $transaksi->jam);
+            $duration = $transaksi->layanan->durasi ?? 60;
+            $endDateTime = $startDateTime->copy()->addMinutes($duration);
+
+            if ($now >= $endDateTime) {
+                $transaksi->status = 'selesai';
+                $transaksi->save();
+            }
+        }
 
         return $next($request);
     }
