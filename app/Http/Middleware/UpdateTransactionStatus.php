@@ -24,8 +24,13 @@ class UpdateTransactionStatus
         // 1. Update menunggu ke proses jika sudah waktunya dan karyawan sudah dipilih
         Transaksi::where('status', 'menunggu')
             ->whereNotNull('karyawan_id')
-            ->where('tanggal', '<=', $today)
-            ->where('jam', '<=', $currentTime)
+            ->where(function($query) use ($today, $currentTime) {
+                $query->where('tanggal', '<', $today)
+                      ->orWhere(function($q) use ($today, $currentTime) {
+                          $q->where('tanggal', '=', $today)
+                            ->where('jam', '<=', $currentTime);
+                      });
+            })
             ->update(['status' => 'proses']);
 
         // 2. Update proses ke selesai jika sudah lewat durasi

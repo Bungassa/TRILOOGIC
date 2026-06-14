@@ -16,11 +16,11 @@
             </div>
             <div>
                 <span class="px-4 py-2 rounded-full text-sm font-bold shadow-sm
-                    @if($transaksi->status === 'pending') bg-yellow-100 text-yellow-700
-                    @elseif($transaksi->status === 'dikerjakan') bg-blue-100 text-blue-700
+                    @if($transaksi->status === 'menunggu') bg-yellow-100 text-yellow-700
+                    @elseif($transaksi->status === 'proses') bg-blue-100 text-blue-700
                     @elseif($transaksi->status === 'selesai') bg-green-100 text-green-700
                     @endif">
-                    Status: {{ $transaksi->status == 'pending' ? 'Menunggu' : ($transaksi->status == 'dikerjakan' ? 'Proses' : 'Selesai') }}
+                    Status: {{ $transaksi->status == 'menunggu' ? 'Menunggu' : ($transaksi->status == 'proses' ? 'Proses' : ($transaksi->status == 'selesai' ? 'Selesai' : 'Dibatalkan')) }}
                 </span>
             </div>
         </div>

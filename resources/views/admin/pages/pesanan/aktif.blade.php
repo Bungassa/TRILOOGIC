@@ -45,19 +45,19 @@
                             </td>
                             <td class="py-4 px-4">
                                 <span class="px-3 py-1 rounded-full text-xs font-semibold
-                                    @if($transaksi->status === 'pending') bg-yellow-100 text-yellow-700
-                                    @elseif($transaksi->status === 'dikerjakan') bg-blue-100 text-blue-700
+                                    @if($transaksi->status === 'menunggu') bg-yellow-100 text-yellow-700
+                                    @elseif($transaksi->status === 'proses') bg-blue-100 text-blue-700
                                     @elseif($transaksi->status === 'selesai') bg-green-100 text-green-700
                                     @elseif($transaksi->status === 'dibatalkan') bg-red-100 text-red-700
                                     @endif">
-                                    {{ $transaksi->status == 'pending' ? 'Menunggu' : ($transaksi->status == 'dikerjakan' ? 'Proses' : ($transaksi->status == 'selesai' ? 'Selesai' : 'Dibatalkan')) }}
+                                    {{ $transaksi->status == 'menunggu' ? 'Menunggu' : ($transaksi->status == 'proses' ? 'Proses' : ($transaksi->status == 'selesai' ? 'Selesai' : 'Dibatalkan')) }}
                                 </span>
                             </td>
                             <td class="py-4 px-4 text-gray-600">
                                 <form action="{{ route('admin.transaksi.update', $transaksi->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <select name="karyawan_id" onchange="this.form.submit()" class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white" {{ in_array($transaksi->status, ['dikerjakan', 'selesai']) ? 'disabled' : '' }}>
+                                    <select name="karyawan_id" onchange="this.form.submit()" class="w-full px-3 py-1.5 bg-gray-50/50 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#825449]/20 focus:border-[#825449] transition-all cursor-pointer hover:bg-white" {{ in_array($transaksi->status, ['proses', 'selesai']) ? 'disabled' : '' }}>
                                         <option value="">Pilih Karyawan</option>
                                         @foreach(\App\Models\Karyawan::where('jenis_kelamin', $transaksi->jenis_kelamin)->whereDoesntHave('transaksis', function($q) use ($transaksi) { $q->where('tanggal', $transaksi->tanggal)->where('jam', $transaksi->jam)->whereNotIn('status', ['dibatalkan', 'selesai'])->where('id', '!=', $transaksi->id); })->get() as $karyawan)
                                             <option value="{{ $karyawan->id }}"

@@ -176,7 +176,7 @@
                                     <td>{{ \Carbon\Carbon::parse($t->tanggal)->translatedFormat('d M Y') }}</td>
                                     <td>
                                         <span class="status-badge status-{{ $t->status }}">
-                                            {{ $t->status == 'pending' ? 'Menunggu' : ($t->status == 'dikerjakan' ? 'Diproses' : 'Selesai') }}
+                                            {{ $t->status == 'menunggu' ? 'Menunggu' : ($t->status == 'proses' ? 'Diproses' : ($t->status == 'selesai' ? 'Selesai' : 'Dibatalkan')) }}
                                         </span>
                                     </td>
                                     <td>
