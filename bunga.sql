@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 13, 2026 at 03:20 PM
+-- Generation Time: Jun 14, 2026 at 02:37 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.22
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `trilogic`
+-- Database: `bunga`
 --
 
 -- --------------------------------------------------------
@@ -782,7 +782,33 @@ INSERT INTO `activity_logs` (`id`, `user_id`, `activity`, `description`, `ip_add
 (719, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-13 14:45:11', '2026-06-13 14:45:11'),
 (720, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-13 14:50:48', '2026-06-13 14:50:48'),
 (721, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Bunga Sabrina Arini', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-13 14:55:05', '2026-06-13 14:55:05'),
-(722, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk sabrina', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-13 15:00:43', '2026-06-13 15:00:43');
+(722, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk sabrina', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-13 15:00:43', '2026-06-13 15:00:43'),
+(723, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:22:37', '2026-06-14 14:22:37'),
+(724, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:22:37', '2026-06-14 14:22:37'),
+(725, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Bunga Sabrina Arini', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:23:59', '2026-06-14 14:23:59'),
+(726, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Sabrina', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:24:47', '2026-06-14 14:24:47'),
+(727, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Diva Inzyra Praba Saraswati', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:25:11', '2026-06-14 14:25:11'),
+(728, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Arini', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:26:00', '2026-06-14 14:26:00'),
+(729, 2, 'Tambah Transaksi', 'Menambah transaksi baru untuk Elsa', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:26:49', '2026-06-14 14:26:49'),
+(730, 2, 'Logout', 'User Admin Ekky keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:27:25', '2026-06-14 14:27:25'),
+(731, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:27:25', '2026-06-14 14:27:25'),
+(732, 6, 'Login', 'User Bunga Sabrina Arini masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:28:04', '2026-06-14 14:28:04'),
+(733, 6, 'Kunjungan', 'Bunga Sabrina Arini mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:28:05', '2026-06-14 14:28:05'),
+(734, 6, 'Kunjungan', 'Bunga Sabrina Arini mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:28:31', '2026-06-14 14:28:31'),
+(735, 6, 'Kunjungan', 'Bunga Sabrina Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:28:33', '2026-06-14 14:28:33'),
+(736, 6, 'Kunjungan', 'Bunga Sabrina Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:29:34', '2026-06-14 14:29:34'),
+(737, 6, 'Kunjungan', 'Bunga Sabrina Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:29:57', '2026-06-14 14:29:57'),
+(738, 6, 'Kunjungan', 'Bunga Sabrina Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:30:22', '2026-06-14 14:30:22'),
+(739, 6, 'Kunjungan', 'Bunga Sabrina Arini mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:31:25', '2026-06-14 14:31:25'),
+(740, 6, 'Kunjungan', 'Bunga Sabrina Arini mengunjungi halaman Layanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:31:55', '2026-06-14 14:31:55'),
+(741, 6, 'Kunjungan', 'Bunga Sabrina Arini mengunjungi halaman Pemesanan', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:32:43', '2026-06-14 14:32:43'),
+(742, 6, 'Kunjungan', 'Bunga Sabrina Arini mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:33:45', '2026-06-14 14:33:45'),
+(743, 6, 'Logout', 'User Bunga Sabrina Arini keluar dari sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:33:50', '2026-06-14 14:33:50'),
+(744, NULL, 'Kunjungan', 'Guest mengunjungi halaman Beranda', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:33:51', '2026-06-14 14:33:51'),
+(745, 2, 'Login', 'User Admin Ekky masuk ke sistem', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:34:07', '2026-06-14 14:34:07'),
+(746, 2, 'Kunjungan', 'Admin Ekky membuka Dashboard Admin', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:34:07', '2026-06-14 14:34:07'),
+(747, 2, 'Update Transaksi', 'Mengubah transaksi #96 (Status: menunggu)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:34:29', '2026-06-14 14:34:29'),
+(748, 2, 'Update Transaksi', 'Mengubah transaksi #96 (Status: menunggu)', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', '2026-06-14 14:34:34', '2026-06-14 14:34:34');
 
 -- --------------------------------------------------------
 
@@ -915,16 +941,16 @@ CREATE TABLE `layanans` (
 INSERT INTO `layanans` (`id`, `nama`, `deskripsi`, `harga`, `durasi`, `gambar`, `created_at`, `updated_at`) VALUES
 (1, 'Full Body Reflexyologi & Massage (60 menit)', 'Perawatan pijat seluruh tubuh yang dikombinasikan dengan teknik refleksiologi pada titik-titik tertentu untuk membantu melancarkan peredaran darah, mengurangi pegal-pegal, serta memberikan efek relaksasi dalam durasi 60 menit.', 80000.00, 60, 'assets/img/service_1.jpg', '2026-04-30 18:41:20', '2026-06-13 14:48:53'),
 (2, 'Full Body Reflexyologi & Massage (90 menit)', 'Layanan pijat seluruh tubuh dengan tambahan teknik refleksiologi yang dilakukan lebih lama selama 90 menit, sehingga membantu meredakan stres, mengurangi ketegangan otot, dan memberikan relaksasi yang lebih maksimal.', 120000.00, 90, 'assets/img/service_2.jpg', '2026-04-30 18:41:20', '2026-06-13 14:48:53'),
-(3, 'Full Body Massage + Totok Wajah', 'Perawatan pijat seluruh tubuh yang dikombinasikan dengan terapi totok wajah, yaitu teknik penekanan pada titik-titik tertentu di wajah untuk melancarkan sirkulasi darah, membantu meremajakan kulit, dan membuat wajah terasa lebih segar.', 110000.00, 75, 'assets/img/service_3.webp', '2026-04-30 18:41:20', '2026-06-13 14:48:53'),
-(4, 'Full Body Massage + Lulur/Scrub', 'Layanan pijat seluruh tubuh yang dilengkapi dengan perawatan lulur atau scrub untuk membantu mengangkat sel kulit mati, membersihkan pori-pori, serta membuat kulit terasa lebih halus, bersih, dan cerah.', 130000.00, 80, 'assets/img/service_4.jpg', '2026-04-30 18:41:20', '2026-06-13 14:48:53'),
-(5, 'Full Body Massage + Totok Wajah + Scrub', 'Paket perawatan lengkap yang menggabungkan pijat seluruh tubuh, terapi totok wajah, dan lulur atau scrub, sehingga memberikan manfaat relaksasi sekaligus perawatan kulit secara menyeluruh.', 140000.00, 105, 'assets/img/service_5.jpeg', '2026-04-30 18:41:20', '2026-06-13 14:48:53'),
+(3, 'Full Body Massage + Totok Wajah', 'Perawatan pijat seluruh tubuh yang dikombinasikan dengan terapi totok wajah, yaitu teknik penekanan pada titik-titik tertentu di wajah untuk melancarkan sirkulasi darah, membantu meremajakan kulit, dan membuat wajah terasa lebih segar.', 110000.00, 75, 'assets/img/service_3.webp', '2026-04-30 18:41:20', '2026-06-14 14:21:35'),
+(4, 'Full Body Massage + Lulur/Scrub', 'Layanan pijat seluruh tubuh yang dilengkapi dengan perawatan lulur atau scrub untuk membantu mengangkat sel kulit mati, membersihkan pori-pori, serta membuat kulit terasa lebih halus, bersih, dan cerah.', 130000.00, 80, 'assets/img/service_4.jpg', '2026-04-30 18:41:20', '2026-06-14 14:21:35'),
+(5, 'Full Body Massage + Totok Wajah + Scrub', 'Paket perawatan lengkap yang menggabungkan pijat seluruh tubuh, terapi totok wajah, dan lulur atau scrub, sehingga memberikan manfaat relaksasi sekaligus perawatan kulit secara menyeluruh.', 140000.00, 105, 'assets/img/service_5.jpeg', '2026-04-30 18:41:20', '2026-06-14 14:21:35'),
 (6, 'Head Shoulder Massage', 'Pijat yang difokuskan pada area kepala, leher, dan bahu untuk membantu mengurangi ketegangan otot, meredakan sakit kepala, serta memberikan rasa nyaman dan relaksasi.', 40000.00, 30, 'assets/img/service_6.jpeg', '2026-04-30 18:41:20', '2026-06-13 14:48:53'),
 (7, 'Back Massage', 'Layanan pijat pada area punggung yang bertujuan untuk meredakan nyeri otot, mengurangi pegal-pegal akibat aktivitas sehari-hari, serta membantu memperbaiki sirkulasi darah.', 40000.00, 30, 'assets/img/service_7.jpeg', '2026-04-30 18:41:20', '2026-06-13 14:48:53'),
 (8, 'Foot Massage', 'Pijat pada area kaki dengan teknik refleksiologi yang menekan titik-titik tertentu untuk membantu melancarkan peredaran darah, mengurangi kelelahan, dan memberikan efek relaksasi.', 40000.00, 30, 'assets/img/service_8.jpeg', '2026-04-30 18:41:20', '2026-06-13 14:48:53'),
 (9, 'Lulur/Scrub Full Body', 'Perawatan lulur atau scrub seluruh tubuh yang bertujuan untuk mengangkat sel kulit mati, membersihkan kulit secara menyeluruh, serta membuat kulit terasa lebih halus, cerah, dan segar.', 50000.00, 30, 'assets/img/service_9.jpeg', '2026-04-30 18:41:20', '2026-06-13 14:48:53'),
-(10, 'Totok Wajah Tradisional', 'Teknik perawatan wajah tradisional dengan penekanan pada titik-titik tertentu untuk membantu melancarkan sirkulasi darah, menjaga kesehatan kulit wajah, serta membuat wajah tampak lebih segar.', 30000.00, 15, 'assets/img/service_10.jpeg', '2026-04-30 18:41:20', '2026-06-13 14:48:53'),
-(11, 'Kerokan', 'Terapi tradisional dengan teknik gesekan menggunakan alat khusus pada permukaan kulit untuk membantu meredakan masuk angin, pegal-pegal, dan meningkatkan rasa nyaman pada tubuh.', 20000.00, 15, 'assets/img/service_11.jpeg', '2026-04-30 18:41:20', '2026-06-13 14:48:53'),
-(12, 'Home Service Massage', 'Layanan pijat yang dilakukan langsung di rumah pelanggan, sehingga memberikan kenyamanan lebih tanpa perlu datang ke lokasi, cocok bagi pelanggan yang ingin relaksasi di tempat sendiri.', 100000.00, 60, 'assets/img/service_12.jpeg', '2026-04-30 18:41:20', '2026-06-13 14:16:32');
+(10, 'Totok Wajah Tradisional', 'Teknik perawatan wajah tradisional dengan penekanan pada titik-titik tertentu untuk membantu melancarkan sirkulasi darah, menjaga kesehatan kulit wajah, serta membuat wajah tampak lebih segar.', 30000.00, 15, 'assets/img/service_10.jpeg', '2026-04-30 18:41:20', '2026-06-14 14:21:35'),
+(11, 'Kerokan', 'Terapi tradisional dengan teknik gesekan menggunakan alat khusus pada permukaan kulit untuk membantu meredakan masuk angin, pegal-pegal, dan meningkatkan rasa nyaman pada tubuh.', 20000.00, 15, 'assets/img/service_11.jpeg', '2026-04-30 18:41:20', '2026-06-14 14:21:35'),
+(12, 'Home Service Massage', 'Layanan pijat yang dilakukan langsung di rumah pelanggan, sehingga memberikan kenyamanan lebih tanpa perlu datang ke lokasi, cocok bagi pelanggan yang ingin relaksasi di tempat sendiri.', 100000.00, 30, 'assets/img/service_12.jpeg', '2026-04-30 18:41:20', '2026-06-13 14:16:32');
 
 -- --------------------------------------------------------
 
@@ -967,7 +993,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2026_05_28_225032_add_dibatalkan_to_transaksis_status_enum', 16),
 (25, '2026_05_30_000118_add_bed_id_to_transaksis_table', 17),
 (26, '2026_06_07_134217_add_google_id_to_users_table', 18),
-(27, '2026_06_12_230052_add_durasi_to_layanans_table', 19);
+(27, '2026_06_12_230052_add_durasi_to_layanans_table', 19),
+(28, '2026_06_13_223850_modify_transaksis_status_and_drop_bed_id', 20),
+(29, '2026_06_13_224100_update_transaksis_status_and_drop_bed', 20),
+(30, '2026_06_13_225029_update_layanans_durasi', 20);
 
 -- --------------------------------------------------------
 
@@ -1064,7 +1093,8 @@ INSERT INTO `penggajians` (`id`, `karyawan_id`, `layanan_id`, `transaksi_id`, `u
 (50, 14, 4, 75, 60000.00, 60000.00, 'pending', NULL, '2026-06-05 03:44:59', '2026-06-05 03:44:59'),
 (51, 5, 1, 80, 35000.00, 35000.00, 'pending', NULL, '2026-06-05 04:25:47', '2026-06-05 04:25:47'),
 (52, 6, 1, 84, 35000.00, 35000.00, 'pending', NULL, '2026-06-12 04:24:20', '2026-06-12 04:24:20'),
-(53, 5, 1, 88, 35000.00, 35000.00, 'pending', NULL, '2026-06-13 15:05:15', '2026-06-13 15:05:15');
+(53, 5, 1, 88, 35000.00, 35000.00, 'pending', NULL, '2026-06-13 15:05:15', '2026-06-13 15:05:15'),
+(54, 6, 11, 89, 10000.00, 10000.00, 'pending', NULL, '2026-06-14 14:22:10', '2026-06-14 14:22:10');
 
 -- --------------------------------------------------------
 
@@ -1087,6 +1117,7 @@ CREATE TABLE `sessions` (
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
 ('b2FNaDNnQHbD6KGfTJhvQMYydxSMdA3hwARqS9Lf', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoicDJOZ2FtMk9jbUdpa2p4dkFxUlhmbEtDSnFFTkJsSVNRdTc0SzhKOSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi90cmFuc2Frc2kiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1781360563),
+('Wxz3QbRJP1mOK6iwrQn7I4uNPMcrggSYWrTtGT7k', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoielpVTUNwSG5ycjVVbVNHblZFY2FZbUVpb204d3F3aU5zZ2tsOGxzayI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMS9hZG1pbi90cmFuc2Frc2kiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1781447729),
 ('ZLbWowMmGCsc8WviQfGPPU50OXO3ceoCBr5ateMl', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiYjNUbGRtRWdmSkZwME51dzJnVTVSUGVzSm9SaDZzaDRhWWNVNnNjSCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9iZWQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1781363116);
 
 -- --------------------------------------------------------
@@ -1129,7 +1160,10 @@ INSERT INTO `testimonis` (`id`, `user_id`, `transaksi_id`, `rating`, `pesan`, `c
 (17, 6, 71, 5, 'Terapis ramah dan sangat ahli di bidangnya.', '2026-06-05 02:09:53', '2026-06-05 02:09:53'),
 (18, 6, 72, 5, 'Badan jadi segar kembali, sangat direkomendasikan!', '2026-06-05 02:10:06', '2026-06-05 02:10:06'),
 (19, 6, 74, 5, 'Badan jadi segar kembali, sangat direkomendasikan!', '2026-06-11 08:31:58', '2026-06-11 08:31:58'),
-(20, 6, 69, 5, 'Terapis ramah dan sangat ahli di bidangnya.', '2026-06-11 08:32:17', '2026-06-11 08:32:17');
+(20, 6, 69, 5, 'Terapis ramah dan sangat ahli di bidangnya.', '2026-06-11 08:32:17', '2026-06-11 08:32:17'),
+(21, 6, 81, 5, 'Terapis ramah dan sangat ahli di bidangnya. Tempat bersih, nyaman, dan sangat rileks.', '2026-06-14 14:28:16', '2026-06-14 14:28:16'),
+(22, 6, 88, 5, 'Terapis ramah dan sangat ahli di bidangnya.', '2026-06-14 14:28:22', '2026-06-14 14:28:22'),
+(23, 6, 82, 5, 'Badan jadi segar kembali, sangat direkomendasikan!', '2026-06-14 14:28:28', '2026-06-14 14:28:28');
 
 -- --------------------------------------------------------
 
@@ -1152,108 +1186,114 @@ CREATE TABLE `transaksis` (
   `jam` time NOT NULL,
   `catatan` text,
   `total_harga` decimal(10,2) NOT NULL,
-  `status` enum('pending','dikerjakan','selesai','dibatalkan') DEFAULT 'pending',
+  `status` enum('menunggu','proses','selesai','dibatalkan') DEFAULT 'menunggu',
   `status_pembayaran` enum('belum_bayar','lunas') NOT NULL DEFAULT 'belum_bayar',
   `snap_token` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `karyawan_id` bigint UNSIGNED DEFAULT NULL,
-  `bed_id` int DEFAULT NULL
+  `karyawan_id` bigint UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `transaksis`
 --
 
-INSERT INTO `transaksis` (`id`, `user_id`, `nama`, `jenis_kelamin`, `telepon`, `layanan_id`, `lokasi`, `alamat`, `lat`, `lng`, `tanggal`, `jam`, `catatan`, `total_harga`, `status`, `status_pembayaran`, `snap_token`, `created_at`, `updated_at`, `karyawan_id`, `bed_id`) VALUES
-(1, NULL, 'Budi Santoso', 'L', '081234567890', 1, 'tempat', NULL, NULL, NULL, '2026-05-02', '10:00:00', 'Mohon dikerjakan oleh terapis laki-laki', 80000.00, 'selesai', 'belum_bayar', NULL, '2026-04-30 18:41:20', '2026-05-11 16:51:45', NULL, NULL),
-(2, NULL, 'Siti Aminah', 'P', '082198765432', 3, 'rumah', 'Jl. Merdeka No. 123, Subang', NULL, NULL, '2026-05-03', '14:00:00', 'Rumah warna hijau', 110000.00, 'selesai', 'belum_bayar', NULL, '2026-04-30 18:41:20', '2026-05-11 16:51:45', NULL, NULL),
-(3, NULL, 'Agus Hermawan', 'L', '085678901234', 7, 'tempat', NULL, NULL, NULL, '2026-04-30', '16:00:00', NULL, 40000.00, 'selesai', 'lunas', NULL, '2026-04-30 18:41:20', '2026-04-30 18:41:20', NULL, NULL),
-(4, NULL, 'Dewi Lestari', 'P', '087812345678', 5, 'tempat', NULL, NULL, NULL, '2026-05-01', '11:00:00', 'Ingin terapis yang sudah senior', 140000.00, 'selesai', 'lunas', NULL, '2026-04-30 18:41:20', '2026-05-11 16:51:45', NULL, NULL),
-(5, NULL, 'Rizky Pratama', 'L', '081299887766', 11, 'rumah', 'Perumahan Asri Blok C4, Subang', NULL, NULL, '2026-05-04', '19:00:00', 'Sedang masuk angin parah', 20000.00, 'selesai', 'belum_bayar', NULL, '2026-04-30 18:41:20', '2026-05-11 16:51:45', NULL, NULL),
-(6, 5, 'Bunga', 'P', '082315957278', 5, 'tempat', NULL, NULL, NULL, '2026-05-01', '22:02:00', NULL, 140000.00, 'selesai', 'lunas', '05ad1216-2a18-4bc3-a699-b643c1e70b10', '2026-05-01 15:01:17', '2026-05-07 08:30:41', 11, NULL),
-(7, NULL, 'Baraja Putra', 'L', '082315957278', 5, 'tempat', NULL, NULL, NULL, '2026-05-09', '08:25:00', NULL, 140000.00, 'selesai', 'lunas', '07c8a54a-9941-4d39-bcba-7c9c365a87bc', '2026-05-01 15:24:32', '2026-05-07 08:30:36', NULL, NULL),
-(8, 6, 'Bunga Sabrina', 'P', '089699663056', 4, 'rumah', 'seoul, south korea', NULL, NULL, '2026-05-19', '20:19:00', 'apa aja', 150000.00, 'selesai', 'belum_bayar', NULL, '2026-05-02 06:16:06', '2026-05-24 15:11:38', NULL, NULL),
-(9, 6, 'Bunga Sabrina', 'P', '089699663056', 3, 'rumah', 'seoul, south korea', NULL, NULL, '2026-05-02', '23:10:00', 'apa aja', 130000.00, 'selesai', 'belum_bayar', 'b1502861-46e2-4d0d-a675-fca937509954', '2026-05-02 07:03:24', '2026-05-11 17:12:04', NULL, NULL),
-(10, 6, 'Bunga Sabrina', 'P', '089699663056', 2, 'rumah', 'seoul, south korea', NULL, NULL, '2026-05-03', '12:30:00', 'apa aja', 140000.00, 'selesai', 'lunas', 'd6cc1579-77b7-4605-bcf2-ab0cbb0807e1', '2026-05-02 07:13:23', '2026-05-07 08:18:25', 12, NULL),
-(11, 7, 'diva inzyra', 'P', '0888888888', 8, 'rumah', 'haurgeulis', NULL, NULL, '2026-05-15', '12:00:00', 'gaada', 60000.00, 'selesai', 'lunas', '355bcd24-a702-42d7-af08-bef893b17b1f', '2026-05-07 06:03:40', '2026-05-07 08:16:10', 5, NULL),
-(12, NULL, 'Dewi 1', 'L', '081234567995', 5, 'tempat', NULL, NULL, NULL, '2026-05-11', '11:00:00', 'Seeded for testing absensi', 140000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 5, NULL),
-(13, NULL, 'Joko 1', 'P', '081234567311', 10, 'tempat', NULL, NULL, NULL, '2026-05-11', '14:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 5, NULL),
-(14, NULL, 'Joko 2', 'L', '081234567426', 12, 'tempat', NULL, NULL, NULL, '2026-05-11', '11:00:00', 'Seeded for testing absensi', 100000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 6, NULL),
-(15, NULL, 'Siti 3', 'P', '081234567748', 7, 'tempat', NULL, NULL, NULL, '2026-05-11', '15:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 7, NULL),
-(16, NULL, 'Budi 4', 'L', '081234567221', 2, 'tempat', NULL, NULL, NULL, '2026-05-11', '17:00:00', 'Seeded for testing absensi', 120000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 8, NULL),
-(17, NULL, 'Dewi 5', 'L', '081234567644', 5, 'tempat', NULL, NULL, NULL, '2026-05-11', '12:00:00', 'Seeded for testing absensi', 140000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 9, NULL),
-(18, NULL, 'Dewi 5', 'L', '081234567947', 1, 'tempat', NULL, NULL, NULL, '2026-05-11', '10:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 9, NULL),
-(19, NULL, 'Budi 6', 'L', '081234567552', 1, 'tempat', NULL, NULL, NULL, '2026-05-11', '18:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 10, NULL),
-(20, NULL, 'Dewi 6', 'L', '081234567601', 8, 'tempat', NULL, NULL, NULL, '2026-05-11', '11:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 10, NULL),
-(21, NULL, 'Dewi 7', 'L', '081234567419', 1, 'tempat', NULL, NULL, NULL, '2026-05-11', '13:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 11, NULL),
-(22, NULL, 'Agus 8', 'P', '081234567791', 8, 'tempat', NULL, NULL, NULL, '2026-05-11', '12:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 12, NULL),
-(23, NULL, 'Dewi 8', 'L', '081234567402', 5, 'tempat', NULL, NULL, NULL, '2026-05-11', '13:00:00', 'Seeded for testing absensi', 140000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 12, NULL),
-(24, NULL, 'Budi 1', 'P', '081234567865', 2, 'tempat', NULL, NULL, NULL, '2026-05-11', '16:00:00', 'Seeded for testing absensi', 120000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 5, NULL),
-(25, NULL, 'Siti 1', 'P', '081234567245', 5, 'tempat', NULL, NULL, NULL, '2026-05-11', '13:00:00', 'Seeded for testing absensi', 140000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 5, NULL),
-(26, NULL, 'Siti 2', 'P', '081234567601', 5, 'tempat', NULL, NULL, NULL, '2026-05-11', '17:00:00', 'Seeded for testing absensi', 140000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 6, NULL),
-(27, NULL, 'Agus 2', 'L', '081234567895', 4, 'tempat', NULL, NULL, NULL, '2026-05-11', '19:00:00', 'Seeded for testing absensi', 130000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 6, NULL),
-(28, NULL, 'Agus 3', 'L', '081234567801', 10, 'tempat', NULL, NULL, NULL, '2026-05-11', '10:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 7, NULL),
-(29, NULL, 'Joko 3', 'P', '081234567782', 4, 'tempat', NULL, NULL, NULL, '2026-05-11', '14:00:00', 'Seeded for testing absensi', 130000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 7, NULL),
-(30, NULL, 'Joko 4', 'L', '081234567354', 1, 'tempat', NULL, NULL, NULL, '2026-05-11', '19:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 8, NULL),
-(31, NULL, 'Siti 5', 'L', '081234567244', 7, 'tempat', NULL, NULL, NULL, '2026-05-11', '18:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 9, NULL),
-(32, NULL, 'Dewi 5', 'L', '081234567808', 11, 'tempat', NULL, NULL, NULL, '2026-05-11', '19:00:00', 'Seeded for testing absensi', 20000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 9, NULL),
-(33, NULL, 'Agus 6', 'P', '081234567111', 10, 'tempat', NULL, NULL, NULL, '2026-05-11', '19:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 10, NULL),
-(34, NULL, 'Budi 6', 'L', '081234567131', 10, 'tempat', NULL, NULL, NULL, '2026-05-11', '14:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 10, NULL),
-(35, NULL, 'Siti 7', 'L', '081234567313', 3, 'tempat', NULL, NULL, NULL, '2026-05-11', '18:00:00', 'Seeded for testing absensi', 110000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 11, NULL),
-(36, NULL, 'Dewi 8', 'P', '081234567733', 11, 'tempat', NULL, NULL, NULL, '2026-05-11', '16:00:00', 'Seeded for testing absensi', 20000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 12, NULL),
-(37, 5, 'Baraja Putra', 'L', '082315957278', 2, 'rumah', 'Kelurahan Pasirkareumbi, Subang, Jawa Barat, Jawa, 41231, Indonesia', NULL, NULL, '2026-05-13', '16:15:00', NULL, 140000.00, 'selesai', 'lunas', '5fa61b5a-212b-4282-8ae1-df9a53d305ae', '2026-05-11 17:12:43', '2026-05-15 15:36:53', NULL, NULL),
-(38, 5, 'Baraja Putra', 'L', '082315957278', 1, 'rumah', 'Kelurahan Pasirkareumbi, Subang, Jawa Barat, Jawa, 41231, Indonesia', NULL, NULL, '2026-05-12', '15:15:00', NULL, 100000.00, 'selesai', 'lunas', '95032603-bc28-4dc1-9fe5-f394278fcba5', '2026-05-11 17:13:47', '2026-05-12 15:49:34', NULL, NULL),
-(39, NULL, 'Diva Inzyra 1', 'L', '081234567372', 6, 'tempat', NULL, NULL, NULL, '2026-05-12', '10:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 5, NULL),
-(40, NULL, 'Diva Inzyra 2', 'L', '081234567689', 2, 'tempat', NULL, NULL, NULL, '2026-05-12', '11:00:00', 'Seeded for testing absensi', 120000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 6, NULL),
-(41, NULL, 'Diana 3', 'P', '081234567580', 2, 'tempat', NULL, NULL, NULL, '2026-05-12', '18:00:00', 'Seeded for testing absensi', 120000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 7, NULL),
-(42, NULL, 'Diana 4', 'L', '081234567337', 12, 'tempat', NULL, NULL, NULL, '2026-05-12', '14:00:00', 'Seeded for testing absensi', 100000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 8, NULL),
-(43, NULL, 'Diva Inzyra 4', 'P', '081234567855', 1, 'tempat', NULL, NULL, NULL, '2026-05-12', '17:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 8, NULL),
-(44, NULL, 'Bunga 5', 'P', '081234567763', 6, 'tempat', NULL, NULL, NULL, '2026-05-12', '13:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 9, NULL),
-(45, NULL, 'Bunga 6', 'P', '081234567868', 1, 'tempat', NULL, NULL, NULL, '2026-05-12', '13:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 10, NULL),
-(46, NULL, 'Diana 7', 'P', '081234567685', 8, 'tempat', NULL, NULL, NULL, '2026-05-12', '13:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 11, NULL),
-(47, NULL, 'Diva Inzyra 7', 'P', '081234567376', 10, 'tempat', NULL, NULL, NULL, '2026-05-12', '15:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 11, NULL),
-(48, NULL, 'Dezan 8', 'L', '081234567302', 10, 'tempat', NULL, NULL, NULL, '2026-05-12', '11:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 12, NULL),
-(49, NULL, 'Diva Inzyra 8', 'L', '081234567726', 8, 'tempat', NULL, NULL, NULL, '2026-05-12', '16:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 12, NULL),
-(50, 6, 'Bunga Sabrina', 'P', '089699663056', 4, 'rumah', 'Cibogo', NULL, NULL, '2026-05-15', '17:00:00', NULL, 150000.00, 'selesai', 'lunas', '80d688cd-bd88-474a-a974-bb9fc73b74e2', '2026-05-15 08:58:16', '2026-05-15 15:36:53', 7, NULL),
-(51, NULL, 'Diva', 'P', '08238912832', 2, 'tempat', NULL, NULL, NULL, '2026-05-15', '17:00:00', NULL, 120000.00, 'selesai', 'belum_bayar', 'ee272d46-12e2-4954-8e60-a07a5557a0cc', '2026-05-15 09:01:06', '2026-05-15 15:36:53', NULL, NULL),
-(52, 6, 'Udin', 'L', '089699663056', 8, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', NULL, NULL, '2026-05-15', '17:10:00', NULL, 40000.00, 'selesai', 'lunas', '59811dab-67ee-41be-901c-cf7365c9611f', '2026-05-15 09:09:56', '2026-05-24 13:22:34', NULL, NULL),
-(53, 9, 'Diva', 'P', '089699663056', 5, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', NULL, NULL, '2026-05-16', '14:00:00', 'blablalbla', 140000.00, 'selesai', 'lunas', 'c4c14a6b-c6bd-4f7c-951e-af92e84ab845', '2026-05-16 04:56:21', '2026-05-18 15:40:51', 9, NULL),
-(54, NULL, 'Bunga', 'P', '08238912832', 2, 'tempat', NULL, NULL, NULL, '2026-05-17', '10:00:00', NULL, 120000.00, 'selesai', 'belum_bayar', '8692563e-a969-4237-b5b6-13130d38b4f4', '2026-05-16 04:59:25', '2026-05-18 15:40:51', NULL, NULL),
-(55, 9, 'Bunga Sabrinaa', 'P', '085861708569', 2, 'rumah', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', NULL, NULL, '2026-05-25', '14:00:00', NULL, 140000.00, 'selesai', 'lunas', 'a3e7c36a-9ea5-43ca-93e4-690bf79375ef', '2026-05-24 15:13:26', '2026-05-27 10:50:48', NULL, NULL),
-(56, 9, 'Putra', 'L', '082315957278', 2, 'rumah', 'Kelurahan Pasirkareumbi, Subang, Jawa Barat, Jawa, 41231, Indonesia', NULL, NULL, '2026-05-26', '15:00:00', NULL, 140000.00, 'selesai', 'lunas', 'b56173d4-f0f0-46a2-8f42-20c3c834b321', '2026-05-24 15:17:22', '2026-05-27 10:50:48', NULL, NULL),
-(57, 9, 'Bunga Sabrinaa', 'P', '085861708569', 2, 'tempat', NULL, NULL, NULL, '2026-05-25', '16:30:00', NULL, 120000.00, 'selesai', 'belum_bayar', '5ee418e5-0a97-44c6-9542-c6bba50fb9df', '2026-05-24 15:24:41', '2026-05-27 10:50:48', NULL, NULL),
-(58, 9, 'Bunga Sabrinaa', 'P', '085861708569', 3, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-05-26', '16:28:00', NULL, 110000.00, 'selesai', 'belum_bayar', '368f550c-3d7e-4850-b400-5b562719db24', '2026-05-24 15:29:36', '2026-05-27 10:50:48', NULL, NULL),
-(59, 9, 'Bunga Sabrinaa', 'P', '085861708569', 3, 'rumah', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-05-26', '16:28:00', NULL, 130000.00, 'selesai', 'lunas', '47d1b391-9301-4962-8905-3d9fba8b21f4', '2026-05-24 15:29:44', '2026-05-27 10:50:48', NULL, NULL),
-(60, 9, 'Diva', 'P', '08965535351', 4, 'rumah', 'Padaasih Permai, Cibogo, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55538933, 107.81838655, '2026-05-27', '18:05:00', NULL, 150000.00, 'selesai', 'lunas', '061685d6-1aea-4a35-89a6-3de64ec7da4a', '2026-05-24 16:03:46', '2026-05-27 12:10:37', NULL, NULL),
-(61, 9, 'Bunga Sabrinaa', 'P', '085861708569', 5, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-05-29', '19:15:00', NULL, 140000.00, 'selesai', 'lunas', '9923fafd-7520-431d-8733-40b347e730dd', '2026-05-27 12:15:18', '2026-05-29 15:37:08', NULL, NULL),
-(62, NULL, 'Bunga Sabrinaaa', 'P', '08965535351', 2, 'tempat', NULL, NULL, NULL, '2026-05-27', '19:20:00', NULL, 120000.00, 'selesai', 'lunas', '341a1df9-fc3c-45d7-b10c-caa9249afbf7', '2026-05-27 12:16:25', '2026-05-27 14:41:01', 8, NULL),
-(63, 9, 'Bunga Sabrinaa', 'P', '085861708569', 3, 'tempat', NULL, NULL, NULL, '2026-05-27', '19:25:00', NULL, 110000.00, 'selesai', 'lunas', '1a47353a-533e-4102-8e50-dc9e8aca0c7e', '2026-05-27 12:24:21', '2026-05-27 12:24:27', 9, NULL),
-(64, 9, 'Bunga Sabrinaa', 'P', '085861708569', 2, 'tempat', NULL, NULL, NULL, '2026-05-27', '19:40:00', NULL, 120000.00, 'selesai', 'lunas', '9ce59a8f-ae13-4895-a830-81bc64c6db42', '2026-05-27 12:39:16', '2026-06-05 01:28:53', 7, NULL),
-(65, 9, 'Bunga Sabrinaa', 'P', '089699663056', 3, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-05-29', '16:15:00', NULL, 110000.00, 'selesai', 'lunas', '13956586-ab29-4c97-bd7c-1905d5c246bc', '2026-05-28 15:31:21', '2026-05-29 15:37:08', 7, NULL),
-(66, NULL, 'Elsa Sintya', 'P', '089765432', 6, 'tempat', NULL, NULL, NULL, '2026-06-02', '09:00:00', 'oke', 40000.00, 'selesai', 'lunas', 'a8b5ed4c-68b8-4c8c-aaf6-0a367a976143', '2026-06-01 16:14:45', '2026-06-03 09:34:17', 6, NULL),
-(67, 7, 'Diva Inzyra Praba Saraswati', 'P', '0888888888', 5, 'tempat', NULL, NULL, NULL, '2026-06-03', '09:00:00', 'p', 140000.00, 'selesai', 'lunas', '1c01758d-0ca2-487b-9105-72215abda479', '2026-06-03 01:25:26', '2026-06-03 09:34:17', 5, 5),
-(68, NULL, 'Alya Elidhiya', 'P', '08765432123', 10, 'tempat', NULL, NULL, NULL, '2026-06-05', '09:00:00', 'aku pertama', 30000.00, 'selesai', 'lunas', NULL, '2026-06-05 01:30:23', '2026-06-05 01:47:22', 8, NULL),
-(69, 6, 'Qisty Sauva', 'P', '08976545679', 3, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-06', '09:00:00', 'aku kedua', 110000.00, 'selesai', 'lunas', '9598276f-8051-4ebb-9de8-3045c5b897c6', '2026-06-05 01:37:00', '2026-06-10 15:35:43', NULL, NULL),
-(70, 6, 'Elsa Sintya Dwwi', 'P', '098765456789', 5, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-05', '09:00:00', 'aku ketiga', 140000.00, 'selesai', 'lunas', 'ed46d1ae-ac4e-4228-b36b-435e44c0aaf2', '2026-06-05 01:39:09', '2026-06-05 01:47:26', 5, NULL),
-(71, 6, 'diva inzyra', 'P', '0987678909876', 5, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-05', '09:00:00', 'aku keempat', 140000.00, 'selesai', 'lunas', '5c4ad7b0-e3ab-4639-9ae5-53d5ce5160a8', '2026-06-05 01:40:35', '2026-06-05 01:47:29', 6, NULL),
-(72, 6, 'Bunga Sabrina', 'P', '0987656789', 9, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-05', '09:00:00', 'aku kelima', 50000.00, 'selesai', 'belum_bayar', '3708db77-0264-4187-9a15-1c8abb0b91a6', '2026-06-05 01:41:53', '2026-06-05 01:47:32', 7, NULL),
-(73, NULL, 'azalia', 'P', '0987656789', 6, 'tempat', NULL, NULL, NULL, '2026-06-05', '09:00:00', NULL, 40000.00, 'selesai', 'lunas', NULL, '2026-06-05 01:45:07', '2026-06-05 03:10:25', 5, NULL),
-(74, 6, 'Bunga Sabrina', 'P', '0896996630567', 10, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-05', '10:00:00', 'ini percobaan', 30000.00, 'selesai', 'belum_bayar', '9de3c7b4-0c38-42c3-8a41-936718b49155', '2026-06-05 02:12:05', '2026-06-05 04:05:43', NULL, NULL),
-(75, NULL, 'alfarizi chan', 'L', '098765456789', 4, 'tempat', NULL, NULL, NULL, '2026-06-05', '10:00:00', NULL, 130000.00, 'selesai', 'lunas', NULL, '2026-06-05 02:17:29', '2026-06-05 03:44:58', 14, NULL),
-(76, NULL, 'sabil', 'P', '64738920473', 1, 'tempat', NULL, NULL, NULL, '2026-06-05', '11:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-05 03:11:31', '2026-06-05 03:44:25', 7, NULL),
-(77, NULL, 'alia', 'P', '758944', 1, 'tempat', NULL, NULL, NULL, '2026-06-05', '11:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-05 03:12:09', '2026-06-05 03:44:30', 5, NULL),
-(78, NULL, 'valerie', 'P', '08987653478', 1, 'tempat', NULL, NULL, NULL, '2026-06-05', '11:00:00', 'ofsnvf', 80000.00, 'selesai', 'lunas', NULL, '2026-06-05 03:13:12', '2026-06-05 03:44:33', 6, NULL),
-(79, NULL, 'quinara', 'P', '089654345678', 4, 'tempat', NULL, NULL, NULL, '2026-06-05', '11:00:00', NULL, 130000.00, 'selesai', 'lunas', NULL, '2026-06-05 03:14:42', '2026-06-05 03:44:37', 8, NULL),
-(80, NULL, 'sabrina arini', 'P', '098765', 1, 'tempat', NULL, NULL, NULL, '2026-06-05', '12:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-05 04:14:41', '2026-06-05 04:25:47', 5, NULL),
-(81, 6, 'Bunga Sabrina Arini', 'P', '0896996630567', 5, 'rumah', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-11', '16:39:00', '---', 160000.00, 'selesai', 'lunas', 'dc64e0b5-399f-4431-9c8e-79f7cc42743e', '2026-06-11 08:40:48', '2026-06-13 12:26:42', NULL, NULL),
-(82, 6, 'Bunga Sabrina Arini', 'P', '0896996630567', 5, 'rumah', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-11', '16:39:00', '---', 160000.00, 'selesai', 'lunas', '31207aef-ee63-4bdb-9b48-5bd586142105', '2026-06-11 09:02:45', '2026-06-11 11:55:18', NULL, NULL),
-(83, 7, 'Diva Inzyra Praba Saraswati', 'P', '0888888888', 1, 'tempat', NULL, NULL, NULL, '2026-06-12', '16:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-12 03:19:00', '2026-06-13 11:45:49', 5, NULL),
-(84, NULL, 'elsa sintya dewi', 'P', '09876789056', 1, 'tempat', NULL, NULL, NULL, '2026-06-12', '16:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-12 03:20:41', '2026-06-12 04:24:20', 6, NULL),
-(85, NULL, 'Alya Elidhiya', 'P', '089564783678', 1, 'tempat', NULL, NULL, NULL, '2026-06-12', '16:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-12 03:22:34', '2026-06-13 11:45:49', 7, NULL),
-(86, NULL, 'Qisty Sauva', 'P', '098765454523', 1, 'tempat', NULL, NULL, NULL, '2026-06-12', '16:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-12 04:16:53', '2026-06-13 11:45:49', 8, NULL),
-(88, 6, 'Bunga Sabrina Arini', 'P', '0896996630567', 1, 'tempat', NULL, NULL, NULL, '2026-06-13', '22:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-13 14:55:05', '2026-06-13 15:05:15', 5, NULL),
-(89, NULL, 'sabrina', 'P', '098765456780', 11, 'tempat', NULL, NULL, NULL, '2026-06-13', '22:00:00', NULL, 20000.00, 'dikerjakan', 'lunas', NULL, '2026-06-13 15:00:43', '2026-06-13 15:00:43', 6, NULL);
+INSERT INTO `transaksis` (`id`, `user_id`, `nama`, `jenis_kelamin`, `telepon`, `layanan_id`, `lokasi`, `alamat`, `lat`, `lng`, `tanggal`, `jam`, `catatan`, `total_harga`, `status`, `status_pembayaran`, `snap_token`, `created_at`, `updated_at`, `karyawan_id`) VALUES
+(1, NULL, 'Budi Santoso', 'L', '081234567890', 1, 'tempat', NULL, NULL, NULL, '2026-05-02', '10:00:00', 'Mohon dikerjakan oleh terapis laki-laki', 80000.00, 'selesai', 'belum_bayar', NULL, '2026-04-30 18:41:20', '2026-05-11 16:51:45', NULL),
+(2, NULL, 'Siti Aminah', 'P', '082198765432', 3, 'rumah', 'Jl. Merdeka No. 123, Subang', NULL, NULL, '2026-05-03', '14:00:00', 'Rumah warna hijau', 110000.00, 'selesai', 'belum_bayar', NULL, '2026-04-30 18:41:20', '2026-05-11 16:51:45', NULL),
+(3, NULL, 'Agus Hermawan', 'L', '085678901234', 7, 'tempat', NULL, NULL, NULL, '2026-04-30', '16:00:00', NULL, 40000.00, 'selesai', 'lunas', NULL, '2026-04-30 18:41:20', '2026-04-30 18:41:20', NULL),
+(4, NULL, 'Dewi Lestari', 'P', '087812345678', 5, 'tempat', NULL, NULL, NULL, '2026-05-01', '11:00:00', 'Ingin terapis yang sudah senior', 140000.00, 'selesai', 'lunas', NULL, '2026-04-30 18:41:20', '2026-05-11 16:51:45', NULL),
+(5, NULL, 'Rizky Pratama', 'L', '081299887766', 11, 'rumah', 'Perumahan Asri Blok C4, Subang', NULL, NULL, '2026-05-04', '19:00:00', 'Sedang masuk angin parah', 20000.00, 'selesai', 'belum_bayar', NULL, '2026-04-30 18:41:20', '2026-05-11 16:51:45', NULL),
+(6, 5, 'Bunga', 'P', '082315957278', 5, 'tempat', NULL, NULL, NULL, '2026-05-01', '22:02:00', NULL, 140000.00, 'selesai', 'lunas', '05ad1216-2a18-4bc3-a699-b643c1e70b10', '2026-05-01 15:01:17', '2026-05-07 08:30:41', 11),
+(7, NULL, 'Baraja Putra', 'L', '082315957278', 5, 'tempat', NULL, NULL, NULL, '2026-05-09', '08:25:00', NULL, 140000.00, 'selesai', 'lunas', '07c8a54a-9941-4d39-bcba-7c9c365a87bc', '2026-05-01 15:24:32', '2026-05-07 08:30:36', NULL),
+(8, 6, 'Bunga Sabrina', 'P', '089699663056', 4, 'rumah', 'seoul, south korea', NULL, NULL, '2026-05-19', '20:19:00', 'apa aja', 150000.00, 'selesai', 'belum_bayar', NULL, '2026-05-02 06:16:06', '2026-05-24 15:11:38', NULL),
+(9, 6, 'Bunga Sabrina', 'P', '089699663056', 3, 'rumah', 'seoul, south korea', NULL, NULL, '2026-05-02', '23:10:00', 'apa aja', 130000.00, 'selesai', 'belum_bayar', 'b1502861-46e2-4d0d-a675-fca937509954', '2026-05-02 07:03:24', '2026-05-11 17:12:04', NULL),
+(10, 6, 'Bunga Sabrina', 'P', '089699663056', 2, 'rumah', 'seoul, south korea', NULL, NULL, '2026-05-03', '12:30:00', 'apa aja', 140000.00, 'selesai', 'lunas', 'd6cc1579-77b7-4605-bcf2-ab0cbb0807e1', '2026-05-02 07:13:23', '2026-05-07 08:18:25', 12),
+(11, 7, 'diva inzyra', 'P', '0888888888', 8, 'rumah', 'haurgeulis', NULL, NULL, '2026-05-15', '12:00:00', 'gaada', 60000.00, 'selesai', 'lunas', '355bcd24-a702-42d7-af08-bef893b17b1f', '2026-05-07 06:03:40', '2026-05-07 08:16:10', 5),
+(12, NULL, 'Dewi 1', 'L', '081234567995', 5, 'tempat', NULL, NULL, NULL, '2026-05-11', '11:00:00', 'Seeded for testing absensi', 140000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 5),
+(13, NULL, 'Joko 1', 'P', '081234567311', 10, 'tempat', NULL, NULL, NULL, '2026-05-11', '14:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 5),
+(14, NULL, 'Joko 2', 'L', '081234567426', 12, 'tempat', NULL, NULL, NULL, '2026-05-11', '11:00:00', 'Seeded for testing absensi', 100000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 6),
+(15, NULL, 'Siti 3', 'P', '081234567748', 7, 'tempat', NULL, NULL, NULL, '2026-05-11', '15:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 7),
+(16, NULL, 'Budi 4', 'L', '081234567221', 2, 'tempat', NULL, NULL, NULL, '2026-05-11', '17:00:00', 'Seeded for testing absensi', 120000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 8),
+(17, NULL, 'Dewi 5', 'L', '081234567644', 5, 'tempat', NULL, NULL, NULL, '2026-05-11', '12:00:00', 'Seeded for testing absensi', 140000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 9),
+(18, NULL, 'Dewi 5', 'L', '081234567947', 1, 'tempat', NULL, NULL, NULL, '2026-05-11', '10:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 9),
+(19, NULL, 'Budi 6', 'L', '081234567552', 1, 'tempat', NULL, NULL, NULL, '2026-05-11', '18:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 10),
+(20, NULL, 'Dewi 6', 'L', '081234567601', 8, 'tempat', NULL, NULL, NULL, '2026-05-11', '11:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 10),
+(21, NULL, 'Dewi 7', 'L', '081234567419', 1, 'tempat', NULL, NULL, NULL, '2026-05-11', '13:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 11),
+(22, NULL, 'Agus 8', 'P', '081234567791', 8, 'tempat', NULL, NULL, NULL, '2026-05-11', '12:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 12),
+(23, NULL, 'Dewi 8', 'L', '081234567402', 5, 'tempat', NULL, NULL, NULL, '2026-05-11', '13:00:00', 'Seeded for testing absensi', 140000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:42', '2026-05-11 16:28:42', 12),
+(24, NULL, 'Budi 1', 'P', '081234567865', 2, 'tempat', NULL, NULL, NULL, '2026-05-11', '16:00:00', 'Seeded for testing absensi', 120000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 5),
+(25, NULL, 'Siti 1', 'P', '081234567245', 5, 'tempat', NULL, NULL, NULL, '2026-05-11', '13:00:00', 'Seeded for testing absensi', 140000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 5),
+(26, NULL, 'Siti 2', 'P', '081234567601', 5, 'tempat', NULL, NULL, NULL, '2026-05-11', '17:00:00', 'Seeded for testing absensi', 140000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 6),
+(27, NULL, 'Agus 2', 'L', '081234567895', 4, 'tempat', NULL, NULL, NULL, '2026-05-11', '19:00:00', 'Seeded for testing absensi', 130000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 6),
+(28, NULL, 'Agus 3', 'L', '081234567801', 10, 'tempat', NULL, NULL, NULL, '2026-05-11', '10:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 7),
+(29, NULL, 'Joko 3', 'P', '081234567782', 4, 'tempat', NULL, NULL, NULL, '2026-05-11', '14:00:00', 'Seeded for testing absensi', 130000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 7),
+(30, NULL, 'Joko 4', 'L', '081234567354', 1, 'tempat', NULL, NULL, NULL, '2026-05-11', '19:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 8),
+(31, NULL, 'Siti 5', 'L', '081234567244', 7, 'tempat', NULL, NULL, NULL, '2026-05-11', '18:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 9),
+(32, NULL, 'Dewi 5', 'L', '081234567808', 11, 'tempat', NULL, NULL, NULL, '2026-05-11', '19:00:00', 'Seeded for testing absensi', 20000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 9),
+(33, NULL, 'Agus 6', 'P', '081234567111', 10, 'tempat', NULL, NULL, NULL, '2026-05-11', '19:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 10),
+(34, NULL, 'Budi 6', 'L', '081234567131', 10, 'tempat', NULL, NULL, NULL, '2026-05-11', '14:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 10),
+(35, NULL, 'Siti 7', 'L', '081234567313', 3, 'tempat', NULL, NULL, NULL, '2026-05-11', '18:00:00', 'Seeded for testing absensi', 110000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 11),
+(36, NULL, 'Dewi 8', 'P', '081234567733', 11, 'tempat', NULL, NULL, NULL, '2026-05-11', '16:00:00', 'Seeded for testing absensi', 20000.00, 'selesai', 'lunas', NULL, '2026-05-11 16:28:51', '2026-05-11 16:28:51', 12),
+(37, 5, 'Baraja Putra', 'L', '082315957278', 2, 'rumah', 'Kelurahan Pasirkareumbi, Subang, Jawa Barat, Jawa, 41231, Indonesia', NULL, NULL, '2026-05-13', '16:15:00', NULL, 140000.00, 'selesai', 'lunas', '5fa61b5a-212b-4282-8ae1-df9a53d305ae', '2026-05-11 17:12:43', '2026-05-15 15:36:53', NULL),
+(38, 5, 'Baraja Putra', 'L', '082315957278', 1, 'rumah', 'Kelurahan Pasirkareumbi, Subang, Jawa Barat, Jawa, 41231, Indonesia', NULL, NULL, '2026-05-12', '15:15:00', NULL, 100000.00, 'selesai', 'lunas', '95032603-bc28-4dc1-9fe5-f394278fcba5', '2026-05-11 17:13:47', '2026-05-12 15:49:34', NULL),
+(39, NULL, 'Diva Inzyra 1', 'L', '081234567372', 6, 'tempat', NULL, NULL, NULL, '2026-05-12', '10:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 5),
+(40, NULL, 'Diva Inzyra 2', 'L', '081234567689', 2, 'tempat', NULL, NULL, NULL, '2026-05-12', '11:00:00', 'Seeded for testing absensi', 120000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 6),
+(41, NULL, 'Diana 3', 'P', '081234567580', 2, 'tempat', NULL, NULL, NULL, '2026-05-12', '18:00:00', 'Seeded for testing absensi', 120000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 7),
+(42, NULL, 'Diana 4', 'L', '081234567337', 12, 'tempat', NULL, NULL, NULL, '2026-05-12', '14:00:00', 'Seeded for testing absensi', 100000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 8),
+(43, NULL, 'Diva Inzyra 4', 'P', '081234567855', 1, 'tempat', NULL, NULL, NULL, '2026-05-12', '17:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 8),
+(44, NULL, 'Bunga 5', 'P', '081234567763', 6, 'tempat', NULL, NULL, NULL, '2026-05-12', '13:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 9),
+(45, NULL, 'Bunga 6', 'P', '081234567868', 1, 'tempat', NULL, NULL, NULL, '2026-05-12', '13:00:00', 'Seeded for testing absensi', 80000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 10),
+(46, NULL, 'Diana 7', 'P', '081234567685', 8, 'tempat', NULL, NULL, NULL, '2026-05-12', '13:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 11),
+(47, NULL, 'Diva Inzyra 7', 'P', '081234567376', 10, 'tempat', NULL, NULL, NULL, '2026-05-12', '15:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 11),
+(48, NULL, 'Dezan 8', 'L', '081234567302', 10, 'tempat', NULL, NULL, NULL, '2026-05-12', '11:00:00', 'Seeded for testing absensi', 30000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 12),
+(49, NULL, 'Diva Inzyra 8', 'L', '081234567726', 8, 'tempat', NULL, NULL, NULL, '2026-05-12', '16:00:00', 'Seeded for testing absensi', 40000.00, 'selesai', 'lunas', NULL, '2026-05-11 17:18:08', '2026-05-11 17:18:08', 12),
+(50, 6, 'Bunga Sabrina', 'P', '089699663056', 4, 'rumah', 'Cibogo', NULL, NULL, '2026-05-15', '17:00:00', NULL, 150000.00, 'selesai', 'lunas', '80d688cd-bd88-474a-a974-bb9fc73b74e2', '2026-05-15 08:58:16', '2026-05-15 15:36:53', 7),
+(51, NULL, 'Diva', 'P', '08238912832', 2, 'tempat', NULL, NULL, NULL, '2026-05-15', '17:00:00', NULL, 120000.00, 'selesai', 'belum_bayar', 'ee272d46-12e2-4954-8e60-a07a5557a0cc', '2026-05-15 09:01:06', '2026-05-15 15:36:53', NULL),
+(52, 6, 'Udin', 'L', '089699663056', 8, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', NULL, NULL, '2026-05-15', '17:10:00', NULL, 40000.00, 'selesai', 'lunas', '59811dab-67ee-41be-901c-cf7365c9611f', '2026-05-15 09:09:56', '2026-05-24 13:22:34', NULL),
+(53, 9, 'Diva', 'P', '089699663056', 5, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', NULL, NULL, '2026-05-16', '14:00:00', 'blablalbla', 140000.00, 'selesai', 'lunas', 'c4c14a6b-c6bd-4f7c-951e-af92e84ab845', '2026-05-16 04:56:21', '2026-05-18 15:40:51', 9),
+(54, NULL, 'Bunga', 'P', '08238912832', 2, 'tempat', NULL, NULL, NULL, '2026-05-17', '10:00:00', NULL, 120000.00, 'selesai', 'belum_bayar', '8692563e-a969-4237-b5b6-13130d38b4f4', '2026-05-16 04:59:25', '2026-05-18 15:40:51', NULL),
+(55, 9, 'Bunga Sabrinaa', 'P', '085861708569', 2, 'rumah', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', NULL, NULL, '2026-05-25', '14:00:00', NULL, 140000.00, 'selesai', 'lunas', 'a3e7c36a-9ea5-43ca-93e4-690bf79375ef', '2026-05-24 15:13:26', '2026-05-27 10:50:48', NULL),
+(56, 9, 'Putra', 'L', '082315957278', 2, 'rumah', 'Kelurahan Pasirkareumbi, Subang, Jawa Barat, Jawa, 41231, Indonesia', NULL, NULL, '2026-05-26', '15:00:00', NULL, 140000.00, 'selesai', 'lunas', 'b56173d4-f0f0-46a2-8f42-20c3c834b321', '2026-05-24 15:17:22', '2026-05-27 10:50:48', NULL),
+(57, 9, 'Bunga Sabrinaa', 'P', '085861708569', 2, 'tempat', NULL, NULL, NULL, '2026-05-25', '16:30:00', NULL, 120000.00, 'selesai', 'belum_bayar', '5ee418e5-0a97-44c6-9542-c6bba50fb9df', '2026-05-24 15:24:41', '2026-05-27 10:50:48', NULL),
+(58, 9, 'Bunga Sabrinaa', 'P', '085861708569', 3, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-05-26', '16:28:00', NULL, 110000.00, 'selesai', 'belum_bayar', '368f550c-3d7e-4850-b400-5b562719db24', '2026-05-24 15:29:36', '2026-05-27 10:50:48', NULL),
+(59, 9, 'Bunga Sabrinaa', 'P', '085861708569', 3, 'rumah', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-05-26', '16:28:00', NULL, 130000.00, 'selesai', 'lunas', '47d1b391-9301-4962-8905-3d9fba8b21f4', '2026-05-24 15:29:44', '2026-05-27 10:50:48', NULL),
+(60, 9, 'Diva', 'P', '08965535351', 4, 'rumah', 'Padaasih Permai, Cibogo, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55538933, 107.81838655, '2026-05-27', '18:05:00', NULL, 150000.00, 'selesai', 'lunas', '061685d6-1aea-4a35-89a6-3de64ec7da4a', '2026-05-24 16:03:46', '2026-05-27 12:10:37', NULL),
+(61, 9, 'Bunga Sabrinaa', 'P', '085861708569', 5, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-05-29', '19:15:00', NULL, 140000.00, 'selesai', 'lunas', '9923fafd-7520-431d-8733-40b347e730dd', '2026-05-27 12:15:18', '2026-05-29 15:37:08', NULL),
+(62, NULL, 'Bunga Sabrinaaa', 'P', '08965535351', 2, 'tempat', NULL, NULL, NULL, '2026-05-27', '19:20:00', NULL, 120000.00, 'selesai', 'lunas', '341a1df9-fc3c-45d7-b10c-caa9249afbf7', '2026-05-27 12:16:25', '2026-05-27 14:41:01', 8),
+(63, 9, 'Bunga Sabrinaa', 'P', '085861708569', 3, 'tempat', NULL, NULL, NULL, '2026-05-27', '19:25:00', NULL, 110000.00, 'selesai', 'lunas', '1a47353a-533e-4102-8e50-dc9e8aca0c7e', '2026-05-27 12:24:21', '2026-05-27 12:24:27', 9),
+(64, 9, 'Bunga Sabrinaa', 'P', '085861708569', 2, 'tempat', NULL, NULL, NULL, '2026-05-27', '19:40:00', NULL, 120000.00, 'selesai', 'lunas', '9ce59a8f-ae13-4895-a830-81bc64c6db42', '2026-05-27 12:39:16', '2026-06-05 01:28:53', 7),
+(65, 9, 'Bunga Sabrinaa', 'P', '089699663056', 3, 'tempat', 'Cinangsi, Subang, Jawa Barat, Jawa, 41285, Indonesia', -6.55794741, 107.79482603, '2026-05-29', '16:15:00', NULL, 110000.00, 'selesai', 'lunas', '13956586-ab29-4c97-bd7c-1905d5c246bc', '2026-05-28 15:31:21', '2026-05-29 15:37:08', 7),
+(66, NULL, 'Elsa Sintya', 'P', '089765432', 6, 'tempat', NULL, NULL, NULL, '2026-06-02', '09:00:00', 'oke', 40000.00, 'selesai', 'lunas', 'a8b5ed4c-68b8-4c8c-aaf6-0a367a976143', '2026-06-01 16:14:45', '2026-06-03 09:34:17', 6),
+(67, 7, 'Diva Inzyra Praba Saraswati', 'P', '0888888888', 5, 'tempat', NULL, NULL, NULL, '2026-06-03', '09:00:00', 'p', 140000.00, 'selesai', 'lunas', '1c01758d-0ca2-487b-9105-72215abda479', '2026-06-03 01:25:26', '2026-06-03 09:34:17', 5),
+(68, NULL, 'Alya Elidhiya', 'P', '08765432123', 10, 'tempat', NULL, NULL, NULL, '2026-06-05', '09:00:00', 'aku pertama', 30000.00, 'selesai', 'lunas', NULL, '2026-06-05 01:30:23', '2026-06-05 01:47:22', 8),
+(69, 6, 'Qisty Sauva', 'P', '08976545679', 3, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-06', '09:00:00', 'aku kedua', 110000.00, 'selesai', 'lunas', '9598276f-8051-4ebb-9de8-3045c5b897c6', '2026-06-05 01:37:00', '2026-06-10 15:35:43', NULL),
+(70, 6, 'Elsa Sintya Dwwi', 'P', '098765456789', 5, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-05', '09:00:00', 'aku ketiga', 140000.00, 'selesai', 'lunas', 'ed46d1ae-ac4e-4228-b36b-435e44c0aaf2', '2026-06-05 01:39:09', '2026-06-05 01:47:26', 5),
+(71, 6, 'diva inzyra', 'P', '0987678909876', 5, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-05', '09:00:00', 'aku keempat', 140000.00, 'selesai', 'lunas', '5c4ad7b0-e3ab-4639-9ae5-53d5ce5160a8', '2026-06-05 01:40:35', '2026-06-05 01:47:29', 6),
+(72, 6, 'Bunga Sabrina', 'P', '0987656789', 9, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-05', '09:00:00', 'aku kelima', 50000.00, 'selesai', 'belum_bayar', '3708db77-0264-4187-9a15-1c8abb0b91a6', '2026-06-05 01:41:53', '2026-06-05 01:47:32', 7),
+(73, NULL, 'azalia', 'P', '0987656789', 6, 'tempat', NULL, NULL, NULL, '2026-06-05', '09:00:00', NULL, 40000.00, 'selesai', 'lunas', NULL, '2026-06-05 01:45:07', '2026-06-05 03:10:25', 5),
+(74, 6, 'Bunga Sabrina', 'P', '0896996630567', 10, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-05', '10:00:00', 'ini percobaan', 30000.00, 'selesai', 'belum_bayar', '9de3c7b4-0c38-42c3-8a41-936718b49155', '2026-06-05 02:12:05', '2026-06-05 04:05:43', NULL),
+(75, NULL, 'alfarizi chan', 'L', '098765456789', 4, 'tempat', NULL, NULL, NULL, '2026-06-05', '10:00:00', NULL, 130000.00, 'selesai', 'lunas', NULL, '2026-06-05 02:17:29', '2026-06-05 03:44:58', 14),
+(76, NULL, 'sabil', 'P', '64738920473', 1, 'tempat', NULL, NULL, NULL, '2026-06-05', '11:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-05 03:11:31', '2026-06-05 03:44:25', 7),
+(77, NULL, 'alia', 'P', '758944', 1, 'tempat', NULL, NULL, NULL, '2026-06-05', '11:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-05 03:12:09', '2026-06-05 03:44:30', 5),
+(78, NULL, 'valerie', 'P', '08987653478', 1, 'tempat', NULL, NULL, NULL, '2026-06-05', '11:00:00', 'ofsnvf', 80000.00, 'selesai', 'lunas', NULL, '2026-06-05 03:13:12', '2026-06-05 03:44:33', 6),
+(79, NULL, 'quinara', 'P', '089654345678', 4, 'tempat', NULL, NULL, NULL, '2026-06-05', '11:00:00', NULL, 130000.00, 'selesai', 'lunas', NULL, '2026-06-05 03:14:42', '2026-06-05 03:44:37', 8),
+(80, NULL, 'sabrina arini', 'P', '098765', 1, 'tempat', NULL, NULL, NULL, '2026-06-05', '12:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-05 04:14:41', '2026-06-05 04:25:47', 5),
+(81, 6, 'Bunga Sabrina Arini', 'P', '0896996630567', 5, 'rumah', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-11', '16:39:00', '---', 160000.00, 'selesai', 'lunas', 'dc64e0b5-399f-4431-9c8e-79f7cc42743e', '2026-06-11 08:40:48', '2026-06-13 12:26:42', NULL),
+(82, 6, 'Bunga Sabrina Arini', 'P', '0896996630567', 5, 'rumah', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-11', '16:39:00', '---', 160000.00, 'selesai', 'lunas', '31207aef-ee63-4bdb-9b48-5bd586142105', '2026-06-11 09:02:45', '2026-06-11 11:55:18', NULL),
+(83, 7, 'Diva Inzyra Praba Saraswati', 'P', '0888888888', 1, 'tempat', NULL, NULL, NULL, '2026-06-12', '16:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-12 03:19:00', '2026-06-13 11:45:49', 5),
+(84, NULL, 'elsa sintya dewi', 'P', '09876789056', 1, 'tempat', NULL, NULL, NULL, '2026-06-12', '16:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-12 03:20:41', '2026-06-12 04:24:20', 6),
+(85, NULL, 'Alya Elidhiya', 'P', '089564783678', 1, 'tempat', NULL, NULL, NULL, '2026-06-12', '16:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-12 03:22:34', '2026-06-13 11:45:49', 7),
+(86, NULL, 'Qisty Sauva', 'P', '098765454523', 1, 'tempat', NULL, NULL, NULL, '2026-06-12', '16:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-12 04:16:53', '2026-06-13 11:45:49', 8),
+(88, 6, 'Bunga Sabrina Arini', 'P', '0896996630567', 1, 'tempat', NULL, NULL, NULL, '2026-06-13', '22:00:00', NULL, 80000.00, 'selesai', 'lunas', NULL, '2026-06-13 14:55:05', '2026-06-13 15:05:15', 5),
+(89, NULL, 'sabrina', 'P', '098765456780', 11, 'tempat', NULL, NULL, NULL, '2026-06-13', '22:00:00', NULL, 20000.00, 'selesai', 'lunas', NULL, '2026-06-13 15:00:43', '2026-06-14 14:22:10', 6),
+(90, 6, 'Bunga Sabrina Arini', 'P', '0896996630567', 11, 'tempat', NULL, NULL, NULL, '2026-06-14', '21:30:00', NULL, 20000.00, 'proses', 'lunas', NULL, '2026-06-14 14:23:59', '2026-06-14 14:30:22', 5),
+(91, NULL, 'Sabrina', 'P', '0896996630567', 11, 'tempat', NULL, NULL, NULL, '2026-06-14', '21:32:00', NULL, 20000.00, 'proses', 'lunas', NULL, '2026-06-14 14:24:47', '2026-06-14 14:32:43', 6),
+(92, 7, 'Diva Inzyra Praba Saraswati', 'P', '0888888888', 11, 'tempat', NULL, NULL, NULL, '2026-06-14', '21:38:00', NULL, 20000.00, 'menunggu', 'lunas', NULL, '2026-06-14 14:25:11', '2026-06-14 14:25:11', 7),
+(93, NULL, 'Arini', 'P', '089699663056', 11, 'tempat', NULL, NULL, NULL, '2026-06-14', '21:40:00', NULL, 20000.00, 'menunggu', 'lunas', NULL, '2026-06-14 14:26:00', '2026-06-14 14:26:00', 8),
+(94, NULL, 'Elsa', 'P', '0888888888', 11, 'tempat', NULL, NULL, NULL, '2026-06-14', '21:45:00', NULL, 20000.00, 'menunggu', 'lunas', NULL, '2026-06-14 14:26:49', '2026-06-14 14:26:49', 5),
+(95, 6, 'Alya', 'P', '0888888888', 11, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-14', '22:00:00', NULL, 20000.00, 'menunggu', 'lunas', '610cb82b-bb7c-4971-8f44-b8b21e84fcb1', '2026-06-14 14:30:46', '2026-06-14 14:31:23', NULL),
+(96, 6, 'Bunga Sabrina Arini', 'P', '0896996630567', 11, 'tempat', 'Jalan Sukamulya, Kelurahan Karanganyar, Cinangsi, Subang, West Java, Java, 41211, Indonesia', -6.55886405, 107.78581381, '2026-06-15', '11:00:00', NULL, 20000.00, 'menunggu', 'lunas', '99f7ff68-c464-47c2-94e6-7f3a3d712995', '2026-06-14 14:33:14', '2026-06-14 14:34:34', 6);
 
 -- --------------------------------------------------------
 
@@ -1423,7 +1463,7 @@ ALTER TABLE `absensis`
 -- AUTO_INCREMENT for table `activity_logs`
 --
 ALTER TABLE `activity_logs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=723;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=749;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1453,25 +1493,25 @@ ALTER TABLE `layanans`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `penggajians`
 --
 ALTER TABLE `penggajians`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `testimonis`
 --
 ALTER TABLE `testimonis`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `transaksis`
 --
 ALTER TABLE `transaksis`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `users`
